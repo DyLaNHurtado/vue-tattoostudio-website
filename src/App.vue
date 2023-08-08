@@ -7,23 +7,20 @@ import  Footer  from './components/Footer.vue';
 <template>
   <div>
     <NavBar />
-    <RouterView />
+    <div class="view">
+      <RouterView />
+    </div>
 
     <Footer></Footer>
   </div>
 </template>
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.view{
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  min-height: 90vh;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
+
 </style>
