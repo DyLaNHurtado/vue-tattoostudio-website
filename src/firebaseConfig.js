@@ -1,5 +1,5 @@
 // firebaseConfig.js (Archivo de configuración de Firebase)
-import firebase from 'firebase/app';
+import { initializeApp } from "firebase/app";
 import 'firebase/firestore';
 
 const firebaseConfig = {
@@ -12,6 +12,6 @@ const firebaseConfig = {
   appId: 'TU_APP_ID'
 };
 
-firebase.initializeApp(firebaseConfig);
+const firebaseApp = initializeApp(firebaseConfig);
 
-export const db = firebase.firestore();
+export {firebaseApp}
