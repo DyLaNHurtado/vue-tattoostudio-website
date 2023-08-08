@@ -14,6 +14,8 @@
   text-align: center;
   padding: 10px;
   background-color: #f8f8f8;
+  width: 100%;
+  z-index: 20;
 }
 
 .social-links {

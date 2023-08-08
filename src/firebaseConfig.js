@@ -1,5 +1,6 @@
 // firebaseConfig.js (Archivo de configuración de Firebase)
 import { initializeApp } from "firebase/app";
+import { getFirestore } from 'firebase/firestore'
 import 'firebase/firestore';
 
 const firebaseConfig = {
@@ -13,5 +14,5 @@ const firebaseConfig = {
 };
 
 const firebaseApp = initializeApp(firebaseConfig);
-
-export {firebaseApp}
+const db = getFirestore(firebaseApp);
+export {firebaseApp, db}

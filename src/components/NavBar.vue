@@ -7,12 +7,12 @@
       <a href="/">Tatuajes Estudio</a>
     </div>
     <ul :class="['nav-links', { 'nav-active': isNavOpen }]">
-      <li class="nav-link-item"><router-link to="/" class="nav-link">Inicio</router-link></li>
-      <li class="nav-link-item"><router-link to="/gallery" class="nav-link">Galeria</router-link></li>
-      <li class="nav-link-item"><router-link to="/studio" class="nav-link">Studio</router-link></li>
-      <li class="nav-link-item"><router-link to="/appointments" class="nav-link">Agenda una Cita</router-link></li>
-      <li class="nav-link-item"><router-link to="/reviews" class="nav-link">Reseñas</router-link></li>
-      <li class="nav-link-item"><router-link to="/contact" class="nav-link">Contactanos</router-link></li>
+      <li class="nav-link-item"><router-link to="/" class="nav-link" @click="toggleNav()">Inicio</router-link></li>
+      <li class="nav-link-item"><router-link to="/gallery" class="nav-link" @click="toggleNav()">Galeria</router-link></li>
+      <li class="nav-link-item"><router-link to="/studio" class="nav-link" @click="toggleNav()">Studio</router-link></li>
+      <li class="nav-link-item"><router-link to="/appointments" class="nav-link" @click="toggleNav()">Agenda una Cita</router-link></li>
+      <li class="nav-link-item"><router-link to="/reviews" class="nav-link" @click="toggleNav()">Reseñas</router-link></li>
+      <li class="nav-link-item"><router-link to="/contact" class="nav-link" @click="toggleNav()">Contactar</router-link></li>
     </ul>
   </nav>
 </template>
@@ -32,9 +32,11 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 /* Estilos para la barra de navegación */
 .navbar {
+  position: fixed;
+  top: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -43,6 +45,8 @@ export default {
   color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: all .3s;
+  width: 100%;
+  z-index: 20;
 }
 
 .nav-toggle {
@@ -119,7 +123,6 @@ export default {
     width: 100%;
     padding: 20px;
   }
-
 
 }
 </style>

@@ -21,6 +21,8 @@ import  Footer  from './components/Footer.vue';
   width: 100%;
   height: 100%;
   min-height: 90vh;
+  margin-top: 5em;
+  padding: 40px;
 }
 
 </style>

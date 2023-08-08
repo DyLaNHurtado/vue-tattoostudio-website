@@ -32,7 +32,7 @@
   }
   </script>
   
-  <style>
+  <style scoped>
   /* Estilos de la galería (opcional) */
   .tattoo-item {
     margin: 10px;

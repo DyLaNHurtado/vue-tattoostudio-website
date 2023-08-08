@@ -93,7 +93,7 @@
   }
   </script>
   
-  <style>
+  <style scoped>
   /* Estilos del componente (opcional) */
   /* ... Estilos del componente ... */
   </style>
