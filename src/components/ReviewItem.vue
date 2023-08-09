@@ -13,10 +13,13 @@
     </div>
     <p class="review-content">{{ review.content }}</p>
     <div class="review-footer">
-      <button class="like-button" :class="{ 'liked': liked }" @click="toggleLike">
+      <button class="like-button" :class="{ 'liked': liked }" @click="toggleLike(review.id)">
         <font-awesome-icon :icon="['far', 'heart']" v-if="!liked" />
         <font-awesome-icon :icon="['fas', 'heart']" v-else />
-        <span class="particles" v-if="liked"></span>
+        <span class="particles particle1" v-if="liked" ></span>
+        <span class="particles particle2" v-if="liked"></span>
+        <span class="particles particle3" v-if="liked"></span>
+        <span class="particles particle4" v-if="liked"></span>
         <span class="likes-count">{{ review.likes }}</span>
       </button>
       <div class="utils-buttons">
@@ -59,19 +62,18 @@ export default {
   border-radius: 8px;
   padding: 20px;
   background-color: #fff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s, box-shadow 0.2s;
   height: auto;
   word-wrap: break-word;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
+  box-shadow: 0 1px 2px #e0e0e0;
 }
 
 .review-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 3px #e0e0e0;
 }
 
 .review-header {
@@ -191,7 +193,40 @@ export default {
   border-radius: 50%;
   opacity: 0;
   transform: translateY(0);
+  z-index: -1;
+}
+.particle1 {
+  left: 35%;
+  bottom: 25%;
+  width: 4px;
+  height: 4px;
+  animation: particlesAnim 0.8s ease-out forwards;
+
+
+}
+.particle2 {
+  left: 25%;
+  bottom:35%;
+  width: 9px;
+  height: 9px;
   animation: particlesAnim 0.6s ease-out forwards;
+
+}
+.particle3 {
+  left: 5%;
+  bottom: 25%;
+  width: 8px;
+  height: 8px;
+  animation: particlesAnim 0.4s ease-out forwards;
+
+}
+.particle4 {
+  left: 20%;
+  bottom: 35%;
+  width: 6px;
+  height: 6px;
+  animation: particlesAnim 0.2s ease-out forwards;
+
 }
 
 @keyframes particlesAnim {
