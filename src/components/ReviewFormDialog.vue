@@ -1,7 +1,6 @@
 <template>
   <div class="modal">
     <div class="modal-content">
-      <h4>Agregar Reseña</h4>
       <div class="add-review-form">
         <div class="form-group">
           <div class="rating">
@@ -17,10 +16,10 @@
           <input type="text" placeholder="Nombre:" v-model="newReview.userName">
         </div>
         <div class="form-group">
-          <textarea placeholder="Reseña" rows="4" v-model="newReview.content"></textarea>
+          <textarea placeholder="Reseña:" rows="4" v-model="newReview.content"></textarea>
         </div>
         <div class="action-buttons">
-          <button @click="agregarResena">Agregar Reseña</button>
+          <button class="primary-button" @click="enviarResena" :disabled="false">Enviar Reseña</button>
           <button class="close-button" @click="closeModal">Cerrar</button>
         </div>
       </div>
@@ -46,17 +45,17 @@ export default {
     setRating(star) {
       this.newReview.rating = star;
     },
-    agregarResena() {
-      this.$emit('addReview', this.newReview);
-      this.newReview = {
-        userName: '',
-        rating: 0,
-        content: ''
-      };
+    enviarResena() {
+        this.$emit('addReview', this.newReview);
+        this.newReview = {
+          userName: '',
+          rating: 0,
+          content: ''
+        };
     },
     closeModal() {
       this.$emit('close');
-    }
+    },
   }
 };
 </script>
@@ -130,7 +129,7 @@ export default {
   resize: vertical;
 }
 
-.add-review-form button {
+.add-review-form .primary-button {
   background-color: #5865f2;
   color: #fff;
   border: none;
@@ -141,7 +140,7 @@ export default {
   transition: background-color 0.2s;
 }
 
-.add-review-form button:hover {
+.add-review-form .primary-button:hover {
   background-color: #4054d1;
 }
 

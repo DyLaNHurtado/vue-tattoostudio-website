@@ -1,8 +1,10 @@
 <template>
   <div class="reviews">
-    <h1>Reseñas de Clientes</h1>
+    <h1>Reseñas de Clientes:</h1>
     <ReviewList :reviews="reviews" />
-    <button class="add-review-button" @click="showModal = true">Agregar Reseña</button>
+    <button class="add-review-button" @click="showModal = true">
+      Agregar reseña
+    </button>
     <ReviewFormDialog v-if="showModal" @close="showModal = false" @addReview="agregarResena" />
   </div>
 </template>
@@ -25,7 +27,8 @@ export default {
           userName: 'Cliente 1',
           userLocation: 'Ciudad 1',
           rating: 5,
-          content: '¡Excelente estudio de tatuajes! Muy profesionales y creativos.'
+          content: '¡Excelente estudio de tatuajes! Muy profesionales y creativos.',
+          likes: 5
         },
         {
           id: 2,
@@ -33,7 +36,8 @@ export default {
           userName: 'Cliente 2',
           userLocation: 'Ciudad 2',
           rating: 4,
-          content: 'Me encantó mi nuevo tatuaje. El artista capturó mi idea perfectamente.'
+          content: 'Me encantó mi nuevo tatuaje. El artista capturó mi idea perfectamente.',
+          likes: 2
         },
       ],
       showModal: false
@@ -79,6 +83,6 @@ h1 {
 }
 
 .add-review-button:hover {
-  background-color: #ffca2e;
+  background-color: #4054d1;
 }
 </style>
