@@ -23,8 +23,9 @@
         <span class="likes-count">{{ review.likes }}</span>
       </button>
       <div class="utils-buttons">
-        <button class="transparent-button">
-          <span>Marcar como util</span>
+        <button  :class="['transparent-button',{ 'active': usefulled }]" @click="toogleUtil(review.id)">
+          <span v-if="!usefulled">Marcar como util</span>
+          <span v-else><font-awesome-icon :icon="['fas', 'check']" /> Votado como util</span>
         </button>
       </div>
       
@@ -36,19 +37,27 @@
 export default {
   data() {
     return {
-      liked: this.initialLiked
+      liked: this.initialLiked,
+      usefulled: this.initialUsefull,
     }
   },
   props: {
     review: Object,
     reviews: Array,
-    initialLiked: Boolean
+    initialLiked: Boolean,
   }, methods: {
     toggleLike(reviewId) {
       const review = this.reviews.find(review => review.id === reviewId);
       if (review) {
         this.liked = !this.liked;
         this.liked ? review.likes++ : review.likes--;
+      }
+    },
+    toogleUtil(reviewId){
+      const review = this.reviews.find(review => review.id === reviewId);
+      if (review) {
+        this.usefulled = !this.usefulled;
+        this.usefulled ? review.usefulled++ : review.usefulled--;
       }
     }
   }
@@ -62,18 +71,16 @@ export default {
   border-radius: 8px;
   padding: 20px;
   background-color: #fff;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.3s, box-shadow 0.3s;
   height: auto;
   word-wrap: break-word;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 0 1px 2px #e0e0e0;
 }
 
 .review-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 2px 3px #e0e0e0;
+  box-shadow: inset 0px 0px 2px #5865f2;
 }
 
 .review-header {
@@ -165,35 +172,20 @@ export default {
   gap: 10px;
 }
 
-.transparent-button{
-  background-color: transparent;
-  font-size: 16px;
-  padding: 10px 20px;
-  border: 2px solid #ccc;
-  color: #ccc;
-  transition: all .3s;
-  border-radius: 500px;
-}
-.transparent-button:hover{
-  border: 2px solid #999;
-  color: #999;
-}
 
 .transparent-button.active{
+  background-color: #5865f2;
   border: 2px solid #5865f2;
-  color: #5865f2;
+  color: #fff;
 }
 
 
 .particles {
   position: absolute;
-  width: 8px;
-  height: 8px;
   background-color: #ff5733;
   border-radius: 50%;
   opacity: 0;
   transform: translateY(0);
-  z-index: -1;
 }
 .particle1 {
   left: 35%;
@@ -201,8 +193,6 @@ export default {
   width: 4px;
   height: 4px;
   animation: particlesAnim 0.8s ease-out forwards;
-
-
 }
 .particle2 {
   left: 25%;

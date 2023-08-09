@@ -1,6 +1,6 @@
 <template>
     <div class="review-list">
-      <ReviewItem v-for="review in reviews" :key="review.id" :reviews="reviews" :review="review" :initialLiked="false" />
+      <ReviewItem v-for="review in reviews" :key="review.id" :reviews="reviews" :review="review" :initialLiked="false" :initialUsefull="false" />
     </div>
   </template>
   

@@ -74,3 +74,20 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* Estilos de componentes */
+.transparent-button{
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: 2px solid #ccc;
+  color: #999;
+  transition: all .3s;
+  border-radius: 500px;
+}
+.transparent-button:hover{
+  border: 2px solid #5865f2;
+  color: #5865f2;
+
+}

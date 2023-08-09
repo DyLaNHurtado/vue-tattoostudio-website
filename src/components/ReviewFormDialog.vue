@@ -20,7 +20,7 @@
         </div>
         <div class="action-buttons">
           <button class="primary-button" @click="enviarResena" :disabled="false">Enviar Reseña</button>
-          <button class="close-button" @click="closeModal">Cerrar</button>
+          <button class="transparent-button" @click="closeModal">Cerrar</button>
         </div>
       </div>
     </div>
@@ -37,7 +37,9 @@ export default {
       newReview: {
         userName: '',
         rating: 0,
-        content: ''
+        content: '',
+        likes:0,
+        usefulled:0
       }
     };
   },
@@ -50,7 +52,9 @@ export default {
         this.newReview = {
           userName: '',
           rating: 0,
-          content: ''
+          content: '',
+          likes:0,
+          usefulled:0
         };
     },
     closeModal() {
@@ -176,20 +180,6 @@ export default {
   align-items: end;
   justify-content: space-between;
   gap: 20px;
-}
-.close-button {
-  background-color: #e0e0e0;
-  color: #333;
-  border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
-  margin-top: 10px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.close-button:hover {
-  background-color: #ccc;
 }
 </style>
   

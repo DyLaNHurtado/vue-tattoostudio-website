@@ -1,5 +1,6 @@
 <template>
   <div class="reviews">
+    <ReviewSorts @sortReviewsBy="sortedReviews"/>
     <h1>Reseñas de Clientes:</h1>
     <ReviewList :reviews="reviews" />
     <button class="add-review-button" @click="showModal = true">
@@ -12,11 +13,13 @@
 <script>
 import ReviewList from '../components/ReviewList.vue';
 import ReviewFormDialog from '../components/ReviewFormDialog.vue';
+import ReviewSorts from '../components/ReviewSorts.vue';
 
 export default {
   components: {
     ReviewList,
-    ReviewFormDialog
+    ReviewFormDialog,
+    ReviewSorts
   },
   data() {
     return {
@@ -28,7 +31,8 @@ export default {
           userLocation: 'Ciudad 1',
           rating: 5,
           content: '¡Excelente estudio de tatuajes! Muy profesionales y creativos.',
-          likes: 5
+          likes: 5,
+          usefulled:2
         },
         {
           id: 2,
@@ -37,10 +41,13 @@ export default {
           userLocation: 'Ciudad 2',
           rating: 4,
           content: 'Me encantó mi nuevo tatuaje. El artista capturó mi idea perfectamente.',
-          likes: 2
+          likes: 2,
+          usefulled:4
+
         },
       ],
-      showModal: false
+      showModal: false,
+      sortByOption: 'usefulled',
     };
   },
   methods: {
@@ -52,9 +59,30 @@ export default {
         userName: review.userName,
         userLocation: review.userLocation,
         rating: review.rating,
-        content: review.content
+        content: review.content,
+        likes:review.likes,
+        usefulled: review.usefulled,
       });
       this.showModal = false;
+    }
+  },
+    computed: {
+    sortedReviews() {
+      this.reviews = [...this.reviews];
+
+      if (this.sortByOption === 'likes') {
+        this.reviews.sort((a, b) => b.likes - a.likes);
+      } else if (this.sortByOption === 'usefulled') {
+        this.reviews.sort((a, b) => b.usefulled - a.usefulled);
+      } else if (this.sortByOption === 'rating') {
+        this.reviews.sort((a, b) => b.rating - a.rating);
+      } else if (this.sortByOption === 'lowestRating') {
+        this.reviews.sort((a, b) => a.rating - b.rating);
+      } else if (this.sortByOption === 'stars') {
+        this.reviews.sort((a, b) => b.rating - a.rating || b.likes - a.likes);
+      }
+
+      return this.reviews;
     }
   }
 };
