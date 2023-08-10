@@ -8,10 +8,9 @@
       <div class="form-group">
         <input type="email" placeholder="Correo Electrónico" v-model="correo" required>
       </div>
-      <div class="form-group">
         <textarea placeholder="Mensaje" rows="8" v-model="mensaje" required></textarea>
-      </div>
-      <button type="submit">Enviar</button>
+        <p :class="['error',{'display-error':displayError}]">{{ errorMessage }}</p>
+      <button type="submit" @click="checkError">Enviar</button>
     </form>
   </div>
 </template>
@@ -24,11 +23,15 @@ export default {
     return {
       nombre: '',
       correo: '',
-      mensaje: ''
+      mensaje: '',
+      errorMessage: '* Error: Faltan campos por rellenar antes de enviar. *',
+      displayError: false,
     };
   },
   methods: {
     enviarMensaje() {
+      if(this.nombre.length>1 && this.correo.length>1 && this.mensaje.length>1){
+        this.displayError = false;
       // Configuración de Email.js
       const serviceID = 'service_q4y3dvq';
       const templateID = 'template_8kwmb0d';
@@ -55,6 +58,9 @@ export default {
         }
       );
     }
+  },checkError(){
+    this.displayError = !(this.nombre.length>1 && this.correo.length>1 && this.mensaje.length>1);
+  }
   }
 };
 </script>
@@ -67,8 +73,9 @@ h1{
 .contact-form {
   text-align: center;
   padding: 40px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 form {
@@ -116,6 +123,17 @@ textarea {
   resize: vertical;
 }
 
+.error {
+  text-align: center;
+  font-weight: 500;
+  opacity: 0;
+  margin: 5px;
+  color: #ff5733;
+}
+.error.display-error{
+  opacity: 1;
+}
+
 button {
   background-color: #5865f2;
   color: #fff;
@@ -130,4 +148,5 @@ button {
 button:hover {
   background-color: #4054d1;
 }
+
 </style>

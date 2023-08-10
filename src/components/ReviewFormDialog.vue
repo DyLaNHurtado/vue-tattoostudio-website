@@ -15,9 +15,10 @@
         <div class="form-group">
           <input type="text" placeholder="Nombre:" v-model="newReview.userName">
         </div>
-        <div class="form-group">
-          <textarea placeholder="Reseña:" rows="4" v-model="newReview.content"></textarea>
-        </div>
+        <textarea placeholder="Reseña:" rows="4" v-model="newReview.content"></textarea>
+
+        <span :class="['error', {'display-error': displayError}]">{{ errorMessage }}</span>
+
         <div class="action-buttons">
           <button class="primary-button" @click="enviarResena" :disabled="false">Enviar Reseña</button>
           <button class="transparent-button" @click="closeModal">Cerrar</button>
@@ -38,9 +39,11 @@ export default {
         userName: '',
         rating: 0,
         content: '',
-        likes:0,
-        usefulled:0
-      }
+        likes: 0,
+        usefulled: 0
+      },
+      errorMessage: '* Error: Faltan campos por rellenar antes de enviar la reseña. *',
+      displayError: false,
     };
   },
   methods: {
@@ -48,14 +51,20 @@ export default {
       this.newReview.rating = star;
     },
     enviarResena() {
+      if (this.newReview.rating > 0 && this.newReview.userName > 0 && this.newReview.content > 0) {
         this.$emit('addReview', this.newReview);
         this.newReview = {
           userName: '',
           rating: 0,
           content: '',
-          likes:0,
-          usefulled:0
+          likes: 0,
+          usefulled: 0
         };
+        this.displayError = false;
+      } else {
+        this.displayError = true;
+      }
+
     },
     closeModal() {
       this.$emit('close');
@@ -90,6 +99,17 @@ export default {
 
 .add-review-form .form-group {
   margin-bottom: 20px;
+}
+
+.error {
+  text-align: center;
+  font-weight: 500;
+  opacity: 0;
+  margin: 5px;
+  color: #ff5733;
+}
+.error.display-error{
+  opacity: 1;
 }
 
 .add-review-form label {
@@ -174,12 +194,13 @@ export default {
   color: #ffc107;
 }
 
-.action-buttons{
+.action-buttons {
   display: flex;
   width: 100%;
   align-items: end;
   justify-content: space-between;
   gap: 20px;
+  margin-top: 20px;
 }
 </style>
   
