@@ -1,8 +1,8 @@
 <template>
   <div class="reviews">
     <h1>Reseñas de Clientes:</h1>
-    <ReviewSorts @sortReviewsBy="sortBy" />
-    <ReviewList :reviews="sortedReviews" />
+    <ReviewSorts @sortReviewsBy="sortBy" :sortByOption="sortByOption" />
+    <ReviewList :reviews="sortedReviews" @backFromNotFoundList="sortByOption=''" />
     <button class="add-review-button" @click="showModal = true">
       Agregar reseña
     </button>
@@ -48,7 +48,7 @@ export default {
         },
       ],
       showModal: false,
-      sortByOption: 'usefulled',
+      sortByOption: '',
       EnumReviewSorts: EnumReviewSorts,
     };
   },

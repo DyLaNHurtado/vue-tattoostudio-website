@@ -23,8 +23,9 @@ export default {
       EnumReviewSorts: EnumReviewSorts,
     }
 
-  },
-    methods:{
+  },props:{
+    sortByOption: String,
+  },methods:{
         sortBy(option) {
           console.log(option , this.option);
           if(option === this.option){
@@ -34,8 +35,13 @@ export default {
           }
           this.$emit('sortReviewsBy', this.option);
         }
-    },mounted(){
-      console.log(EnumReviewSorts)
+    },watch:{
+      sortByOption(newValue){
+        if(newValue !== this.option){
+          this.option = newValue;
+          console.log(this.option)
+        }
+      }
     }
 };
 </script>
