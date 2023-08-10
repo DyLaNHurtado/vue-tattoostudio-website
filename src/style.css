@@ -85,6 +85,7 @@ body {
   color: #999;
   transition: all .3s;
   border-radius: 500px;
+  margin: 0 5px;
 }
 .transparent-button:hover{
   border: 2px solid #5865f2;
