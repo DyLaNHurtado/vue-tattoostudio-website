@@ -1,4 +1,4 @@
-<!-- Componente Citas.vue -->
+<!-- Componente Citas.vue
 <template>
     <div>
       <h1>Gestión de Citas</h1>
@@ -97,4 +97,108 @@
   /* Estilos del componente (opcional) */
   /* ... Estilos del componente ... */
   </style>
+   -->
+
+   <template>
+    <div class="appointment-booking">
+      <h2>Selecciona una cita</h2>
+      <div class="grid">
+        <div
+          v-for="(slot, index) in availableSlots"
+          :key="index"
+          :class="['slot', { 'reserved': slot.reserved }]"
+          @click="selectSlot(slot)"
+        >
+          {{ slot.time }}
+          <div class="slot-details" v-if="slot.reserved">
+            Reservado por: {{ slot.reservedBy }}
+          </div>
+        </div>
+      </div>
+      <div v-if="selectedSlot">
+        <h3>Detalles de la cita</h3>
+        <p>Fecha: {{ selectedSlot.date }}</p>
+        <p>Hora: {{ selectedSlot.time }}</p>
+        <p>Reservado por: {{ selectedSlot.reservedBy }}</p>
+        <button class="reserve-button" @click="reserveSlot">Reservar</button>
+      </div>
+    </div>
+  </template>
   
+  <script>
+  export default {
+    data() {
+      return {
+        availableSlots: [
+          { date: '2023-08-10', time: '10:00 AM', reserved: false, reservedBy: null },
+          { date: '2023-08-10', time: '11:00 AM', reserved: true, reservedBy: 'Usuario 1' },
+          // ... Más ranuras disponibles ...
+        ],
+        selectedSlot: null
+      };
+    },
+    methods: {
+      selectSlot(slot) {
+        if (!slot.reserved) {
+          this.selectedSlot = slot;
+        }
+      },
+      reserveSlot() {
+        if (this.selectedSlot) {
+          this.selectedSlot.reserved = true;
+          this.selectedSlot.reservedBy = 'Usuario Actual'; // Puedes obtener esta información desde el usuario autenticado
+        }
+      }
+    }
+  };
+  </script>
+  
+  <style scoped>
+  /* Estilos para la cuadrícula de citas */
+  .appointment-booking {
+    margin: 20px;
+    text-align: center;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+  }
+  
+  .slot {
+    border: 1px solid #ccc;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .slot.reserved {
+    background-color: #ff5733;
+    color: white;
+  }
+  
+  .slot:hover {
+    background-color: #f5f5f5;
+  }
+  
+  .slot-details {
+    margin-top: 10px;
+    font-size: 12px;
+  }
+  
+  .reserve-button {
+    margin-top: 10px;
+    background-color: #5865f2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .reserve-button:hover {
+    background-color: #4054d1;
+  }
+  </style>
