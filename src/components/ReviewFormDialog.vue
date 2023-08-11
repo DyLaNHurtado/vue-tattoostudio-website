@@ -1,29 +1,26 @@
 <template>
   <div class="modal">
     <div class="modal-content">
-      <div class="add-review-form">
+      <form class="add-review-form" @submit.prevent="enviarResena">
         <div class="form-group">
           <div class="rating">
             <label>Calificación:</label>
             <div class="stars">
               <span v-for="star in 5" :key="star" class="star" @click="setRating(star)"
                 :class="{ 'active-star': star <= newReview.rating }"><font-awesome-icon :icon="['fas', 'star']" /></span>
-
             </div>
           </div>
         </div>
         <div class="form-group">
-          <input type="text" placeholder="Nombre:" v-model="newReview.userName">
+          <input type="text" placeholder="Nombre:" v-model="newReview.userName" @keydown="checkError" required >
         </div>
-        <textarea placeholder="Reseña:" rows="4" v-model="newReview.content"></textarea>
-
-        <span :class="['error', {'display-error': displayError}]">{{ errorMessage }}</span>
-
+        <textarea placeholder="Reseña:" rows="4" v-model="newReview.content" @keydown="checkError" required></textarea>
+        <span :class="['error', { 'display-error': displayError }]">{{ errorMessage }}</span>
         <div class="action-buttons">
-          <button class="primary-button" @click="enviarResena" :disabled="false">Enviar Reseña</button>
+          <button class="primary-button" type="submit" @click="checkError" :disabled="disableButton" >Enviar Reseña</button>
           <button class="transparent-button" @click="closeModal">Cerrar</button>
         </div>
-      </div>
+      </form>
     </div>
   </div>
 </template>
@@ -42,16 +39,18 @@ export default {
         likes: 0,
         usefulled: 0
       },
-      errorMessage: '* Error: Faltan campos por rellenar antes de enviar la reseña. *',
+      errorMessage: '* Error: Faltan campos por rellenar antes de enviar. Revisa las estrellas *',
       displayError: false,
+      disableButton: true,
     };
   },
   methods: {
     setRating(star) {
       this.newReview.rating = star;
+      this.checkError();
     },
     enviarResena() {
-      if (this.newReview.rating > 0 && this.newReview.userName > 0 && this.newReview.content > 0) {
+      if (this.newReview.rating > 0 && this.newReview.userName.length > 0 && this.newReview.content.length > 0) {
         this.$emit('addReview', this.newReview);
         this.newReview = {
           userName: '',
@@ -65,6 +64,9 @@ export default {
         this.displayError = true;
       }
 
+    },
+    checkError(){
+      this.displayError = this.disableButton = !(this.newReview.rating > 0 && this.newReview.userName.length > 0 && this.newReview.content.length > 0);
     },
     closeModal() {
       this.$emit('close');
@@ -108,7 +110,8 @@ export default {
   margin: 5px;
   color: #ff5733;
 }
-.error.display-error{
+
+.error.display-error {
   opacity: 1;
 }
 
@@ -166,6 +169,13 @@ export default {
 
 .add-review-form .primary-button:hover {
   background-color: #4054d1;
+}
+.add-review-form .primary-button:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+.add-review-form .primary-button:disabled:hover {
+  background-color: #5865f2;
 }
 
 .add-review-form .rating {

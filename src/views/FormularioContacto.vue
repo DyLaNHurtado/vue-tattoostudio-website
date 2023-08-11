@@ -4,6 +4,7 @@
     <form @submit.prevent="enviarMensaje">
       <div class="form-group">
         <input type="text" placeholder="Nombre" v-model="nombre" required>
+        {{ nombre }}
       </div>
       <div class="form-group">
         <input type="email" placeholder="Correo Electrónico" v-model="correo" required>

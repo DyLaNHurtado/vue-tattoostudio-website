@@ -1,11 +1,15 @@
 <template>
   <div class="reviews">
     <h1>Reseñas de Clientes:</h1>
+    <div class="add-button-container">
+      <button class="add-review-button" @click="showModal = true">
+        Agregar reseña
+      </button>
+    </div>
+
     <ReviewSorts @sortReviewsBy="sortBy" :sortByOption="sortByOption" />
-    <ReviewList :reviews="sortedReviews" @backFromNotFoundList="sortByOption=''" />
-    <button class="add-review-button" @click="showModal = true">
-      Agregar reseña
-    </button>
+    <ReviewList :reviews="sortedReviews" @backFromNotFoundList="sortByOption = ''" />
+
     <ReviewFormDialog v-if="showModal" @close="showModal = false" @addReview="agregarResena" />
   </div>
 </template>
@@ -91,12 +95,12 @@ export default {
         sorted = this.reviews.filter((a) => a.rating === 3);
       } else if (this.sortByOption === EnumReviewSorts.FOUR) {
         sorted = this.reviews.filter((a) => a.rating === 4);
-      }else if (this.sortByOption === EnumReviewSorts.FIVE) {
+      } else if (this.sortByOption === EnumReviewSorts.FIVE) {
         sorted = this.reviews.filter((a) => a.rating === 5);
-      }else{
+      } else {
         sorted = [...this.reviews];
       }
-      console.log( this.sortByOption);
+      console.log(this.sortByOption);
 
       return sorted;
     }
@@ -110,6 +114,14 @@ export default {
   margin-top: 40px;
 }
 
+h1 {
+  text-align: center;
+}
+.add-button-container{
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
 .add-review-button {
   background-color: #5865f2;
   color: #fff;
@@ -120,9 +132,21 @@ export default {
   font-size: 16px;
   transition: background-color 0.2s;
   margin-top: 20px;
+  transform: translateY(50px);
+  z-index: 2;
 }
 
 .add-review-button:hover {
   background-color: #4054d1;
+}
+@media (max-width: 1345px) {
+
+.add-button-container{
+  justify-content: center;
+  margin-bottom: 10px;
+}
+  .add-review-button{
+    transform: translateY(0);
+  }
 }
 </style>
