@@ -1,10 +1,8 @@
 <template>
   <div class="review-item">
     <div class="review-header">
-      <img :src="review.avatarUrl" alt="Avatar" class="avatar">
       <div class="user-info">
         <h4 class="user-name">{{ review.userName }}</h4>
-        <p class="user-location">{{ review.userLocation }}</p>
         <div class="rating">
           <span v-for="star in 5" :key="star" class="star"
             :class="{ 'active-star': star <= review.rating }"><font-awesome-icon :icon="['fas', 'star']" /></span>
@@ -67,10 +65,10 @@ export default {
 <style scoped>
 /* Estilos para el elemento de reseña */
 .review-item {
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--color-border);
   border-radius: 8px;
   padding: 20px;
-  background-color: #fff;
+  background-color: var(--color-background-soft);
   transition: transform 0.3s, box-shadow 0.3s;
   height: auto;
   word-wrap: break-word;
@@ -80,7 +78,7 @@ export default {
 }
 
 .review-item:hover {
-  box-shadow: inset 0px 0px 2px #5865f2;
+  box-shadow: inset 0px 0px 2px var(--color-primary);;
 }
 
 .review-header {
@@ -104,11 +102,12 @@ export default {
 .user-name {
   font-size: 18px;
   margin: 0;
+  color: var(--color-heading);
 }
 
 .user-location {
   font-size: 14px;
-  color: #999;
+  color: var(--color-text-mute);
   margin: 0;
 }
 
@@ -122,7 +121,7 @@ export default {
   font-size: 18px;
   cursor: pointer;
   transition: transform 0.2s, color 0.2s;
-  color: #ccc;
+  color: var(--color-text-mute);
   /* Estrella apagada en gris */
 }
 
@@ -147,7 +146,7 @@ export default {
 .likes-count {
   margin: 5px;
   font-size: 14px; 
-  color: #999; 
+  color: var(--color-text-mute);
 }
 
 .like-button {
@@ -155,17 +154,17 @@ export default {
   align-items: center;
   background-color: transparent;
   border: none;
-  color: #ccc;
+  color: var(--color-text);
   font-size: 20px;
   cursor: pointer;
   transition: color 0.2s;
 }
 
 .like-button:hover{
-  color: #999;
+  color: var(--color-text-mute);
 }
 .like-button.liked {
-  color: #ff5733;
+  color: var(--color-text-error);
 }
 .utils-buttons{
   display: flex;
@@ -174,15 +173,15 @@ export default {
 
 
 .transparent-button.active{
-  background-color: #5865f2;
-  border: 2px solid #5865f2;
-  color: #fff;
+  background-color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  color: var(--color-heading);
 }
 
 
 .particles {
   position: absolute;
-  background-color: #ff5733;
+  background-color: var(--color-text-error);
   border-radius: 50%;
   opacity: 0;
   transform: translateY(0);

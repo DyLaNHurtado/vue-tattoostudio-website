@@ -70,11 +70,16 @@ export default {
 
 h1{
   margin-bottom: 2em;
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  font-size: 18px;
+  color: var(--color-heading);
 }
 .contact-form {
   text-align: center;
   padding: 40px;
-  border: 2px solid #e0e0e0;
+  border: 2px solid var(--color-border);
   border-radius: 8px;
   transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -88,35 +93,27 @@ form {
   margin-bottom: 20px;
 }
 
-label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 8px;
-  font-size: 18px;
-  color: #333;
-}
-
 input,
 textarea {
   width: 100%;
   padding: 12px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--color-border);
   border-radius: 8px;
   font-size: 16px;
-  background-color: #f8f8f8;
+  background-color: var(--color-background);
   transition: border-color 0.2s, background-color 0.2s;
 }
 
 input:hover,
 textarea:hover {
-  border-color: #ccc;
+  border-color: var(--color-border-hover);
 }
 
 input:focus,
 textarea:focus {
   outline: none;
-  border-color: #5865f2;
-  background-color: #f5f5f5;
+  border-color: var(--color-primary);
+  background-color: var(--color-background-soft);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -136,7 +133,7 @@ textarea {
 }
 
 button {
-  background-color: #5865f2;
+  background-color: var(--color-primary);
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -147,7 +144,7 @@ button {
 }
 
 button:hover {
-  background-color: #4054d1;
+  background-color: var(--color-primary-hover);
 }
 
 </style>

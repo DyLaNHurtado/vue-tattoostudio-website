@@ -31,9 +31,7 @@ export default {
       reviews: [
         {
           id: 1,
-          avatarUrl: 'ruta-del-avatar-1.jpg',
           userName: 'Cliente 1',
-          userLocation: 'Ciudad 1',
           rating: 5,
           content: '¡Excelente estudio de tatuajes! Muy profesionales y creativos.',
           likes: 5,
@@ -41,9 +39,7 @@ export default {
         },
         {
           id: 2,
-          avatarUrl: 'ruta-del-avatar-2.jpg',
           userName: 'Cliente 2',
-          userLocation: 'Ciudad 2',
           rating: 4,
           content: 'Me encantó mi nuevo tatuaje. El artista capturó mi idea perfectamente.',
           likes: 2,
@@ -123,7 +119,7 @@ h1 {
   justify-content: end;
 }
 .add-review-button {
-  background-color: #5865f2;
+  background-color: var(--color-primary);
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -137,7 +133,7 @@ h1 {
 }
 
 .add-review-button:hover {
-  background-color: #4054d1;
+  background-color: var(--color-primary-hover);
 }
 @media (max-width: 1345px) {
 

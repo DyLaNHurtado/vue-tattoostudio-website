@@ -72,11 +72,11 @@ export default {
   border-radius: 8px;
 }
 .transparent-button:hover .star{
-  color: #5865f2;
+  color: var(--color-primary);;
 }
 .transparent-button.active {
-  background-color: #5865f2;
-  color: #fff;
+  background-color: var(--color-primary);;
+  color: var(--color-heading);
   border-color: transparent;
 }
 
@@ -85,7 +85,7 @@ export default {
 }
 .star {
   transition: transform 0.2s, color 0.2s;
-  color: #ccc;
+  color: var(--color-text-mute);
 }
 
 .transparent-button.active .star {

@@ -174,7 +174,7 @@
   }
   
   .slot.reserved {
-    background-color: #ff5733;
+    background-color: var(--color-text-error);
     color: white;
   }
   
@@ -189,7 +189,7 @@
   
   .reserve-button {
     margin-top: 10px;
-    background-color: #5865f2;
+    background-color: var(--color-primary);
     color: white;
     border: none;
     border-radius: 8px;
@@ -199,6 +199,6 @@
   }
   
   .reserve-button:hover {
-    background-color: #4054d1;
+    background-color: var(--color-primary-hover);
   }
   </style>

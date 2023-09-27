@@ -10,7 +10,7 @@
       <li class="nav-link-item"><router-link to="/" class="nav-link" @click="toggleNav()">Inicio</router-link></li>
       <li class="nav-link-item"><router-link to="/gallery" class="nav-link" @click="toggleNav()">Galeria</router-link></li>
       <li class="nav-link-item"><router-link to="/studio" class="nav-link" @click="toggleNav()">Studio</router-link></li>
-      <li class="nav-link-item"><router-link to="/appointments" class="nav-link" @click="toggleNav()">Agenda una Cita</router-link></li>
+      <li class="nav-link-item"><router-link to="/appointments" class="nav-link" @click="toggleNav()">Pedir Cita</router-link></li>
       <li class="nav-link-item"><router-link to="/reviews" class="nav-link" @click="toggleNav()">Reseñas</router-link></li>
       <li class="nav-link-item"><router-link to="/contact" class="nav-link" @click="toggleNav()">Contactar</router-link></li>
     </ul>
@@ -41,7 +41,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: #242424;
+  background-color: var(--color-background-mute);
   color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: all .3s;
@@ -72,19 +72,18 @@ export default {
 
 .nav-link {
   text-decoration: none;
-  background-color: #242424;
-  color: white;
+  background-color: var(--color-background-mute);
+  color: var(--color-heading);
   transition: color .2s;
 }
 
 .nav-link:hover {
-  color: #646cff;
+  color: var(--color-primary-hover);
 }
 
 
 .nav-link-item {
   padding: 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Estilos para dispositivos móviles */
@@ -98,7 +97,7 @@ export default {
     top: 55px;
     left: 0;
     width: 100%;
-    background-color: #242424;
+    background-color: var(--color-background-soft);
     transform: translateX(-100%);
     transition: translateX .3s;
     min-height: 100%;
@@ -116,8 +115,8 @@ export default {
   .nav-link-item {
     padding: 0;
     width: 100%;
-
     display: flex;
+    border-bottom: 1px solid var(--color-border);
   }
   .nav-link{
     width: 100%;

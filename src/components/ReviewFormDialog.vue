@@ -91,7 +91,7 @@ export default {
 }
 
 .modal-content {
-  background-color: #fff;
+  background-color: var(--color-background-mute);
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -108,7 +108,7 @@ export default {
   font-weight: 500;
   opacity: 0;
   margin: 5px;
-  color: #ff5733;
+  color: var(--color-text-error);
 }
 
 .error.display-error {
@@ -118,7 +118,7 @@ export default {
 .add-review-form label {
   font-weight: bold;
   font-size: 18px;
-  color: #333;
+  color: var(--color-heading);
   display: block;
   margin-bottom: 8px;
 }
@@ -127,29 +127,31 @@ export default {
 .add-review-form textarea {
   width: 100%;
   padding: 12px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--color-border);
   border-radius: 8px;
   font-size: 16px;
-  background-color: #f8f8f8;
+  background-color: var(--color-background);
   transition: border-color 0.2s, background-color 0.2s;
+  color: var(--color-heading);
+
 }
 
 .add-review-form input:hover,
 .add-review-form textarea:hover {
-  border-color: #ccc;
+  border-color: var(--color-border-hover);
 }
 
 .add-review-form input:focus,
 .add-review-form textarea:focus {
   outline: none;
-  border-color: #5865f2;
-  background-color: #f5f5f5;
+  border-color: var(--color-primary);
+  background-color: var(--color-background-mute);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .add-review-form input::placeholder,
 .add-review-form textarea::placeholder {
-  color: #999;
+  color: var(--color-text-mute);
 }
 
 .add-review-form textarea {
@@ -157,8 +159,8 @@ export default {
 }
 
 .add-review-form .primary-button {
-  background-color: #5865f2;
-  color: #fff;
+  background-color: var(--color-primary);
+  color: var(--color-heading);
   border: none;
   border-radius: 8px;
   padding: 12px 24px;
@@ -168,14 +170,14 @@ export default {
 }
 
 .add-review-form .primary-button:hover {
-  background-color: #4054d1;
+  background-color:  var(--color-primary-hover);
 }
 .add-review-form .primary-button:disabled {
   opacity: .5;
   cursor: not-allowed;
 }
 .add-review-form .primary-button:disabled:hover {
-  background-color: #5865f2;
+  background-color: var(--color-primary);
 }
 
 .add-review-form .rating {
@@ -191,7 +193,7 @@ export default {
   font-size: 28px;
   cursor: pointer;
   transition: transform .3s, color .3s;
-  color: #ccc;
+  color: var(--color-text-mute);
   /* Estrella apagada en gris */
 }
 
