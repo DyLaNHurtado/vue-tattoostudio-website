@@ -4,7 +4,7 @@
       <font-awesome-icon :icon="['fas', 'bars']" />
     </div>
     <div class="nav-logo">
-      <a href="/">Tatuajes Estudio</a>
+      <a href="/">Delaito Tattoo</a>
     </div>
     <ul :class="['nav-links', { 'nav-active': isNavOpen }]">
       <li class="nav-link-item"><router-link to="/" class="nav-link" @click="toggleNav()">Inicio</router-link></li>

@@ -68,7 +68,7 @@ export default {
   border: 1px solid var(--color-border);
   border-radius: 8px;
   padding: 20px;
-  background-color: var(--color-background-soft);
+  background-color: var(--c-indigo);
   transition: transform 0.3s, box-shadow 0.3s;
   height: auto;
   word-wrap: break-word;

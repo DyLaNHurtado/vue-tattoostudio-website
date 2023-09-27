@@ -1,7 +1,9 @@
-<script setup></script>
+<script setup>
+const actualYear = new Date().getFullYear();
+</script>
 <template>
     <footer class="footer">
-      <p>&copy; 2023 Tatuajes Estudio. Todos los derechos reservados.</p>
+      <p>&copy; {{ actualYear }} Delaito Tattoo. Todos los derechos reservados.</p>
       <nav class="social-links">
         <a href="#">Facebook</a>
         <a href="#">Instagram</a>

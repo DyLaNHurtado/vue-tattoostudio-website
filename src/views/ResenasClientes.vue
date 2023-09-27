@@ -2,7 +2,7 @@
   <div class="reviews">
     <h1>Reseñas de Clientes:</h1>
     <div class="add-button-container">
-      <button class="add-review-button" @click="showModal = true">
+      <button class="primary-button" @click="showModal = true">
         Agregar reseña
       </button>
     </div>
@@ -118,30 +118,18 @@ h1 {
   display: flex;
   justify-content: end;
 }
-.add-review-button {
-  background-color: var(--color-primary);
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 12px 24px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.2s;
+
+.primary-button{
   margin-top: 20px;
-  transform: translateY(50px);
-  z-index: 2;
 }
 
-.add-review-button:hover {
-  background-color: var(--color-primary-hover);
-}
 @media (max-width: 1345px) {
 
 .add-button-container{
   justify-content: center;
   margin-bottom: 10px;
 }
-  .add-review-button{
+  .primary-button{
     transform: translateY(0);
   }
 }

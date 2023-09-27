@@ -47,7 +47,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-background: var(c-black);
+    --color-background: var(--c-black);
     --color-background-soft: var(--c-black-soft);
     --color-background-mute: var(--c-black-mute);
 
@@ -97,7 +97,7 @@ body {
   font-size: 16px;
   padding: 10px 20px;
   border: 2px solid var(--color-border);
-  color: var(--color-text-mute);
+  color: var(--color-text);
   transition: all .3s;
   border-radius: 500px;
   margin: 0 5px;
@@ -105,5 +105,21 @@ body {
 .transparent-button:hover{
   border: 2px solid var(--color-primary);
   color: var(--color-primary);
+}
 
+.primary-button {
+  background-color: var(--color-primary);
+  color: var(--color-heading);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.2s;
+  transform: translateY(50px);
+  z-index: 2;
+}
+
+.primarybutton:hover {
+  background-color: var(--color-primary-hover);
 }

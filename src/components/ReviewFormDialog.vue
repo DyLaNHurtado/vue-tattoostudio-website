@@ -91,7 +91,7 @@ export default {
 }
 
 .modal-content {
-  background-color: var(--color-background-mute);
+  background-color: var(--c-indigo);
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);

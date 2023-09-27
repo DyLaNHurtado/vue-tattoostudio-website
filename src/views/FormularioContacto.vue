@@ -11,7 +11,7 @@
       </div>
         <textarea placeholder="Mensaje" rows="8" v-model="mensaje" required></textarea>
         <p :class="['error',{'display-error':displayError}]">{{ errorMessage }}</p>
-      <button type="submit" @click="checkError">Enviar</button>
+      <button class="primary-button" type="submit" @click="checkError">Enviar</button>
     </form>
   </div>
 </template>
@@ -40,7 +40,7 @@ export default {
       // Datos del correo
       const templateParams = {
         from_name: this.nombre,
-        to_name: 'Tatuajes Estudio', // Correo del destinatario
+        to_name: 'Delaito Tattoo', // Correo del destinatario
         message: this.mensaje,
         reply_to: this.correo
       };
@@ -69,7 +69,6 @@ export default {
 <style scoped>
 
 h1{
-  margin-bottom: 2em;
   display: block;
   font-weight: bold;
   margin-bottom: 8px;
@@ -101,6 +100,7 @@ textarea {
   border-radius: 8px;
   font-size: 16px;
   background-color: var(--color-background);
+  color: var(--color-heading);
   transition: border-color 0.2s, background-color 0.2s;
 }
 
@@ -130,21 +130,6 @@ textarea {
 }
 .error.display-error{
   opacity: 1;
-}
-
-button {
-  background-color: var(--color-primary);
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 12px 24px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.2s;
-}
-
-button:hover {
-  background-color: var(--color-primary-hover);
 }
 
 </style>
