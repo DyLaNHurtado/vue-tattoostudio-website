@@ -75,13 +75,13 @@ export default {
   color: var(--color-primary);;
 }
 .transparent-button.active {
-  background-color: var(--color-primary);;
-  color: var(--color-heading);
+  background-color: var(--color-primary);
+  color: white;
   border-color: transparent;
 }
 
 .transparent-button.active:hover {
-  background-color: #4054d1;
+  background-color: var(--color-primary-hover);
 }
 .star {
   transition: transform 0.2s, color 0.2s;

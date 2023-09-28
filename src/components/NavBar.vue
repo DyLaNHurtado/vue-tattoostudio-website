@@ -42,7 +42,7 @@ export default {
   align-items: center;
   padding: 10px 20px;
   background-color: var(--color-background-mute);
-  color: white;
+  color: var(--color-heading);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: all .3s;
   width: 100%;

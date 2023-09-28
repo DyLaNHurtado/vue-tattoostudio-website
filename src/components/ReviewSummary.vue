@@ -1,13 +1,14 @@
 <template>
     <div class="review-summary">
-        <h1> {{ calculateAverage() }} / 5</h1>
+        <h1>Reseñas de Clientes:</h1>
+        <h2> {{ calculateAverage() }} / 5</h2>
         <h3> {{ totalReviews }} reviews</h3>
         <div class="stars-summary">
             <div v-for="(item, index) in list" class="star-summary">
                 <div><font-awesome-icon :icon="['fas', 'star']" v-for="start in index + 1"
                         class="star active-star" /><font-awesome-icon :icon="['fas', 'star']" v-for="start in 4 - index"
                         class="star" /></div>
-                <h2>{{ item }}</h2>
+                <p>{{ item }}</p>
             </div>
         </div>
     </div>
@@ -43,10 +44,12 @@ export default {
     border: 1px solid var(--color-border);
     border-radius: 8px;
     padding: 20px;
-    background-color: var(--c-indigo);
+    background-color: var(--color-background-soft);
     transition: transform 0.3s, box-shadow 0.3s;
     height: auto;
     word-wrap: break-word;
+    width: 100%;
+    max-width: 30vw;
 }
 
 .stars-summary {
@@ -74,19 +77,23 @@ export default {
     transition: transform 0.2s, color 0.2s;
     color: var(--color-text-mute);
 }
-
+ 
 .active-star {
     color: #ffc107;
 }
 
-h1 {
+h2 {
     font-weight: bold;
     font-size: 52px;
 }
 
-h2 {
+p {
     font-weight: bold;
+    font-size: 18px;
 }
 
-/* Estilos para dispositivos móviles */
-@media (max-width: 768px) {}</style>
+@media (max-width: 1345px)  {
+    .review-summary {
+        max-width: 100%;
+    }
+}</style>

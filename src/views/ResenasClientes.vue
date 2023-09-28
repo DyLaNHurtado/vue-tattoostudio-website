@@ -1,7 +1,10 @@
 <template>
   <div class="reviews">
-    <h1>Reseñas de Clientes:</h1>
-    <ReviewSummary :totalReviews="reviews.length" :list="calculateNumberStars()"/>
+    <div class="flex-container">
+      <ReviewSummary :totalReviews="reviews.length" :list="calculateNumberStars()"/>
+      <FAQ/>
+    </div>
+
     <div class="add-button-container">
       <button class="primary-button" @click="showModal = true">
         Agregar reseña
@@ -21,13 +24,15 @@ import ReviewList from '../components/ReviewList.vue';
 import ReviewFormDialog from '../components/ReviewFormDialog.vue';
 import ReviewSorts from '../components/ReviewSorts.vue';
 import ReviewSummary from '../components/ReviewSummary.vue';
+import FAQ from '../components/FAQ.vue';
 
 export default {
   components: {
     ReviewList,
     ReviewFormDialog,
     ReviewSorts,
-    ReviewSummary
+    ReviewSummary,
+    FAQ
 },
   data() {
     return {
@@ -136,9 +141,6 @@ export default {
   margin-top: 40px;
 }
 
-h1 {
-  text-align: center;
-}
 .add-button-container{
   width: 100%;
   display: flex;
@@ -150,7 +152,19 @@ h1 {
   transform: translateY(50px);
 }
 
+.flex-container{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: stretch;
+  justify-content: center;
+}
+
 @media (max-width: 1345px) {
+
+  .flex-container{
+    flex-direction: column;
+  }
 
 .add-button-container{
   justify-content: center;
@@ -159,5 +173,6 @@ h1 {
   .primary-button{
     transform: translateY(0);
   }
+
 }
 </style>
