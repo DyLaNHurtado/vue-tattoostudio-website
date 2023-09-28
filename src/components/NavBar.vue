@@ -59,7 +59,7 @@ export default {
   font-size: 1.5rem;
   font-weight: bold;
   text-decoration: none;
-  color: white;
+  color: var(--color-heading);
 }
 
 .nav-links {

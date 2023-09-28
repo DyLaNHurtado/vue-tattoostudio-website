@@ -14,9 +14,9 @@
   --c-divider-dark-1: rgba(84, 84, 84, 0.65);
   --c-divider-dark-2: rgba(84, 84, 84, 0.48);
 
-  --c-text-light-1: var(--vt-c-indigo);
+  --c-text-light-1: var(--c-indigo);
   --c-text-light-2: rgba(60, 60, 60, 0.66);
-  --c-text-dark-1: var(--vt-c-white);
+  --c-text-dark-1: var(--c-white);
   --c-text-dark-2: rgba(235, 235, 235, 0.64);
   --c-text-error: #ff5733;
   --c-primary: #5865f2;
@@ -116,10 +116,9 @@ body {
   cursor: pointer;
   font-size: 16px;
   transition: background-color 0.2s;
-  transform: translateY(50px);
   z-index: 2;
 }
 
-.primarybutton:hover {
+.primary-button:hover {
   background-color: var(--color-primary-hover);
 }

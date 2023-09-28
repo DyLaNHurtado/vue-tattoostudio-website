@@ -1,6 +1,7 @@
 <template>
   <div class="reviews">
     <h1>Reseñas de Clientes:</h1>
+    <ReviewSummary :totalReviews="reviews.length" :list="calculateNumberStars()"/>
     <div class="add-button-container">
       <button class="primary-button" @click="showModal = true">
         Agregar reseña
@@ -19,13 +20,15 @@ import { EnumReviewSorts } from '../components/EnumReviewSorts';
 import ReviewList from '../components/ReviewList.vue';
 import ReviewFormDialog from '../components/ReviewFormDialog.vue';
 import ReviewSorts from '../components/ReviewSorts.vue';
+import ReviewSummary from '../components/ReviewSummary.vue';
 
 export default {
   components: {
     ReviewList,
     ReviewFormDialog,
-    ReviewSorts
-  },
+    ReviewSorts,
+    ReviewSummary
+},
   data() {
     return {
       reviews: [
@@ -70,6 +73,29 @@ export default {
     sortBy(option) {
       this.sortByOption = option;
       console.log(option)
+    },
+    calculateNumberStars(){
+      let star1 = 0;
+      let star2 = 0;
+      let star3 = 0;
+      let star4 = 0;
+      let star5 = 0;
+      if(this.reviews){
+        this.reviews.forEach( review => {
+          if(review.rating === 1){
+            star1++;
+          }else if(review.rating === 2){
+            star2++;
+          }else if(review.rating === 3){
+            star3++;
+          }else if(review.rating === 4){
+            star4++;
+          }else{
+            star5++;
+          }
+        });
+      }
+      return [star1, star2, star3, star4, star5];
     }
   },
   computed: {
@@ -121,6 +147,7 @@ h1 {
 
 .primary-button{
   margin-top: 20px;
+  transform: translateY(50px);
 }
 
 @media (max-width: 1345px) {
