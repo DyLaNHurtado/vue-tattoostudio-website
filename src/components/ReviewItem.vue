@@ -68,7 +68,7 @@ export default {
   border: 1px solid var(--color-border);
   border-radius: 8px;
   padding: 20px;
-  background-color: var(--c-indigo);
+  background-color: var(--color-background-soft);
   transition: transform 0.3s, box-shadow 0.3s;
   height: auto;
   word-wrap: break-word;
@@ -228,5 +228,14 @@ export default {
     opacity: 0;
     transform: translateY(-24px);
   }
-}</style>
+}
+
+@media (prefers-color-scheme: dark) {
+  .review-item {
+    background-color: var(--c-indigo);
+  }
+}
+
+
+</style>
   

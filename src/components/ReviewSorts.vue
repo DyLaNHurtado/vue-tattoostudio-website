@@ -70,6 +70,7 @@ export default {
   padding: 8px 16px;
   font-size: 14px;
   border-radius: 8px;
+  background-color: var(--color-background-soft);
 }
 .transparent-button:hover .star{
   color: var(--color-primary);;

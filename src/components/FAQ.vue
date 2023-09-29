@@ -65,6 +65,7 @@ export default {
     height: 100%;
     gap: 12px;
     border-radius: 8px;
+    
 }
 
 .question-row {
@@ -85,8 +86,9 @@ export default {
 
 
 .answer{
-    padding: 10px;
-    background-color: var(--color-background-soft);
+    padding: 10px 18px;
+    background-color: var(--color-background-mute);
+    border-radius: 500px;
     color: var(--color-heading);
     font-weight: 300;
 }
@@ -97,4 +99,10 @@ h1,h2 {
 
 /* Estilos para dispositivos móviles */
 @media (max-width: 768px) {}
+
+@media (prefers-color-scheme: dark) {
+  .faq {
+    background-color: var(--c-indigo);
+  }
+}
 </style>

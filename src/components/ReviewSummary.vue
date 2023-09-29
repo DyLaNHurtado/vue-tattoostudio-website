@@ -96,4 +96,11 @@ p {
     .review-summary {
         max-width: 100%;
     }
-}</style>
+}
+
+@media (prefers-color-scheme: dark) {
+    .review-summary  {
+    background-color: var(--c-indigo);
+  }
+}
+</style>

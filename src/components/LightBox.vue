@@ -1,0 +1,85 @@
+<template>
+  <div class="lightbox" v-if="show">
+    <div class="lightbox-content">
+    <span class="lightbox-close" @click="close">&times;</span>
+        <div>
+            <img :src="image" alt="Lightbox Image" class="lightbox-image" />
+            <div class="tattoo-data">
+                <h1>Detalles: </h1>
+                <p>Watercolor, Neotradicional</p>
+                <p>80$ por 10cm 120$ mas de 10cm</p>
+                <p></p>
+                <p></p>
+            </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    show: {
+      type: Boolean,
+      required: true
+    },
+    image: {
+      type: String,
+      required: true
+    }
+  },
+  methods: {
+    close() {
+      this.$emit('close');
+    }
+  }
+};
+</script>
+
+<style scoped>
+.lightbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 300;
+}
+
+.lightbox-content {
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 50px;
+}
+
+.lightbox img.lightbox-image {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: 70%;
+  margin: 0 auto; /* Centra la imagen */
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 4em;
+  cursor: pointer;
+  color: white;
+}
+
+.tattoo-data{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+</style>

@@ -1,7 +1,7 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 import './style.css';
-import  router  from './router';
+import  router  from './router'
 
 import { VueFire, VueFireFirestoreOptionsAPI, VueFireAuth } from 'vuefire';
 import  {firebaseApp}  from './firebaseConfig';
@@ -35,5 +35,5 @@ app
   })
 
 app.use(router);
-app.component('font-awesome-icon', FontAwesomeIcon)
+app.component('font-awesome-icon', FontAwesomeIcon);
 app.mount('#app');

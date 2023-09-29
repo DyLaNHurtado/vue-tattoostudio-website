@@ -21,8 +21,6 @@
   --c-text-error: #ff5733;
   --c-primary: #5865f2;
   --c-primary-hover: #4054d1;
-  --c-primary-star: #4054d1;
-
 }
 
 /* semantic color variables for this project */
@@ -48,7 +46,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --color-background: var(--c-black);
-    --color-background-soft: var(--c-black-soft);
+    --color-background-soft: var(--c-indigo);
     --color-background-mute: var(--c-black-mute);
 
     --color-border: var(--c-divider-dark-2);
@@ -109,7 +107,7 @@ body {
 
 .primary-button {
   background-color: var(--color-primary);
-  color: var(--color-heading);
+  color: white;
   border: none;
   border-radius: 8px;
   padding: 12px 24px;

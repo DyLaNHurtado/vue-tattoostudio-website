@@ -15,7 +15,6 @@
     <form @submit.prevent="enviarMensaje">
       <div class="form-group">
         <input type="text" placeholder="Nombre" v-model="nombre" required>
-        {{ nombre }}
       </div>
       <div class="form-group">
         <input type="email" placeholder="Correo Electrónico" v-model="correo" required>
@@ -136,7 +135,7 @@ input:focus,
 textarea:focus {
   outline: none;
   border-color: var(--color-primary);
-  background-color: var(--color-background-soft);
+  background-color: var(--color-background-mute);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
