@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { EnumReviewSorts } from '../components/EnumReviewSorts';
+import { EnumReviewSorts } from '../components/Enums';
 import ReviewList from '../components/ReviewList.vue';
 import ReviewFormDialog from '../components/ReviewFormDialog.vue';
 import ReviewSorts from '../components/ReviewSorts.vue';

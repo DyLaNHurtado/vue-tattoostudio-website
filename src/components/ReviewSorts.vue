@@ -17,7 +17,7 @@
 </template>
   
 <script>
-import { EnumReviewSorts } from './EnumReviewSorts';
+import { EnumReviewSorts } from './Enums';
 export default {
   data(){
     return{
