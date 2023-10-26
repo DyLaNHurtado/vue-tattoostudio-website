@@ -21,5 +21,11 @@ const EnumReviewSorts = {
     LETTERING : 'lettering',
   }
 
-export{EnumReviewSorts, EnumTattooStyles}
+  const GalleryCategories = {
+    TATTOO: 'tattoo',
+    AVAILABLE: 'available',
+    ILUSTRATION: 'ilustration'
+  }
+
+export{EnumReviewSorts, EnumTattooStyles, GalleryCategories}
   

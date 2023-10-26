@@ -2,45 +2,21 @@
   <div class="gallery" >
     <GallerySorts  @sortBy="sortBy" :sortByOption="sortByOption"/>
 
-    <div>
-      <h1>Tatuajes</h1>
-    <div v-for="(image, index) in images" :key="index" class="gallery-item">
-      <img @click="openLightbox(index)" :src="image.url" alt="Image"  class="lightbox-image"/>
-    </div>
-    </div>
-
-    <div>
-      <h1>Desings / FLASH</h1>
-    <div v-for="(image, index) in images" :key="index" class="gallery-item">
-      <img @click="openLightbox(index)" :src="image.url" alt="Image"  class="lightbox-image"/>
-    </div>
-    </div>
-
-    <div>
-      <h1>Ilustraciones</h1>
-    <div v-for="(image, index) in images" :key="index" class="gallery-item">
-      <img @click="openLightbox(index)" :src="image.url" alt="Image"  class="lightbox-image"/>
-    </div>
-    </div>
-
-    <GalleryBlock c />
-
+    <GalleryBlock :images="getCategoryList(GalleryCategories.TATTOO)" title="Tatuajes" @openLightbox="openLightbox(index)"/>
+    <GalleryBlock :images="getCategoryList(GalleryCategories.AVAILABLE)" title="Disponibles" @openLightbox="openLightbox(index)"/>
+    <GalleryBlock :images="getCategoryList(GalleryCategories.ILUSTRATION)" title="Ilustraciones" @openLightbox="openLightbox(index)"/>
     
     <LightBox class="lightbox" :show="lightboxShow" :image="lightboxImage" @close="closeLightbox"  />
   </div>
 </template>
 
 <script>
-
+import { GalleryCategories } from '../components/Enums';
 // import { collection, query, onSnapshot } from 'firebase/firestore';
 // import { db } from '../firebaseConfig.js';
 import GalleryBlock from '../components/GalleryBlock.vue';
 import GallerySorts from '../components/GallerySorts.vue';
 import LightBox from '../components/LightBox.vue';
-
-const TATUAJES = 'tatuajes';
-const DESIGNS = 'designs';
-const ILUSTRACIONES = 'ilustraciones';
 
 export default {
   components: {
@@ -50,15 +26,22 @@ export default {
 },
   data() {
     return {
-      images: [
-        { url: '/public/vite.svg', category:"", styles:["",""] },
+      imageList: [
+        { url: '/public/vite.svg', category:"tattoo", styles:["",""] },
         { url: '/public/vite.svg', category:"", styles:["",""]},
+        { url: '/public/vite.svg', category:"ilustration", styles:["","","",""] },
+        { url: '/public/vite.svg', category:"available", styles:["","","",""] },
         { url: '/public/vite.svg', category:"", styles:["","","",""] },
+        { url: '/public/vite.svg', category:"available", styles:["","","",""] },
+        { url: '/public/vite.svg', category:"", styles:["","","",""] },
+        { url: '/public/vite.svg', category:"available", styles:["","","",""] },
+        { url: '/public/vite.svg', category:"tattoo", styles:["","","",""] },
       ],
       lightboxShow: false,
       lightboxImage: null,
       escKeyListenerAdded: false,
       sortByOption: '',
+      GalleryCategories: GalleryCategories,
     };
   },
   mounted() {
@@ -72,10 +55,16 @@ export default {
     //     // Otros datos relacionados con el tatuaje
     //   }));
     // });
-  }, methods: {
+  },
+  computed: {
+    getCategoryList(category) {
+      return this.imageList.filter( (image) => image.category === category);
+    }
+  },
+  methods: {
     openLightbox(index) {
       window.addEventListener('keyup', this.closeOnEsc);
-      this.lightboxImage = this.images[index].url;
+      this.lightboxImage = this.imageList[index].url;
       this.lightboxShow = true;
 
       if (!this.escKeyListenerAdded) {

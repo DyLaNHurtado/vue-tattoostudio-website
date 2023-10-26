@@ -1,8 +1,8 @@
 <template>
+    <h1>{{title}}</h1>
     <div class="block">
-      <h1>Tatuajes</h1>
-    <div v-for="(image, index) in images" :key="index" class="gallery-item">
-      <img @click="openLightbox(index)" :src="image.url" alt="Image"  class="lightbox-image"/>
+    <div v-for="(image, index) in images" :key="index" @click="openLightbox(index)" class="gallery-item">
+      <img  :src="image.url" alt="Image"  class="lightbox-image"/>
     </div>
     </div>
   
@@ -34,7 +34,7 @@
   flex-wrap: wrap;
   height: 100%;
   width: 100%;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .gallery-item {

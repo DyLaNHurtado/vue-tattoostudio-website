@@ -50,7 +50,7 @@ export default {
       // Datos del correo
       const templateParams = {
         from_name: this.nombre,
-        to_name: 'Delaito Tattoo', // Correo del destinatario
+        to_name: 'Delaitto Tattoo', // Correo del destinatario
         message: this.mensaje,
         reply_to: this.correo
       };
