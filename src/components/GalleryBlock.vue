@@ -2,7 +2,7 @@
     <h1>{{title}}</h1>
     <div class="block">
     <div v-for="(image, index) in images" :key="index" @click="openLightbox(index)" class="gallery-item">
-      <img  :src="image.url" alt="Image"  class="lightbox-image"/>
+      <img :src="image.url" alt="Image"  class="lightbox-image"/>
     </div>
     </div>
   
@@ -19,8 +19,8 @@
         images: Array,
 
     },methods:{
-        openLightbox(){
-            this.$emit('openLightbox' , images[index]);
+        openLightbox(index){
+            this.$emit('openLightbox' , index);
         }
     },watch:{
     }
@@ -30,15 +30,15 @@
   <style scoped>
   /* Estilos para los botones de ordenación */
   .block {
-  display: flex;
-  flex-wrap: wrap;
-  height: 100%;
-  width: 100%;
-  flex-direction: row;
+  display: grid;
+  grid-template-rows: auto 1fr; /* NEW */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  place-items: start;
+  gap: 16px;
 }
 
 .gallery-item {
-  width: 200px; /* Tamaño deseado para cada imagen */
+  width: 300px; /* Tamaño deseado para cada imagen */
   margin: 10px; /* Espaciado entre imágenes */
   border-radius: 8px;
   padding: 5px;
@@ -51,7 +51,6 @@
 .gallery-item:active {
   scale: .9
 }
-
 
 .gallery-item img {
   width: 100%;

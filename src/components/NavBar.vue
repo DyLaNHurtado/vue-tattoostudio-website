@@ -8,9 +8,18 @@
     </div>
     <ul :class="['nav-links', { 'nav-active': isNavOpen }]">
       <li class="nav-link-item"><router-link to="/" class="nav-link" @click="toggleNav()">Inicio</router-link></li>
-      <li class="nav-link-item"><router-link to="/gallery" class="nav-link" @click="toggleNav()">Galeria</router-link></li>
+      <li class="nav-link-item"><router-link to="/gallery" class="nav-link" @click="toggleNav()">Galeria</router-link>
+        <!-- Menu Dropdown -->
+        <ul class="dropdown" v-if="showDropdown">
+          <li v-for="(categoryName, categoryId) in GalleryCategories" :key="categoryId" :value="categoryName">
+            <router-link :to="'/gallery?t=' + categoryId" @click="toggleNav()">
+              {{ categoryName }}
+            </router-link>
+          </li>
+        </ul>
+      
+      </li>
       <li class="nav-link-item"><router-link to="/studio" class="nav-link" @click="toggleNav()">Studio</router-link></li>
-      <li class="nav-link-item"><router-link to="/appointments" class="nav-link" @click="toggleNav()">Pedir Cita</router-link></li>
       <li class="nav-link-item"><router-link to="/reviews" class="nav-link" @click="toggleNav()">Reseñas</router-link></li>
       <li class="nav-link-item"><router-link to="/contact" class="nav-link" @click="toggleNav()">Contactar</router-link></li>
     </ul>
@@ -18,10 +27,13 @@
 </template>
 
 <script>
+import { GalleryCategories } from './Enums';
 export default {
   data() {
     return {
-      isNavOpen: false
+      isNavOpen: false,
+      showDropdown: false,
+      GalleryCategories: GalleryCategories
     };
   },
   methods: {
@@ -84,6 +96,15 @@ export default {
 
 .nav-link-item {
   padding: 20px;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  /* Estilos adicionales según tu diseño */
+}
+.nav-link-item:hover .dropdown {
+  display: block;
 }
 
 /* Estilos para dispositivos móviles */

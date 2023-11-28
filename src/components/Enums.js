@@ -10,22 +10,13 @@ const EnumReviewSorts = {
     FIVE : 'fiveStars',
   }
 
-  const EnumTattooStyles = {
-    BLACKWORK : 'blackwork',
-    WATERCOLOR : 'watercolor',
-    NEOTRADITIONAL : 'neotraditional',
-    DARK_ART : 'darkArt',
-    REALISM : 'realism',
-    OLD_SCHOOL : 'oldSchool',
-    JAPANESE : 'japanese',
-    LETTERING : 'lettering',
-  }
-
   const GalleryCategories = {
-    TATTOO: 'tattoo',
-    AVAILABLE: 'available',
-    ILUSTRATION: 'ilustration'
+    TATTOOS: 'Tattoos',
+    FLASH_OFFERS: 'Flash offers',
+    ILUSTRATIONS: 'ilustrations',
+    STICKERS: 'stickers',
+    CLOTHES: 'clothes',
   }
 
-export{EnumReviewSorts, EnumTattooStyles, GalleryCategories}
+export{EnumReviewSorts, GalleryCategories}
   

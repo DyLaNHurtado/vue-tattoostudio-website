@@ -14,11 +14,6 @@ const router = createRouter({
       component: () => import("./views/GaleriaTatuajes.vue"),
     },
     {
-      path: "/appointments",
-      name: "appointments",
-      component: () => import("./views/GestionCitas.vue"),
-    },
-    {
       path: "/studio",
       name: "studio",
       component: () => import("./views/StudioInfo.vue"),
