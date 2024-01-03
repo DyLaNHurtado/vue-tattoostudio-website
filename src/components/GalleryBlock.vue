@@ -32,13 +32,13 @@
   .block {
   display: grid;
   grid-template-rows: auto 1fr; /* NEW */
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   place-items: start;
   gap: 16px;
 }
 
 .gallery-item {
-  width: 300px; /* Tamaño deseado para cada imagen */
+  width: 350px; /* Tamaño deseado para cada imagen */
   margin: 10px; /* Espaciado entre imágenes */
   border-radius: 8px;
   padding: 5px;
