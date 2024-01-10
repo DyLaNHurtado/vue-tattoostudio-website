@@ -120,3 +120,16 @@ body {
 .primary-button:hover {
   background-color: var(--color-primary-hover);
 }
+
+.parallax {
+  background-image: url("img_parallax.jpg");
+  min-height: 300px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
