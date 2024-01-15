@@ -20,7 +20,7 @@
       
       </li>
       <li class="nav-link-item"><router-link to="/studio" class="nav-link" @click="toggleNav()">Studio</router-link></li>
-      <li class="nav-link-item"><router-link to="/reviews" class="nav-link" @click="toggleNav()">Reseñas</router-link></li>
+      <li class="nav-link-item"><router-link to="/reviews" class="nav-link" @click="toggleNav()">Preguntas y Reseñas</router-link></li>
       <li class="nav-link-item"><router-link to="/contact" class="nav-link" @click="toggleNav()">Contactar</router-link></li>
     </ul>
   </nav>

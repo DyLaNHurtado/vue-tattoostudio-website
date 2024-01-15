@@ -229,7 +229,7 @@ export default {
 
 <style scoped>
 .parallax {
-  background-image: url("img_parallax.jpg");
+  background-image: url("public/vite.svg");
 }
 
 .info-container {
