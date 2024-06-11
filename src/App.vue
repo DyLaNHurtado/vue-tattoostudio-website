@@ -5,7 +5,7 @@ import  Footer  from './components/Footer.vue';
 </script>
 
 <template>
-  <div>
+  <div class="app-container">
     <NavBar />
     <div class="view">
       <RouterView />
@@ -16,13 +16,20 @@ import  Footer  from './components/Footer.vue';
 </template>
 
 <style scoped>
-.view{
+.app-container{
   box-sizing: border-box;
+  min-width: 100%;
   width: 100%;
   height: 100%;
-  min-height: 90vh;
+  min-height: 100%;
+}
+.view{
+  box-sizing: border-box;
+  min-width: 100%;
+  min-height: 100%;
   margin-top: 5em;
   padding: 40px;
+  padding-top: 0;
 }
 
 </style>

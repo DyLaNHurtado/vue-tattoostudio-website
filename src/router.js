@@ -28,6 +28,11 @@ const router = createRouter({
       name: "contact",
       component: () => import("./views/FormularioContacto.vue"),
     },
+    {
+      path: "/oauth",
+      name: "oauth",
+      component: () => import("./components/OAuthRedirectComponent.vue"),
+    },
   ],
 });
 
