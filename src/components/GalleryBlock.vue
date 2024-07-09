@@ -1,60 +1,54 @@
 <template>
-    <h1>{{title}}</h1>
-    <div class="block">
-    <div v-for="(image, index) in images" :key="index" @click="openLightbox(index)" class="gallery-item">
-      <img :src="image.url" alt="Image"  class="lightbox-image"/>
+  <div>
+    <h1>{{ title }}</h1>
+    <div class="gallery">
+      <div v-for="(image, index) in images" :key="index" @click="openLightbox(index)" class="gallery-item">
+        <img :src="image.url" alt="Image" class="gallery-image" />
+      </div>
     </div>
-    </div>
-  
-  </template>
-    
-  <script>
-  export default {
-    data(){
-      return{
-      }
-  
-    },props:{
-        title: String,
-        images: Array,
+  </div>
+</template>
 
-    },methods:{
-        openLightbox(index){
-            this.$emit('openLightbox' , index);
-        }
-    },watch:{
+<script>
+export default {
+  props: {
+    title: String,
+    images: Array,
+    category: String
+  },
+  methods: {
+    openLightbox(index,) {
+      this.$emit('openLightbox', index, this.category);
     }
-  };
-  </script>
-    
-  <style scoped>
-  /* Estilos para los botones de ordenación */
-  .block {
-  display: grid;
-  grid-template-rows: auto 1fr; /* NEW */
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  place-items: start;
+  }
+};
+</script>
+
+<style scoped>
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 16px;
 }
 
 .gallery-item {
-  width: 350px; /* Tamaño deseado para cada imagen */
-  margin: 10px; /* Espaciado entre imágenes */
+  width: 250px;
+  height: 250px;
   border-radius: 8px;
-  padding: 5px;
-  border: 1px solid var( --color-border);
-  transition: all .1s;
-}
-.gallery-item:hover {
-  border: 1px solid var(--color-text);
-}
-.gallery-item:active {
-  scale: .9
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
 }
 
-.gallery-item img {
-  width: 100%;
-  height: auto;
+.gallery-item:hover {
+  transform: scale(1.05);
 }
-  </style>
-    
+
+.gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+</style>

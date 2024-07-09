@@ -1,19 +1,22 @@
 <template>
-  <div class="lightbox" v-if="show"></div>
-    <div v-if="show" class="lightbox-content">
-    <span class="lightbox-close" @click="close">&times;</span>
+  <div class="lightbox" v-if="show">
+    <div class="lightbox-content">
+      <span class="lightbox-close" @click="close">&times;</span>
+      <div class="lightbox-navigation">
+        <button class="lightbox-btn prev-btn" @click="gotoPrevious">&lt;</button>
         <div class="lightbox-image-container">
-            <img :src="image" alt="Lightbox Image" class="lightbox-image" />
-            
+          <img :src="image" alt="Lightbox Image" class="lightbox-image" />
+        </div>
+        <button class="lightbox-btn next-btn" @click="gotoNext">&gt;</button>
       </div>
       <div class="tattoo-data">
-                <h1>Detalles: </h1>
-                <p>Watercolor, Neotradicional</p>
-                <p>80$ por 10cm 120$ mas de 10cm</p>
-                <p></p>
-                <p></p>
-            </div>
+        <h1>Detalles:</h1>
+        <p>Watercolor, Neotradicional</p>
+        <p>80$ por 10cm, 120$ más de 10cm</p>
+        <!-- Ajusta los detalles según tus necesidades -->
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -26,11 +29,31 @@ export default {
     image: {
       type: String,
       required: true
+    },
+    images: {
+      type: Array,
+      required: true
     }
   },
   methods: {
     close() {
       this.$emit('close');
+    },
+    gotoNext() {
+      const currentIndex = this.getCurrentIndex();
+      const nextIndex = currentIndex === this.images.length - 1 ? 0 : currentIndex + 1;
+      this.updateLightboxImage(nextIndex);
+    },
+    gotoPrevious() {
+      const currentIndex = this.getCurrentIndex();
+      const prevIndex = currentIndex === 0 ? this.images.length - 1 : currentIndex - 1;
+      this.updateLightboxImage(prevIndex);
+    },
+    getCurrentIndex() {
+      return this.images.findIndex(img => img.url === this.image);
+    },
+    updateLightboxImage(index) {
+      this.$emit('updateImage', this.images[index].url, index); // Emitir el índice junto con la URL
     }
   }
 };
@@ -52,7 +75,7 @@ export default {
 }
 
 .lightbox-content {
-    display: flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -65,20 +88,52 @@ export default {
   z-index: 300;
 }
 
-.lightbox-image-container{
-  width: 800px;
-  max-width: 100%;
-  max-height: 100%;
-  margin: 10px; 
-  border-radius: 8px;
-  padding: 5px;
-  border: 1px solid var( --color-border);
-  transition: all .1s;
+.lightbox-navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
-.lightbox-image{
+.lightbox-btn {
+  background: rgba(255, 255, 255, 0.5);
+  color: black;
+  border: none;
+  font-size: 2em;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.lightbox-btn:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.lightbox-btn.prev-btn {
+  margin-right: auto;
+}
+
+.lightbox-btn.next-btn {
+  margin-left: auto;
+}
+
+.lightbox-image-container {
+  width: 100%;
+  max-width: 800px;
+  max-height: 80vh;
+  margin: 10px;
+  border-radius: 8px;
+  padding: 5px;
+  border: 1px solid var(--color-border);
+  transition: all 0.1s;
+  overflow: hidden;
+}
+
+.lightbox-image {
   width: 100%;
   height: auto;
+  object-fit: contain;
 }
 
 .lightbox-close {
@@ -90,10 +145,10 @@ export default {
   color: white;
 }
 
-.tattoo-data{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.tattoo-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 </style>
