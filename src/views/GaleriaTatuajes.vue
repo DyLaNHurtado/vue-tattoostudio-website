@@ -10,7 +10,7 @@
 
     <!-- LightBox -->
     <LightBox class="lightbox" :show="lightboxShow" :image="lightboxImage"
-              :images="currentCategoryImages" @close="closeLightbox"
+              :images="getCategoryList(this.currentCategory)" @close="closeLightbox"
               @updateImage="updateLightboxImage" />
   </div>
 </template>
@@ -51,7 +51,6 @@ export default {
   },
   methods: {
     openLightbox(index, category) {
-      console.log(index,category);
       this.currentCategory = category; // Establecer la categoría actual del LightBox
       this.lightboxImage = this.getCategoryList(category)[index].url;
       this.currentImageIndex = index; // Establecer el índice actual del LightBox
@@ -85,11 +84,7 @@ export default {
       }
     },
     getCategoryList(category) {
-      console.log(this.imageList, category)
       return this.imageList!=null ? this.imageList.filter((image) => image.category === category): [];
-    },
-    get currentCategoryImages() {
-      return this.getCategoryList(this.currentCategory);
     },
   },
   beforeUnmount() {
