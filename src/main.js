@@ -7,8 +7,6 @@ import router from './router';
 import { VueFire, VueFireFirestoreOptionsAPI, VueFireAuth } from 'vuefire';
 import { firebaseApp } from './firebaseConfig';
 
-// HTTP client and data transformation
-
 // State management
 import { createPinia } from 'pinia';
 import httpService from './services/httpService';
