@@ -13,9 +13,8 @@ const EnumReviewSorts = {
   const GalleryCategories = {
     TATTOOS: 'Tattoos',
     FLASH_OFFERS: 'Flash offers',
-    ILUSTRATIONS: 'ilustrations',
-    STICKERS: 'stickers',
-    CLOTHES: 'clothes',
+    ILUSTRATIONS: 'Ilustrations',
+    STICKERS: 'Stickers',
   }
 
 export{EnumReviewSorts, GalleryCategories}

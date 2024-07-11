@@ -1,19 +1,19 @@
 <template>
-  <div class="lightbox" v-if="show">
-    <div class="lightbox-content">
+  <div class="lightbox" v-if="show" @click.self="close">
+    <div class="lightbox-container">
       <span class="lightbox-close" @click="close">&times;</span>
-      <div class="lightbox-navigation">
-        <button class="lightbox-btn prev-btn" @click="gotoPrevious">&lt;</button>
-        <div class="lightbox-image-container">
-          <img :src="image" alt="Lightbox Image" class="lightbox-image" />
-        </div>
-        <button class="lightbox-btn next-btn" @click="gotoNext">&gt;</button>
+      <div class="lightbox-content">
+      <div class="lightbox-image-container">
+        <img :src="currentImage?.url" alt="Lightbox Image" class="lightbox-image" />
       </div>
-      <div class="tattoo-data">
-        <h1>Detalles:</h1>
-        <p>Watercolor, Neotradicional</p>
-        <p>80$ por 10cm, 120$ más de 10cm</p>
-        <!-- Ajusta los detalles según tus necesidades -->
+      <div class="related-images" v-if="relatedImages.length>0">
+        <h2>Más como esto:</h2>
+        <div class="related-images-grid">
+          <div v-for="relatedImg in relatedImages" :key="index" class="related-image">
+            <img :src="relatedImg.url" :alt="'Imagen ' + (index + 1)" class="related-image-item" @click="selectImage(relatedImg)">
+          </div>
+        </div>
+      </div>
       </div>
     </div>
   </div>
@@ -35,120 +35,156 @@ export default {
       required: true
     }
   },
+    data() {
+    return {
+      currentImage: null
+    };
+  },
+  computed: {
+    relatedImages() {
+      if (!this.currentImage) return [];
+      return this.images.filter(img => img.url !== this.currentImage.url && 
+      (img.tags.some(tag => this.currentImage.tags.includes(tag) || img.category === this.currentImage.category)));
+    }
+  },
   methods: {
     close() {
+      this.disableScrollLock();
       this.$emit('close');
     },
-    gotoNext() {
-      const currentIndex = this.getCurrentIndex();
-      const nextIndex = currentIndex === this.images.length - 1 ? 0 : currentIndex + 1;
-      this.updateLightboxImage(nextIndex);
+    enableScrollLock() {
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
     },
-    gotoPrevious() {
-      const currentIndex = this.getCurrentIndex();
-      const prevIndex = currentIndex === 0 ? this.images.length - 1 : currentIndex - 1;
-      this.updateLightboxImage(prevIndex);
+    disableScrollLock() {
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
     },
-    getCurrentIndex() {
-      return this.images.findIndex(img => img.url === this.image);
+    selectImage(selectedImage) {
+      this.currentImage = selectedImage;
+      // Puedes ajustar cualquier lógica adicional aquí, como cambiar el texto alternativo
     },
-    updateLightboxImage(index) {
-      this.$emit('updateImage', this.images[index].url, index); // Emitir el índice junto con la URL
-    }
+  },mounted() {
+  if (this.show) {
+    this.enableScrollLock();
   }
+    this.image ? this.currentImage = this.image : this.images.length > 0 ? this.currentImage = this.images[0]: null;
+}
 };
 </script>
-
 <style scoped>
 .lightbox {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(1.5rem);
   z-index: 200;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.9);
+  overflow-y: auto;
+}
+
+.lightbox-container {
+  position: relative;
+  width: 100%;
+  max-width: 90vw;
+  max-height: 80vh;
+  background-color: var(--color-background);
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 }
 
 .lightbox-content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  position: fixed;
-  top: 0;
-  left: 0;
+  min-width: 100%;
   width: 100%;
   height: 100%;
-  padding: 50px;
-  z-index: 300;
-}
-
-.lightbox-navigation {
+  min-height: 100%;
+  padding: 40px;
+  overflow: hidden;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  margin-bottom: 20px;
 }
 
-.lightbox-btn {
-  background: rgba(255, 255, 255, 0.5);
-  color: black;
-  border: none;
-  font-size: 2em;
-  padding: 10px 20px;
+.lightbox-close {
+  position: fixed;
+  top: 90px;
+  right: 90px;
+  font-size: 3em;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  color: var(--color-text);
+  background: none;
+  border: none;
+  transition: color 0.3s;
+  z-index: 100;
 }
 
-.lightbox-btn:hover {
-  background-color: rgba(255, 255, 255, 0.8);
-}
-
-.lightbox-btn.prev-btn {
-  margin-right: auto;
-}
-
-.lightbox-btn.next-btn {
-  margin-left: auto;
+.lightbox-close:hover {
+  color: var(--color-primary);
 }
 
 .lightbox-image-container {
   width: 100%;
-  max-width: 800px;
-  max-height: 80vh;
-  margin: 10px;
-  border-radius: 8px;
-  padding: 5px;
-  border: 1px solid var(--color-border);
-  transition: all 0.1s;
+  max-height: 70vh;
   overflow: hidden;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
 }
 
 .lightbox-image {
   width: 100%;
-  height: auto;
-  object-fit: contain;
+  min-height: 100%;
+  min-width: 40vw;
+  max-width: 60vw;
+  max-height: 50vh;
+  object-fit: contain; /* Escalar imagen sin deformar */
 }
 
-.lightbox-close {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 4em;
+.related-images {
+  width: 100%;
+  text-align: center;
+  background-color: var(--color-background-mute);
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.related-images h2 {
+  margin-bottom: 20px;
+
+}
+
+.related-images-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 20px;
+}
+
+.related-image {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: var(--color-background);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  color: white;
+  transition: transform 0.3s ease;
 }
 
-.tattoo-data {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.related-image-item {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.related-image:hover {
+  transform: scale(1.05);
 }
 </style>

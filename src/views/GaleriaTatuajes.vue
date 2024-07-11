@@ -1,59 +1,84 @@
 <template>
-  <div class="gallery">
-    <!-- Ejemplo de varios GalleryBlocks -->
-    <GalleryBlock :images="getCategoryList(GalleryCategories.TATTOOS)" :category="GalleryCategories.TATTOOS" title="Tatuajes"
-                  @openLightbox="openLightbox" />
-    <GalleryBlock :images="getCategoryList(GalleryCategories.ILUSTRATIONS)" :category="GalleryCategories.ILUSTRATIONS" title="Ilustraciones"
-                  @openLightbox="openLightbox" />
-    <GalleryBlock :images="getCategoryList(GalleryCategories.FLASH_OFFERS)" :category="GalleryCategories.FLASH_OFFERS" title="Ofertas Flash"
-                  @openLightbox="openLightbox" />
+  <div class="gallery-container">
+     <div class="category-section">
+      <h1> ¿Que quieres ver hoy?</h1>
+    <div class="category-cards">
+      <div
+        class="category-card"
+        v-for="(category, index) in Object.values(GalleryCategories)"
+        :key="index"
+        :class="{ 'active': currentCategories.has(category) }"
+        @click="toggleCategory(category)"
+      >
+        <div class="category-icon">
+          <font-awesome-icon :icon="['fas', 'heart']" v-if="category === GalleryCategories.TATTOOS" class="icon" />
+          <font-awesome-icon :icon="['fas', 'bolt']" v-else-if="category === GalleryCategories.FLASH_OFFERS" class="icon" />
+          <font-awesome-icon :icon="['fas', 'palette']" v-else-if="category === GalleryCategories.ILUSTRATIONS" class="icon" />
+          <font-awesome-icon :icon="['fas', 'sticky-note']" v-else-if="category === GalleryCategories.STICKERS" class="icon" />
+        </div>
+        <div class="category-name">{{ category }}</div>
+      </div>
+    </div>
+  </div>
+    <!-- Galería de imágenes -->
+    <div class="gallery-grid">
+      <div class="gallery-item" v-for="(image, index) in filteredImages" :key="index" @click="openLightbox(index)">
+        <img :src="image.url" :alt="'Imagen ' + index" class="gallery-image">
+      </div>
+    </div>
 
-    <!-- LightBox -->
-    <LightBox class="lightbox" :show="lightboxShow" :image="lightboxImage"
-              :images="getCategoryList(this.currentCategory)" @close="closeLightbox"
-              @updateImage="updateLightboxImage" />
+    <!-- Lightbox -->
+    <LightBox v-if="lightboxShow" :show="lightboxShow" :image="lightboxImage" :images="relatedImages" @close="closeLightbox" />
   </div>
 </template>
 
 <script>
 import { GalleryCategories } from '../components/Enums';
-import GalleryBlock from '../components/GalleryBlock.vue';
 import LightBox from '../components/LightBox.vue';
 
 export default {
   components: {
     LightBox,
-    GalleryBlock,
   },
   data() {
     return {
       imageList: [
-        { url: '/public/vite.svg', category: GalleryCategories.TATTOOS, styles: ["", ""] },
-        { url: '/public/vue.svg', category: "", styles: ["", ""] },
-        { url: '/public/vite.svg', category: GalleryCategories.ILUSTRATIONS, styles: ["", "", "", ""] },
-        { url: '/public/vue.svg', category: GalleryCategories.FLASH_OFFERS, styles: ["", "", "", ""] },
-        { url: '/public/vite.svg', category: "", styles: ["", "", "", ""] },
-        { url: '/public/vite.svg', category: GalleryCategories.FLASH_OFFERS, styles: ["", "", "", ""] },
-        { url: '/public/vite.svg', category: "", styles: ["", "", "", ""] },
-        { url: '/public/sssaaa.svg', category: GalleryCategories.FLASH_OFFERS, styles: ["", "", "", ""] },
-        { url: '/public/vite.svg', category: GalleryCategories.TATTOOS, styles: ["", "", "", ""] },
-        { url: '/public/vite.svg', category: GalleryCategories.TATTOOS, styles: ["", ""] },
-        { url: '/public/vite.svg', category: "", styles: ["", ""] },
-        { url: '/public/vite.svg', category: GalleryCategories.ILUSTRATIONS, styles: ["", "", "", ""] },
+        { url: '/public/vue.svg', category: GalleryCategories.TATTOOS, tags: ["watercolor", "neotraditional"] },
+        { url: '/public/vue.svg', category: GalleryCategories.TATTOOS, tags: ["black and grey", "skull"] },
+        { url: '/public/1.png', category: GalleryCategories.ILUSTRATIONS, tags: ["illustration", "digital art"] },
+        { url: '/public/vite.svg', category: GalleryCategories.TATTOOS, tags: ["watercolor", "neotraditional"] },
+        { url: '/public/vite.svg', category: GalleryCategories.FLASH_OFFERS, tags: ["black and grey", "skull"] },
+        { url: '/public/1.png', category: GalleryCategories.ILUSTRATIONS, tags: ["illustration", "digital art"] },
+        { url: '/public/vite.svg', category: GalleryCategories.TATTOOS, tags: ["watercolor", "neotraditional"] },
+        { url: '/public/1.png', category: GalleryCategories.TATTOOS, tags: ["black and grey", "skull"] },
+        { url: '/public/vue.svg', category: GalleryCategories.ILUSTRATIONS, tags: ["illustration", "digital art"] },
+        // Agrega más imágenes según tus categorías
       ],
       lightboxShow: false,
       lightboxImage: null,
-      escKeyListenerAdded: false,
-      currentCategory: null, // Para mantener la categoría actual del LightBox
-      currentImageIndex: 0, // Para mantener el índice actual del LightBox
-      GalleryCategories:GalleryCategories,
+      searchQuery: '',
+      currentCategories: new Set(), // Conjunto para almacenar categorías seleccionadas
+      GalleryCategories: GalleryCategories,
     };
   },
+  computed: {
+    filteredImages() {
+      return this.imageList.filter(image => {
+        const matchesCategories = this.currentCategories.size === 0 || this.currentCategories.has(image.category);
+        const matchesSearch = image.tags.some(tag => tag.toLowerCase().includes(this.searchQuery.toLowerCase()));
+        return matchesCategories && matchesSearch;
+      });
+    },
+    relatedImages() {
+      if (!this.lightboxImage) return [];
+      const currentImage = this.imageList.find(img => img.url === this.lightboxImage.url);
+      if (!currentImage) return [];
+      return this.imageList.filter(img => img !== currentImage && img.tags.some(tag => currentImage.tags.includes(tag)));
+    }
+  },
   methods: {
-    openLightbox(index, category) {
-      this.currentCategory = category; // Establecer la categoría actual del LightBox
-      this.lightboxImage = this.getCategoryList(category)[index].url;
-      this.currentImageIndex = index; // Establecer el índice actual del LightBox
+    openLightbox(index) {
+      this.lightboxImage = this.filteredImages[index];
       this.lightboxShow = true;
       this.addEscKeyListener();
     },
@@ -61,10 +86,6 @@ export default {
       this.lightboxShow = false;
       this.lightboxImage = null;
       this.removeEscKeyListener();
-    },
-    updateLightboxImage(url, index) {
-      this.lightboxImage = url;
-      this.currentImageIndex = index; // Actualizar el índice actual del LightBox
     },
     addEscKeyListener() {
       if (!this.escKeyListenerAdded) {
@@ -83,22 +104,231 @@ export default {
         this.closeLightbox();
       }
     },
-    getCategoryList(category) {
-      return this.imageList!=null ? this.imageList.filter((image) => image.category === category): [];
-    },
-  },
-  beforeUnmount() {
-    this.removeEscKeyListener();
+    toggleCategory(category) {
+      if (this.currentCategories.has(category)) {
+        this.currentCategories.delete(category);
+      } else {
+        this.currentCategories.add(category);
+      }
+    }
   },
 };
 </script>
 
 <style scoped>
-.gallery {
+.gallery-container {
+  padding: 20px;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  min-height: 100%;
+  min-width: 100%;
+  text-align: center;
+}
+
+.search-bar {
+  background-color: var(--color-background-soft);
+  border-radius: 20px;
+  padding: 10px;
   display: flex;
-  flex-wrap: wrap;
-  height: 100%;
-  width: 100%;
+  align-items: center;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px var(--color-border);
+}
+
+.search-bar input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  padding: 8px;
+  border-radius: 20px;
+  transition: background-color 0.3s;
+}
+
+.search-bar input:focus {
+  background-color: var(--color-background-mute);
+}
+
+.search-icon {
+  margin-left: 10px;
+  font-size: 20px;
+}
+
+.category-section {
+  padding: 40px 0;
+  display: flex;
   flex-direction: column;
+  justify-content: center;
+  min-width: 100%;
+  border-bottom: 2px solid var(--color-border);
+}
+
+.category-cards {
+  display: flex;
+  gap: 40px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  min-width: 100%;
+}
+
+.icon {
+  font-size: 2.5em;
+  transition: transform 0.3s ease, color 0.3s ease; 
+}
+
+
+
+.category-card {
+  width: 150px;
+  height: 150px;
+  border-radius: 20px;
+  background-color: var(--color-background);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  border: 2px solid transparent;
+  box-shadow: 0 2px 4px var(--color-border);
+  user-select: none;
+}
+
+.category-card.active {
+  background-color: var(--color-primary);
+  color:var(--color-heading)
+}
+
+.category-card:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  border: 2px solid var(--c-indigo);
+  transform: translateY(-5px);
+}
+.category-card:hover .icon {
+  transform: scale(1.2);
+  color: var(--color-primary-hover); 
+}
+
+.category-icon {
+  font-size: 1.5em;
+  margin-bottom: 8px;
+}
+
+.category-name {
+  font-weight: bold;
+  text-align: center;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  place-items: center;
+  min-width: 100%;
+  min-height: 100%;
+  padding: 30px;
+}
+
+.gallery-item {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: var(--color-background);
+  box-shadow: 0 4px 6px var(--color-border);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  max-width: 30vw;
+  max-height: auto;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+.lightbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  z-index: 200;
+}
+
+.lightbox-content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 80%;
+  max-height: 90%;
+  overflow: auto;
+  background-color: var(--color-background);
+  padding: 20px;
+  border-radius: 10px;
+  color: var(--color-text);
+}
+
+.lightbox-navigation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.lightbox-btn {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: var(--color-text);
+  font-size: 1.5em;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.lightbox-btn:hover {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.lightbox-image {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 10px;
+  object-fit: contain;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 2em;
+  cursor: pointer;
+  color: var(--color-text);
+}
+
+.tattoo-data {
+  margin-top: 20px;
+  text-align: center;
 }
 </style>

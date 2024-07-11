@@ -1,9 +1,8 @@
 <template>
-  <div>
-    <h1>{{ title }}</h1>
+  <div class="gallery-block">
     <div class="gallery">
       <div v-for="(image, index) in images" :key="index" @click="openLightbox(index)" class="gallery-item">
-        <img :src="image.url" alt="Image" class="gallery-image" />
+        <img :src="image.url" alt="Image" class="gallery-image" loading="lazy" />
       </div>
     </div>
   </div>
@@ -12,12 +11,11 @@
 <script>
 export default {
   props: {
-    title: String,
     images: Array,
     category: String
   },
   methods: {
-    openLightbox(index,) {
+    openLightbox(index) {
       this.$emit('openLightbox', index, this.category);
     }
   }
@@ -25,24 +23,29 @@ export default {
 </script>
 
 <style scoped>
+.gallery-block {
+  margin-bottom: 40px;
+}
+
 .gallery {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 16px;
+  justify-content: center;
 }
 
 .gallery-item {
-  width: 250px;
-  height: 250px;
+  position: relative;
+  width: calc(33.333% - 16px);
   border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .gallery-item:hover {
   transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .gallery-image {
