@@ -19,10 +19,14 @@
         <div class="info-content">
           <p>Elige el metodo que mejor te venga para contactar con nosotros, te contestaremos de inmediato lo antes
             posible.</p>
-          <p><font-awesome-icon :icon="['fas', 'phone']" class="icon" /><span>638795342</span></p>
-          <p><font-awesome-icon :icon="['fas', 'envelope']" class="icon" /> <span>dylanhurtado43@gmail.com</span></p>
-          <button class="primary-button"> <font-awesome-icon :icon="['fab', 'instagram']" class="icon" /> Privado/MD por
-            Instagram</button>
+          <h3><font-awesome-icon :icon="['fas', 'phone']" class="icon" /><span>638795342</span></h3>
+          <h3><font-awesome-icon :icon="['fas', 'envelope']" class="icon" /> <span>dylanhurtado43@gmail.com</span></h3>
+          <p>Mensajeanos por redes sociales:</p>
+          <div class="socials">
+            <button class="social-icon"> <font-awesome-icon :icon="['fab', 'instagram']"/></button>
+            <button class="social-icon"> <font-awesome-icon :icon="['fab', 'tiktok']" /></button>
+          </div>
+
         </div>
         <div class="contact-form">
           <h1>Contacto directo:</h1>
@@ -61,42 +65,42 @@
           <table width="100%">
             <tbody>
               <tr>
-                <td><img src="" alt=""></td>
                 <td>
-                  <p>
+                  <img src="/metro.svg" alt="Metro_Madrid" loading="lazy" class="logo-transport">
+                </td>
+                <td>
                   <h3 class="padding-bottom">Linea 12 (MetroSur):</h3>
-                  <p class="padding-left">
+                  <p>
                     <span class="small-card blue">JULIAN BESTEIRO</span>
                     <span class="small-card blue">CASA DEL RELOJ</span>
                   </p>
-                  </p>
                 </td>
               </tr>
               <tr>
-                <td><img src="" alt=""></td>
                 <td>
-                  <p>
+                  <img src="/renfe.svg" alt="Renfe_Madrid" loading="lazy" class="logo-transport">
+                </td>
+                <td>
                   <h3 class="padding-bottom">Linea C-5 (Renfe):</h3>
-                  <p class="padding-left">
+                  <p>
                     <span class="small-card red">ZARZAQUEMADA</span>
                     <span class="small-card red">LEGANÉS CENTRAL</span>
                   </p>
-                  </p>
                 </td>
               </tr>
               <tr>
-                <td><img src="" alt=""></td>
                 <td>
-                  <p>
+                  <img src="/bus.svg" alt="bus_Madrid" loading="lazy" class="logo-transport">
+                </td>
+                <td>
                   <h3 class="padding-bottom">Parada RIOJA-COLEGIO:</h3>
-                  <p class="padding-left">
+                  <p>
                     <span class="padding-left small-card green">432</span>
                     <span class="padding-left small-card green">480</span>
                     <span class="padding-left small-card green">481</span>
                     <span class="padding-left small-card green">483</span>
                     <span class="padding-left small-card green">484</span>
                     <span class="padding-left small-card green">488</span>
-                  </p>
                   </p>
                 </td>
               </tr>
@@ -229,7 +233,7 @@ export default {
 
 <style scoped>
 .parallax {
-  background-image: url("public/vite.svg");
+  background-image: url("/vite.svg");
 }
 
 .info-container {
@@ -460,6 +464,44 @@ thead {
   width: 100%;
   background-color: var(--color-background-mute);
 }
+.logo-transport {
+  width: 30px;  /* Define un ancho adecuado */
+  height: auto; /* Mantén la relación de aspecto */
+  margin-right: 10px; /* Espaciado a la derecha */
+}
+
+td img.logo-transport {
+  vertical-align: middle;
+}
+
+.socials{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.social-icon {
+  background-color: var(--color-primary); /* Color de fondo del botón */
+  color: #fff; /* Color del ícono */
+  border: none; /* Elimina el borde del botón */
+  padding: 10px; /* Ajusta el espacio interior del botón */
+  margin: 5px; /* Espacio entre botones */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  transition: background-color 0.3s, color 0.3s; /* Transición suave al cambiar los estilos */
+  border-radius: 50%; /* Asegura que el botón tenga forma redonda */
+  display: inline-flex; /* Permite alinear el ícono y el texto */
+  justify-content: center; /* Alinea el contenido en el centro */
+  align-items: center; /* Alinea el contenido en el centro */
+  width: 40px; /* Ancho del botón */
+  height: 40px; /* Altura del botón */
+  font-size: 18px; /* Tamaño del ícono */
+}
+
+.social-icon:hover {
+  background-color: var(--color-primary-hover); /* Cambia el color de fondo al pasar el mouse */
+}
+
 
 @media (max-width: 1100px) {
   .info {

@@ -43,15 +43,15 @@ export default {
   data() {
     return {
       imageList: [
-        { url: '/public/vue.svg', category: GalleryCategories.TATTOOS, tags: ["watercolor", "neotraditional"] },
-        { url: '/public/vue.svg', category: GalleryCategories.TATTOOS, tags: ["black and grey", "skull"] },
-        { url: '/public/1.png', category: GalleryCategories.ILUSTRATIONS, tags: ["illustration", "digital art"] },
-        { url: '/public/vite.svg', category: GalleryCategories.TATTOOS, tags: ["watercolor", "neotraditional"] },
-        { url: '/public/vite.svg', category: GalleryCategories.FLASH_OFFERS, tags: ["black and grey", "skull"] },
-        { url: '/public/1.png', category: GalleryCategories.ILUSTRATIONS, tags: ["illustration", "digital art"] },
-        { url: '/public/vite.svg', category: GalleryCategories.TATTOOS, tags: ["watercolor", "neotraditional"] },
-        { url: '/public/1.png', category: GalleryCategories.TATTOOS, tags: ["black and grey", "skull"] },
-        { url: '/public/vue.svg', category: GalleryCategories.ILUSTRATIONS, tags: ["illustration", "digital art"] },
+        { url: '/vue.svg', category: GalleryCategories.TATTOOS, tags: ["watercolor", "neotraditional"] },
+        { url: '/vue.svg', category: GalleryCategories.TATTOOS, tags: ["black and grey", "skull"] },
+        { url: '/1.png', category: GalleryCategories.ILUSTRATIONS, tags: ["illustration", "digital art"] },
+        { url: '/vite.svg', category: GalleryCategories.TATTOOS, tags: ["watercolor", "neotraditional"] },
+        { url: '/vite.svg', category: GalleryCategories.FLASH_OFFERS, tags: ["black and grey", "skull"] },
+        { url: '/1.png', category: GalleryCategories.ILUSTRATIONS, tags: ["illustration", "digital art"] },
+        { url: '/vite.svg', category: GalleryCategories.TATTOOS, tags: ["watercolor", "neotraditional"] },
+        { url: '/1.png', category: GalleryCategories.TATTOOS, tags: ["black and grey", "skull"] },
+        { url: '/vue.svg', category: GalleryCategories.ILUSTRATIONS, tags: ["illustration", "digital art"] },
         // Agrega más imágenes según tus categorías
       ],
       lightboxShow: false,

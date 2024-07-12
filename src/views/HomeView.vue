@@ -6,7 +6,7 @@
         <source src="https://video.wixstatic.com/video/2b20fa_bcdb4298d7d44067baf30118eb8cfd83/720p/mp4/file.mp4" type="video/mp4">
       </video>
       <div class="header-content">
-        <img src="public/vite.svg" alt="Logo del estudio">
+        <img src="/vite.svg" alt="Logo del estudio">
         <h1>Estudio de Tatuajes en Leganés</h1>
         <h5>Artistas especializados en tatuajes personalizados y únicos.</h5>
         <router-link to="/contact" class="primary-button">Contactar</router-link>
@@ -26,9 +26,9 @@
     <div class="last-tattoos">
       <h2>Últimos Trabajos</h2>
       <div class="tattoo-carousel">
-        <img src="public/tattoo1.jpg" alt="Tatuaje 1">
-        <img src="public/tattoo2.jpg" alt="Tatuaje 2">
-        <img src="public/tattoo3.jpg" alt="Tatuaje 3">
+        <img src="/tattoo1.jpg" alt="Tatuaje 1">
+        <img src="/tattoo2.jpg" alt="Tatuaje 2">
+        <img src="/tattoo3.jpg" alt="Tatuaje 3">
         <!-- Añadir más imágenes según sea necesario -->
       </div>
       <router-link to="/gallery" class="cta-button">
@@ -42,7 +42,7 @@
       <div class="blog-posts">
         <!-- Artículo 1 -->
         <div class="blog-post">
-          <img src="public/blog1.jpg" alt="Imagen de Blog 1">
+          <img src="/blog1.jpg" alt="Imagen de Blog 1">
           <h3>Consejos para cuidar tu nuevo tatuaje</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus neque a felis varius, vitae pulvinar justo tempus.</p>
           <router-link to="/blog/consejos-cuidado-tatuaje" class="cta-button">
@@ -51,7 +51,7 @@
         </div>
         <!-- Artículo 2 -->
         <div class="blog-post">
-          <img src="public/blog2.jpg" alt="Imagen de Blog 2">
+          <img src="/blog2.jpg" alt="Imagen de Blog 2">
           <h3>Tendencias de tatuajes para este año</h3>
           <p>Nulla facilisi. Duis interdum auctor tortor, eu condimentum risus tincidunt id.</p>
           <router-link to="/blog/tendencias-tatuajes-2024" class="cta-button">
@@ -60,7 +60,7 @@
         </div>
         <!-- Artículo 3 -->
         <div class="blog-post">
-          <img src="public/blog3.jpg" alt="Imagen de Blog 3">
+          <img src="/blog3.jpg" alt="Imagen de Blog 3">
           <h3>Los mejores estilos de tatuajes según tu personalidad</h3>
           <p>Vivamus fermentum, risus sed rhoncus hendrerit, quam sapien iaculis magna, non finibus nulla sapien eget libero.</p>
           <router-link to="/blog/mejores-estilos-tatuajes" class="cta-button">
@@ -69,7 +69,7 @@
         </div>
         <!-- Artículo 4 -->
         <div class="blog-post">
-          <img src="public/blog4.jpg" alt="Imagen de Blog 4">
+          <img src="/blog4.jpg" alt="Imagen de Blog 4">
           <h3>Historias detrás de nuestros tatuajes más desafiantes</h3>
           <p>Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
           <router-link to="/blog/historias-tatuajes" class="cta-button">
@@ -84,6 +84,7 @@
       <h2>Síguenos en Redes Sociales</h2>
       <div class="social-feed">
         <!-- SnapWidget -->
+      <!-- SnapWidget -->
       <iframe src="https://snapwidget.com/embed/1072829" class="snapwidget-widget" allowtransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden;  width:100%; " title="Posts from Instagram"></iframe>
       </div>
     </div>
@@ -102,7 +103,7 @@
     <div class="contact-us">
       <h2>Contacta con Nosotros</h2>
       <p>¿Tienes alguna pregunta o deseas reservar una consulta? ¡Estamos aquí para ayudarte!</p>
-      <router-link to="/contact" class="primary-button">Contactar</router-link>
+      <button class="primary-button"><router-link to="/contact" class="primary-button">Contactar</router-link></button>
       <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3041.529489911896!2d-3.7533890000000003!3d40.330598699999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4189a7929c6c29%3A0x6940283e1e93409a!2sDelaitto%20Tattoo%20-%20Estudio%20de%20tatuajes!5e0!3m2!1ses!2ses!4v1718094523661!5m2!1ses!2ses" width="100%" height="250" style="border:0;" allowfullscreen loading="lazy" frameborder="0" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </div>
@@ -253,6 +254,9 @@
   padding: 20px;
   border-radius: 8px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .newsletter h2 {
@@ -261,9 +265,10 @@
 
 .newsletter form {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  gap: 20px;
 }
 
 .newsletter input[type="email"] {
@@ -280,6 +285,9 @@
   padding: 20px;
   border-radius: 8px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .contact-us .map {
@@ -317,5 +325,9 @@
 
 .primary-button:hover {
   background-color: var(--color-primary-hover);
+}
+
+.snapwidget-widget{
+  height: 60vw;
 }
 </style>
