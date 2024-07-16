@@ -21,7 +21,7 @@
       <h2>Sobre Nosotros</h2>
       <p>Somos un estudio de tatuajes ubicado en <span class="primary-text">Leganés</span>, comprometidos con la calidad, la creatividad y la satisfacción de nuestros clientes. Nuestros artistas tienen años de experiencia en crear <span class="primary-text">diseños personalizados</span> que reflejan la individualidad de <span class="primary-text">cada persona</span>.</p>
       <router-link to="/about" class="cta-button">
-        <button class="transparent-button">Descubre mas aqui</button>
+        <button class="transparent-button">Descubre más aquí</button>
       </router-link>
     </div>
 
@@ -35,7 +35,8 @@
         <!-- Añadir más imágenes según sea necesario -->
       </div>
       <router-link to="/gallery" class="cta-button">
-        <button class="transparent-button">Ver Más</button></router-link>
+        <button class="transparent-button">Ver Más</button>
+      </router-link>
     </div>
 
     <!-- Blog Section -->
@@ -67,8 +68,9 @@
           </div>
         </router-link>
       </div>
-      <router-link to="/gallery" class="cta-button">
-        <button class="transparent-button">Ver todos los articulos</button></router-link>
+      <router-link to="/blog" class="cta-button">
+        <button class="transparent-button">Ver todos los artículos</button>
+      </router-link>
     </div>
 
     <!-- Social Media Integration -->
@@ -85,19 +87,7 @@
     </div>
 
     <!-- Newsletter Section -->
-    <div class="newsletter" v-if="!sentNewsletter">
-      <h2>¿Quieres estar al tanto de nuestras novedades?</h2>
-      <p>Suscríbete para recibir <span class="primary-text">ofertas</span> y novedades <span class="primary-text">exclusivas</span> directamente en tu correo.</p>
-      <form>
-        <input type="email" placeholder="Tu correo electrónico" required>
-        <button class="primary-button" type="submit" @click="suscribeNewsletter">Suscribir</button>
-      </form>
-    </div>
-    <div class="important-note" v-else>
-      <font-awesome-icon :icon="['fas', 'circle-check']" class="icon green" />
-      <h2>✨ <span class="primary-text">Gracias!</span> Ahora estas al tanto de todo! ✨</h2>
-      <p>Estate atento al correo, ofertas, noticias exclusivas y más, serás el primero en enterarte!</p>
-    </div>
+    <Newsletter />
 
     <!-- Contact Us Section -->
     <div class="contact-us">
@@ -111,27 +101,18 @@
 
 <script>
 import Socials from '../components/Socials.vue';
+import Newsletter from '../components/Newsletter.vue';
 
 export default {
-  components:{
+  components: {
     Socials,
+    Newsletter,
   },
-  data() {
-    return {
-      sentNewsletter: false,
-    };
-  },
-  methods: {
-    suscribeNewsletter(){
-      this.sentNewsletter = true;
-      //Añadir a la lista para los correos masivos
-    }
-  }
-}
+};
 </script>
 
 <style scoped>
-/* General Styles */
+/* Estilos generales */
 .home {
   display: flex;
   flex-direction: column;
@@ -140,7 +121,7 @@ export default {
   padding: 20px;
 }
 
-/* Header Section */
+/* Estilos de la sección Header */
 .header {
   position: relative;
   height: 55vh;
@@ -165,7 +146,7 @@ export default {
   text-align: center;
   align-items: center;
   justify-content: center;
-  color: var(--color-text);
+  color: var(--c-white);
   background: rgba(0, 0, 0, 0.6);
   padding: 20px;
   min-height: 100%;
@@ -173,7 +154,7 @@ export default {
   border: 8px solid var(--color-border);
 }
 
-/* About Us Section */
+/* Estilos de la sección Sobre Nosotros */
 .about-us {
   padding: 20px;
   text-align: center;
@@ -184,7 +165,7 @@ export default {
   margin-bottom: 20px;
 }
 
-/* Tattoo Gallery */
+/* Estilos de la sección Últimos Trabajos */
 .last-tattoos {
   text-align: center;
 }
@@ -204,6 +185,7 @@ export default {
   border: 2px solid var(--color-border);
 }
 
+/* Estilos de la sección Blog */
 .blog {
   text-align: center;
   gap: 15px;
@@ -230,7 +212,7 @@ export default {
 }
 
 .blog-post:hover {
-  transform: scale(1.05); /* Efecto de hover */
+  transform: translateY(-5px);
   border-color: var(--color-primary);
 }
 
@@ -266,7 +248,7 @@ export default {
   margin-bottom: 10px;
 }
 
-/* Social Media Integration */
+/* Estilos de la sección Integración de Redes Sociales */
 .social-media {
   padding: 20px;
   text-align: center;
@@ -291,46 +273,7 @@ export default {
 }
 
 
-/* Newsletter Section */
-.newsletter {
-  background: var(--color-background-soft);
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  border-left: 3px solid var(--color-primary);
-  padding: 25px;
-  margin: 25px 0;
-  width: 100%;
-  background-color: var(--color-background-mute);
-}
-
-h2 {
-  margin-bottom: 15px;
-  color: var(--color-heading);
-}
-
-h1 {
-  color: var(--color-heading);
-}
-
-.newsletter form {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-}
-
-.newsletter input[type="email"] {
-  width: 300px;
-  padding: 10px;
-  font-size: 16px;
-  border: 2px solid var(--color-border);
-  border-radius: 8px;
-}
-
-/* Contact Us Section */
+/* Estilos de la sección Contacta con Nosotros */
 .contact-us {
   padding: 20px;
   border-radius: 8px;
@@ -345,7 +288,7 @@ h1 {
   border-radius: 8px;
 }
 
-/* Button Styles */
+/* Estilos de Botones */
 .transparent-button {
   background-color: transparent;
   cursor: pointer;

@@ -14,6 +14,9 @@
         <router-link to="/gallery" class="nav-link" active-class="router-link-active" @click="toggleNav()">Galeria</router-link>
       </li>
       <li class="nav-link-item">
+        <router-link to="/blog" class="nav-link" active-class="router-link-active" @click="toggleNav()">Blog</router-link>
+      </li>
+      <li class="nav-link-item">
         <router-link to="/contact" class="nav-link" active-class="router-link-active" @click="toggleNav()">Contactar</router-link>
       </li>
     </ul>
@@ -34,6 +37,12 @@
         <router-link to="/gallery" class="nav-link" active-class="router-link-active" @click="toggleNav()">
           <font-awesome-icon :icon="['fas', 'images']" />
           <span>Galeria</span>
+        </router-link>
+      </li>
+      <li class="nav-link-item">
+        <router-link to="/blog" class="nav-link" active-class="router-link-active" @click="toggleNav()">
+          <font-awesome-icon :icon="['fas', 'blog']" />
+          <span>Blog</span>
         </router-link>
       </li>
       <li class="nav-link-item">

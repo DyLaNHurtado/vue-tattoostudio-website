@@ -1,5 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
 
+// Importa los componentes del blog
+import BlogList from './components/BlogList.vue';
+import BlogPost from './components/BlogPost.vue';
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -32,6 +36,17 @@ const router = createRouter({
       path: "/oauth",
       name: "oauth",
       component: () => import("./components/OAuthRedirectComponent.vue"),
+    },
+    // Rutas del blog
+    {
+      path: "/blog",
+      name: "blog",
+      component: import("./views/BlogView.vue"),
+    },
+    {
+      path: "/blog/:slug",
+      name: "blog-post",
+      component: import("./components/BlogPost.vue"),
     },
   ],
   scrollBehavior(to, from, savedPosition) {

@@ -84,11 +84,6 @@
 <style scoped>
 .parallax {
   background-image: url("/studio-background.jpg");
-  background-size: cover;
-  background-position: center;
-  text-align: center;
-  padding: 100px 0;
-  color: var(--color-heading);
 }
 
 .parallax h1 {

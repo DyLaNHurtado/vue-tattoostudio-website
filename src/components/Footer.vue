@@ -6,7 +6,7 @@ const actualYear = new Date().getFullYear();
 <template>
   <footer class="footer">
     <div class="footer-content">
-      <p>&copy; {{ actualYear }} <span class="primary-text">Delaitto Tattoo</span>. Todos los derechos reservados.</p>
+      <p>&copy; {{ actualYear }} Delaitto Tattoo. Todos los derechos reservados.</p>
       <Socials size="2xl"/>
     </div>
   </footer>

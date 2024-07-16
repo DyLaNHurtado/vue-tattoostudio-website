@@ -344,15 +344,6 @@ export default {
   padding-right: 10px;
 }
 
-h1 {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 8px;
-  color: var(--color-heading);
-}
-h2{
-  margin-bottom: 8px;
-}
 
 .contact-form {
   margin-top: 20px;

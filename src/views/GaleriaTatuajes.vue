@@ -1,25 +1,29 @@
 <template>
+  <div class="parallax">
+        <h1>Galeria</h1>
+        <p class="subheading">Descubre algo nuevo, disfruta del arte</p>
+    </div>
   <div class="gallery-container">
-     <div class="category-section">
-      <h1> ¿Que quieres ver hoy?</h1>
-    <div class="category-cards">
-      <div
-        class="category-card"
-        v-for="(category, index) in Object.values(GalleryCategories)"
-        :key="index"
-        :class="{ 'active': currentCategories.has(category) }"
-        @click="toggleCategory(category)"
-      >
-        <div class="category-icon">
-          <font-awesome-icon :icon="['fas', 'heart']" v-if="category === GalleryCategories.TATTOOS" class="icon" />
-          <font-awesome-icon :icon="['fas', 'bolt']" v-else-if="category === GalleryCategories.FLASH_OFFERS" class="icon" />
-          <font-awesome-icon :icon="['fas', 'palette']" v-else-if="category === GalleryCategories.ILUSTRATIONS" class="icon" />
-          <font-awesome-icon :icon="['fas', 'sticky-note']" v-else-if="category === GalleryCategories.STICKERS" class="icon" />
+    <div class="category-section">
+      <h3>¿Qué quieres ver hoy?</h3>
+      <div class="category-cards">
+        <div
+          class="category-card"
+          v-for="(category, index) in Object.values(GalleryCategories)"
+          :key="index"
+          :class="{ 'active': currentCategories.has(category) }"
+          @click="toggleCategory(category)"
+        >
+          <div class="category-icon">
+            <font-awesome-icon :icon="['fas', 'heart']" v-if="category === GalleryCategories.TATTOOS" class="icon" />
+            <font-awesome-icon :icon="['fas', 'bolt']" v-else-if="category === GalleryCategories.FLASH_OFFERS" class="icon" />
+            <font-awesome-icon :icon="['fas', 'palette']" v-else-if="category === GalleryCategories.ILUSTRATIONS" class="icon" />
+            <font-awesome-icon :icon="['fas', 'sticky-note']" v-else-if="category === GalleryCategories.STICKERS" class="icon" />
+          </div>
+          <div class="category-name">{{ category }}</div>
         </div>
-        <div class="category-name">{{ category }}</div>
       </div>
     </div>
-  </div>
     <!-- Galería de imágenes -->
     <div class="gallery-grid">
       <div class="gallery-item" v-for="(image, index) in filteredImages" :key="index" @click="openLightbox(index)">
@@ -35,6 +39,8 @@
 <script>
 import { GalleryCategories } from '../components/Enums';
 import LightBox from '../components/LightBox.vue';
+import { collection, getDocs } from 'firebase/firestore'; // Importa los métodos necesarios de Firestore
+import { db } from '../firebaseConfig'; // Importa tu instancia de Firestore
 
 export default {
   components: {
@@ -42,22 +48,11 @@ export default {
   },
   data() {
     return {
-      imageList: [
-        { url: '/vue.svg', category: GalleryCategories.TATTOOS, tags: ["watercolor", "neotraditional"] },
-        { url: '/vue.svg', category: GalleryCategories.TATTOOS, tags: ["black and grey", "skull"] },
-        { url: '/1.png', category: GalleryCategories.ILUSTRATIONS, tags: ["illustration", "digital art"] },
-        { url: '/vite.svg', category: GalleryCategories.TATTOOS, tags: ["watercolor", "neotraditional"] },
-        { url: '/vite.svg', category: GalleryCategories.FLASH_OFFERS, tags: ["black and grey", "skull"] },
-        { url: '/1.png', category: GalleryCategories.ILUSTRATIONS, tags: ["illustration", "digital art"] },
-        { url: '/vite.svg', category: GalleryCategories.TATTOOS, tags: ["watercolor", "neotraditional"] },
-        { url: '/1.png', category: GalleryCategories.TATTOOS, tags: ["black and grey", "skull"] },
-        { url: '/vue.svg', category: GalleryCategories.ILUSTRATIONS, tags: ["illustration", "digital art"] },
-        // Agrega más imágenes según tus categorías
-      ],
+      imageList: [],
       lightboxShow: false,
       lightboxImage: null,
       searchQuery: '',
-      currentCategories: new Set(), // Conjunto para almacenar categorías seleccionadas
+      currentCategories: new Set(),
       GalleryCategories: GalleryCategories,
     };
   },
@@ -110,8 +105,19 @@ export default {
       } else {
         this.currentCategories.add(category);
       }
+    },
+    async loadImages() {
+      try {
+        const querySnapshot = await getDocs(collection(db, 'gallery'));
+        this.imageList = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      } catch (error) {
+        console.error('Error fetching images:', error);
+      }
     }
   },
+  created() {
+    this.loadImages();
+  }
 };
 </script>
 
