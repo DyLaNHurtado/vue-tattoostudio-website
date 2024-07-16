@@ -28,7 +28,7 @@
     </div>
 
     <!-- Lightbox -->
-    <LightBox v-if="lightboxShow" :show="lightboxShow" :image="lightboxImage" :images="relatedImages" @close="closeLightbox" />
+    <LightBox :show="lightboxShow" :image="lightboxImage" :images="relatedImages" @close="closeLightbox" />
   </div>
 </template>
 
@@ -196,8 +196,8 @@ export default {
 }
 
 .category-card.active {
-  background-color: var(--color-primary);
-  color:var(--color-heading)
+  border-color: var(--color-primary);
+  color: var(--color-primary);
 }
 
 .category-card:hover {
@@ -222,7 +222,7 @@ export default {
 
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
   gap: 20px;
   place-items: center;
   min-width: 100%;
@@ -240,7 +240,7 @@ export default {
   box-shadow: 0 4px 6px var(--color-border);
   cursor: pointer;
   transition: transform 0.3s ease;
-  max-width: 30vw;
+  max-width: 40vw;
   max-height: auto;
 }
 

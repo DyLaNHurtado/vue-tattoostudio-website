@@ -1,33 +1,37 @@
 <script setup>
+import Socials from './Socials.vue';
+
 const actualYear = new Date().getFullYear();
 </script>
 <template>
-    <footer class="footer">
-      <p>&copy; {{ actualYear }} Delaitto Tattoo. Todos los derechos reservados.</p>
-      <nav class="social-links">
-        <a href="#">Facebook</a>
-        <a href="#">Instagram</a>
-        <a href="#">Twitter</a>
-      </nav>
-    </footer>
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; {{ actualYear }} <span class="primary-text">Delaitto Tattoo</span>. Todos los derechos reservados.</p>
+      <Socials size="2xl"/>
+    </div>
+  </footer>
 </template>
+
 <style scoped>
 .footer {
-  text-align: center;
-  padding: 10px;
   background-color: var(--color-background-mute);
+  padding: 20px 0;
+  text-align: center;
+  position: relative;
+  bottom: 0;
   width: 100%;
-  z-index: 20;
 }
 
-.social-links {
-  margin-top: 10px;
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.social-links a {
-  color: #333;
-  text-decoration: none;
-  margin: 0 10px;
+.footer p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--color-text-mute);
 }
 
 </style>

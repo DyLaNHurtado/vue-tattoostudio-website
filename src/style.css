@@ -1,13 +1,13 @@
 :root {
   --c-white: #ffffff;
-  --c-white-soft: #f8f8f8;
-  --c-white-mute: #f2f2f2;
+  --c-white-soft: #f7f7f7;
+  --c-white-mute: #f0f0f0;
 
-  --c-black: #181818;
-  --c-black-soft: #222222;
-  --c-black-mute: #282828;
+  --c-black: #121212;
+  --c-black-soft: #1a1a1a;
+  --c-black-mute: #202020;
 
-  --c-indigo: #2c3e50;
+  --c-indigo: #424242;
 
   --c-divider-light-1: rgba(60, 60, 60, 0.29);
   --c-divider-light-2: rgba(60, 60, 60, 0.12);
@@ -18,13 +18,11 @@
   --c-text-light-2: rgba(60, 60, 60, 0.66);
   --c-text-dark-1: var(--c-white);
   --c-text-dark-2: rgba(235, 235, 235, 0.64);
-  --c-text-error: #ff5733;
-  --c-primary: #5865f2;
-  --c-primary-hover: #4054d1;
-}
 
-/* semantic color variables for this project */
-:root {
+  --c-text-error: #ff5733;
+  --c-primary: #71b68d; /* Tono rojo */
+  --c-primary-hover: #91c6b1; /* Tono rojo más claro */
+
   --color-background: var(--c-white);
   --color-background-soft: var(--c-white-soft);
   --color-background-mute: var(--c-white-mute);
@@ -110,6 +108,7 @@ body {
   color: white;
   border: none;
   border-radius: 8px;
+  margin: 10px 0;
   padding: 12px 24px;
   cursor: pointer;
   font-size: 16px;
@@ -142,4 +141,71 @@ body {
   text-decoration: none;
   user-select: none;
   color: var(--color-heading)
+}
+
+input,
+textarea {
+  padding: 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: var(--color-background);
+  color: var(--color-heading);
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+input:hover,
+textarea:hover {
+  border-color: var(--color-border-hover);
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--color-primary) !important;
+  background-color: var(--color-background-mute);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+textarea {
+  resize: vertical;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+h4 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+h5 {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+h6 {
+  font-size: .75rem;
+  margin-bottom: 5px;
+}
+
+.primary-text {
+  color: var(--color-primary);
+}
+
+p {
+  font-size: 1.2rem;
+  line-height: 1.6;
 }

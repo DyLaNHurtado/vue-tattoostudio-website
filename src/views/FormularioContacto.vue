@@ -17,19 +17,18 @@
           </div>
         </div>
         <div class="info-content">
-          <p>Elige el metodo que mejor te venga para contactar con nosotros, te contestaremos de inmediato lo antes
+          <p>Elige el metodo que mejor te venga para contactar con nosotros, te contestaremos lo antes
             posible.</p>
-          <h3><font-awesome-icon :icon="['fas', 'phone']" class="icon" /><span>638795342</span></h3>
-          <h3><font-awesome-icon :icon="['fas', 'envelope']" class="icon" /> <span>dylanhurtado43@gmail.com</span></h3>
-          <p>Mensajeanos por redes sociales:</p>
+          <h6><font-awesome-icon :icon="['fas', 'phone']" class="icon" /><span>638795342</span></h6>
+          <h6><font-awesome-icon :icon="['fas', 'envelope']" class="icon" /> <span>dylanhurtado43@gmail.com</span></h6>
           <div class="socials">
-            <button class="social-icon"> <font-awesome-icon :icon="['fab', 'instagram']"/></button>
-            <button class="social-icon"> <font-awesome-icon :icon="['fab', 'tiktok']" /></button>
+            <Socials size="2xl"/>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSd9xuMt7kmX48XC7tR3to8sA5yH53miRtXv3l19bBwu5fd49g/viewform?usp=sharing" target=”_blank”><button class="primary-button"> <font-awesome-icon :icon="['fas', 'share']" /> Cuentanos a tu idea aqui!</button></a>
           </div>
 
         </div>
-        <div class="contact-form">
-          <h1>Contacto directo:</h1>
+        <div class="contact-form" v-if="!isMessageSent">
+          <h4>Envia un mensaje rápido:</h4>
           <form @submit.prevent="enviarMensaje">
             <div class="form-group">
               <input type="text" placeholder="Nombre" v-model="nombre" required>
@@ -43,6 +42,12 @@
               <button class="primary-button" type="submit" @click="checkError">Enviar</button>
             </div>
           </form>
+        </div>
+
+        <div class="contact-form" v-else>
+          <font-awesome-icon :icon="['fas', 'circle-check']" class="icon-check" />
+          <h2>✨ Gracias! El mensaje se ha enviado correctamente! ✨</h2>
+          <p>Te responderemos lo antes posible, la paciencia es la madre de la ciencia 🤓</p>
         </div>
       </div>
       <div class="info-section">
@@ -69,11 +74,11 @@
                   <img src="/metro.svg" alt="Metro_Madrid" loading="lazy" class="logo-transport">
                 </td>
                 <td>
-                  <h3 class="padding-bottom">Linea 12 (MetroSur):</h3>
-                  <p>
+                  <h4>Linea 12 (MetroSur):</h4>
+                  <span class="tags">
                     <span class="small-card blue">JULIAN BESTEIRO</span>
                     <span class="small-card blue">CASA DEL RELOJ</span>
-                  </p>
+                  </span>
                 </td>
               </tr>
               <tr>
@@ -81,11 +86,11 @@
                   <img src="/renfe.svg" alt="Renfe_Madrid" loading="lazy" class="logo-transport">
                 </td>
                 <td>
-                  <h3 class="padding-bottom">Linea C-5 (Renfe):</h3>
-                  <p>
+                  <h4>Linea C-5 (Renfe):</h4>
+                  <span class="tags">
                     <span class="small-card red">ZARZAQUEMADA</span>
                     <span class="small-card red">LEGANÉS CENTRAL</span>
-                  </p>
+                  </span>
                 </td>
               </tr>
               <tr>
@@ -93,15 +98,15 @@
                   <img src="/bus.svg" alt="bus_Madrid" loading="lazy" class="logo-transport">
                 </td>
                 <td>
-                  <h3 class="padding-bottom">Parada RIOJA-COLEGIO:</h3>
-                  <p>
+                  <h4>Parada RIOJA-COLEGIO:</h4>
+                  <span class="tags">
                     <span class="padding-left small-card green">432</span>
                     <span class="padding-left small-card green">480</span>
                     <span class="padding-left small-card green">481</span>
                     <span class="padding-left small-card green">483</span>
                     <span class="padding-left small-card green">484</span>
                     <span class="padding-left small-card green">488</span>
-                  </p>
+                  </span>
                 </td>
               </tr>
             </tbody>
@@ -171,8 +176,8 @@
             </tbody>
           </table>
           <div class="important-note">
-            <h2 class="padding-bottom">NOTA IMPORTANTE:</h2>
-            <p class="padding-left">Los dias festivos y los meses Agosto / Septiembre consultar la disponibilidad, es
+            <h3>NOTA IMPORTANTE:</h3>
+            <p class="padding-left">Los dias festivos y los meses <span class="primary-text">Agosto / Septiembre</span> consultar la disponibilidad, es
               posible que estemos cerrados por vacaciones.</p>
           </div>
         </div>
@@ -183,8 +188,12 @@
 
 <script>
 import emailjs from 'emailjs-com';
+import Socials from '../components/Socials.vue';
 
 export default {
+  components: {
+    Socials,
+  },
   data() {
     return {
       nombre: '',
@@ -192,6 +201,7 @@ export default {
       mensaje: '',
       errorMessage: '* Error: Faltan campos por rellenar antes de enviar. *',
       displayError: false,
+      isMessageSent: false,
     };
   },
   methods: {
@@ -213,6 +223,7 @@ export default {
         // Envía el correo usando Email.js
         emailjs.send(serviceID, templateID, templateParams, userID).then(
           (response) => {
+            this.isMessageSent = true;
             console.log('Correo enviado correctamente:', response);
             // Limpia el formulario después de enviar el mensaje
             this.nombre = '';
@@ -295,6 +306,7 @@ export default {
   flex-direction: column;
   justify-content: start;
   align-items: start;
+  gap: 10px;
 }
 
 .header-icon {
@@ -306,7 +318,7 @@ export default {
 
 .round-icon-container {
   border-radius: 500px;
-  border: 1px solid var(--color-primary);
+  border: 2px solid var(--color-primary);
   min-width: 3.75em;
   min-height: 3.75em;
   display: flex;
@@ -315,7 +327,7 @@ export default {
 }
 
 .point-separator {
-  border-top: 1px dotted var(--color-primary);
+  border-top: 2px dotted var(--color-primary);
   width: 100%;
 }
 
@@ -338,6 +350,9 @@ h1 {
   margin-bottom: 8px;
   color: var(--color-heading);
 }
+h2{
+  margin-bottom: 8px;
+}
 
 .contact-form {
   margin-top: 20px;
@@ -355,36 +370,12 @@ form {
 }
 
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 input,
 textarea {
   width: 100%;
-  padding: 12px;
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  font-size: 16px;
-  background-color: var(--color-background);
-  color: var(--color-heading);
-  transition: border-color 0.2s, background-color 0.2s;
-}
-
-input:hover,
-textarea:hover {
-  border-color: var(--color-border-hover);
-}
-
-input:focus,
-textarea:focus {
-  outline: none;
-  border-color: var(--color-primary);
-  background-color: var(--color-background-mute);
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
-textarea {
-  resize: vertical;
 }
 
 .error {
@@ -415,6 +406,7 @@ table {
 
 th {
   padding: 5px 15px;
+  color: var(--color-heading)
 }
 
 td {
@@ -436,10 +428,9 @@ thead {
 }
 
 .small-card {
-  width: 2.5em;
   padding: 4px 10px;
   border-radius: 5px;
-  margin: 0 6px;
+  margin: 6px;
 }
 
 .green {
@@ -480,6 +471,7 @@ td img.logo-transport {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  gap: 10px;
 }
 .social-icon {
   background-color: var(--color-primary); /* Color de fondo del botón */
@@ -501,6 +493,18 @@ td img.logo-transport {
 .social-icon:hover {
   background-color: var(--color-primary-hover); /* Cambia el color de fondo al pasar el mouse */
 }
+.tags{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: start;
+  align-items: center;
+}
+.icon-check{
+  font-size: 3.5em;
+  color:#aae68e;
+  margin-bottom: 15px;
+}
 
 
 @media (max-width: 1100px) {
@@ -513,6 +517,12 @@ td img.logo-transport {
   .info-section {
     min-width: 100%;
     padding: 0;
+  }
+  a{
+    justify-content: center;
+  }
+  h3{
+    text-align: center
   }
 
 }</style>

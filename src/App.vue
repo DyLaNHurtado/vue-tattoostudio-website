@@ -34,4 +34,10 @@ import  Footer  from './components/Footer.vue';
   padding-top: 0;
 }
 
+@media (max-width: 768px) {
+  .view{
+    padding: 0px;
+  }
+}
+
 </style>

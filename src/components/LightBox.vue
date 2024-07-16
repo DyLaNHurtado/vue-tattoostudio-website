@@ -3,17 +3,17 @@
     <div class="lightbox-container">
       <span class="lightbox-close" @click="close">&times;</span>
       <div class="lightbox-content">
-      <div class="lightbox-image-container">
-        <img :src="currentImage?.url" alt="Lightbox Image" class="lightbox-image" />
-      </div>
-      <div class="related-images" v-if="relatedImages.length>0">
-        <h2>Más como esto:</h2>
-        <div class="related-images-grid">
-          <div v-for="relatedImg in relatedImages" :key="index" class="related-image">
-            <img :src="relatedImg.url" :alt="'Imagen ' + (index + 1)" class="related-image-item" @click="selectImage(relatedImg)">
+        <div class="lightbox-image-container">
+          <img :src="currentImage?.url" alt="Lightbox Image" class="lightbox-image" />
+        </div>
+        <div class="related-images" v-if="relatedImages.length > 0">
+          <h2>Más como esto:</h2>
+          <div class="related-images-grid">
+            <div v-for="(relatedImg, index) in relatedImages" :key="index" class="related-image">
+              <img :src="relatedImg.url" :alt="'Imagen ' + (index + 1)" class="related-image-item" @click="selectImage(relatedImg)">
+            </div>
           </div>
         </div>
-      </div>
       </div>
     </div>
   </div>
@@ -35,16 +35,30 @@ export default {
       required: true
     }
   },
-    data() {
+  data() {
     return {
       currentImage: null
     };
   },
   computed: {
     relatedImages() {
+      console.log(this.currentImage);
       if (!this.currentImage) return [];
       return this.images.filter(img => img.url !== this.currentImage.url && 
-      (img.tags.some(tag => this.currentImage.tags.includes(tag) || img.category === this.currentImage.category)));
+      (img.tags.some(tag => this.currentImage.tags.includes(tag)) || img.category === this.currentImage.category));
+    }
+  },
+  watch: {
+    show(newVal) {
+      console.log("show changed:", newVal); // Log para verificar cambios
+      if (newVal) {
+        this.enableScrollLock();
+      } else {
+        console.log("disable scroll");
+        this.disableScrollLock();
+      }
+    },image(newVal){
+      this.currentImage = newVal ? newVal : (this.images.length > 0 ? this.images[0] : null);
     }
   },
   methods: {
@@ -53,10 +67,12 @@ export default {
       this.$emit('close');
     },
     enableScrollLock() {
+      console.log("Scroll locked");
       document.documentElement.style.overflow = 'hidden';
       document.body.style.overflow = 'hidden';
     },
     disableScrollLock() {
+      console.log("Scroll unlocked");
       document.documentElement.style.overflow = '';
       document.body.style.overflow = '';
     },
@@ -64,14 +80,16 @@ export default {
       this.currentImage = selectedImage;
       // Puedes ajustar cualquier lógica adicional aquí, como cambiar el texto alternativo
     },
-  },mounted() {
-  if (this.show) {
-    this.enableScrollLock();
+  },
+  mounted() {
+    if (this.show) {
+      this.enableScrollLock();
+    }
+    this.currentImage = this.image ? this.image : (this.images.length > 0 ? this.images[0] : null);
   }
-    this.image ? this.currentImage = this.image : this.images.length > 0 ? this.currentImage = this.images[0]: null;
-}
 };
 </script>
+
 <style scoped>
 .lightbox {
   position: fixed;
@@ -157,7 +175,6 @@ export default {
 
 .related-images h2 {
   margin-bottom: 20px;
-
 }
 
 .related-images-grid {
