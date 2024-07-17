@@ -1,19 +1,19 @@
-// posts.js
-const files = import.meta.globEager('../blog/*.md');
+function getAllPosts(){
+  let files = {};
+files = import.meta.env.DEV ? import.meta.globEager('/public/blog-post/*.md'): import.meta.globEager('/blog-post/*.md');
 
-const posts = Object.keys(files).map((path) => {
+
+return Object.keys(files).map((path) => {
   const slug = path.split('/').pop().replace('.md', '');
-  const { frontmatter  } = files[path];
+  const { frontmatter } = files[path];
   return {
     title: frontmatter.title || slug,
     slug: slug,
     excerpt: frontmatter.excerpt || 'No excerpt available',
-    // Adjust as per your needs
     date: frontmatter.date || 'Unknown date',
-    // Adjust as per your needs
-    image: `/blog-images/${slug}.jpg` || '',
-    // Ensure you have an image property in your frontmatter
+    image: frontmatter.image || `/blog-post/${slug}.jpg` // Ajusta según tus necesidades
   };
 });
+}
 
-export default posts;
+export default getAllPosts;

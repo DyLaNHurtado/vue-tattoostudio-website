@@ -29,9 +29,9 @@
     <div class="last-tattoos">
       <h2>Últimos Trabajos</h2>
       <div class="tattoo-carousel">
-        <img src="/tattoo1.jpg" alt="Tatuaje 1">
-        <img src="/tattoo2.jpg" alt="Tatuaje 2">
-        <img src="/tattoo3.jpg" alt="Tatuaje 3">
+        <img src="/vue.svg" alt="Tatuaje 1">
+        <img src="/vite.svg" alt="Tatuaje 2">
+        <img src="/vue.svg" alt="Tatuaje 3">
         <!-- Añadir más imágenes según sea necesario -->
       </div>
       <router-link to="/gallery" class="cta-button">

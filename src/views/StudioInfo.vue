@@ -8,7 +8,7 @@
 
     <div class="info-container">
       <div class="img-container">
-        <img src="/studio-values.jpg" alt="Nuestros valores y prioridades" />
+        <img src="/vue.svg" alt="Nuestros valores y prioridades" />
       </div>
       <h2>Nuestros valores y prioridades</h2>
       <p>
@@ -27,13 +27,13 @@
       <p>Descubre nuestro estudio, un espacio inspirador y seguro donde <span class="primary-text">tu visión se convierte en arte.</span></p>
       <div class="three-column-photos">
         <div class="img-container">
-          <img src="/studio-space-1.jpg" alt="Espacio del estudio" />
+          <img src="/vue.svg" alt="Espacio del estudio" />
         </div>
         <div class="img-container">
-          <img src="/studio-space-2.jpg" alt="Espacio del estudio" />
+          <img src="/vite.svg" alt="Espacio del estudio" />
         </div>
         <div class="img-container">
-          <img src="/studio-space-3.jpg" alt="Espacio del estudio" />
+          <img src="/vite.svg" alt="Espacio del estudio" />
         </div>
       </div>
     </div>
@@ -48,22 +48,22 @@
       <p>Observa como cobran vida <span class="primary-text">diseños únicos</span> y significativos.</p>
       <div class="three-column-photos">
         <div class="img-container">
-          <img src="/artists-1.jpg" alt="Artistas trabajando" />
+          <img src="/vite.svg" alt="Artistas trabajando" />
         </div>
         <div class="img-container">
-          <img src="/artists-2.jpg" alt="Artistas trabajando" />
+          <img src="/vue.svg" alt="Artistas trabajando" />
         </div>
         <div class="img-container">
-          <img src="/artists-3.jpg" alt="Artistas trabajando" />
+          <img src="/vue.svg" alt="Artistas trabajando" />
         </div>
         <div class="img-container">
-          <img src="/artists-4.jpg" alt="Artistas trabajando" />
+          <img src="/vue.svg" alt="Artistas trabajando" />
         </div>
         <div class="img-container">
-          <img src="/artists-5.jpg" alt="Artistas trabajando" />
+          <img src="/vite.svg" alt="Artistas trabajando" />
         </div>
         <div class="img-container">
-          <img src="/artists-6.jpg" alt="Artistas trabajando" />
+          <img src="/vite.svg" alt="Artistas trabajando" />
         </div>
       </div>
     </div>
@@ -83,7 +83,7 @@
 
 <style scoped>
 .parallax {
-  background-image: url("/studio-background.jpg");
+  background-image: url("/vue.svg");
 }
 
 .parallax h1 {

@@ -4,12 +4,10 @@ import './style.css';
 import router from './router';
 
 // Firebase and Authentication
-import { VueFire, VueFireFirestoreOptionsAPI, VueFireAuth } from 'vuefire';
 import { firebaseApp } from './firebaseConfig';
 
 // State management
 import { createPinia } from 'pinia';
-import httpService from './services/httpService';
 
 // Font Awesome icons
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -25,20 +23,8 @@ library.add(far);
 const app = createApp(App);
 const pinia = createPinia();
 
-app.provide('httpService', httpService);
 
 app
-  .use(VueFire, {
-    firebaseApp,
-    modules: [
-      VueFireAuth(),
-      VueFireFirestoreOptionsAPI({
-        // this would be the same behavior as VueFire v2
-        reset: true,
-        wait: false,
-      }),
-    ],
-  })
   .use(router)
   .use(pinia)
   .component('font-awesome-icon', FontAwesomeIcon)

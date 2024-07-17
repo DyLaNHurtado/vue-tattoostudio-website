@@ -32,11 +32,6 @@ const router = createRouter({
       name: "contact",
       component: () => import("./views/FormularioContacto.vue"),
     },
-    {
-      path: "/oauth",
-      name: "oauth",
-      component: () => import("./components/OAuthRedirectComponent.vue"),
-    },
     // Rutas del blog
     {
       path: "/blog",
@@ -47,6 +42,7 @@ const router = createRouter({
       path: "/blog/:slug",
       name: "blog-post",
       component: import("./components/BlogPost.vue"),
+      props: true,
     },
   ],
   scrollBehavior(to, from, savedPosition) {

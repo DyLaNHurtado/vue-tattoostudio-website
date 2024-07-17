@@ -1,7 +1,6 @@
 ---
 title: Mi Primer Post
 excerpt: Este es el contenido de mi primer post. Este es el contenido de mi primer post. Este es el contenido de mi primer post.
-slug: mi-primer-post
 date: 2024-07-16
 ---
 
