@@ -6,9 +6,7 @@
     </header>
     <article v-html="sanitizedPostContent"></article>
   </div>
-  <div v-else class="loading-message">
-    <p>Cargando...</p>
-  </div>
+  <Loading v-else @retry="loadMarkdownFile" @home="goToHome" />
 </template>
 
 <script setup>
@@ -17,6 +15,7 @@ import frontMatter from 'front-matter';
 import { ref, defineProps, computed } from 'vue';
 import { marked } from 'marked';
 import { format } from 'date-fns';
+import Loading from './Loading.vue';
 
 const props = defineProps({
   slug: String
@@ -25,7 +24,7 @@ const props = defineProps({
 const sanitizedPostContent = ref('');
 const attributes = ref({ title: '', date: '' });
 const postLoaded = ref(false);
-
+const router = useRouter();
 const formattedDate = computed(() => {
   return attributes.value.date ? format(new Date(attributes.value.date), 'dd MMMM yyyy') : '';
 });
@@ -56,18 +55,23 @@ const loadMarkdownFile = async () => {
   }
 };
 
-loadMarkdownFile();
+const goToHome = () => {
+ router.push("home")
+};
+
 </script>
 
 <style scoped>
+/* Estilo para BlogPost.vue */
 .blog-post {
   max-width: 800px;
   margin: 40px auto;
-  padding: 20px;
+  padding: 20px 40px;
   background-color: var(--color-background);
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 100px 100px rgba(0, 0, 0, 0.1);
   font-family: 'Roboto', sans-serif;
+  color: var(--color-text);
 }
 
 .blog-header {
@@ -77,7 +81,7 @@ loadMarkdownFile();
 
 .blog-header h1 {
   font-size: 2.5rem;
-  color: var(--color-heading);
+  color: var(--color-primary);
 }
 
 .blog-header p {
@@ -88,10 +92,10 @@ loadMarkdownFile();
 .blog-post article {
   line-height: 1.6;
   font-size: 1.1rem;
-  color: var(--color-background-mute);
+  color: var(--color-text-muted);
 }
 
-.blog-post h1, .blog-post h2, .blog-post h3, .blog-post h4, .blog-post h5, .blog-post h6 {
+.blog-post h2 {
   margin-top: 30px;
   margin-bottom: 20px;
   color: var(--color-heading);
@@ -122,9 +126,11 @@ loadMarkdownFile();
   text-decoration: none;
 }
 
-.blog-post ul, .blog-post ol {
+.blog-post ul,
+.blog-post ol {
   margin: 15px 0;
   padding-left: 40px;
+  color:var(--color-heading)
 }
 
 .blog-post li {
@@ -134,34 +140,30 @@ loadMarkdownFile();
 .blog-post blockquote {
   margin: 20px 0;
   padding: 10px 20px;
-  background-color: var(--color-background-mute);
+  background-color: var(--color-background-muted);
   border-left: 5px solid var(--color-primary);
   color: var(--color-text-muted);
   font-style: italic;
+  color: var(--color-primary)
 }
 
 .blog-post code {
-  background-color: var(--color-background-mute);
+  background-color: var(--color-background-muted);
   padding: 2px 4px;
   border-radius: 4px;
   font-family: 'Courier New', Courier, monospace;
   font-size: 1rem;
+  color:var(--color-heading)
 }
 
 .blog-post pre {
-  background-color: var(--color-background-mute);
+  background-color: var(--color-background-muted);
   padding: 15px;
   border-radius: 8px;
   overflow-x: auto;
-}
+  font-size: 0.9rem;
+  border: 4px solid var(--color-border); 
 
-.loading-message {
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 20px;
-  text-align: center;
-  font-family: 'Roboto', sans-serif;
-  color: var(--color-text-muted);
 }
 
 @media (max-width: 768px) {

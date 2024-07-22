@@ -1,8 +1,13 @@
 import { createRouter, createWebHistory } from "vue-router";
 
-// Importa los componentes del blog
-import BlogList from './components/BlogList.vue';
-import BlogPost from './components/BlogPost.vue';
+import HomeView from "./views/HomeView.vue";
+import GaleriaTatuajes from "./views/GaleriaTatuajes.vue";
+import StudioInfo from "./views/StudioInfo.vue";
+import ResenasClientes from "./views/ResenasClientes.vue";
+import FormularioContacto from "./views/FormularioContacto.vue";
+import BlogView from "./views/BlogView.vue";
+import BlogPost from "./components/BlogPost.vue";
+import NotFound from "./views/NotFoundView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -10,39 +15,45 @@ const router = createRouter({
     {
       path: "/",
       name: "home",
-      component: () => import("./views/HomeView.vue"),
+      component: HomeView,
     },
     {
       path: "/gallery",
       name: "gallery",
-      component: () => import("./views/GaleriaTatuajes.vue"),
+      component: GaleriaTatuajes,
     },
     {
       path: "/studio",
       name: "studio",
-      component: () => import("./views/StudioInfo.vue"),
+      component: StudioInfo,
     },
     {
       path: "/reviews",
       name: "reviews",
-      component: () => import("./views/ResenasClientes.vue"),
+      component: ResenasClientes,
     },
     {
       path: "/contact",
       name: "contact",
-      component: () => import("./views/FormularioContacto.vue"),
+      component: FormularioContacto,
     },
     // Rutas del blog
     {
       path: "/blog",
       name: "blog",
-      component: import("./views/BlogView.vue"),
+      component: BlogView,
     },
     {
       path: "/blog/:slug",
       name: "blog-post",
-      component: import("./components/BlogPost.vue"),
+      component: BlogPost,
       props: true,
+    },
+    // Ruta para Not Found (404)
+    {
+      path: "/:catchAll(.*)",
+      name: "not-found",
+      component: NotFound,
     },
   ],
   scrollBehavior(to, from, savedPosition) {
