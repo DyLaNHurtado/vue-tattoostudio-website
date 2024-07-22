@@ -196,8 +196,7 @@ export default {
   align-items: center;
   cursor: pointer;
   transition: transform 0.3s ease;
-  border: 2px solid transparent;
-  box-shadow: 0 2px 4px var(--color-border);
+  border: 2px solid var(--color-border);
   user-select: none;
 }
 
@@ -207,8 +206,7 @@ export default {
 }
 
 .category-card:hover {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  border: 2px solid var(--c-indigo);
+  border: 2px solid var(--color-primary-hover);
   transform: translateY(-5px);
 }
 .category-card:hover .icon {

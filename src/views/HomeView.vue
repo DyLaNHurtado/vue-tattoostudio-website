@@ -9,7 +9,7 @@
         <img src="/vite.svg" alt="Logo del estudio">
         <h1>Estudio de Tatuajes en Leganés</h1>
         <h4>Artistas especializados en tatuajes personalizados y únicos.</h4>
-        <router-link to="/contact"><button class="primary-button">¡Quiero tatuarme!</button></router-link>
+        <router-link to="/contact"><button class="fill-btn">¡Quiero tatuarme!</button></router-link>
         <div class="socials">
           <Socials size="2xl"/>
         </div>

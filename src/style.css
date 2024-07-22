@@ -176,7 +176,6 @@ h1 {
   font-size: 2.5rem;
   margin-bottom: 15px;
   font-weight: bold;
-  color: var(--color-heading);
 }
 
 h2 {
@@ -211,4 +210,31 @@ h6 {
 p {
   font-size: 1.2rem;
   line-height: 1.6;
+}
+
+.fill-btn{
+  background-color: var(--color-background-mute);
+  border:0;
+  padding: 10px 50px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  display: block;
+  box-shadow: inset 0 0 0 0 var(--color-primary);
+  text-decoration: none;
+  user-select: none;
+  transition: all .5s;
+  -webkit-transition: all ease .5s;
+  -moz-transition: all ease .8s;
+  transition: all ease .8s;
+  color: var(--color-primary);
+  border-radius: 5px;
+}
+
+.fill-btn:hover {
+  color: white;
+  box-shadow: inset 90vw 0 0 0 var(--color-primary);
+}
+a{
+  text-decoration: none;
 }

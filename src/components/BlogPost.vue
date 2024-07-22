@@ -16,6 +16,7 @@ import { ref, defineProps, computed } from 'vue';
 import { marked } from 'marked';
 import { format } from 'date-fns';
 import Loading from './Loading.vue';
+import { useRouter } from 'vue-router';
 
 const props = defineProps({
   slug: String
@@ -54,6 +55,7 @@ const loadMarkdownFile = async () => {
     console.error('Error al cargar el archivo Markdown:', error);
   }
 };
+loadMarkdownFile();
 
 const goToHome = () => {
  router.push("home")
