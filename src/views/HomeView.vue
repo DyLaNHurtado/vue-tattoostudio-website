@@ -2,6 +2,7 @@
   <div class="home">
     <!-- Header Section -->
     <div class="header">
+      <video src="videos/8138fb6f639e14a94dbe1489c1d833ae.mp4" playsinline="" preload="none" muted="" loop="" style="width:100%;height:100%;display:block;object-fit:cover;object-position:50% 50%;transform:translate(-50%, -50%) rotate(0deg);"></video>
       <video autoplay muted loop id="myVideo">
         <source src="https://video.wixstatic.com/video/2b20fa_bcdb4298d7d44067baf30118eb8cfd83/720p/mp4/file.mp4" type="video/mp4">
       </video>

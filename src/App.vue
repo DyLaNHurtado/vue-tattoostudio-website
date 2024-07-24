@@ -29,7 +29,6 @@ import  Footer  from './components/Footer.vue';
   box-sizing: border-box;
   min-width: 100%;
   min-height: 100%;
-  margin-top: 5em;
   padding: 40px;
   padding-top: 0;
 }
