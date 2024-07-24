@@ -1,9 +1,8 @@
 ---
-title: La Evolución del Arte del Tatuaje: De lo Tribal a lo Moderno
-excerpt: Desde los antiguos tatuajes tribales hasta los impresionantes diseños modernos, descubre cómo el arte del tatuaje ha evolucionado a lo largo de los siglos. Un viaje fascinante a través de la historia de los tatuajes que revela la transformación de esta forma de arte.
+title: "La Evolución del Arte del Tatuaje: De lo Tribal a lo Moderno"
+excerpt: "Desde los antiguos tatuajes tribales hasta los impresionantes diseños modernos, descubre cómo el arte del tatuaje ha evolucionado a lo largo de los siglos. Un viaje fascinante a través de la historia de los tatuajes que revela la transformación de esta forma de arte"
 date: 2024-07-17
 ---
-
 
 # La Evolución del Arte del Tatuaje: De lo Tribal a lo Moderno
 

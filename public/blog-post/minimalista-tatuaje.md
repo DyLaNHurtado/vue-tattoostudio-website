@@ -1,9 +1,8 @@
 ---
-title: Tatuajes Minimalistas: La Belleza de la Sencillez
-excerpt: Menos es más con los tatuajes minimalistas. Explora la elegancia de los diseños simples y cómo estos tatuajes pequeños y sutiles pueden tener un impacto profundo y significativo. Descubre las tendencias y significados detrás de esta estética moderna y minimalista.
+title: "Tatuajes Minimalistas: La Belleza de la Sencillez"
+excerpt: "Menos es más con los tatuajes minimalistas. Explora la elegancia de los diseños simples y cómo estos tatuajes pequeños y sutiles pueden tener un impacto profundo y significativo. Descubre las tendencias y significados detrás de esta estética moderna y minimalista."
 date: 2024-07-17
 ---
-
 
 # Tatuajes Minimalistas: La Belleza de la Sencillez
 

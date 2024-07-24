@@ -1,9 +1,8 @@
 ---
-title: La Psicología del Tatuaje: ¿Por Qué Nos Tatuamos?
-excerpt: ¿Qué motiva a las personas a hacerse tatuajes? Desde la expresión personal hasta la conmemoración y la pertenencia, explora las razones psicológicas detrás de la decisión de tatuarse. Entiende cómo los tatuajes pueden ser un reflejo profundo de nuestra identidad y experiencias.
+title: "La Psicología del Tatuaje: ¿Por Qué Nos Tatuamos?"
+excerpt: "¿Qué motiva a las personas a hacerse tatuajes? Desde la expresión personal hasta la conmemoración y la pertenencia, explora las razones psicológicas detrás de la decisión de tatuarse. Entiende cómo los tatuajes pueden ser un reflejo profundo de nuestra identidad y experiencias."
 date: 2024-07-17
 ---
-
 
 # La Psicología del Tatuaje: ¿Por Qué Nos Tatuamos?
 

@@ -1,9 +1,8 @@
 ---
-title: La Ciencia de los Tatuajes: Cómo la Tinta se Convierta en Arte Permanente
-excerpt: Descubre el fascinante proceso científico que convierte la tinta en arte permanente en tu piel. Desde la interacción de la tinta con la dermis hasta la respuesta inmunológica del cuerpo, explora cómo la ciencia y el arte se combinan en el mundo del tatuaje.
+title: "La Ciencia de los Tatuajes: Cómo la Tinta se Convierta en Arte Permanente"
+excerpt: "Descubre el fascinante proceso científico que convierte la tinta en arte permanente en tu piel. Desde la interacción de la tinta con la dermis hasta la respuesta inmunológica del cuerpo, explora cómo la ciencia y el arte se combinan en el mundo del tatuaje."
 date: 2024-07-17
 ---
-
 
 # La Ciencia de los Tatuajes: Cómo la Tinta se Convierta en Arte Permanente
 
