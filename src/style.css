@@ -134,7 +134,7 @@ body {
   justify-content: center;
   color: var(--color-text);
   text-align: center;
-  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 79px 70px rgba(0, 0, 0, 0.5);
   padding: 100px 0;
   color: var(--c-white);
 }

@@ -99,12 +99,14 @@ export default {
   justify-content: center;
   align-items: center;
   padding: 10px 15px;
-  background-color: rgba(90, 90, 90, 0.9);
   color: var(--color-heading);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: all 0.3s;
+  backdrop-filter: blur(10px);
+
   width: 100%;
   z-index: 20;
+
 }
 
 .nav-links {

@@ -1,6 +1,26 @@
 <template>
   <div class="home">
     <!-- Header Section -->
+
+    <div class="hero">
+      <div class="hero-left">
+        <h1 style="font-size: 8em;">Delaitto tattoo</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, dolores!</p>
+
+        <div>
+          <button class="transparent-button">Descubre más aquí</button>
+          <button class="transparent-button">Descubre más aquí</button>
+    </div>
+ 
+      </div>
+      <div class="hero-right">
+      
+        <img src="/vue.svg" alt="">
+
+   
+      </div>
+    </div>
+
     <div class="header">
       <video src="videos/8138fb6f639e14a94dbe1489c1d833ae.mp4" playsinline="" preload="none" muted="" loop="" style="width:100%;height:100%;display:block;object-fit:cover;object-position:50% 50%;transform:translate(-50%, -50%) rotate(0deg);"></video>
       <video autoplay muted loop id="myVideo">
@@ -120,6 +140,51 @@ export default {
   gap: 40px;
   width: 100%;
   padding: 20px;
+}
+
+.hero{
+  height: 90vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-right{
+width: 100%;
+height:100%;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: end
+}
+
+.hero-left{
+width: 100%;
+height: 100%;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+gap: 45px;
+  padding: 20px;
+
+}
+.hero-left img{
+  height: 220px;
+  width: 220px;
+}
+
+.hero-right img{
+  height: 220px;
+  width: 220px;
+}
+
+.hero-left p{
+  text-align: center;
 }
 
 /* Estilos de la sección Header */
