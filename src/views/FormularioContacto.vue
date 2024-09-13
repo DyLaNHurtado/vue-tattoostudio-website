@@ -244,7 +244,9 @@ export default {
 
 <style scoped>
 .parallax {
-  background-image: url("/vite.svg");
+  background: linear-gradient(to right, #3b82f6, #8b5cf6, #ec4899);
+  padding: 5rem 0;
+  text-align: center;
 }
 
 .info-container {

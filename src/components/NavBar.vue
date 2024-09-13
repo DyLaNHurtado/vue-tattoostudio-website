@@ -76,7 +76,7 @@ export default {
 <style scoped>
 /* Estilos generales para la barra de navegación */
 .app-header {
-  background-color: rgba(31, 32, 34, 0.8);
+  background-color: rgba(31, 32, 34, 0.2);
   backdrop-filter: blur(2px);
   position: fixed;
   top: 0;

@@ -1,10 +1,9 @@
 <template>
   <div class="parallax">
-        <h1>Galeria</h1>
-        <p class="subheading">Descubre algo nuevo, disfruta del arte</p>
+        <h1>Galeria de Tatuajes</h1>
     </div>
   <div class="gallery-container">
-    <div class="category-section">
+  <!--   <div class="category-section">
       <h3>¿Qué quieres ver hoy?</h3>
       <div class="category-cards">
         <div
@@ -24,18 +23,32 @@
         </div>
       </div>
     </div>
-    <!-- Galería de imágenes -->
+    Galería de imágenes 
     <div class="gallery-grid">
       <div class="gallery-item" v-for="(image, index) in filteredImages" :key="index" @click="openLightbox(index)">
         <img :src="image.url" :alt="'Imagen ' + index" class="gallery-image">
       </div>
-    </div>
+    </div>-->
 
-    <!-- Lightbox -->
-    <LightBox :show="lightboxShow" :image="lightboxImage" :images="relatedImages" @close="closeLightbox" />
+    <main class="container">
+      <h1 class="gallery-title">Galería de Tatuajes</h1>
+      <div class="gallery-grid">
+        <div
+          v-for="image in images"
+          :key="image.id"
+          class="gallery-item"
+          @click="selectImage(image)"
+        >
+          <img :src="image.src" :alt="image.alt" class="gallery-image" />
+        </div>
+      </div>
+    </main>
   </div>
+  <teleport to="body">
+    <LightBox :show="lightboxShow" :image="selectedImage" :images="images" @close="closeLightbox" />
+  </teleport>
 </template>
-
+<!-- 
 <script>
 import { GalleryCategories } from '../components/Enums';
 import LightBox from '../components/LightBox.vue';
@@ -334,5 +347,141 @@ export default {
 .tattoo-data {
   margin-top: 20px;
   text-align: center;
+}
+</style> -->
+
+<script>
+import LightBox from '../components/LightBox.vue';
+export default {
+  data() {
+    return {
+      images: [
+        { id: 1, src: '/placeholder.svg?height=400&width=400&text=Tattoo+1', alt: 'Tattoo 1' },
+        { id: 2, src: '/placeholder.svg?height=400&width=400&text=Tattoo+2', alt: 'Tattoo 2' },
+        { id: 3, src: '/placeholder.svg?height=400&width=400&text=Tattoo+3', alt: 'Tattoo 3' },
+        { id: 4, src: '/placeholder.svg?height=400&width=400&text=Tattoo+4', alt: 'Tattoo 4' },
+        { id: 5, src: '/placeholder.svg?height=400&width=400&text=Tattoo+5', alt: 'Tattoo 5' },
+        { id: 6, src: '/placeholder.svg?height=400&width=400&text=Tattoo+6', alt: 'Tattoo 6' },
+        { id: 7, src: '/placeholder.svg?height=400&width=400&text=Tattoo+7', alt: 'Tattoo 7' },
+        { id: 8, src: '/placeholder.svg?height=400&width=400&text=Tattoo+8', alt: 'Tattoo 8' },
+      ],
+      selectedImage: null,
+      lightboxShow: false,
+    };
+  },
+  components: {
+    LightBox,
+  },
+  methods: {
+    selectImage(image) {
+      this.selectedImage = image;
+    },
+    closeImage() {
+      this.selectedImage = null;
+    },
+    closeLightbox() {
+      this.lightboxShow = false;
+      this.lightboxImage = null;
+      this.removeEscKeyListener();
+    },
+    addEscKeyListener() {
+      if (!this.escKeyListenerAdded) {
+        window.addEventListener('keyup', this.closeOnEsc);
+        this.escKeyListenerAdded = true;
+      }
+    },
+    removeEscKeyListener() {
+      if (this.escKeyListenerAdded) {
+        window.removeEventListener('keyup', this.closeOnEsc);
+        this.escKeyListenerAdded = false;
+      }
+    },
+    closeOnEsc(event) {
+      if (event.key === 'Escape') {
+        this.closeLightbox();
+      }
+    },
+  },
+};
+</script>
+
+<style scoped>
+/* Gallery styles */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.gallery-title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.gallery-item {
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
+  min-height: 256px;
+  min-width: 256px;
+  background-color: #999;
+}
+
+.gallery-item:hover {
+  transform: scale(1.05);
+}
+
+.gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.gallery-image:hover {
+  transform: scale(1.05);
+}
+
+/* Modal styles */
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+}
+
+.modal-image {
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 10px;
+}
+
+.close-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  opacity: 80;
 }
 </style>
