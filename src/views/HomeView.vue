@@ -3,25 +3,15 @@
     <!-- Header Section -->
 
     <div class="hero">
-      <div class="hero-left">
-        <h1 style="font-size: 8em;">Delaitto tattoo</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, dolores!</p>
+        <img class="logo" src="/delaitto.png" loading="lazy" />
+        <p class="lema">El rincón donde el arte se fusiona con tu cuerpo</p>
 
         <div>
-          <button class="transparent-button">Descubre más aquí</button>
-          <button class="transparent-button">Descubre más aquí</button>
-    </div>
- 
-      </div>
-      <div class="hero-right">
-      
-        <img src="/vue.svg" alt="">
-
-   
+          <router-link to="/contact"><button class="fill-btn">¡ Quiero tatuarme !</button></router-link>
       </div>
     </div>
 
-    <div class="header">
+    <!-- <div class="header">
       <video src="videos/8138fb6f639e14a94dbe1489c1d833ae.mp4" playsinline="" preload="none" muted="" loop="" style="width:100%;height:100%;display:block;object-fit:cover;object-position:50% 50%;transform:translate(-50%, -50%) rotate(0deg);"></video>
       <video autoplay muted loop id="myVideo">
         <source src="https://video.wixstatic.com/video/2b20fa_bcdb4298d7d44067baf30118eb8cfd83/720p/mp4/file.mp4" type="video/mp4">
@@ -35,7 +25,7 @@
           <Socials size="2xl"/>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- About Us Section -->
     <div class="about-us">
@@ -143,48 +133,15 @@ export default {
 }
 
 .hero{
-  height: 90vh;
+  height: 95vh;
   width: 100%;
   overflow: hidden;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-}
-
-.hero-right{
-width: 100%;
-height:100%;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: end
-}
-
-.hero-left{
-width: 100%;
-height: 100%;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-gap: 45px;
-  padding: 20px;
-
-}
-.hero-left img{
-  height: 220px;
-  width: 220px;
-}
-
-.hero-right img{
-  height: 220px;
-  width: 220px;
-}
-
-.hero-left p{
-  text-align: center;
+  gap: 40px;
 }
 
 /* Estilos de la sección Header */
@@ -199,6 +156,7 @@ gap: 45px;
   position: absolute;
   top: 0;
   left: 0;
+  right: 0;
   min-width: 100%;
   min-height: 100%;
   z-index: -1;
@@ -396,5 +354,19 @@ gap: 45px;
 
 .green {
   color: #aae68e;
+}
+
+.lema{
+  font-size: 1.5em;
+  text-align: center;
+  color: var(--color-heading);
+  margin-bottom: 20px;
+}
+.logo{
+  width:100%;
+  max-width: 1100px;
+  filter: drop-shadow(.5px .5px 2px #e64545);
+  -webkit-filter: drop-shadow(.5px 2px 3px #e64545);
+
 }
 </style>

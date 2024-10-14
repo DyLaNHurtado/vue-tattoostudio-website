@@ -20,8 +20,10 @@
   --c-text-dark-2: rgba(235, 235, 235, 0.64);
 
   --c-text-error: #ff5733;
-  --c-primary: #71b68d; /* Tono rojo */
-  --c-primary-hover: #91c6b1; /* Tono rojo más claro */
+  --c-primary: #e07171; /* Tono rojo */
+  --c-primary-hover: #f5a6a6; /* Tono rojo más claro */
+  --c-secondary: #e9b035; /* Tono rojo más claro */
+  --c-secondary-hover: #e0bd71; /* Tono rojo más claro */
 
   --color-background: var(--c-white);
   --color-background-soft: var(--c-white-soft);
@@ -215,7 +217,7 @@ p {
 .fill-btn{
   background-color: var(--color-background-mute);
   border:0;
-  padding: 10px 50px;
+  padding: 20px 70px;
   cursor: pointer;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -224,6 +226,8 @@ p {
   text-decoration: none;
   user-select: none;
   transition: all .5s;
+  font-size: 16px;
+  font-weight: bold;
   -webkit-transition: all ease .5s;
   -moz-transition: all ease .8s;
   transition: all ease .8s;

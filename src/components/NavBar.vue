@@ -1,7 +1,6 @@
 <template>
   <header class="app-header">
     <nav>
-      <img class="desktop-image" src="path-to-your-image.jpg" alt="Logo" />
       <ul class="nav-links desktop">
         <router-link
           v-for="item in navItems"
@@ -92,7 +91,7 @@ nav {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 ul {
@@ -107,15 +106,9 @@ ul {
 .desktop .nav-link-item {
   padding: 15px 20px;
   gap: 16px;
+  font-weight: bold;
+  user-select: none;
 }
-
-.desktop-image{
-    display: inline-block;
-    width: 150px;
-    height: 100%;
-    transition: width 0.3s;
-
-  }
 
 .desktop .nav-link {
   text-decoration: none;
@@ -164,6 +157,8 @@ ul {
   margin-top: 0.25rem;
   display: flex;
   flex-direction: column;
+  font-weight: bold;
+  user-select: none;
 }
 
 .mobile .nav-link:hover {
@@ -173,9 +168,7 @@ ul {
 
 /* Responsive behavior */
 @media (max-width: 768px) {
-  .desktop-image{
-    display: none;
-  }
+
   .desktop {
     display: none;
   }

@@ -429,25 +429,25 @@ export default {
   cursor: pointer;
   overflow: hidden;
   border-radius: 10px;
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.2s ease-in-out;
   min-height: 256px;
   min-width: 256px;
   background-color: #999;
 }
 
 .gallery-item:hover {
-  transform: scale(1.05);
+  transform: scale(1.10);
 }
 
 .gallery-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  transition: transform 0.2s ease;
 }
 
 .gallery-image:hover {
-  transform: scale(1.05);
+  transform: scale(1.10);
 }
 
 /* Modal styles */

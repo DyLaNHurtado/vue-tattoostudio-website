@@ -31,6 +31,8 @@ import  Footer  from './components/Footer.vue';
   min-height: 100%;
   padding: 40px;
   padding-top: 0;
+  background: linear-gradient(180deg, rgb(54, 21, 21) 0%, var(--color-background) 23%);
+
 }
 
 @media (max-width: 768px) {
