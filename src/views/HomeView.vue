@@ -31,7 +31,7 @@
     <div class="about-us">
       <h2>Sobre Nosotros</h2>
       <p>Somos un estudio de tatuajes ubicado en <span class="primary-text">Leganés</span>, comprometidos con la calidad, la creatividad y la satisfacción de nuestros clientes. Nuestros artistas tienen años de experiencia en crear <span class="primary-text">diseños personalizados</span> que reflejan la individualidad de <span class="primary-text">cada persona</span>.</p>
-      <router-link to="/about" class="cta-button">
+      <router-link to="/studio" class="cta-button">
         <button class="transparent-button">Descubre más aquí</button>
       </router-link>
     </div>
@@ -92,32 +92,27 @@
       </div>
 
       <div class="social-feed">
-        <!-- SnapWidget -->
-        <iframe src="https://snapwidget.com/embed/1072829" class="snapwidget-widget" allowtransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:100%;" title="Posts from Instagram"></iframe>
+
       </div>
     </div>
 
     <!-- Newsletter Section -->
-    <Newsletter />
 
     <!-- Contact Us Section -->
-    <div class="contact-us">
-      <h2>Contacta con Nosotros</h2>
-      <p>¿Tienes alguna <span class="primary-text">pregunta</span> o deseas reservar una consulta? ¡Estamos aquí para <span class="primary-text"> ayudarte</span>!</p>
-      <router-link to="/contact" ><button class="primary-button">Contactar</button></router-link>
-      <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3041.529489911896!2d-3.7533890000000003!3d40.330598699999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4189a7929c6c29%3A0x6940283e1e93409a!2sDelaitto%20Tattoo%20-%20Estudio%20de%20tatuajes!5e0!3m2!1ses!2ses!4v1718094523661!5m2!1ses!2ses" width="100%" height="250" style="border:0;" allowfullscreen loading="lazy" frameborder="0" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
+     <LocationContact/>
   </div>
 </template>
 
 <script>
 import Socials from '../components/Socials.vue';
 import Newsletter from '../components/Newsletter.vue';
+import LocationContact from '../components/LocationContact.vue'
 
 export default {
   components: {
     Socials,
     Newsletter,
+    LocationContact,
   },
 };
 </script>

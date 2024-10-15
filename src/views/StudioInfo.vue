@@ -91,8 +91,6 @@
   margin-bottom: 20px;
 }
 
-
-
 .info-container {
   width: 100%;
   max-width: 1200px;
@@ -101,9 +99,6 @@
   padding: 50px 20px;
   border-top: 3px solid var(--color-border);
 }
-
-
-
 
 .img-container {
   width: 100%;
@@ -128,15 +123,6 @@
   height: auto;
 }
 
-.map {
-  width: 100%;
-  height: 250px;
-  margin-top: 20px;
-}
-
-.link {
-  text-decoration: none;
-}
 
 .primary-button {
   background-color: var(--color-primary);

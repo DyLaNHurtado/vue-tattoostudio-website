@@ -4,15 +4,7 @@
       <span class="lightbox-close" @click="close">&times;</span>
       <div class="lightbox-content">
         <div class="lightbox-image-container">
-          <img :src="currentImage?.url" alt="Lightbox Image" class="lightbox-image" />
-        </div>
-        <div class="related-images" v-if="relatedImages.length > 0">
-          <h2>Más como esto:</h2>
-          <div class="related-images-grid">
-            <div v-for="(relatedImg, index) in relatedImages" :key="index" class="related-image">
-              <img :src="relatedImg.url" :alt="'Imagen ' + (index + 1)" class="related-image-item" @click="selectImage(relatedImg)">
-            </div>
-          </div>
+          <img :src="currentImage?.url" :alt="currentImage?.alt" class="lightbox-image" />
         </div>
       </div>
     </div>
@@ -40,17 +32,9 @@ export default {
       currentImage: null
     };
   },
-  computed: {
-    relatedImages() {
-      console.log(this.currentImage);
-      if (!this.currentImage) return [];
-      return this.images.filter(img => img.url !== this.currentImage.url && 
-      (img.tags.some(tag => this.currentImage.tags.includes(tag)) || img.category === this.currentImage.category));
-    }
-  },
   watch: {
     show(newVal) {
-      console.log("show changed:", newVal); // Log para verificar cambios
+      console.log("show changed:", newVal);
       if (newVal) {
         this.enableScrollLock();
       } else {
@@ -78,7 +62,6 @@ export default {
     },
     selectImage(selectedImage) {
       this.currentImage = selectedImage;
-      // Puedes ajustar cualquier lógica adicional aquí, como cambiar el texto alternativo
     },
   },
   mounted() {
@@ -107,12 +90,9 @@ export default {
 
 .lightbox-container {
   position: relative;
-  width: 100%;
-  max-width: 90vw;
-  max-height: 80vh;
-  background-color: var(--color-background);
+  width: 90vw;
+  height: 80vh;
   border-radius: 12px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 }
 
 .lightbox-content {
@@ -147,6 +127,7 @@ export default {
 
 .lightbox-image-container {
   width: 100%;
+  height: 100%;
   max-height: 70vh;
   overflow: hidden;
   border-radius: 12px;
@@ -162,7 +143,7 @@ export default {
   min-width: 40vw;
   max-width: 60vw;
   max-height: 50vh;
-  object-fit: contain; /* Escalar imagen sin deformar */
+  object-fit: contain;
 }
 
 .related-images {

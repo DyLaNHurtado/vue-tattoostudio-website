@@ -1,7 +1,4 @@
 <template>
-  <div class="parallax">
-        <h1>Galeria de Tatuajes</h1>
-    </div>
   <div class="gallery-container">
   <!--   <div class="category-section">
       <h3>¿Qué quieres ver hoy?</h3>
@@ -39,7 +36,7 @@
           class="gallery-item"
           @click="selectImage(image)"
         >
-          <img :src="image.src" :alt="image.alt" class="gallery-image" />
+          <img :src="image.url" :alt="image.alt" class="gallery-image" />
         </div>
       </div>
     </main>
@@ -356,14 +353,14 @@ export default {
   data() {
     return {
       images: [
-        { id: 1, src: '/placeholder.svg?height=400&width=400&text=Tattoo+1', alt: 'Tattoo 1' },
-        { id: 2, src: '/placeholder.svg?height=400&width=400&text=Tattoo+2', alt: 'Tattoo 2' },
-        { id: 3, src: '/placeholder.svg?height=400&width=400&text=Tattoo+3', alt: 'Tattoo 3' },
-        { id: 4, src: '/placeholder.svg?height=400&width=400&text=Tattoo+4', alt: 'Tattoo 4' },
-        { id: 5, src: '/placeholder.svg?height=400&width=400&text=Tattoo+5', alt: 'Tattoo 5' },
-        { id: 6, src: '/placeholder.svg?height=400&width=400&text=Tattoo+6', alt: 'Tattoo 6' },
-        { id: 7, src: '/placeholder.svg?height=400&width=400&text=Tattoo+7', alt: 'Tattoo 7' },
-        { id: 8, src: '/placeholder.svg?height=400&width=400&text=Tattoo+8', alt: 'Tattoo 8' },
+        { id: 1, url: '/vue.svg', alt: 'Tattoo 1' },
+        { id: 2, url: '/placeholder.svg?height=400&width=400&text=Tattoo+2', alt: 'Tattoo 2' },
+        { id: 3, url: '/placeholder.svg?height=400&width=400&text=Tattoo+3', alt: 'Tattoo 3' },
+        { id: 4, url: '/placeholder.svg?height=400&width=400&text=Tattoo+4', alt: 'Tattoo 4' },
+        { id: 5, url: '/placeholder.svg?height=400&width=400&text=Tattoo+5', alt: 'Tattoo 5' },
+        { id: 6, url: '/placeholder.svg?height=400&width=400&text=Tattoo+6', alt: 'Tattoo 6' },
+        { id: 7, url: '/placeholder.svg?height=400&width=400&text=Tattoo+7', alt: 'Tattoo 7' },
+        { id: 8, url: '/placeholder.svg?height=400&width=400&text=Tattoo+8', alt: 'Tattoo 8' },
       ],
       selectedImage: null,
       lightboxShow: false,
@@ -374,7 +371,9 @@ export default {
   },
   methods: {
     selectImage(image) {
+      this.lightboxShow = true;
       this.selectedImage = image;
+      this.addEscKeyListener();
     },
     closeImage() {
       this.selectedImage = null;
@@ -416,7 +415,7 @@ export default {
 .gallery-title {
   font-size: 2.5rem;
   text-align: center;
-  margin-bottom: 20px;
+  margin: 70px 0;
 }
 
 .gallery-grid {
@@ -432,7 +431,7 @@ export default {
   transition: transform 0.2s ease-in-out;
   min-height: 256px;
   min-width: 256px;
-  background-color: #999;
+  box-shadow: 0 0 4px rgba(114, 114, 114, 0.4);
 }
 
 .gallery-item:hover {
