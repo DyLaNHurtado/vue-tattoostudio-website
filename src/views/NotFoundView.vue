@@ -1,8 +1,8 @@
 <template>
     <div class="not-found-view">
         <h1> Oops! Sitio no encontrado... </h1>
-      <NotFound  class="not-found" label="En ocasiones... veo fantasmas..." buttonLabel="Volver al Inicio" @backFromNotFound="navigateHome" />
-        <h3> # 404 Not Found # </h3>
+      <NotFound  class="not-found" @backFromNotFound="navigateHome" />
+        <h3> 404 Not Found </h3>
     </div>
   </template>
   
@@ -36,6 +36,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+    color: #e2e8f0;
+    padding: 2rem;
+    text-align: center;
   }
   .not-found{
     max-height: 30vh;
@@ -43,4 +49,3 @@
   
 
   </style>
-  

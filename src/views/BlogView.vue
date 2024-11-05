@@ -1,10 +1,14 @@
 <template>
-  <div class="container">
-    <h1 class="blog-title">Blog de Delaitto Tattoo</h1>
-    <SearchAndFilter @update:filters="updateFilters" />
-    <div class="blog-view">
-      <div class="blog-list">
-        <BlogList :filteredPosts="filteredPosts" />
+  <div class="blog-container">
+    <div class="parallax">
+      <h1 class="blog-title">Blog de Delaitto Tattoo</h1>
+    </div>
+    <div class="content-wrapper">
+      <SearchAndFilter @update:filters="updateFilters" />
+      <div class="blog-view">
+        <div class="blog-list">
+          <BlogList :filteredPosts="filteredPosts" />
+        </div>
       </div>
     </div>
   </div>
@@ -52,44 +56,43 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.blog-title {
-  font-size: 2.5rem;
-  text-align: center;
-  margin: 70px 0;
-}
-
-.parallax {
-  background-image: url("/vite.svg");
-}
-
-.parallax h1 {
-  font-size: 3rem;
-  margin-bottom: 10px;
-}
-
-
-.blog-view {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  background-color: var(--color-background);
-  color: var(--color-text);
-  width: 100%;
-  border-radius: 8px;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+.blog-container {
+  background-color: #1a202c;
+  color: #e2e8f0;
   min-height: 100vh;
 }
 
-.blog-header {
+.parallax {
+  background-image: url("/placeholder.svg?height=400&width=1200&text=Delaitto+Tattoo+Blog");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blog-title {
+  font-size: 3rem;
+  font-weight: bold;
   text-align: center;
-  margin-bottom: 40px;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.blog-view {
+  background-color: #2d3748;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
 }
 
 .blog-list {
@@ -98,13 +101,20 @@ export default {
   gap: 30px;
   justify-content: center;
   width: 100%;
-  max-width: 1200px;
 }
 
 @media (max-width: 768px) {
   .blog-list {
     grid-template-columns: 1fr;
     gap: 20px;
+  }
+
+  .parallax {
+    height: 200px;
+  }
+
+  .blog-title {
+    font-size: 2.5rem;
   }
 }
 </style>

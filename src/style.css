@@ -240,6 +240,28 @@ p {
   color: white;
   box-shadow: inset 90vw 0 0 0 var(--color-primary);
 }
+
+.back-button {
+  background-color: #f56565;
+  color: #1a202c;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.back-button:hover {
+  background-color: #e53e3e;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
 a{
   text-decoration: none;
 }
