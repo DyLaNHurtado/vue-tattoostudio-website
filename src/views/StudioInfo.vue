@@ -12,17 +12,17 @@
         <h2>Nuestros Valores y Prioridades</h2>
         <div class="values-grid">
           <div class="value-card">
-            <img src="/icons/hygiene.svg" alt="Icono de higiene" />
+            <img src="/vite.svg" alt="Icono de higiene" />
             <h3>Higiene y Seguridad</h3>
             <p>Compromiso inquebrantable con los más altos estándares de limpieza y seguridad.</p>
           </div>
           <div class="value-card">
-            <img src="/icons/expertise.svg" alt="Icono de especialización" />
+            <img src="/vue.svg" alt="Icono de especialización" />
             <h3>Especialización</h3>
             <p>Cada artista domina un estilo único, ofreciendo una amplia gama de posibilidades creativas.</p>
           </div>
           <div class="value-card">
-            <img src="/icons/creativity.svg" alt="Icono de creatividad" />
+            <img src="/vite.svg" alt="Icono de creatividad" />
             <h3>Creatividad Sin Límites</h3>
             <p>Transformamos tus ideas en obras de arte únicas y personales.</p>
           </div>
