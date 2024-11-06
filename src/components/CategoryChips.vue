@@ -23,10 +23,15 @@ export default {
       default: 'Todos',
     },
   },
-  methods: {
-    selectCategory(category) {
-      this.$emit('update:category', category);
-    },
+  emits: ['update:category'],
+  setup(props, { emit }) {
+    const selectCategory = (category) => {
+      emit('update:category', category);
+    };
+
+    return {
+      selectCategory,
+    };
   },
 };
 </script>
@@ -40,23 +45,29 @@ export default {
 }
 
 .chip {
-  padding: 5px 15px;
+  padding: 8px 16px;
   border-radius: 50px;
-  border: 1px solid #4a5568;
-  background-color: #2d3748;
-  color: #e2e8f0;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-background-mute);
+  color: var(--color-text);
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   font-size: 0.875rem;
+  font-weight: 500;
 }
 
 .chip:hover {
-  background-color: #4a5568;
+  background-color: var(--color-background-soft);
+  transform: translateY(-2px);
 }
 
 .chip-active {
-  background-color: #f56565;
-  color: #1a202c;
-  border-color: #f56565;
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+  border-color: var(--color-primary);
+}
+
+.chip-active:hover {
+  background-color: var(--color-primary-dark);
 }
 </style>

@@ -35,9 +35,9 @@
         <h2>Nuestro Espacio Creativo</h2>
         <p>Un santuario para el <span class="highlight">arte del tatuaje</span> en Leganés</p>
         <div class="image-gallery">
-          <img src="/studio/space1.webp" alt="Recepción del estudio Delaitto Tattoo" />
-          <img src="/studio/space2.webp" alt="Área de trabajo principal" />
-          <img src="/studio/space3.webp" alt="Sala de diseño y consulta" />
+          <img src="vue.svg" alt="Recepción del estudio Delaitto Tattoo" />
+          <img src="vue.svg" alt="Área de trabajo principal" />
+          <img src="vue.svg" alt="Sala de diseño y consulta" />
         </div>
       </div>
     </section>
@@ -45,7 +45,7 @@
     <section class="artists">
       <div class="container">
         <h2>Nuestros Artistas</h2>
-        <p>Talento local de Leganés con reconocimiento internacional</p>
+        <p>Nuestros talentos locales de Leganés</p>
         <div class="artist-cards">
           <div class="artist-card" v-for="artist in artists" :key="artist.name">
             <img :src="artist.image" :alt="artist.name" />
@@ -107,9 +107,9 @@ export default {
   data() {
     return {
       artists: [
-        { name: 'María González', specialty: 'Realismo', image: '/artists/maria.webp' },
-        { name: 'Carlos Rodríguez', specialty: 'Neo-tradicional', image: '/artists/carlos.webp' },
-        { name: 'Laura Sánchez', specialty: 'Acuarela', image: '/artists/laura.webp' },
+        { name: 'María González', specialty: 'Realismo', image: 'vue.svg' },
+        { name: 'Carlos Rodríguez', specialty: 'Neo-tradicional', image: 'vue.svg' },
+        { name: 'Laura Sánchez', specialty: 'Acuarela', image: 'vue.svg' },
       ],
       processSteps: [
         { title: 'Consulta', description: 'Discutimos tu idea y diseño deseado.' },
@@ -157,7 +157,7 @@ export default {
 }
 
 .hero {
-  background-image: url('/studio/hero-bg.webp');
+  background-image: url('vite.svg');
 }
 
 .hero-content {

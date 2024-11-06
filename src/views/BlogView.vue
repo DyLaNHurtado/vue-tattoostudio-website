@@ -5,16 +5,43 @@
     </div>
     <div class="content-wrapper">
       <SearchAndFilter @update:filters="updateFilters" />
-      <div class="blog-view">
-        <div class="blog-list">
-          <BlogList :filteredPosts="filteredPosts" />
+      <transition name="fade" mode="out-in">
+        <div v-if="loading" class="loading-spinner">
+          <font-awesome-icon :icon="['fas', 'spinner']" spin size="3x" />
         </div>
-      </div>
+        <div v-else-if="error" class="error-message">
+          <font-awesome-icon :icon="['fas', 'exclamation-circle']" size="3x" />
+          <p>{{ error }}</p>
+        </div>
+        <div v-else class="blog-view">
+          <transition-group name="list" tag="div" class="blog-list">
+            <BlogList :filteredPosts="paginatedPosts" :key="rerenderKey" />
+          </transition-group>
+          <div v-if="filteredPosts.length > postsPerPage" class="pagination">
+            <button 
+              :disabled="currentPage === 1" 
+              @click="changePage(-1)" 
+              class="pagination-button"
+            >
+              <font-awesome-icon :icon="['fas', 'chevron-left']" />
+            </button>
+            <span class="page-info">{{ currentPage }} / {{ totalPages }}</span>
+            <button 
+              :disabled="currentPage === totalPages" 
+              @click="changePage(1)" 
+              class="pagination-button"
+            >
+              <font-awesome-icon :icon="['fas', 'chevron-right']" />
+            </button>
+          </div>
+        </div>
+      </transition>
     </div>
   </div>
 </template>
 
 <script>
+import { ref, computed, onMounted, watch } from 'vue';
 import BlogList from '../components/BlogList.vue';
 import SearchAndFilter from '../components/SearchAndFilter.vue';
 import getAllPosts from '../blog/posts';
@@ -24,41 +51,81 @@ export default {
     BlogList,
     SearchAndFilter,
   },
-  data() {
-    return {
-      posts: [],
-      filteredPosts: [],
-      filters: {
-        searchTerm: '',
-        selectedCategory: 'Todos',
-      },
+  setup() {
+    const posts = ref([]);
+    const filteredPosts = ref([]);
+    const loading = ref(true);
+    const error = ref(null);
+    const filters = ref({
+      searchTerm: '',
+      selectedCategory: 'Todos',
+    });
+    const currentPage = ref(1);
+    const postsPerPage = 6;
+    const rerenderKey = ref(0);
+
+    const totalPages = computed(() => Math.ceil(filteredPosts.value.length / postsPerPage));
+
+    const paginatedPosts = computed(() => {
+      const start = (currentPage.value - 1) * postsPerPage;
+      const end = start + postsPerPage;
+      return filteredPosts.value.slice(start, end);
+    });
+
+    const updateFilters = (newFilters) => {
+      filters.value = newFilters;
+      currentPage.value = 1;
+      applyFilters();
     };
-  },
-  created() {
-    this.posts = getAllPosts();
-    this.filteredPosts = this.posts;
-  },
-  methods: {
-    updateFilters(filters) {
-      this.filters = filters;
-      this.applyFilters();
-    },
-    applyFilters() {
-      const { searchTerm, selectedCategory } = this.filters;
-      this.filteredPosts = this.posts.filter((post) => {
-        const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) || post.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
+
+    const applyFilters = () => {
+      const { searchTerm, selectedCategory } = filters.value;
+      filteredPosts.value = posts.value.filter((post) => {
+        const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                              post.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
         const matchesCategory = selectedCategory === 'Todos' || post.category === selectedCategory;
         return matchesSearch && matchesCategory;
       });
-    },
+      rerenderKey.value += 1;
+    };
+
+    const changePage = (direction) => {
+      currentPage.value += direction;
+    };
+
+    onMounted(async () => {
+      try {
+        posts.value = await getAllPosts();
+        filteredPosts.value = posts.value;
+      } catch (e) {
+        error.value = "Error al cargar los artículos. Por favor, inténtalo de nuevo más tarde.";
+      } finally {
+        loading.value = false;
+      }
+    });
+
+    watch(filters, applyFilters);
+
+    return {
+      filteredPosts,
+      paginatedPosts,
+      loading,
+      error,
+      updateFilters,
+      currentPage,
+      totalPages,
+      changePage,
+      postsPerPage,
+      rerenderKey,
+    };
   },
 };
 </script>
 
 <style scoped>
 .blog-container {
-  background-color: #1a202c;
-  color: #e2e8f0;
+  background-color: var(--color-background);
+  color: var(--color-text);
   min-height: 100vh;
 }
 
@@ -72,14 +139,27 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+}
+
+.parallax::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(26, 32, 44, 0.5), rgba(26, 32, 44, 0.8));
 }
 
 .blog-title {
   font-size: 3rem;
   font-weight: bold;
   text-align: center;
-  color: #ffffff;
+  color: var(--color-text);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 1;
 }
 
 .content-wrapper {
@@ -89,7 +169,7 @@ export default {
 }
 
 .blog-view {
-  background-color: #2d3748;
+  background-color: var(--color-background-soft);
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 20px;
@@ -101,6 +181,71 @@ export default {
   gap: 30px;
   justify-content: center;
   width: 100%;
+}
+
+.loading-spinner, .error-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  color: var(--color-primary);
+}
+
+.error-message p {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.pagination-button {
+  background-color: var(--color-background-mute);
+  border: none;
+  color: var(--color-text);
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pagination-button:hover:not(:disabled) {
+  background-color: var(--color-primary);
+}
+
+.pagination-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.page-info {
+  font-size: 1rem;
+  margin: 0 1rem;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
+
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 @media (max-width: 768px) {

@@ -1,5 +1,6 @@
 <template>
   <div class="search-bar">
+    <font-awesome-icon :icon="['fas', 'search']" class="search-icon" />
     <input
       type="text"
       v-model="searchTerm"
@@ -11,47 +12,65 @@
 </template>
 
 <script>
+import { ref, watch } from 'vue';
+
 export default {
   props: {
-    value: String,
+    modelValue: String,
   },
-  data() {
-    return {
-      searchTerm: this.value || '',
+  emits: ['update:modelValue'],
+  setup(props, { emit }) {
+    const searchTerm = ref(props.modelValue || '');
+
+    const handleInput = () => {
+      emit('update:modelValue', searchTerm.value);
     };
-  },
-  methods: {
-    handleInput() {
-      this.$emit('input', this.searchTerm);
-    },
+
+    watch(() => props.modelValue, (newValue) => {
+      searchTerm.value = newValue;
+    });
+
+    return {
+      searchTerm,
+      handleInput,
+    };
   },
 };
 </script>
 
 <style scoped>
 .search-bar {
+  position: relative;
   margin-bottom: 20px;
   width: 100%;
 }
 
+.search-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-light);
+}
+
 .search-input {
   width: 100%;
-  padding: 10px 15px;
-  border: 1px solid #4a5568;
+  padding: 10px 15px 10px 40px;
+  border: 1px solid var(--color-border);
   border-radius: 50px;
-  background-color: #2d3748;
-  color: #e2e8f0;
+  background-color: var(--color-background-mute);
+  color: var(--color-text);
   font-size: 1rem;
   transition: all 0.3s ease-in-out;
 }
 
 .search-input:focus {
   outline: none;
-  border-color: #f56565;
-  box-shadow: 0 0 0 2px rgba(245, 101, 101, 0.2);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px var(--color-primary-transparent);
 }
 
 .search-input::placeholder {
-  color: #a0aec0;
+  color: var(--color-text-light);
 }
 </style>

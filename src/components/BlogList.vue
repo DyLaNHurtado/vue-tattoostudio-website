@@ -1,53 +1,56 @@
 <template>
-  <div class="blog-container">
-    <div class="blog-cards">
-      <router-link
-        v-for="post in posts"
-        :key="post.slug"
-        :to="`/blog/${post.slug}`"
-        class="blog-card"
-      >
-        <div class="card-image">
-          <img :src="`/blog-images/${post.slug}.webp`" :alt="post.title" />
+  <div class="blog-cards">
+    <router-link
+      v-for="post in filteredPosts"
+      :key="post.slug"
+      :to="`/blog/${post.slug}`"
+      class="blog-card"
+    >
+      <div class="card-image">
+        <img :src="`/blog-images/${post.slug}.webp`" :alt="post.title" loading="lazy" />
+      </div>
+      <div class="card-content">
+        <span class="card-category">{{ post.category }}</span>
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.excerpt }}</p>
+        <div class="card-footer">
+          <span class="card-date">{{ formatDate(post.date) }}</span>
+          <span class="card-read-more">
+            Leer más
+            <font-awesome-icon :icon="['fas', 'arrow-right']" />
+          </span>
         </div>
-        <div class="card-content">
-          <h2>{{ post.title }}</h2>
-          <p>{{ post.excerpt }}</p>
-        </div>
-      </router-link>
-    </div>
+      </div>
+    </router-link>
   </div>
 </template>
 
 <script>
-import getAllPosts from '../blog/posts';
-
 export default {
-  data() {
-    return {
-      posts: [],
-    };
+  props: {
+    filteredPosts: {
+      type: Array,
+      required: true,
+    },
   },
-  created() {
-    this.posts = getAllPosts();
+  setup() {
+    const formatDate = (dateString) => {
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      return new Date(dateString).toLocaleDateString('es-ES', options);
+    };
+
+    return {
+      formatDate,
+    };
   },
 };
 </script>
 
 <style scoped>
-.blog-container {
-  text-align: center;
-  gap: 15px;
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-}
-
 .blog-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-  margin-top: 40px;
+  gap: 30px;
   width: 100%;
 }
 
@@ -57,22 +60,21 @@ export default {
   border-radius: 8px;
   text-decoration: none;
   color: var(--color-text);
-  border: 1px solid var(--color-border);
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  background-color: var(--color-background-soft);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
 }
 
 .blog-card:hover {
   transform: translateY(-5px);
-  border-color: var(--color-primary);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .card-image {
   height: 200px;
   overflow: hidden;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
 }
 
 .card-image img {
@@ -88,22 +90,66 @@ export default {
 
 .card-content {
   padding: 20px;
-  background-color: var(--color-background-mute);
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: space-between;
+}
+
+.card-category {
+  font-size: 0.875rem;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 10px;
 }
 
 .card-content h2 {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: bold;
   color: var(--color-heading);
   margin: 0 0 10px 0;
+  line-height: 1.4;
 }
 
 .card-content p {
   font-size: 1rem;
-  margin: 0;
+  margin: 0 0 15px 0;
+  color: var(--color-text-light);
+  line-height: 1.6;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.card-date {
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+}
+
+.card-read-more {
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s ease;
+}
+
+.card-read-more svg {
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+}
+
+.blog-card:hover .card-read-more {
+  color: var(--color-primary-dark);
+}
+
+.blog-card:hover .card-read-more svg {
+  transform: translateX(3px);
 }
 </style>

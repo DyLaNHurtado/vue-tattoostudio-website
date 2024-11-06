@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import { ref, watch } from 'vue';
 import SearchBar from './SearchBar.vue';
 import CategoryChips from './CategoryChips.vue';
 
@@ -18,23 +19,29 @@ export default {
     SearchBar,
     CategoryChips,
   },
-  data() {
-    return {
-      searchTerm: '',
-      selectedCategory: 'Todos',
-      categories: ['Todos', 'Estilos', 'Cuidados', 'Tendencias', 'Cultura'],
+  emits: ['update:filters'],
+  setup(props, { emit }) {
+    const searchTerm = ref('');
+    const selectedCategory = ref('Todos');
+    const categories = ref(['Todos', 'Estilos', 'Cuidados', 'Tendencias', 'Cultura']);
+
+    const handleCategoryChange = (category) => {
+      selectedCategory.value = category;
+      emitFilters();
     };
-  },
-  methods: {
-    handleCategoryChange(category) {
-      this.selectedCategory = category;
-      this.$emit('update:filters', { searchTerm: this.searchTerm, selectedCategory: this.selectedCategory });
-    },
-  },
-  watch: {
-    searchTerm() {
-      this.$emit('update:filters', { searchTerm: this.searchTerm, selectedCategory: this.selectedCategory });
-    },
+
+    const emitFilters = () => {
+      emit('update:filters', { searchTerm: searchTerm.value, selectedCategory: selectedCategory.value });
+    };
+
+    watch(searchTerm, emitFilters);
+
+    return {
+      searchTerm,
+      selectedCategory,
+      categories,
+      handleCategoryChange,
+    };
   },
 };
 </script>
@@ -46,6 +53,10 @@ export default {
   width: 100%;
   max-width: 800px;
   margin: 0 auto 40px;
+  background-color: var(--color-background-soft);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 @media (min-width: 768px) {
