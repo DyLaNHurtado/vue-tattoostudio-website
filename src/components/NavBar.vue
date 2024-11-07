@@ -1,34 +1,38 @@
 <template>
-  <header class="app-header">
+  <header class="app-header" :class="{ 'mobile-nav': isMobile }">
     <nav>
-      <ul class="nav-links desktop">
-        <router-link
-          v-for="item in navItems"
-          :key="item.path"
-          :to="item.path"
-          class="nav-link"
-          active-class="router-link-active"
-          @click="toggleNav()"
-        >
-          <li class="nav-link-item">{{ item.label }}</li>
-        </router-link>
+      <ul class="nav-links desktop" :class="{ 'nav-open': isNavOpen }">
+        <li v-for="item in navItems" :key="item.path">
+          <router-link
+            :to="item.path"
+            class="nav-link"
+            active-class="router-link-active"
+            @click="toggleNav()"
+          >
+            {{ item.label }}
+            <span class="nav-indicator"></span>
+          </router-link>
+        </li>
       </ul>
-      <ul class="nav-links mobile" v-if="isMobile">
-        <router-link
-          v-for="item in mobileNavItems"
-          :key="item.path"
-          :to="item.path"
-          class="nav-link"
-          active-class="router-link-active"
-          @click="toggleNav()"
-        >
-          <li class="nav-link-item">
-            <font-awesome-icon :icon="item.icon" />
-            <span>{{ item.label }}</span>
-          </li>
-        </router-link>
-      </ul>
+      <button class="nav-toggle" @click="toggleNav()" aria-label="Toggle navigation menu" v-if="isMobile">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </nav>
+    <ul class="nav-links mobile" v-if="isMobile">
+      <li v-for="item in mobileNavItems" :key="item.path">
+        <router-link
+          :to="item.path"
+          class="nav-link"
+          active-class="router-link-active"
+          @click="toggleNav()"
+        >
+          <font-awesome-icon :icon="item.icon" />
+          <span>{{ item.label }}</span>
+        </router-link>
+      </li>
+    </ul>
   </header>
 </template>
 
@@ -57,9 +61,14 @@ export default {
   methods: {
     toggleNav() {
       this.isNavOpen = !this.isNavOpen;
+      document.body.classList.toggle('nav-open', this.isNavOpen);
     },
     checkIfMobile() {
       this.isMobile = window.innerWidth <= 768;
+      if (!this.isMobile && this.isNavOpen) {
+        this.isNavOpen = false;
+        document.body.classList.remove('nav-open');
+      }
     },
   },
   mounted() {
@@ -73,15 +82,15 @@ export default {
 </script>
 
 <style scoped>
-/* Estilos generales para la barra de navegación */
 .app-header {
-  background-color: rgba(31, 32, 34, 0.2);
-  backdrop-filter: blur(2px);
+  background-color: rgba(31, 32, 34, 0.35);
+  backdrop-filter: blur(10px);
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 50;
+  transition: all 0.3s ease;
 }
 
 nav {
@@ -89,101 +98,144 @@ nav {
   margin: 0 auto;
   padding: 1rem 1.5rem;
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
 }
 
-ul {
+.logo {
   display: flex;
-  justify-content: center;
+  align-items: center;
+}
+
+.logo img {
+  height: 40px;
+  width: auto;
+}
+
+.nav-links {
+  display: flex;
   list-style-type: none;
+
   padding: 0;
   margin: 0;
 }
 
-/* Estilos específicos para resoluciones de escritorio */
-.desktop .nav-link-item {
-  padding: 15px 20px;
-  gap: 16px;
-  font-weight: bold;
-  user-select: none;
-}
-
-.desktop .nav-link {
+.nav-link {
   text-decoration: none;
   color: white;
-  transition: color 0.3s, transform 0.3s;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  position: relative;
+  transition: color 0.3s ease;
 }
 
-.desktop .nav-link:hover {
-  color: #f56565;
-  transform: scale(1.3);
-}
-
+.nav-link:hover,
 .router-link-active {
-  color: #f56565 !important;
-  font-weight: bold;
-  transform: scale(1.2);
-}
-
-/* Estilos específicos para resoluciones móviles */
-.mobile {
-  display: none;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: rgba(26, 32, 44, 0.8);
-  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
-  padding: 0.5rem 0;
-}
-
-.mobile .nav-link {
-  flex: 1;
-  text-align: center;
-  padding: 10px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.9rem;
-  color: white;
-  transition: color 0.3s, transform 0.3s;
-}
-
-.mobile .nav-link-item span {
-  font-size: 0.75rem;
-  margin-top: 0.25rem;
-  display: flex;
-  flex-direction: column;
-  font-weight: bold;
-  user-select: none;
-}
-
-.mobile .nav-link:hover {
   color: #f56565;
-  transform: scale(1.3);
 }
 
-/* Responsive behavior */
+.nav-indicator {
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  width: 0;
+  height: 3px;
+  background-color: #f56565;
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.nav-link:hover .nav-indicator,
+.router-link-active .nav-indicator {
+  width: 100%;
+  left: 0;
+}
+
+.nav-toggle {
+  display: none;
+}
+
+/* Mobile styles */
 @media (max-width: 768px) {
+
+  .app-header.mobile-nav {
+    top: auto;
+    bottom: 0;
+  }
 
   .desktop {
     display: none;
   }
 
-  .mobile {
-    display: flex;
+  .nav-toggle {
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
   }
 
-  .app-header {
-    top: auto;
+  .nav-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 5px 0;
+    transition: all 0.3s ease;
+  }
+
+  .nav-open .nav-toggle span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+
+  .nav-open .nav-toggle span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav-open .nav-toggle span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+  }
+
+  .mobile {
+    display: flex;
+    position: fixed;
     bottom: 0;
     left: 0;
-    right: 0;
-    z-index: 50;
+    width: 100%;
+    background-color: rgba(26, 32, 44, 0.95);
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
     padding: 0.5rem 0;
+    justify-content: space-around;
   }
+
+  .mobile .nav-link {
+    flex: 1;
+    text-align: center;
+    padding: 0.5rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.8rem;
+  }
+
+  .mobile .nav-link span {
+    margin-top: 0.25rem;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.nav-links {
+  animation: fadeIn 0.3s ease;
+}
+
+.nav-link {
+  transition: transform 0.3s ease;
+}
+
+.nav-link:hover {
+  transform: translateY(-2px);
 }
 </style>
