@@ -78,7 +78,7 @@
     overflow: hidden;
     border-radius: 10px;
     transition: transform 0.2s ease-in-out;
-    min-height: 256px;
+    height: 450px;
     min-width: 256px;
     box-shadow: 0 0 4px rgba(114, 114, 114, 0.4);
   }

@@ -243,9 +243,6 @@ th {
   font-weight: bold;
 }
 
-.font-bold{
-  font-weight: bold;
-}
 .margin-font{
   margin: 1.5em 0;
 }

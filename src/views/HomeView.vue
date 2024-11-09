@@ -12,7 +12,7 @@
     
     <!-- Gallery Section -->
     <div class="last-tattoos" v-if="images!=null && images.length > 0">
-      <h2>Nuestros trabajos:</h2>
+      <h2>Trabajos Destacados:</h2>
       <GalleryList :images="images" />
       <router-link to="/gallery" class="cta">
         <button class="transparent-button">Ver Más</button>
@@ -22,7 +22,12 @@
         <!-- About Us Section -->
     <div class="about-us">
       <h2>Sobre Nosotros</h2>
+
       <p>Somos un estudio de tatuajes ubicado en <span class="highlight">Leganés</span>, comprometidos con la calidad, la creatividad y la satisfacción de nuestros clientes. Tenemos experiencia en crear <span class="highlight">diseños personalizados</span> que reflejan la individualidad de <span class="highlight">cada persona</span>.</p>
+        <!-- Video de persona tatuando sin sonido ni controles-->
+        <video muted autoplay loop>
+          <source src="/tatuando.mp4" type="video/mp4">
+        </video>
       <router-link to="/studio" class="cta">
         <button class="transparent-button">Descubre más aquí</button>
       </router-link>
@@ -77,12 +82,11 @@ export default {
   async mounted() {
     this.lastestPost = await getLatestPosts();
     this.images = [
-      { id: 1, url: '/vue.svg', alt: 'Tattoo 1' },
-      { id: 2, url: '/placeholder.svg?height=400&width=400&text=Tattoo+2', alt: 'Tattoo 2' },
-      { id: 3, url: '/placeholder.svg?height=400&width=400&text=Tattoo+3', alt: 'Tattoo 3' },
-      { id: 4, url: '/placeholder.svg?height=400&width=400&text=Tattoo+4', alt: 'Tattoo 4' },
-      { id: 5, url: '/vue.svg', alt: 'Tattoo 5' },
-      { id: 6, url: '/vue.svg', alt: 'Tattoo 6' }
+      { id: 1, url: '/hada.jpg', alt: 'Tattoo hada colores' },
+      { id: 2, url: '/tiburon.jpg', alt: 'Tatuaje tiburon rojo black and grey' },
+      { id: 3, url: '/yokai.jpg', alt: 'Yokai tatuaje japones kanji tattoo letras japonesas chinas' },
+      { id: 4, url: '/flor-craneo.jpg', alt: 'Flor de craneo diseño tatuaje color hojas new school' },
+      { id: 5, url: '/seta.jpg', alt: 'Seta newschool tatuaje tattoo color azul scketch' },
     ];
   },
 };
@@ -120,6 +124,7 @@ export default {
   flex-direction: column;
   align-items: start;
   padding: 40px 20px;
+  gap: 20px;
 }
 
 .about-us p {
@@ -196,5 +201,14 @@ h2 {
   margin-bottom: 20px;
   font-weight: bold;
   color: var(--color-heading);
+}
+
+video{
+  height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 1000px;
+  align-self: center;
 }
 </style>

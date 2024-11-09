@@ -114,4 +114,12 @@ h2{
   justify-content: space-between;
   align-items: center;
 }
+@media (max-width: 768px) {
+  h2{
+    font-size: 1.6em;
+  }
+ .map-container {
+   width: 100%;
+ }
+}
 </style>

@@ -65,11 +65,14 @@
     <section class="artists">
       <div class="container">
         <h2>Nuestros Estilos Favoritos</h2>
-        <p>No nos cerramos a ningun estilo y siempre es buena salir de la zona de confort pero si tenemos unos estilos preferidos:</p>
+        <p>No nos cerramos a ningún estilo y siempre es buena salir de la zona de confort pero nuestros estilos preferidos son:</p>
         <div class="artist-cards">
-          <div class="artist-card" v-for="style in tattooStyles" :key="style.name">
+          <div class="artist-card" v-for="style in tattooStyles" :key="style.name" @click="openPost(style.post)" @mouseenter="style.showTextHover=true" @mouseleave="style.showTextHover=false">
             <img :src="style.image" :alt="style.name" />
             <h3>{{ style.name }}</h3>
+              <span :class="{'hide-text':!style.showTextHover, 'show-text':style.showTextHover}" style="transition: all .3s ease;"> 
+              <font-awesome-icon :icon="['fas', 'share']" /> &nbsp;
+              ¡ Quiero saber más ! </span>
           </div>
         </div>
       </div>
@@ -82,43 +85,13 @@
         <div class="process-steps">
           <div class="step" v-for="(step, index) in processSteps" :key="index">
             <div class="step-number">{{ index + 1 }}</div>
-            <h3>{{ step.title }}</h3>
+            <h3 class="font-bold">{{ step.title }}</h3>
             <p>{{ step.description }}</p>
           </div>
         </div>
       </div>
     </section>
-
     <LocationContact/>
-
-<!--     <section class="location">
-      <div class="container">
-        <h2>Ubicación y Contacto</h2>
-        <p>Tu destino para tatuajes de calidad en Leganés, Madrid</p>
-        <div class="location-info">
-          <div class="map-container">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3041.529489911896!2d-3.7533890000000003!3d40.330598699999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4189a7929c6c29%3A0x6940283e1e93409a!2sDelaitto%20Tattoo%20-%20Estudio%20de%20tatuajes!5e0!3m2!1ses!2ses!4v1718094523661!5m2!1ses!2ses"
-              width="100%"
-              height="450"
-              style="border:0;"
-              allowfullscreen
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-            ></iframe>
-          </div>
-          <div class="contact-info">
-            <h3>Delaitto Tattoo</h3>
-            <p><strong>Dirección:</strong> Calle Rioja 71 Local 6, 28915 Leganés, Madrid</p>
-            <p><strong>Teléfono:</strong> +34 123 456 789</p>
-            <p><strong>Email:</strong> info@delaittotattoo.com</p>
-            <router-link to="/contact">
-              <button class="back-button">Reserva tu Cita</button>
-            </router-link>
-          </div>
-        </div>
-      </div>
-    </section> -->
   </div>
 </template>
 
@@ -132,19 +105,26 @@ export default {
   data() {
     return {
       tattooStyles: [
-        { name: 'Blackwork', image: '/vue.svg' },
-        { name: 'New school', image: '/vue.svg' },
-        { name: 'Black and grey', image: '/vue.svg' },
-        { name: 'Japonés', image: '/vue.svg' },
+        { name: 'Blackwork', image: '/blackwork.webp', showTextHover:false, post: 'blackwork-el-poder-del-contraste' },
+        { name: 'New school', image: '/newschool.jpg', showTextHover:false, post: 'newschool-el-color-explosivo-en-la-piel'},
+        { name: 'Black and grey', image: '/blackandgrey.jpg', showTextHover:false, post: 'blackandgrey-la-magia-del-gris-en-la-piel'},
+        { name: 'Japonés', image: '/japones.jpg', showTextHover:false, post:'estilo-japones-un-mundo-de-misticismo-y-belleza' },
       ],
       processSteps: [
         { title: 'Consulta', description: 'Discutimos tu idea y diseño deseado.' },
-        { title: 'Diseño', description: 'Creamos un boceto personalizado para ti.' },
-        { title: 'Preparación', description: 'Alistamos todo para tu sesión de tatuaje.' },
+        { title: 'Diseño', description: 'Dejas una señal que se descuenta del precio final y creamos un boceto personalizado para ti.' },
+        { title: 'Preparación', description: 'Fijamos una cita y preparamos todo para tu sesión de tatuaje.' },
         { title: 'Tatuaje', description: 'Realizamos tu tatuaje con precisión y cuidado.' },
         { title: 'Cuidados', description: 'Te proporcionamos instrucciones para el cuidado posterior.' },
       ],
     };
+  },methods: {
+    openPost(postId) {
+      //hacer que se abra en otra pestaña
+      // this.$router.push({ name: 'blog-post', params: { id: postId } });
+      // o abrirlo en una nueva pestaña
+      window.open(`/blog/${postId}`, '_blank');
+    },
   },
   metaInfo() {
     return {
@@ -178,7 +158,6 @@ export default {
   background-size: cover;
   box-shadow: inset 0 0 79px 70px rgba(0, 0, 0, 0.5);
   backdrop-filter: brightness(60%);
-  height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -197,10 +176,10 @@ export default {
 }
 
 h1, h2 {
-  color: var(--color-primary);
   font-weight: bold;
   margin-bottom: 1rem;
 }
+
 
 .highlight {
   font-weight: bold;
@@ -221,15 +200,24 @@ section {
 }
 
 .value-card, .artist-card {
-  background-color: var(--color-background-mute);
   padding: 2rem;
   border-radius: 8px;
   text-align: center;
-  transition: transform 0.3s ease;
+  background-color: transparent;
+  transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.artist-card{
+  cursor: pointer;
+}
+
+.value-card:hover, .artist-card:hover{
+  background-color: var(--color-background-mute);
+
 }
 
 .value-card h3, .artist-card h3 {
@@ -259,7 +247,7 @@ section {
 .artist-card img {
   width: 150px;
   height: 150px;
-  border-radius: 50%;
+  border-radius: 99999px;
   margin-bottom: 1rem;
 }
 
@@ -277,12 +265,20 @@ section {
   color: var(--color-heading);
   width: 40px;
   height: 40px;
-  border-radius: 50%;
+  border-radius: 99999px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 1rem;
   font-weight: bold;
+}
+
+.hide-text{
+  opacity: 0;
+}
+
+.show-text{
+  opacity: 1;
 }
 
 .location-info {

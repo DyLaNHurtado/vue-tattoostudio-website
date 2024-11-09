@@ -211,9 +211,7 @@ h3 .fa-icon {
   line-height: 1.6;
 }
 
-.font-bold{
-  font-weight: bold;
-}
+
 
 @media (max-width: 768px) {
   .aftercare-content {
