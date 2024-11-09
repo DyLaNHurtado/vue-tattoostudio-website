@@ -59,8 +59,8 @@ export default {
   overflow: hidden;
   border-radius: 8px;
   text-decoration: none;
+  background-color: var(--color-background-mute);
   color: var(--color-text);
-  background-color: var(--color-background-soft);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
@@ -75,6 +75,8 @@ export default {
 .card-image {
   height: 200px;
   overflow: hidden;
+  background-color: var(--color-background-soft);
+
 }
 
 .card-image img {

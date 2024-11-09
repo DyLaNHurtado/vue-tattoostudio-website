@@ -3,9 +3,9 @@
   --c-white-soft: #f7f7f7;
   --c-white-mute: #f0f0f0;
 
-  --c-black: #121212;
-  --c-black-soft: #1a1a1a;
-  --c-black-mute: #202020;
+  --c-black: #15181f;
+  --c-black-soft: #1a202c;
+  --c-black-mute: #2d3748;
 
   --c-indigo: #424242;
 
@@ -20,10 +20,11 @@
   --c-text-dark-2: rgba(235, 235, 235, 0.64);
 
   --c-text-error: #ff5733;
-  --c-primary: #e07171; /* Tono rojo */
-  --c-primary-hover: #f5a6a6; /* Tono rojo más claro */
-  --c-secondary: #e9b035; /* Tono rojo más claro */
-  --c-secondary-hover: #e0bd71; /* Tono rojo más claro */
+  --c-primary: #78bf8d; 
+  --c-primary-light: #66c7aa;
+  --c-primary-dark: #4a8f72;
+  --c-secondary: #e9b035;
+  --c-secondary-hover: #e0bd71;
 
   --color-background: var(--c-white);
   --color-background-soft: var(--c-white-soft);
@@ -38,6 +39,8 @@
   --color-text-error: var(--c-text-error);
 
   --color-primary: var(--c-primary);
+  --color-primary-light: var(--c-primary-light);
+  --color-primary-dark: var(--c-primary-dark);
   --color-primary-hover: var(--c-primary-hover);
 
   --section-gap: 160px;
@@ -58,6 +61,8 @@
     --color-text-error: var(--c-text-error);
 
     --color-primary: var(--c-primary);
+    --color-primary-light: var(--c-primary-light);
+    --color-primary-dark: var(--c-primary-dark);
     --color-primary-hover: var(--c-primary-hover);
   }
 }
@@ -75,13 +80,18 @@ html,body,#app{
   height: 100%;
 }
 
+@font-face {
+  font-family: HelveticaNow;
+  src: url('public/assets/fonts/HelveticaNowDisplay-Medium.ttf');
+}
+
 body {
   color: var(--color-text);
   background: var(--color-background);
   transition: color 0.5s, background-color 0.5s;
   line-height: 1.6;
-  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-    Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+
+  font-family: HelveticaNow, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 15px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -92,17 +102,22 @@ body {
 .transparent-button{
   background-color: transparent;
   cursor: pointer;
-  font-size: 16px;
-  padding: 10px 20px;
-  border: 2px solid var(--color-border);
+  border: none;
   color: var(--color-text);
-  transition: all .3s;
-  border-radius: 500px;
   margin: 0 5px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  align-items: center;
+  gap: 0.5rem;
 }
 .transparent-button:hover{
-  border: 2px solid var(--color-primary);
-  color: var(--color-primary);
+  background-color: var(--color-background-mute);
+  transform: translateY(-2px);
 }
 
 .primary-button {
@@ -242,8 +257,8 @@ p {
 }
 
 .back-button {
-  background-color: #f56565;
-  color: #1a202c;
+  background-color: var(--c-secondary-hover);
+  color: var(--color-heading);
   border: none;
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
@@ -251,17 +266,22 @@ p {
   border-radius: 9999px;
   cursor: pointer;
   transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
+  text-align: center;
+  text-decoration: none;
   gap: 0.5rem;
 }
 
 .back-button:hover {
-  background-color: #e53e3e;
   transform: translateY(-2px);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  color: var(--color-heading);
 }
 
 a{
   text-decoration: none;
+  color: var(--color-text);
+}
+a:hover{
+  color: var(--color-primary);
 }

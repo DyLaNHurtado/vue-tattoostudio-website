@@ -1,4 +1,4 @@
-function getAllPosts(){
+export function getAllPosts(){
   let files = {};
 files = import.meta.env.DEV ? import.meta.globEager('/public/blog-post/*.md'): import.meta.globEager('/blog-post/*.md');
 
@@ -15,5 +15,7 @@ return Object.keys(files).map((path) => {
   };
 });
 }
-
-export default getAllPosts;
+//Ordenados por date mas reciente
+export function getLatestPosts(limit = 3) {
+  return getAllPosts().sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, limit);
+}

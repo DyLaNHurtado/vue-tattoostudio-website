@@ -61,7 +61,8 @@ export default {
     bottom: 0;
     right: 0;
     transform: rotate(-30deg);
-    transform: translateX(-50px)
+    transform: translateX(-25px);
+    opacity: .8;
 }
 
 .message {

@@ -1,8 +1,7 @@
 <template>
     <div class="not-found-view">
-        <h1> Oops! Sitio no encontrado... </h1>
+
       <NotFound  class="not-found" @backFromNotFound="navigateHome" />
-        <h3> 404 Not Found </h3>
     </div>
   </template>
   

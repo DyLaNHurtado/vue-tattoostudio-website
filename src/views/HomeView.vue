@@ -11,22 +11,6 @@
       </div>
     </div>
 
-    <!-- <div class="header">
-      <video src="videos/8138fb6f639e14a94dbe1489c1d833ae.mp4" playsinline="" preload="none" muted="" loop="" style="width:100%;height:100%;display:block;object-fit:cover;object-position:50% 50%;transform:translate(-50%, -50%) rotate(0deg);"></video>
-      <video autoplay muted loop id="myVideo">
-        <source src="https://video.wixstatic.com/video/2b20fa_bcdb4298d7d44067baf30118eb8cfd83/720p/mp4/file.mp4" type="video/mp4">
-      </video>
-      <div class="header-content">
-        <img src="/vite.svg" alt="Logo del estudio">
-        <h1>Estudio de Tatuajes en Leganés</h1>
-        <h4>Artistas especializados en tatuajes personalizados y únicos.</h4>
-        <router-link to="/contact"><button class="fill-btn">¡Quiero tatuarme!</button></router-link>
-        <div class="socials">
-          <Socials size="2xl"/>
-        </div>
-      </div>
-    </div> -->
-
     <!-- About Us Section -->
     <div class="about-us">
       <h2>Sobre Nosotros</h2>
@@ -35,69 +19,28 @@
         <button class="transparent-button">Descubre más aquí</button>
       </router-link>
     </div>
-
-    <!-- Last Tattoos Section -->
-    <div class="last-tattoos">
-      <h2>Últimos Trabajos</h2>
-      <div class="tattoo-carousel">
-        <img src="/vue.svg" alt="Tatuaje 1">
-        <img src="/vue.svg" alt="Tatuaje 2">
-        <img src="/vite.svg" alt="Tatuaje 3">
-        <!-- Añadir más imágenes según sea necesario -->
-      </div>
+    
+    <!-- Gallery Section -->
+    <div class="last-tattoos" v-if="images!=null && images.length > 0">
+      <h2>Nuestros trabajos:</h2>
+        <GalleryList :images="images" />
       <router-link to="/gallery" class="cta-button">
         <button class="transparent-button">Ver Más</button>
       </router-link>
     </div>
 
     <!-- Blog Section -->
-    <div class="blog">
+    <div class="blog" v-if="lastestPost!=null && lastestPost.length > 0">
       <h2>Artículos Recientes</h2>
       <div class="blog-posts">
-        <!-- Artículo 1 -->
-        <router-link to="/blog/consejos-cuidado-tatuaje" class="blog-post">
-          <img src="/vue.svg" alt="Imagen de Blog 1"/>
-          <div class="overlay">
-            <h3>Consejos para cuidar tu nuevo tatuaje</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus neque a felis varius, vitae pulvinar justo tempus.</p>
-          </div>
-        </router-link>
-        <!-- Artículo 2 -->
-        <router-link to="/blog/tendencias-tatuajes-2024" class="blog-post">
-          <img src="/vue.svg" alt="Imagen de Blog 2">
-          <div class="overlay">
-            <h3>Tendencias de tatuajes para este año</h3>
-            <p>Nulla facilisi. Duis interdum auctor tortor, eu condimentum risus tincidunt id.</p>
-          </div>
-        </router-link>
-        <!-- Artículo 3 -->
-        <router-link to="/blog/mejores-estilos-tatuajes" class="blog-post">
-          <img src="/vite.svg" alt="Imagen de Blog 3">
-          <div class="overlay">
-            <h3>Los mejores estilos de tatuajes según tu personalidad</h3>
-            <p>Vivamus fermentum, risus sed rhoncus hendrerit, quam sapien iaculis magna, non finibus nulla sapien eget libero.</p>
-          </div>
-        </router-link>
-      </div>
-      <router-link to="/blog" class="cta-button">
-        <button class="transparent-button">Ver todos los artículos</button>
-      </router-link>
+        <transition-group name="list" tag="div" class="blog-list">
+            <BlogList :filteredPosts="lastestPost" />
+        </transition-group>
     </div>
-
-    <!-- Social Media Integration -->
-    <div class="social-media">
-      <h2>Síguenos en Redes Sociales</h2>
-      <div class="socials-icons">
-        <Socials size="2xl" style="width: 100px;" />
-      </div>
-
-      <div class="social-feed">
-
-      </div>
-    </div>
-
-    <!-- Newsletter Section -->
-
+    <router-link to="/blog" class="cta-button">
+      <button class="transparent-button">Ver Más Artículos</button>
+    </router-link>
+</div>
     <!-- Contact Us Section -->
      <LocationContact/>
   </div>
@@ -107,13 +50,37 @@
 import Socials from '../components/Socials.vue';
 import Newsletter from '../components/Newsletter.vue';
 import LocationContact from '../components/LocationContact.vue'
+import BlogList from '../components/BlogList.vue'
+import GalleryList from '../components/GalleryList.vue'
+
+import {getLatestPosts} from '../blog/posts'
 
 export default {
   components: {
     Socials,
     Newsletter,
     LocationContact,
-  },
+    BlogList,
+    GalleryList,
+  },data(){
+    return {
+      lastestPost: [],
+      images: [],
+    }
+  },methods :{
+},
+  async mounted() {
+      this.lastestPost = await getLatestPosts();
+      console.log(this.lastestPost);
+      this.images = [
+      { id: 1, url: '/vue.svg', alt: 'Tattoo 1' },
+        { id: 2, url: '/placeholder.svg?height=400&width=400&text=Tattoo+2', alt: 'Tattoo 2' },
+        { id: 3, url: '/placeholder.svg?height=400&width=400&text=Tattoo+3', alt: 'Tattoo 3' },
+        { id: 4, url: '/placeholder.svg?height=400&width=400&text=Tattoo+4', alt: 'Tattoo 4' },
+
+  ]
+      
+    }
 };
 </script>
 
@@ -124,7 +91,6 @@ export default {
   flex-direction: column;
   gap: 40px;
   width: 100%;
-  padding: 20px;
 }
 
 .hero{
@@ -147,16 +113,6 @@ export default {
   overflow: hidden;
 }
 
-#myVideo {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  min-width: 100%;
-  min-height: 100%;
-  z-index: -1;
-}
-
 .header-content {
   position: relative;
   display: flex;
@@ -175,33 +131,28 @@ export default {
 
 /* Estilos de la sección Sobre Nosotros */
 .about-us {
+ text-align: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 20px;
-  text-align: center;
-  border-left: 8px solid var(--color-primary);
 }
 
 .about-us p {
   margin-bottom: 20px;
+  padding: 20px;
 }
 
 /* Estilos de la sección Últimos Trabajos */
 .last-tattoos {
   text-align: center;
-}
-
-.tattoo-carousel {
-  display: flex;
   justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
   gap: 20px;
-  overflow-x: auto;
-  padding: 20px 0;
-}
-
-.tattoo-carousel img {
-  width: 200px;
-  height: 200px;
-  border-radius: 8px;
-  border: 2px solid var(--color-border);
 }
 
 /* Estilos de la sección Blog */
@@ -210,35 +161,15 @@ export default {
   gap: 15px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
 
 .blog-posts {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
-}
-
-.blog-post {
-  position: relative;
-  overflow: hidden;
-  border-radius: 8px;
-  text-decoration: none;
-  color: var(--color-text);
-  min-width: 100%;
-  min-height: 100%;
-  border: 1px solid var(--color-border);
-  transition: transform 0.3s ease; /* Para el efecto de hover */
-}
-
-.blog-post:hover {
-  transform: translateY(-5px);
-  border-color: var(--color-primary);
-}
-
-.blog-post img {
-  width: 100%;
-  object-fit: cover;
-  border-radius: 8px;
 }
 
 .overlay {
@@ -267,31 +198,6 @@ export default {
   margin-bottom: 10px;
 }
 
-/* Estilos de la sección Integración de Redes Sociales */
-.social-media {
-  padding: 20px;
-  text-align: center;
-  gap: 10px;
-}
-
-.socials-icons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 15px;
-}
-
-.social-media h2 {
-  margin-bottom: 20px;
-}
-
-.social-feed {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-}
-
-
 /* Estilos de la sección Contacta con Nosotros */
 .contact-us {
   padding: 20px;
@@ -300,6 +206,7 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  padding: 20px;
 }
 
 .contact-us .map {
@@ -307,22 +214,6 @@ export default {
   border-radius: 8px;
 }
 
-/* Estilos de Botones */
-.transparent-button {
-  background-color: transparent;
-  cursor: pointer;
-  font-size: 16px;
-  padding: 10px 20px;
-  border: 2px solid var(--color-border);
-  color: var(--color-text);
-  transition: all 0.3s;
-  border-radius: 8px;
-}
-
-.transparent-button:hover {
-  border-color: var(--color-primary);
-  color: var(--color-primary);
-}
 
 .primary-button {
   background-color: var(--color-primary);
@@ -339,10 +230,6 @@ export default {
   background-color: var(--color-primary-hover);
 }
 
-.snapwidget-widget {
-  height: 60vw;
-}
-
 .icon {
   font-size: 3.5em;
 }
@@ -354,7 +241,7 @@ export default {
 .lema{
   font-size: 1.5em;
   text-align: center;
-  color: var(--color-heading);
+  color: var(--color-text);
   margin-bottom: 20px;
 }
 .logo{
@@ -363,5 +250,9 @@ export default {
   filter: drop-shadow(.5px .5px 2px #e64545);
   -webkit-filter: drop-shadow(.5px 2px 3px #e64545);
 
+}
+h2{
+  margin-bottom: 20px;
+  font-weight: bold;
 }
 </style>

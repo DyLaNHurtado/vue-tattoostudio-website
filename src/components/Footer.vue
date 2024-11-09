@@ -6,7 +6,11 @@ const actualYear = new Date().getFullYear();
 <template>
   <footer class="footer">
     <div class="footer-content">
+      <div class="logo">
+        <img src="/delaitto.png" alt="">
+      </div>
       <p>&copy; {{ actualYear }} Delaitto Tattoo. Todos los derechos reservados.</p>
+
       <Socials size="2xl"/>
     </div>
   </footer>
@@ -24,14 +28,32 @@ const actualYear = new Date().getFullYear();
 
 .footer-content {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
 }
 
 .footer p {
   margin: 0;
   font-size: 14px;
   color: var(--color-text-mute);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 65px;
+  width: auto;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 </style>

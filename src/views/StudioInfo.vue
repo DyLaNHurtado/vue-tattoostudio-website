@@ -2,8 +2,8 @@
   <div class="studio-page">
     <section class="hero parallax">
       <div class="hero-content">
-        <h1>Estudio de Tatuajes en Leganés</h1>
-        <p>Descubre el <span class="highlight">arte del tatuaje</span> en el corazón de Madrid</p>
+        <h1>Tu Estudio de Tatuajes en Leganés</h1>
+        <p>Descubre el <span class="highlight">arte del tatuaje</span> en nuestro rincon de Madrid</p>
       </div>
     </section>
 
@@ -12,17 +12,23 @@
         <h2>Nuestros Valores y Prioridades</h2>
         <div class="values-grid">
           <div class="value-card">
-            <img src="/vite.svg" alt="Icono de higiene" />
+            <div class="icon-valores">
+            <font-awesome-icon :icon="['fas', 'pump-medical']" />
+          </div>
             <h3>Higiene y Seguridad</h3>
             <p>Compromiso inquebrantable con los más altos estándares de limpieza y seguridad.</p>
           </div>
           <div class="value-card">
-            <img src="/vue.svg" alt="Icono de especialización" />
+            <div class="icon-valores">
+            <font-awesome-icon :icon="['fas', 'pen-ruler']" />
+          </div>
             <h3>Especialización</h3>
             <p>Cada artista domina un estilo único, ofreciendo una amplia gama de posibilidades creativas.</p>
           </div>
           <div class="value-card">
-            <img src="/vite.svg" alt="Icono de creatividad" />
+            <div class="icon-valores">
+              <font-awesome-icon :icon="['fas', 'dragon']" />
+            </div>
             <h3>Creatividad Sin Límites</h3>
             <p>Transformamos tus ideas en obras de arte únicas y personales.</p>
           </div>
@@ -42,7 +48,7 @@
       </div>
     </section>
 
-    <section class="artists">
+    <!-- <section class="artists">
       <div class="container">
         <h2>Nuestros Artistas</h2>
         <p>Nuestros talentos locales de Leganés</p>
@@ -51,6 +57,19 @@
             <img :src="artist.image" :alt="artist.name" />
             <h3>{{ artist.name }}</h3>
             <p>{{ artist.specialty }}</p>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <section class="artists">
+      <div class="container">
+        <h2>Nuestros Estilos Favoritos</h2>
+        <p>No nos cerramos a ningun estilo y siempre es buena salir de la zona de confort pero si tenemos unos estilos preferidos:</p>
+        <div class="artist-cards">
+          <div class="artist-card" v-for="style in tattooStyles" :key="style.name">
+            <img :src="style.image" :alt="style.name" />
+            <h3>{{ style.name }}</h3>
           </div>
         </div>
       </div>
@@ -106,10 +125,11 @@ export default {
   name: 'StudioPage',
   data() {
     return {
-      artists: [
-        { name: 'María González', specialty: 'Realismo', image: '/vue.svg' },
-        { name: 'Carlos Rodríguez', specialty: 'Neo-tradicional', image: '/vue.svg' },
-        { name: 'Laura Sánchez', specialty: 'Acuarela', image: '/vue.svg' },
+      tattooStyles: [
+        { name: 'Blackwork', image: '/vue.svg' },
+        { name: 'New school', image: '/vue.svg' },
+        { name: 'Black and grey', image: '/vue.svg' },
+        { name: 'Japonés', image: '/vue.svg' },
       ],
       processSteps: [
         { title: 'Consulta', description: 'Discutimos tu idea y diseño deseado.' },
@@ -134,17 +154,18 @@ export default {
 
 <style scoped>
 .studio-page {
-  background-color: #1a202c;
-  color: #e2e8f0;
+  background-color: transparent;
 }
 
 .container {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
 .parallax {
+  background-image: url("/studio.webp");
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -157,7 +178,7 @@ export default {
 }
 
 .hero {
-  background-image: url('/vite.svg');
+  background-image: url('/blog.jpg');
 }
 
 .hero-content {
@@ -167,13 +188,13 @@ export default {
 }
 
 h1, h2 {
-  color: #f56565;
+  color: var(--color-primary);
+  font-weight: bold;
   margin-bottom: 1rem;
 }
 
 .highlight {
-  color: #f56565;
-  font-weight: bold;
+  color: var(--color-primary);
 }
 
 section {
@@ -191,11 +212,15 @@ section {
 }
 
 .value-card, .artist-card {
-  background-color: #2d3748;
+  background-color: var(--color-background-mute);
   padding: 2rem;
   border-radius: 8px;
   text-align: center;
   transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .value-card:hover, .artist-card:hover {
@@ -234,8 +259,8 @@ section {
 }
 
 .step-number {
-  background-color: #f56565;
-  color: #1a202c;
+  background-color: var(--color-primary);
+  color: var(--color-heading);
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -266,18 +291,31 @@ section {
 
 .cta-button {
   display: inline-block;
-  background-color: #f56565;
+  background-color: var(--color-primary);
   color: #1a202c;
   padding: 0.75rem 1.5rem;
   border-radius: 4px;
   text-decoration: none;
   font-weight: bold;
   margin-top: 1rem;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .cta-button:hover {
-  background-color: #e53e3e;
+  background-color: var(--color-primary-dark);
+  transform: translateY(-2px);
+}
+.icon-valores{
+  height: 100px;
+  width: 100px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  font-size: 3.5em;
+  background-color: var(--color-primary-dark);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 }
 
 @media (max-width: 768px) {

@@ -44,7 +44,7 @@
 import { ref, computed, onMounted, watch } from 'vue';
 import BlogList from '../components/BlogList.vue';
 import SearchAndFilter from '../components/SearchAndFilter.vue';
-import getAllPosts from '../blog/posts';
+import {getAllPosts} from '../blog/posts';
 
 export default {
   components: {
@@ -130,7 +130,7 @@ export default {
 }
 
 .parallax {
-  background-image: url("/placeholder.svg?height=400&width=1200&text=Delaitto+Tattoo+Blog");
+  background-image: url("/blog.webp");
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -156,8 +156,7 @@ export default {
   font-size: 3rem;
   font-weight: bold;
   text-align: center;
-  color: var(--color-text);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  color: var(--color-heading);
   position: relative;
   z-index: 1;
 }
@@ -169,7 +168,6 @@ export default {
 }
 
 .blog-view {
-  background-color: var(--color-background-soft);
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 20px;

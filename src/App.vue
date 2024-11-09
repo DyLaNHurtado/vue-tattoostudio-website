@@ -29,7 +29,6 @@ import  Footer  from './components/Footer.vue';
   box-sizing: border-box;
   min-width: 100%;
   min-height: 100%;
-  padding: 40px;
   padding-top: 0;
   background: linear-gradient(150deg, rgb(54, 21, 21) 0%, var(--color-background) 23%);
 

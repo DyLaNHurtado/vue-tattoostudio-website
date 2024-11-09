@@ -7,6 +7,8 @@
           <img :src="currentImage?.url" :alt="currentImage?.alt" class="lightbox-image" />
         </div>
       </div>
+      <button class="lightbox-nav lightbox-prev" @click="prevImage"><font-awesome-icon :icon="['fas', 'chevron-left']" /></button>
+      <button class="lightbox-nav lightbox-next" @click="nextImage"><font-awesome-icon :icon="['fas', 'chevron-right']" /></button>
     </div>
   </div>
 </template>
@@ -33,41 +35,36 @@ export default {
     };
   },
   watch: {
-    show(newVal) {
-      console.log("show changed:", newVal);
-      if (newVal) {
-        this.enableScrollLock();
-      } else {
-        console.log("disable scroll");
-        this.disableScrollLock();
-      }
-    },image(newVal){
+  image(newVal){
       this.currentImage = newVal ? newVal : (this.images.length > 0 ? this.images[0] : null);
     }
   },
   methods: {
     close() {
-      this.disableScrollLock();
       this.$emit('close');
     },
-    enableScrollLock() {
-      console.log("Scroll locked");
-      document.documentElement.style.overflow = 'hidden';
-      document.body.style.overflow = 'hidden';
-    },
-    disableScrollLock() {
-      console.log("Scroll unlocked");
-      document.documentElement.style.overflow = '';
-      document.body.style.overflow = '';
-    },
+
     selectImage(selectedImage) {
       this.currentImage = selectedImage;
     },
+    prevImage() {
+      const currentIndex = this.images.indexOf(this.currentImage);
+      if (currentIndex > 0) {
+        this.currentImage = this.images[currentIndex - 1];
+      } else {
+        this.currentImage = this.images[this.images.length - 1];
+      }
+    },
+    nextImage() {
+      const currentIndex = this.images.indexOf(this.currentImage);
+      if (currentIndex < this.images.length - 1) {
+        this.currentImage = this.images[currentIndex + 1];
+      } else {
+        this.currentImage = this.images[0];
+      }
+    }
   },
   mounted() {
-    if (this.show) {
-      this.enableScrollLock();
-    }
     this.currentImage = this.image ? this.image : (this.images.length > 0 ? this.images[0] : null);
   }
 };
@@ -94,6 +91,8 @@ export default {
   height: 80vh;
   border-radius: 12px;
 }
+
+
 
 .lightbox-content {
   min-width: 100%;
@@ -122,7 +121,7 @@ export default {
 }
 
 .lightbox-close:hover {
-  color: var(--color-primary);
+  color: var(--color-text-error);
 }
 
 .lightbox-image-container {
@@ -160,7 +159,7 @@ export default {
 
 .related-images-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 20px;
 }
 
@@ -184,5 +183,31 @@ export default {
 
 .related-image:hover {
   transform: scale(1.05);
+}
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  font-size: 2em;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.lightbox-nav:hover {
+  color: var(--color-primary);
+}
+
+.lightbox-prev {
+  left: 10px;
+}
+
+.lightbox-next {
+  right: 10px;
+  
 }
 </style>

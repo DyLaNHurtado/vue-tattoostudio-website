@@ -2,11 +2,15 @@
   <div class="blog-post-container">
     <div v-if="postLoaded" class="blog-post">
       <nav class="blog-nav">
+        <button @click="goToBlog" class="back-button">
+          <font-awesome-icon :icon="['fas', 'arrow-left']" /> Volver al Blog
+        </button>
+ 
+        <div class="logo" @click="goToHome">
+          <img src="/delaitto.png" alt="">
+        </div>
         <button @click="goToHome" class="back-button">
           <font-awesome-icon :icon="['fas', 'home']" /> Volver al Inicio
-        </button>
-        <button @click="goToBlog" class="nav-button">
-          <font-awesome-icon :icon="['fas', 'arrow-left']" /> Volver al Blog
         </button>
         <div class="reading-progress-container">
           <div class="reading-progress" :style="{ width: `${readingProgress}%` }"></div>
@@ -42,13 +46,6 @@
         <article v-html="sanitizedPostContent" ref="articleContent"></article>
       </div>
       <footer class="blog-footer">
-        <div class="author-info">
-          <img src="/path-to-author-avatar.jpg" alt="Author Avatar" class="author-avatar">
-          <div class="author-details">
-            <h3>Nombre del Autor</h3>
-            <p>Breve biografía del autor o descripción de su experiencia en tatuajes.</p>
-          </div>
-        </div>
         <div class="social-share">
           <h3>Comparte este artículo:</h3>
           <button @click="shareOnTwitter" class="share-button twitter">
@@ -217,15 +214,32 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
+.logo {
+  display: flex;
+  align-items: center;
+  cursor:pointer;
+}
+
+.logo img {
+  height: 80px;
+  width: auto;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 .blog-post-container {
   background-color: #1a1a1a;
   min-height: 100vh;
   padding-bottom: 40px;
-  color: #e0e0e0;
+  color: var(--color-text);
 }
 
 .blog-post {
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
   font-family: 'Roboto', sans-serif;
@@ -237,10 +251,10 @@ onUnmounted(() => {
   left: 0;
   right: 0;
   z-index: 1000;
-  background-color: rgba(26, 26, 26, 0.95);
+  background-color: var(--color-background);
   padding: 15px 20px;
   display: flex;
-  justify-content: start;
+  justify-content: space-between;
   gap: 16px;
   align-items: center;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
@@ -248,8 +262,8 @@ onUnmounted(() => {
 }
 
 .nav-button {
-  background-color: #ff4136;
-  color: #ffffff;
+  background-color: var(--color-primary);
+  color: var(--color-heading);
   border: none;
   padding: 10px 20px;
   border-radius: 25px;
@@ -261,15 +275,19 @@ onUnmounted(() => {
 }
 
 .nav-button:hover {
-  background-color: #e60000;
+ background-color: var(--color-primary-light);
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(255, 65, 54, 0.3);
+}
+
+.back-button{
+  background-color: transparent;
+  color: var(--color-heading);
 }
 
 .reading-progress-container {
   width: 100%;
   height: 4px;
-  background-color: #333333;
+  background-color: var(--color-border);
   position: absolute;
   bottom: 0;
   left: 0;
@@ -277,7 +295,7 @@ onUnmounted(() => {
 
 .reading-progress {
   height: 100%;
-  background-color: #ff4136;
+  background-color: var(--color-primary);
   transition: width 0.3s ease;
 }
 
@@ -285,17 +303,14 @@ onUnmounted(() => {
   text-align: center;
   margin: 100px 0 60px;
   padding: 40px;
-  background-color: #252525;
   border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .blog-header h1 {
-  font-size: 3.5rem;
-  color: #ffffff;
+  font-size: 2.5rem;
+  color: var(--color-heading);
   margin-bottom: 20px;
   line-height: 1.2;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .blog-meta {
@@ -308,14 +323,14 @@ onUnmounted(() => {
 
 .blog-meta p {
   font-size: 1rem;
-  color: #b0b0b0;
+  color: var(--color-text);
   display: flex;
   align-items: center;
 }
 
 .blog-meta svg {
   margin-right: 8px;
-  color: #ff4136;
+  color: var(--color-primary);
 }
 
 .blog-categories {
@@ -326,8 +341,8 @@ onUnmounted(() => {
 }
 
 .category-tag {
-  background-color: #ff4136;
-  color: #ffffff;
+  background-color: var(--color-primary);
+  color: var(--color-heading);
   padding: 8px 16px;
   border-radius: 25px;
   font-size: 0.9rem;
@@ -338,7 +353,6 @@ onUnmounted(() => {
 
 .category-tag:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(255, 65, 54, 0.3);
 }
 
 .blog-content {
@@ -348,22 +362,20 @@ onUnmounted(() => {
 }
 
 .table-of-contents {
-  flex: 0 0 250px;
-  background-color: #252525;
   padding: 30px;
   border-radius: 15px;
   position: sticky;
   top: 100px;
   max-height: calc(100vh - 120px);
   overflow-y: auto;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  min-height: 100%;
 }
 
 .table-of-contents h2 {
   font-size: 1.5rem;
-  color: #ffffff;
+  color: var(--color-primary);
   margin-bottom: 20px;
-  border-bottom: 2px solid #ff4136;
+  border-bottom: 2px solid var(--color-primary);
   padding-bottom: 10px;
 }
 
@@ -377,7 +389,7 @@ onUnmounted(() => {
 }
 
 .table-of-contents a {
-  color: #b0b0b0;
+  color: var(--color-text);
   text-decoration: none;
   transition: all 0.3s ease;
   font-size: 1rem;
@@ -387,8 +399,8 @@ onUnmounted(() => {
 }
 
 .table-of-contents a:hover {
-  color: #ffffff;
-  background-color: rgba(255, 65, 54, 0.1);
+  color: var(--color-heading);
+  background-color: var(--color-primary-dark);
   transform: translateX(5px);
 }
 
@@ -401,7 +413,7 @@ article {
 article h2 {
   margin-top: 60px;
   margin-bottom: 30px;
-  color: #ffffff;
+  color: var(--color-heading);
   font-size: 2.5rem;
   border-bottom: 2px solid #ff4136;
   padding-bottom: 10px;
@@ -415,7 +427,6 @@ article :deep(.blog-image) {
   margin: 40px 0;
   border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 article :deep(.blog-image img) {
@@ -430,24 +441,24 @@ article :deep(.blog-image:hover img) {
 }
 
 article :deep(.blog-image figcaption) {
-  background-color: #252525;
-  color: #b0b0b0;
+  background-color: var(--color-background);
+  color: var(--color-text);
   padding: 15px;
   text-align: center;
   font-style: italic;
 }
 
 article :deep(.blog-link) {
-  color: #ff4136;
+  color: var(--color-primary);
   text-decoration: none;
-  border-bottom: 1px solid #ff4136;
+  border-bottom: 1px solid var(--color-primary-light);
   transition: all 0.3s ease;
   padding-bottom: 2px;
 }
 
 article :deep(.blog-link:hover) {
-  color: #ffffff;
-  background-color: #ff4136;
+  color: var(--color-heading);
+  background-color: var(--color-primary);
   border-bottom-color: transparent;
 }
 
@@ -464,42 +475,42 @@ article :deep(li) {
 article :deep(blockquote) {
   margin: 40px 0;
   padding: 30px;
-  background-color: #252525;
-  border-left: 5px solid #ff4136;
+  background-color: var(--color-background-muted);
+  border-left: 5px solid var(--color-primary);
   font-style: italic;
-  color: #b0b0b0;
+  color: var(--color-text);
   border-radius: 10px;
 }
 
 article :deep(code) {
-  background-color: #252525;
+  background-color: var(--color-background-muted);
   padding: 3px 6px;
   border-radius: 4px;
   font-family: 'Fira Code', monospace;
   font-size: 0.9rem;
-  color: #ff4136;
+  color: var(--color-primary)
 }
 
 article :deep(pre) {
-  background-color: #252525;
+  background-color: var(--color-background-muted);
   padding: 20px;
   border-radius: 10px;
   overflow-x: auto;
   font-size: 0.9rem;
-  border: 1px solid #333333;
+  border: 1px solid var(--color-border);
   margin: 30px 0;
 }
 
 article :deep(pre code) {
   background-color: transparent;
   padding: 0;
-  color: #e0e0e0;
+  color: var(--color-heading);
 }
 
 .blog-footer {
   margin-top: 80px;
   padding-top: 40px;
-  border-top: 2px solid #333333;
+  border-top: 2px solid var(--color-border);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -507,34 +518,14 @@ article :deep(pre code) {
   gap: 30px;
 }
 
-.author-info {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
 
-.author-avatar {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid #ff4136;
-}
 
-.author-details h3 {
-  font-size: 1.2rem;
-  color: #ffffff;
-  margin-bottom: 5px;
-}
 
-.author-details p {
-  font-size: 0.9rem;
-  color: #b0b0b0;
-}
+
 
 .social-share h3 {
   font-size: 1.2rem;
-  color: #ffffff;
+  color: var(--color-heading);
   margin-bottom: 15px;
 }
 

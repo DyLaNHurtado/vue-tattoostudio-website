@@ -88,19 +88,4 @@ onUnmounted(() => {
   }
 }
 
-.transparent-button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: transparent;
-  color: var(--color-primary);
-  border: 2px solid var(--color-primary);
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.transparent-button:hover {
-  background-color: var(--color-primary);
-  color: #fff;
-}
 </style>

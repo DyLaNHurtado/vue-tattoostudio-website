@@ -83,7 +83,6 @@ export default {
 
 <style scoped>
 .app-header {
-  background-color: rgba(31, 32, 34, 0.35);
   backdrop-filter: blur(10px);
   position: fixed;
   top: 0;
@@ -91,6 +90,8 @@ export default {
   right: 0;
   z-index: 50;
   transition: all 0.3s ease;
+  user-select: none;
+  
 }
 
 nav {
@@ -131,7 +132,7 @@ nav {
 
 .nav-link:hover,
 .router-link-active {
-  color: #f56565;
+  color: var(--color-primary);
 }
 
 .nav-indicator {
@@ -140,7 +141,7 @@ nav {
   left: 50%;
   width: 0;
   height: 3px;
-  background-color: #f56565;
+  background-color: var(--color-primary);
   transition: width 0.3s ease, left 0.3s ease;
 }
 
