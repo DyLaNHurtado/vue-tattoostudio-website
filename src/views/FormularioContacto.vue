@@ -9,7 +9,7 @@
       <div class="info-grid">
         <section class="contact-section">
           <h2><font-awesome-icon :icon="['fas', 'comments']" /> Contacto</h2>
-          <p class="small-font">Elige el método que mejor para ti y contacta con nosotros, te contestaremos lo antes posible.</p>
+          <p class="margin-font">Elige el método lo que mejor se adapte a ti y contacta con nosotros, te contestaremos lo antes posible.</p>
           <div class="contact-details ">
 
             <p><font-awesome-icon class="color-heading" :icon="['fab', 'whatsapp']" /> <a href="tel:638795342" target="_blank" >638 79 53 42</a>  &nbsp;/ &nbsp; <a href="tel:681092191" target="_blank" > 681 09 21 91</a></p>
@@ -19,16 +19,16 @@
             
           </div>
 
-          <p class="small-font">Puedes contarnos a detalle tu idea a través de este formulario y nos podremos en contacto contigo.</p>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSd9xuMt7kmX48XC7tR3to8sA5yH53miRtXv3l19bBwu5fd49g/viewform?usp=sharing" target="_blank" class="transparent-button">
-            <font-awesome-icon :icon="['fas', 'share']" /> Rellenar formulario
+          <p class="margin-font">También puedes contarnos a detalle tu idea a través de este formulario y nos podremos en contacto contigo.</p>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSd9xuMt7kmX48XC7tR3to8sA5yH53miRtXv3l19bBwu5fd49g/viewform?usp=sharing" target="_blank" >
+            <button class="transparent-button"><font-awesome-icon :icon="['fas', 'share']" /> Rellenar formulario</button>
           </a>    
 
         </section>
         
         <section class="location-section">
           <h2><font-awesome-icon :icon="['fas', 'location-dot']" /> Localización</h2>
-          <p class="color-heading">Calle Rioja 71 Local 6 - 28915 - Leganés, Madrid</p>
+          <p >Calle Rioja 71 Local 6 - 28915 - Leganés, Madrid</p>
           <div class="map-container">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3041.529489911896!2d-3.7533890000000003!3d40.330598699999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4189a7929c6c29%3A0x6940283e1e93409a!2sDelaitto%20Tattoo%20-%20Estudio%20de%20tatuajes!5e0!3m2!1ses!2ses!4v1718094523661!5m2!1ses!2ses"
@@ -36,7 +36,7 @@
               referrerpolicy="no-referrer-when-downgrade">
             </iframe>
           </div>
-          <h3 class="color-heading">Cómo llegar:</h3>
+          <h2>Cómo llegar:</h2>
           <div class="transport-info">
             <div class="transport-item">
               <img src="/metro.svg" alt="Metro Madrid" class="transport-logo">
@@ -72,12 +72,12 @@
         <section >
           <h2><font-awesome-icon :icon="['fas', 'clock']" /> Horario</h2>
             <div class="horario-info">
-              <p><span class="color-heading">Lunes - Sábado:</span> <span>12:00 a 15:00, 17:30 a 21:00</span></p>
-              <p><span class="color-heading">Domingo:</span> <span>12:00 a 15:00</span></p>
+              <p><span class="font-bold">Lunes - Sábado:</span> <span>12:00 a 15:00, 17:30 a 21:00</span></p>
+              <p><span class="font-bold">Domingo:</span> <span>12:00 a 15:00</span></p>
             </div>
 
             <div className=" horario-note">
-              <h3 class="color-heading">Importante:</h3>
+              <p class="font-bold">Importante:</p>
               <p>Los días festivos y los meses agosto / septiembre consultar la disponibilidad, es posible que estemos cerrados por vacaciones.</p>
             </div>
         </section>
@@ -143,7 +143,7 @@ section {
 
 h2 {
   font-size: 1.5rem;
-  color: var(--color-primary);
+  color: var(--color-heading);
   margin-bottom: 1rem;
   display: flex;
   font-weight: bold;
@@ -158,6 +158,13 @@ h2 svg {
   display: flex;
   align-items: center;
   margin-bottom: 0.5rem;
+}
+.contact-details a{
+  transition : all .3s ease;
+}
+.contact-details a:hover{
+  color: var(--color-heading);
+  transform: translateY(-2px);
 }
 
 .contact-details svg {
@@ -189,6 +196,7 @@ h2 svg {
 .tag {
   display: inline-block;
   font-weight: bold;
+  color: var(--color-heading);
   padding: 0.25rem 0.5rem;
   border-radius: 9999px;
   font-size: 0.8rem;
@@ -196,9 +204,9 @@ h2 svg {
   margin-bottom: 0.5rem;
 }
 
-.blue { border: 1px solid #4299e1; }
-.red { border: 1px solid #f56565;}
-.green {border: 1px solid #48bb78;}
+.blue { border: 2px solid #4299e1; }
+.red { border: 2px solid #f56565;}
+.green {border: 2px solid #48bb78;}
 
 table {
   width: 100%;
@@ -234,13 +242,12 @@ th {
   color: var(--color-heading);
   font-weight: bold;
 }
-.small-font{
-  font-size: 1em;
-  margin: 1.5em 0;
-}
 
-.transparent-button{
-  background-color: var(--color-background-mute);
+.font-bold{
+  font-weight: bold;
+}
+.margin-font{
+  margin: 1.5em 0;
 }
 
 @media (max-width: 768px) {

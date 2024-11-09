@@ -12,21 +12,21 @@
         <h2>Nuestros Valores y Prioridades</h2>
         <div class="values-grid">
           <div class="value-card">
-            <div class="icon-valores">
+            <div class="icon-valores ">
             <font-awesome-icon :icon="['fas', 'pump-medical']" />
           </div>
             <h3>Higiene y Seguridad</h3>
             <p>Compromiso inquebrantable con los más altos estándares de limpieza y seguridad.</p>
           </div>
           <div class="value-card">
-            <div class="icon-valores">
+            <div class="icon-valores valores-yellow">
             <font-awesome-icon :icon="['fas', 'pen-ruler']" />
           </div>
             <h3>Especialización</h3>
             <p>Cada artista domina un estilo único, ofreciendo una amplia gama de posibilidades creativas.</p>
           </div>
           <div class="value-card">
-            <div class="icon-valores">
+            <div class="icon-valores valores-red">
               <font-awesome-icon :icon="['fas', 'dragon']" />
             </div>
             <h3>Creatividad Sin Límites</h3>
@@ -37,9 +37,9 @@
     </section>
 
     <section class="studio-space parallax">
-      <div class="container">
+      <div class="container hero-content">
         <h2>Nuestro Espacio Creativo</h2>
-        <p>Un santuario para el <span class="highlight">arte del tatuaje</span> en Leganés</p>
+        <p><span class="highlight">Nuestro santuario del arte del tatuaje para ti</span></p>
         <div class="image-gallery">
           <img src="/vue.svg" alt="Recepción del estudio Delaitto Tattoo" />
           <img src="/vue.svg" alt="Área de trabajo principal" />
@@ -76,7 +76,7 @@
     </section>
 
     <section class="process parallax">
-      <div class="container">
+      <div class="container hero-content">
         <h2>El Proceso Creativo</h2>
         <p>Desde la idea hasta la obra maestra en tu piel</p>
         <div class="process-steps">
@@ -89,7 +89,9 @@
       </div>
     </section>
 
-    <section class="location">
+    <LocationContact/>
+
+<!--     <section class="location">
       <div class="container">
         <h2>Ubicación y Contacto</h2>
         <p>Tu destino para tatuajes de calidad en Leganés, Madrid</p>
@@ -110,19 +112,23 @@
             <p><strong>Dirección:</strong> Calle Rioja 71 Local 6, 28915 Leganés, Madrid</p>
             <p><strong>Teléfono:</strong> +34 123 456 789</p>
             <p><strong>Email:</strong> info@delaittotattoo.com</p>
-            <router-link to="/contact" class="cta-button">
-              Reserva tu Cita
+            <router-link to="/contact">
+              <button class="back-button">Reserva tu Cita</button>
             </router-link>
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
   </div>
 </template>
 
 <script>
+import LocationContact from '../components/LocationContact.vue';
 export default {
   name: 'StudioPage',
+  components: {
+    LocationContact,
+  },
   data() {
     return {
       tattooStyles: [
@@ -170,6 +176,8 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  box-shadow: inset 0 0 79px 70px rgba(0, 0, 0, 0.5);
+  backdrop-filter: brightness(60%);
   height: 60vh;
   display: flex;
   align-items: center;
@@ -179,6 +187,7 @@ export default {
 
 .hero {
   background-image: url('/blog.jpg');
+  backdrop-filter: brightness(60%);;
 }
 
 .hero-content {
@@ -194,7 +203,7 @@ h1, h2 {
 }
 
 .highlight {
-  color: var(--color-primary);
+  font-weight: bold;
 }
 
 section {
@@ -221,6 +230,11 @@ section {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.value-card h3, .artist-card h3 {
+  color: var(--color-heading);
+  font-weight: bold;
 }
 
 .value-card:hover, .artist-card:hover {
@@ -289,22 +303,13 @@ section {
   border-radius: 8px;
 }
 
-.cta-button {
-  display: inline-block;
-  background-color: var(--color-primary);
-  color: #1a202c;
-  padding: 0.75rem 1.5rem;
-  border-radius: 4px;
+.back-button {
   text-decoration: none;
   font-weight: bold;
   margin-top: 1rem;
   transition: all 0.3s ease;
 }
 
-.cta-button:hover {
-  background-color: var(--color-primary-dark);
-  transform: translateY(-2px);
-}
 .icon-valores{
   height: 100px;
   width: 100px;
@@ -315,7 +320,15 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: var(--color-heading);
   
+}
+
+.valores-red{
+  background-color: var(--color-text-error);
+}
+.valores-yellow{
+  background-color: var(--color-secondary);
 }
 
 @media (max-width: 768px) {
