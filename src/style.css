@@ -87,7 +87,7 @@ html,body,#app{
 
 @font-face {
   font-family: HelveticaNow;
-  src: url('/assets/fonts/HelveticaNowDisplay-Medium.ttf');
+  src: url('/src/assets/fonts/HelveticaNowDisplay-Medium.ttf');
 }
 
 body {

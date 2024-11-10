@@ -13,9 +13,9 @@ return Object.keys(files).map((path) => {
     date: frontmatter.date || 'Unknown date',
     image: frontmatter.image || `/blog-post/${slug}.jpg` // Ajusta según tus necesidades
   };
+//Ordenados por date mas reciente
 }).sort((a, b) => new Date(b.date) - new Date(a.date));
 }
-//Ordenados por date mas reciente
 export function getLatestPosts(limit = 3) {
   return getAllPosts().slice(0, limit);
 }

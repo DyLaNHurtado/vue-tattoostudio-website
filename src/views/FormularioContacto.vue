@@ -13,7 +13,7 @@
           <div class="contact-details ">
 
             <p><font-awesome-icon class="color-heading" :icon="['fab', 'whatsapp']" /> <a href="tel:638795342" target="_blank" >638 79 53 42</a>  &nbsp;/ &nbsp; <a href="tel:681092191" target="_blank" > 681 09 21 91</a></p>
-            <p><font-awesome-icon class="color-heading" :icon="['far', 'envelope']" /> <a href="mailto:dylanhurtado43@gmail.com" target="_blank">dylanhurtado43@gmail.com</a></p>
+            <p><font-awesome-icon class="color-heading" :icon="['far', 'envelope']" /> <a href="mailto:dylanhurtado@delaittotattoo.es" target="_blank">dylanhurtado@delaittotattoo.es</a></p>
             <p><font-awesome-icon class="color-heading" :icon="['fab', 'instagram']" /><a href="https://www.instagram.com/delaitto.tattoo" target="_blank"> @delaitto.tattoo</a></p>
             <p><font-awesome-icon  class="color-heading" :icon="['fab', 'tiktok']"/><a href="https://www.tiktok.com/@delaitto.tattoo" target="_blank"> @delaitto.tattoo</a></p>
             

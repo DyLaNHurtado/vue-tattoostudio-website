@@ -1,5 +1,5 @@
 ---
-title: "Estilo Japonés: Un Mundo de Misticismo y Belleza"
+title: "Japonés: Un Mundo de Misticismo y Belleza"
 excerpt: "Si alguna vez has visto esos tatuajes japoneses enormes, llenos de color y detalle, sabes que no se parecen a nada más. El estilo japonés, también conocido como **Irezumi**, es una mezcla perfecta entre tradición y arte. Cada uno de estos tatuajes cuenta una historia, una leyenda o refleja una parte de la cultura nipona que lleva siglos perfeccionándose."
 date: 2024-11-09
 ---

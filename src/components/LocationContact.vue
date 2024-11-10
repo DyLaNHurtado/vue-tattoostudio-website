@@ -20,7 +20,7 @@
           <!-- Details-->
           <div class="contact-details">
             <p><font-awesome-icon class="color-heading" :icon="['fab', 'whatsapp']" />&nbsp;&nbsp; <a href="tel:638795342" target="_blank" >638 79 53 42</a>  &nbsp;/ &nbsp; <a href="tel:681092191" target="_blank" > 681 09 21 91</a></p>
-            <p><font-awesome-icon class="color-heading" :icon="['far', 'envelope']" />&nbsp;&nbsp; <a href="mailto:dylanhurtado43@gmail.com" target="_blank">dylanhurtado43@gmail.com</a></p>
+            <p><font-awesome-icon class="color-heading" :icon="['far', 'envelope']" />&nbsp;&nbsp; <a href="mailto:dylanhurtado@delaittotattoo.es" target="_blank">dylanhurtado@delaittotattoo.es</a></p>
             <p><font-awesome-icon class="color-heading" :icon="['fab', 'instagram']" />&nbsp;&nbsp;<a href="https://www.instagram.com/delaitto.tattoo" target="_blank"> @delaitto.tattoo</a></p>
             <p><font-awesome-icon  class="color-heading" :icon="['fab', 'tiktok']"/>&nbsp;&nbsp;<a href="https://www.tiktok.com/@delaitto.tattoo" target="_blank"> @delaitto.tattoo</a></p>
             <p><font-awesome-icon class="color-heading" :icon="['fas', 'location-dot']" />&nbsp;&nbsp;<a href="https://www.google.com/maps/dir/40.3306152,-3.7510546/google+maps+delaitto+tattoo/" target="_blank"> Calle Rioja 71 Local 6 - 28915 - Leganés, Madrid</a> </p>

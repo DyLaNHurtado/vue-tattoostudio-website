@@ -124,7 +124,6 @@ export default {
 
 <style scoped>
 .blog-container {
-  background-color: var(--color-background);
   color: var(--color-text);
   min-height: 100vh;
 }

@@ -1,5 +1,5 @@
 ---
-title: "Neo-tradicional: Un Homenaje a la Tradición con un Toque Moderno"
+title: "Neotradicional: Un Homenaje a la Tradición con un Toque Moderno"
 excerpt: "¿Eres de los que ama los tatuajes clásicos, pero busca algo que se sienta único y fresco? Entonces el estilo Neo-tradicional es exactamente lo que necesitas."
 date: 2024-11-09
 ---

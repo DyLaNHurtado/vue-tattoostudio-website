@@ -108,7 +108,7 @@ export default {
         { name: 'Blackwork', image: '/blackwork.webp', showTextHover:false, post: 'blackwork-el-poder-del-contraste' },
         { name: 'New school', image: '/newschool.jpg', showTextHover:false, post: 'newschool-el-color-explosivo-en-la-piel'},
         { name: 'Black and grey', image: '/blackandgrey.jpg', showTextHover:false, post: 'blackandgrey-la-magia-del-gris-en-la-piel'},
-        { name: 'Japonés', image: '/japones.jpg', showTextHover:false, post:'estilo-japones-un-mundo-de-misticismo-y-belleza' },
+        { name: 'Japonés', image: '/japones.jpg', showTextHover:false, post:'japones-un-mundo-de-misticismo-y-belleza' },
       ],
       processSteps: [
         { title: 'Consulta', description: 'Discutimos tu idea y diseño deseado.' },
