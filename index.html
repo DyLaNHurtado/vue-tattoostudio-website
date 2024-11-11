@@ -1,14 +1,53 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Delaitto Tattoo</title>
+    <title>Delaitto Tattoo - Estudio de Tatuajes en Leganés, Madrid</title>
+
+    <base href="./" />
+    <link rel="icon" type="image/png" href="/assets/favicon.png" />
+
+    <meta name="description" content="Estudio de tatuajes en Leganés, Madrid. Tatuajes personalizados y arte corporal. Visítanos para crear el tatuaje que siempre has soñado." />
+    <meta name="keywords" content="tatuajes, estudio de tatuajes, tatuajes personalizados, Delaitto Tattoo, Leganés, Madrid, tatuajes en España, tatuaje minimalista, manga completa" />
+
+    <meta property="og:title" content="Delaitto Tattoo - Estudio de Tatuajes en Leganés, Madrid" />
+    <meta property="og:description" content="Estudio de tatuajes en Leganés. Realizamos tatuajes personalizados con estilos únicos. ¡Visítanos y crea tu próximo tatuaje!" />
+    <meta property="og:image" content="https://delaittotattoo.es/assets/delaitto-tattoo-preview.jpg" />
+    <meta property="og:url" content="https://delaittotattoo.es" />
+    <meta property="og:type" content="website" />
+
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "TattooParlor",
+      "name": "Delaitto Tattoo",
+      "description": "Estudio de tatuajes en Leganés, Madrid, especializado en diseños personalizados y arte corporal.",
+      "url": "https://delaittotattoo.es",
+      "image": "https://delaittotattoo.es/assets/delaitto-tattoo-preview.jpg",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Calle Rioja 71, Local 6",
+        "addressLocality": "Leganés",
+        "addressRegion": "Madrid",
+        "postalCode": "28915",
+        "addressCountry": "ES"
+      },
+      "contactPoint": [{
+        "@type": "ContactPoint",
+        "telephone": "+34 638795342",
+        "contactType": "Customer Service"
+      }],
+      "openingHours": ["Mo-Sa 12:00-15:00", "Mo-Sa 17:00-21:00"]
+    }
+    </script>
+    <link rel="modulepreload" href="/src/main.js" />
   </head>
   <body>
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
-    <script src="https://snapwidget.com/js/snapwidget.js"></script>
   </body>
 </html>
