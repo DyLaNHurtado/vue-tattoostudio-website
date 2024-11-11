@@ -8,7 +8,7 @@
         <router-link to="/contact"><button class="fill-btn">¡ Quiero tatuarme !</button></router-link>
       </div>
     </div>
-    
+
     <!-- Gallery Section -->
     <div class="last-tattoos" v-if="images!=null && images.length > 0">
       <h2>Trabajos Destacados:</h2>
@@ -18,15 +18,14 @@
       </router-link>
     </div>
 
-        <!-- About Us Section -->
+    <!-- About Us Section -->
     <div class="about-us">
       <h2>Sobre Nosotros</h2>
-
       <p>Somos un estudio de tatuajes ubicado en <span class="highlight">Leganés</span>, comprometidos con la calidad, la creatividad y la satisfacción de nuestros clientes. Tenemos experiencia en crear <span class="highlight">diseños personalizados</span> que reflejan la individualidad de <span class="highlight">cada persona</span>.</p>
-        <!-- Video de persona tatuando sin sonido ni controles-->
-        <video muted autoplay loop>
-          <source src="/tatuando.mp4" type="video/mp4">
-        </video>
+      <!-- Video de persona tatuando sin sonido ni controles-->
+      <video muted autoplay loop>
+        <source src="/tatuando.mp4" type="video/mp4">
+      </video>
       <router-link to="/studio" class="cta">
         <button class="transparent-button">Descubre más aquí</button>
       </router-link>
@@ -49,21 +48,23 @@
     <AfterCare />
 
     <!-- Contact Us Section -->
-    <LocationContact/>
+    <LocationContact />
   </div>
 </template>
 
 <script>
+import { defineAsyncComponent } from 'vue';
+import { getLatestPosts } from '../blog/posts';
 
 export default {
   name: 'HomeView',
   components: {
-/*     Socials: () => import('../components/Socials.vue'),
-    Newsletter: () => import('../components/Newsletter.vue'), */
-    LocationContact:  import('../components/LocationContact.vue'),
-    BlogList:  import('../components/BlogList.vue'),
-    GalleryList:  import('../components/GalleryList.vue'),
-    AfterCare:  import('../components/AfterCare.vue'),
+    Socials: defineAsyncComponent(() => import('../components/Socials.vue')),
+    Newsletter: defineAsyncComponent(() => import('../components/Newsletter.vue')),
+    LocationContact: defineAsyncComponent(() => import('../components/LocationContact.vue')),
+    BlogList: defineAsyncComponent(() => import('../components/BlogList.vue')),
+    GalleryList: defineAsyncComponent(() => import('../components/GalleryList.vue')),
+    AfterCare: defineAsyncComponent(() => import('../components/AfterCare.vue')),
   },
   data() {
     return {
@@ -72,7 +73,6 @@ export default {
     };
   },
   async mounted() {
-    const { getLatestPosts } = await import('../blog/posts');
     this.lastestPost = await getLatestPosts();
     this.images = [
       { id: 1, url: '/hada.jpg', alt: 'Tattoo hada colores' },
@@ -197,7 +197,7 @@ h2 {
   color: var(--color-heading);
 }
 
-video{
+video {
   height: 400px;
   object-fit: cover;
   border-radius: 8px;
