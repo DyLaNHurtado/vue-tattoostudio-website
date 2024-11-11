@@ -19,20 +19,15 @@
 </template>
 
 <script>
-import { EnumReviewSorts } from '../components/Enums';
-import ReviewList from '../components/ReviewList.vue';
-import ReviewFormDialog from '../components/ReviewFormDialog.vue';
-import ReviewSorts from '../components/ReviewSorts.vue';
-import ReviewSummary from '../components/ReviewSummary.vue';
-import FAQ from '../components/FAQ.vue';
+const {EnumReviewSorts} = () => import('../components/Enums')
 
 export default {
   components: {
-    ReviewList,
-    ReviewFormDialog,
-    ReviewSorts,
-    ReviewSummary,
-    FAQ
+    ReviewList: () => import('../components/ReviewList.vue'),
+    ReviewFormDialog: () => import('../components/ReviewFormDialog.vue'),
+    ReviewSorts : () => import('../components/ReviewSorts.vue'),
+    ReviewSummary: () => import('../components/ReviewSummary.vue'),
+    FAQ: () => import('../components/FAQ.vue')
 },
   data() {
     return {

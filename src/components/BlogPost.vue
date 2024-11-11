@@ -77,7 +77,7 @@ import Loading from './Loading.vue';
 import { useRouter } from 'vue-router';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/atom-one-dark.css';
-import '../post-styles.css'
+import '../styles/post-styles.scss'
 
 const props = defineProps({
   slug: String

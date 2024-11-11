@@ -6,13 +6,12 @@
   </template>
   
   <script>
-  import NotFound from '../components/NotFound.vue'; 
   import { defineComponent } from 'vue';
   import { useRouter } from 'vue-router';
   
   export default defineComponent({
     components: {
-      NotFound,
+      NotFound: () => import('../components/NotFound.vue'),
     },
     setup() {
       const router = useRouter();

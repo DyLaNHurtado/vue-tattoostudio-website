@@ -8,11 +8,10 @@
 </template>
 
 <script>
-import GalleryList from '../components/GalleryList.vue';
-
+import { defineAsyncComponent } from 'vue';
 export default {
   components: {
-    GalleryList,
+    GalleryList: defineAsyncComponent(() => import('../components/GalleryList.vue')),
   },
   data() {
     return {

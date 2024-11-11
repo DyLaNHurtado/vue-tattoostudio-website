@@ -3,11 +3,13 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "./views/HomeView.vue";
 import GaleriaTatuajes from "./views/GaleriaTatuajes.vue";
 import StudioInfo from "./views/StudioInfo.vue";
-import ResenasClientes from "./views/ResenasClientes.vue";
+/* import ResenasClientes from "./views/ResenasClientes.vue"; */
 import FormularioContacto from "./views/FormularioContacto.vue";
 import BlogView from "./views/BlogView.vue";
 import BlogPost from "./components/BlogPost.vue";
 import NotFound from "./views/NotFoundView.vue";
+
+console.log(import.meta.env.BASE_URL)
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -27,11 +29,11 @@ const router = createRouter({
       name: "studio",
       component: StudioInfo,
     },
-    {
+/*     {
       path: "/reviews",
       name: "reviews",
       component: ResenasClientes,
-    },
+    }, */
     {
       path: "/contact",
       name: "contact",

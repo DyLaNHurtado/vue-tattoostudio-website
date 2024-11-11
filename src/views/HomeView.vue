@@ -8,7 +8,6 @@
         <router-link to="/contact"><button class="fill-btn">¡ Quiero tatuarme !</button></router-link>
       </div>
     </div>
-
     
     <!-- Gallery Section -->
     <div class="last-tattoos" v-if="images!=null && images.length > 0">
@@ -55,23 +54,16 @@
 </template>
 
 <script>
-import Socials from '../components/Socials.vue';
-import Newsletter from '../components/Newsletter.vue';
-import LocationContact from '../components/LocationContact.vue';
-import BlogList from '../components/BlogList.vue';
-import GalleryList from '../components/GalleryList.vue';
-import AfterCare from '../components/AfterCare.vue';
-import { getLatestPosts } from '../blog/posts';
 
 export default {
   name: 'HomeView',
   components: {
-    Socials,
-    Newsletter,
-    LocationContact,
-    BlogList,
-    GalleryList,
-    AfterCare,
+/*     Socials: () => import('../components/Socials.vue'),
+    Newsletter: () => import('../components/Newsletter.vue'), */
+    LocationContact:  import('../components/LocationContact.vue'),
+    BlogList:  import('../components/BlogList.vue'),
+    GalleryList:  import('../components/GalleryList.vue'),
+    AfterCare:  import('../components/AfterCare.vue'),
   },
   data() {
     return {
@@ -80,6 +72,7 @@ export default {
     };
   },
   async mounted() {
+    const { getLatestPosts } = await import('../blog/posts');
     this.lastestPost = await getLatestPosts();
     this.images = [
       { id: 1, url: '/hada.jpg', alt: 'Tattoo hada colores' },

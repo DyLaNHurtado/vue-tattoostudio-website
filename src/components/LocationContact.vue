@@ -68,6 +68,7 @@
 .link {
   text-decoration: none;
   align-self: center;
+  user-select: none;
 }
 
 

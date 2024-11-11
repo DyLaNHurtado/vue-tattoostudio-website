@@ -41,10 +41,12 @@
 </template>
 
 <script>
-import { ref, computed, onMounted, watch } from 'vue';
-import BlogList from '../components/BlogList.vue';
-import SearchAndFilter from '../components/SearchAndFilter.vue';
-import {getAllPosts} from '../blog/posts';
+import { ref, computed, onMounted, watch, defineAsyncComponent } from 'vue';
+import { getAllPosts } from '../blog/posts';
+
+// Cargar dinámicamente los componentes BlogList y SearchAndFilter
+const BlogList = defineAsyncComponent(() => import('../components/BlogList.vue'));
+const SearchAndFilter = defineAsyncComponent(() => import('../components/SearchAndFilter.vue'));
 
 export default {
   components: {
@@ -77,7 +79,7 @@ export default {
       if (!posts.value.length) return [];
       const tags = posts.value.flatMap((post) => post.tags);
       return [...new Set(tags)];
-    }
+    };
 
     const updateFilters = (newFilters) => {
       filters.value = newFilters;

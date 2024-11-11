@@ -1,0 +1,73 @@
+.transparent-button{
+    background-color: var(--color-background-soft);
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    color: var(--color-text);
+    margin: 0 5px;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    display: flex;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .transparent-button:hover{
+    background-color: var(--color-primary);
+    color: var(--color-heading);
+    transform: translateY(-2px);
+  }
+
+  .fill-btn{
+    background-color: var(--color-background-mute);
+    border:0;
+    padding: 20px 70px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: block;
+    box-shadow: inset 0 0 0 0 var(--color-primary);
+    text-decoration: none;
+    user-select: none;
+    transition: all .5s;
+    font-size: 16px;
+    font-weight: bold;
+    -webkit-transition: all ease .5s;
+    -moz-transition: all ease .8s;
+    transition: all ease .8s;
+    color: var(--color-primary);
+    border-radius: 5px;
+  }
+  
+  .fill-btn:hover {
+    color: white;
+    box-shadow: inset 90vw 0 0 0 var(--color-primary);
+  }
+
+  .back-button {
+    background-color: var(--c-secondary-hover);
+    color: var(--color-heading);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    gap: 0.5rem;
+  }
+  
+  .back-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    color: var(--color-heading);
+  }
+  
