@@ -85,8 +85,9 @@ export default {
       { id: 1, url: '/hada.jpg', alt: 'Tattoo hada colores' },
       { id: 2, url: '/tiburon.jpg', alt: 'Tatuaje tiburon rojo black and grey' },
       { id: 3, url: '/yokai.jpg', alt: 'Yokai tatuaje japones kanji tattoo letras japonesas chinas' },
-      { id: 4, url: '/flor-craneo.jpg', alt: 'Flor de craneo diseño tatuaje color hojas new school' },
-      { id: 5, url: '/seta.jpg', alt: 'Seta newschool tatuaje tattoo color azul scketch' },
+      { id: 4, url: '/pajaroloco.webp', alt: 'Yokai tatuaje japones kanji tattoo letras japonesas chinas' },
+      { id: 5, url: '/flor-craneo.jpg', alt: 'Flor de craneo diseño tatuaje color hojas new school' },
+      { id: 6, url: '/seta.jpg', alt: 'Seta newschool tatuaje tattoo color azul scketch' },
     ];
   },
 };

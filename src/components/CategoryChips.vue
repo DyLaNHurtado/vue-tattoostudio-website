@@ -53,7 +53,7 @@ export default {
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: bold;
 }
 
 .chip:hover {
@@ -63,7 +63,7 @@ export default {
 
 .chip-active {
   background-color: var(--color-primary);
-  color: var(--color-text-inverse);
+  color: var(--color-text-invert);
   border-color: var(--color-primary);
 }
 

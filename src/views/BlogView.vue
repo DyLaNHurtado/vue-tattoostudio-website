@@ -4,7 +4,7 @@
       <h1 class="blog-title">Blog de Delaitto Tattoo</h1>
     </div>
     <div class="content-wrapper">
-      <SearchAndFilter @update:filters="updateFilters" />
+      <SearchAndFilter :tags="allDistintTags" @update:filters="updateFilters" />
       <transition name="fade" mode="out-in">
         <div v-if="loading" class="loading-spinner">
           <font-awesome-icon :icon="['fas', 'spinner']" spin size="3x" />
@@ -58,7 +58,8 @@ export default {
     const error = ref(null);
     const filters = ref({
       searchTerm: '',
-      selectedCategory: 'Todos',
+      selectedTag: 'Todos',
+      allDistintTags: []
     });
     const currentPage = ref(1);
     const postsPerPage = 6;
@@ -72,6 +73,12 @@ export default {
       return filteredPosts.value.slice(start, end);
     });
 
+    const getDistinctTags = () => {
+      if (!posts.value.length) return [];
+      const tags = posts.value.flatMap((post) => post.tags);
+      return [...new Set(tags)];
+    }
+
     const updateFilters = (newFilters) => {
       filters.value = newFilters;
       currentPage.value = 1;
@@ -79,12 +86,12 @@ export default {
     };
 
     const applyFilters = () => {
-      const { searchTerm, selectedCategory } = filters.value;
+      const { searchTerm, selectedTag } = filters.value;
       filteredPosts.value = posts.value.filter((post) => {
         const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
                               post.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
-        const matchesCategory = selectedCategory === 'Todos' || post.category === selectedCategory;
-        return matchesSearch && matchesCategory;
+        const matchesTag = selectedTag === 'Todos' || post.tags.includes(selectedTag);
+        return matchesSearch && matchesTag;
       });
       rerenderKey.value += 1;
     };
@@ -96,6 +103,7 @@ export default {
     onMounted(async () => {
       try {
         posts.value = await getAllPosts();
+        filters.value.allDistintTags = getDistinctTags();
         filteredPosts.value = posts.value;
       } catch (e) {
         error.value = "Error al cargar los artículos. Por favor, inténtalo de nuevo más tarde.";
@@ -155,7 +163,6 @@ export default {
   font-size: 3rem;
   font-weight: bold;
   text-align: center;
-  color: var(--color-heading);
   position: relative;
   z-index: 1;
 }
@@ -168,7 +175,6 @@ export default {
 
 .blog-view {
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 20px;
 }
 

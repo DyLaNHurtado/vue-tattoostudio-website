@@ -11,7 +11,8 @@ return Object.keys(files).map((path) => {
     slug: slug,
     excerpt: frontmatter.excerpt || 'No excerpt available',
     date: frontmatter.date || 'Unknown date',
-    image: frontmatter.image || `/blog-post/${slug}.jpg` // Ajusta según tus necesidades
+    image: frontmatter.image || `/blog-post/${slug}.jpg`, // Ajusta según tus necesidades
+    tags: frontmatter.tags || []
   };
 //Ordenados por date mas reciente
 }).sort((a, b) => new Date(b.date) - new Date(a.date));

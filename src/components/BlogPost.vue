@@ -27,12 +27,14 @@
             <font-awesome-icon :icon="['far', 'clock']" />
             {{ estimatedReadingTime }} min de lectura
           </p>
+          <div class="blog-tags">
+          <p class="tags"><font-awesome-icon :icon="['fas', 'tag']" />
+          <span v-for="tag in attributes.tags" :key="tag" class="tag-tag">
+            {{ tag }}
+          </span></p>
         </div>
-        <div class="blog-categories">
-          <span v-for="category in attributes.categories" :key="category" class="category-tag">
-            {{ category }}
-          </span>
         </div>
+
       </header>
       <div class="blog-content">
         <aside class="table-of-contents" v-if="tableOfContents.length > 0">
@@ -82,7 +84,7 @@ const props = defineProps({
 });
 
 const sanitizedPostContent = ref('');
-const attributes = ref({ title: '', date: '', categories: [] });
+const attributes = ref({ title: '', date: '', tags: [] });
 const postLoaded = ref(false);
 const router = useRouter();
 const articleContent = ref(null);
@@ -103,7 +105,6 @@ const estimatedReadingTime = computed(() => {
 
 const loadMarkdownFile = async () => {
   try {
-    console.log(props.slug)
     const markdownFilePath = `/blog-post/${props.slug}.md`;
 
     const response = await fetch(markdownFilePath);
@@ -118,7 +119,7 @@ const loadMarkdownFile = async () => {
     attributes.value = {
       title: frontmatterAttributes.title || 'Sin título',
       date: frontmatterAttributes.date || '',
-      categories: frontmatterAttributes.categories || []
+      tags: frontmatterAttributes.tags || []
     };
 
     const renderer = new marked.Renderer();

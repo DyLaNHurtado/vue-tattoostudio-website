@@ -115,12 +115,12 @@ export default {
 .parallax h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
-  color: var(--color-heading);
+  color: var(--c-white);
 }
 
 .parallax p {
   font-size: 1.25rem;
-  color: var(--color-text);
+  color: #ebebeba3;
 }
 
 .content-wrapper {

@@ -123,7 +123,7 @@ nav {
 
 .nav-link {
   text-decoration: none;
-  color: white;
+  color: var(--color-indigo);
   font-weight: bold;
   padding: 0.5rem 1rem;
   position: relative;
@@ -201,7 +201,7 @@ nav {
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(26, 32, 44, 0.95);
+    background-color: var(--color-background-mute);
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
     padding: 0.5rem 0;
     justify-content: space-around;

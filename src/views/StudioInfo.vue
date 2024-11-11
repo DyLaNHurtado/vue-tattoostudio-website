@@ -316,7 +316,7 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--color-heading);
+  color: var(--c-white);
   
 }
 

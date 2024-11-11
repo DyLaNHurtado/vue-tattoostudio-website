@@ -23,12 +23,21 @@ export default {
   setup(props, { emit }) {
     const searchTerm = ref('');
     const selectedCategory = ref('Todos');
-    const categories = ref(['Todos', 'Estilos', 'Cuidados', 'Tendencias', 'Cultura']);
+    const categories = ref(['Todos']);
 
     const handleCategoryChange = (category) => {
       selectedCategory.value = category;
       emitFilters();
     };
+
+    // Watch for changes in props.tags and update categories array
+    watch(props.tags, () => {
+      categories.value = ['Todos'];
+      props.tags.forEach((tag) => {
+        categories.value.push(tag);
+      });
+    });
+
 
     const emitFilters = () => {
       emit('update:filters', { searchTerm: searchTerm.value, selectedCategory: selectedCategory.value });
@@ -55,6 +64,5 @@ export default {
   margin: 0 auto 40px;
   border-radius: 8px;
   padding: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 </style>
