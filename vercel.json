@@ -13,12 +13,14 @@
       }
     ],
     "rewrites": [
-      { "source": "/assets/(.*)", "destination": "/assets/$1" },
-      { "source": "/public/(.*)", "destination": "/public/$1" },
-      { "source": "/(.*)", "destination": "/" }
+      { "source": "/(.*)", "destination": "/index.html" }
     ],
     "redirects": [
-      { "source": "/index.html", "destination": "/", "permanent": true }
+      {
+        "source": "/index.html",
+        "destination": "/",
+        "permanent": true
+      }
     ]
   }
   
