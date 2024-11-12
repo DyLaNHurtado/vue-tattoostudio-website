@@ -17,7 +17,10 @@
       }
     ],
     "rewrites": [
-      { "source": "/(.*)", "destination": "/index.html" }
+      {
+        "source": "/(.*)",
+        "destination": "/index.html"
+      }
     ],
     "builds": [
       {
@@ -28,6 +31,18 @@
         "src": "dist/assets/**/*",
         "use": "@vercel/static"
       }
-    ]
+    ],
+    "redirects": [
+      {
+        "source": "/**",
+        "destination": "/index.html",
+        "permanent": false
+      }
+    ],
+    "functions": {
+      "api/**.js": {
+        "maxDuration": 10
+      }
+    }
   }
   
