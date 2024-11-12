@@ -15,34 +15,6 @@
           }
         ]
       }
-    ],
-    "rewrites": [
-      {
-        "source": "/(.*)",
-        "destination": "/index.html"
-      }
-    ],
-    "builds": [
-      {
-        "src": "dist/index.html",
-        "use": "@vercel/static"
-      },
-      {
-        "src": "dist/assets/**/*",
-        "use": "@vercel/static"
-      }
-    ],
-    "redirects": [
-      {
-        "source": "/**",
-        "destination": "/index.html",
-        "permanent": false
-      }
-    ],
-    "functions": {
-      "api/**.js": {
-        "maxDuration": 10
-      }
-    }
+    ]
   }
   
