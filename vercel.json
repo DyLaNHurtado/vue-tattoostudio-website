@@ -3,8 +3,12 @@
     "trailingSlash": false,
     "headers": [
       {
-        "source": "/(.*).(js|css|png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot|ico)",
+        "source": "/(.*).(js|css|png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot|ico|gz)",
         "headers": [
+          {
+            "key": "Content-Encoding",
+            "value": "gzip"
+          },
           {
             "key": "Cache-Control",
             "value": "public, max-age=31536000, immutable"
@@ -16,10 +20,14 @@
       { "source": "/(.*)", "destination": "/index.html" }
     ],
     "builds": [
-    {
-      "src": "index.html",
-      "use": "@vercel/static"
-    }
-  ]
+      {
+        "src": "dist/index.html",
+        "use": "@vercel/static"
+      },
+      {
+        "src": "dist/assets/**/*",
+        "use": "@vercel/static"
+      }
+    ]
   }
   
