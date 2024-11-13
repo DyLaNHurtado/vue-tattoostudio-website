@@ -7,6 +7,7 @@ import ViteImagemin from 'vite-plugin-imagemin';
 import PurgeCSS from 'vite-plugin-purgecss';
 
 export default defineConfig({
+  base: import.meta.env.VITE_BASE_URL || '/',
   plugins: [
     vue({
       include: [/\.vue$/, /\.md$/],
