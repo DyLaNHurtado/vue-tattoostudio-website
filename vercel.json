@@ -23,10 +23,6 @@
     {
       "src": "dist/index.html",
       "use": "@vercel/static"
-    },
-    {
-      "src": "dist/assets/**/*",
-      "use": "@vercel/static"
     }
   ]
 }
