@@ -58,42 +58,42 @@ export default defineConfig({
       '@assets': path.resolve(__dirname, './src/assets'),
     },
   },
-  build: {
-    outDir: 'dist', // Carpeta de salida
-    sourcemap: false, // Desactiva sourcemaps para archivos más pequeños en producción
-    cssCodeSplit: true, // Divide el CSS por componente para mejor optimización
-    minify: 'esbuild', // Usa esbuild para minificación rápida
-    rollupOptions: {
-      output: {
-        manualChunks(id) {
-          // Dividir módulos de Vue en su propio chunk
-          if (id.includes('node_modules/vue')) {
-            return 'vue';
-          }
+  // build: {
+  //   outDir: 'dist', // Carpeta de salida
+  //   sourcemap: false, // Desactiva sourcemaps para archivos más pequeños en producción
+  //   cssCodeSplit: true, // Divide el CSS por componente para mejor optimización
+  //   minify: 'esbuild', // Usa esbuild para minificación rápida
+  //   rollupOptions: {
+  //     output: {
+  //       manualChunks(id) {
+  //         // Dividir módulos de Vue en su propio chunk
+  //         if (id.includes('node_modules/vue')) {
+  //           return 'vue';
+  //         }
           
-          // Dividir Vue Router en su propio chunk
-          if (id.includes('node_modules/vue-router')) {
-            return 'vue-router';
-          }
+  //         // Dividir Vue Router en su propio chunk
+  //         if (id.includes('node_modules/vue-router')) {
+  //           return 'vue-router';
+  //         }
 
-          // Dividir Firebase y otras dependencias grandes
-          if (id.includes('node_modules/firebase')) {
-            return 'firebase';
-          }
+  //         // Dividir Firebase y otras dependencias grandes
+  //         if (id.includes('node_modules/firebase')) {
+  //           return 'firebase';
+  //         }
 
-          // Dividir FontAwesome en su propio chunk
-          if (id.includes('node_modules/@fortawesome')) {
-            return 'fontawesome';
-          }
+  //         // Dividir FontAwesome en su propio chunk
+  //         if (id.includes('node_modules/@fortawesome')) {
+  //           return 'fontawesome';
+  //         }
 
-          // // Agrupar dependencias de terceros en un chunk 'vendor'
-          // if (id.includes('node_modules')) {
-          //   return 'vendor';
-          // }
-        },
-      },
-    },
-  },
+  //         // // Agrupar dependencias de terceros en un chunk 'vendor'
+  //         // if (id.includes('node_modules')) {
+  //         //   return 'vendor';
+  //         // }
+  //       },
+  //     },
+  //   },
+  // },
   css: {
     preprocessorOptions: {
       scss: {
