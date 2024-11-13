@@ -94,13 +94,6 @@ export default defineConfig({
   //     },
   //   },
   // },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData: `@use "@/styles/global.scss";` // Configuración SCSS global
-      }
-    }
-  },
   server: {
     port: 3000,
     open: true, // Abre el navegador al iniciar el servidor
