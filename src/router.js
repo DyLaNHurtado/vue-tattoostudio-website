@@ -9,7 +9,6 @@ import BlogView from "./views/BlogView.vue";
 import BlogPost from "./components/BlogPost.vue";
 import NotFound from "./views/NotFoundView.vue";
 
-console.log(import.meta.env.BASE_URL)
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
