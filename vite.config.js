@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import Markdown from 'vite-plugin-md';
 import path from 'path';
-// import compression from 'vite-plugin-compression';
+import compression from 'vite-plugin-compression';
 import ViteImagemin from 'vite-plugin-imagemin';
 import PurgeCSS from 'vite-plugin-purgecss';
 
@@ -12,11 +12,11 @@ export default defineConfig({
       include: [/\.vue$/, /\.md$/],
     }),
     Markdown(),
-    // compression({
-    //   algorithm: 'gzip',
-    //   ext: '.gz', // Genera archivos comprimidos para el despliegue
-    //   threshold: 10240, // Comprime solo archivos mayores a 10KB
-    // }),
+    compression({
+      algorithm: 'gzip',
+      ext: '.gz', // Genera archivos comprimidos para el despliegue
+      threshold: 10240, // Comprime solo archivos mayores a 10KB
+    }),
     ViteImagemin({
       // Compresión para imágenes en varios formatos
       gifsicle: {
@@ -43,13 +43,13 @@ export default defineConfig({
         quality: 75
       }
     }),
-    PurgeCSS({
-      // Opciones de configuración de PurgeCSS
-      content: [
-        './index.html',
-        './src/**/*.{js,ts,vue,html,scss}',  // Rutas donde buscará el CSS utilizado
-      ],
-    })
+    // PurgeCSS({
+    //   // Opciones de configuración de PurgeCSS
+    //   content: [
+    //     './index.html',
+    //     './src/**/*.{js,ts,vue,html,scss}',  // Rutas donde buscará el CSS utilizado
+    //   ],
+    // })
   ],
   resolve: {
     alias: {
@@ -86,10 +86,10 @@ export default defineConfig({
             return 'fontawesome';
           }
 
-          // Agrupar dependencias de terceros en un chunk 'vendor'
-          if (id.includes('node_modules')) {
-            return 'vendor';
-          }
+          // // Agrupar dependencias de terceros en un chunk 'vendor'
+          // if (id.includes('node_modules')) {
+          //   return 'vendor';
+          // }
         },
       },
     },
