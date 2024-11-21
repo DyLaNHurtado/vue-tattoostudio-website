@@ -5,11 +5,24 @@ import path from 'path';
 import compression from 'vite-plugin-compression';
 import ViteImagemin from 'vite-plugin-imagemin';
 import PurgeCSS from 'vite-plugin-purgecss';
+import sitemapPlugin from 'vite-plugin-sitemap';
+import getRoutesForSitemap from './src/sitemapsRoutes';
+
 
 export default defineConfig({
   plugins: [
     vue({
       include: [/\.vue$/, /\.md$/],
+    }),
+    sitemapPlugin({
+      hostname: 'https://delaittotattoo.es',
+      dynamicRoutes: getRoutesForSitemap(),
+      changefreq: 'daily',
+      priority: 1.0,
+      lastmod: new Date(),
+      readable: true,
+      generateRobotsTxt: true,
+      robots: [{ userAgent: '*', allow: '/' }],
     }),
     Markdown(),
     compression({
