@@ -4,7 +4,7 @@
       <h1 class="blog-title">Blog de Delaitto Tattoo</h1>
     </div>
     <div class="content-wrapper">
-      <SearchAndFilter :tags="allDistintTags" @update:filters="updateFilters" />
+      <SearchAndFilter :tags="allTags" @update:filters="updateFilters" />
       <transition name="fade" mode="out-in">
         <div v-if="loading" class="loading-spinner">
           <font-awesome-icon :icon="['fas', 'spinner']" spin size="3x" />
@@ -41,12 +41,10 @@
 </template>
 
 <script>
-import { ref, computed, onMounted, watch, defineAsyncComponent } from 'vue';
-import { getAllPosts } from '../blog/posts';
-
-// Cargar dinámicamente los componentes BlogList y SearchAndFilter
-const BlogList = defineAsyncComponent(() => import('../components/BlogList.vue'));
-const SearchAndFilter = defineAsyncComponent(() => import('../components/SearchAndFilter.vue'));
+import { ref, computed, onMounted, watch } from 'vue';
+import BlogList from '../components/BlogList.vue';
+import SearchAndFilter from '../components/SearchAndFilter.vue';
+import {getAllPosts} from '../blog/posts';
 
 export default {
   components: {
@@ -60,8 +58,7 @@ export default {
     const error = ref(null);
     const filters = ref({
       searchTerm: '',
-      selectedTag: 'Todos',
-      allDistintTags: []
+      selectedCategory: 'Todos',
     });
     const currentPage = ref(1);
     const postsPerPage = 6;
@@ -75,12 +72,6 @@ export default {
       return filteredPosts.value.slice(start, end);
     });
 
-    const getDistinctTags = () => {
-      if (!posts.value.length) return [];
-      const tags = posts.value.flatMap((post) => post.tags);
-      return [...new Set(tags)];
-    };
-
     const updateFilters = (newFilters) => {
       filters.value = newFilters;
       currentPage.value = 1;
@@ -88,12 +79,12 @@ export default {
     };
 
     const applyFilters = () => {
-      const { searchTerm, selectedTag } = filters.value;
+      const { searchTerm, selectedCategory } = filters.value;
       filteredPosts.value = posts.value.filter((post) => {
         const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
                               post.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
-        const matchesTag = selectedTag === 'Todos' || post.tags.includes(selectedTag);
-        return matchesSearch && matchesTag;
+        const matchesCategory = selectedCategory === 'Todos' || post.tags.includes(selectedCategory);
+        return matchesSearch && matchesCategory;
       });
       rerenderKey.value += 1;
     };
@@ -105,7 +96,6 @@ export default {
     onMounted(async () => {
       try {
         posts.value = await getAllPosts();
-        filters.value.allDistintTags = getDistinctTags();
         filteredPosts.value = posts.value;
       } catch (e) {
         error.value = "Error al cargar los artículos. Por favor, inténtalo de nuevo más tarde.";
@@ -115,6 +105,10 @@ export default {
     });
 
     watch(filters, applyFilters);
+
+    const allTags = computed(() => {
+      return [...new Set(posts.value.flatMap(post => post.tags))];
+    });
 
     return {
       filteredPosts,
@@ -127,6 +121,7 @@ export default {
       changePage,
       postsPerPage,
       rerenderKey,
+      allTags,
     };
   },
 };

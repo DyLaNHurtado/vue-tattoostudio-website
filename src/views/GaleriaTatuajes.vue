@@ -50,5 +50,6 @@ export default {
   font-size: 2.5rem;
   text-align: center;
   margin: 70px 0;
+  color: var(--c-white);
 }
 </style>

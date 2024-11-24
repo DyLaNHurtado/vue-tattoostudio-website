@@ -41,9 +41,9 @@
         <h2>Nuestro Espacio Creativo</h2>
         <p><span class="highlight">Nuestro santuario del arte del tatuaje para ti</span></p>
         <div class="image-gallery">
-          <img src="/vue.svg" alt="Recepción del estudio Delaitto Tattoo" />
-          <img src="/vue.svg" alt="Área de trabajo principal" />
-          <img src="/vue.svg" alt="Sala de diseño y consulta" />
+          <img src="/entrada_sofa.webp" alt="Recepción del estudio Delaitto Tattoo" />
+          <img src="/entrada_pasillo.webp" alt="Vista al pasillo y mural de galeria de arte" />
+          <img src="/sala_tattoo_inicio3.webp" alt="Área de trabajo principal" />
         </div>
       </div>
     </section>
@@ -193,6 +193,7 @@ section {
   display: grid;
   gap: 2rem;
   margin-top: 2rem;
+  place-content: center;
 }
 
 .values-grid {

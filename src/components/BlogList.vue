@@ -10,7 +10,10 @@
         <img :src="`/blog-images/${post.slug}.webp`" :alt="post.title" loading="lazy" />
       </div>
       <div class="card-content">
-        <span class="card-category">{{ post.category }}</span>
+        <!-- Mostrar categorias/tags en la card  de forma estetica en el UI-->
+        <div class="card-tags">
+          <span class="card-category" v-for="tag in post.tags">{{ tag }},</span>
+        </div>
         <h2>{{ post.title }}</h2>
         <p>{{ post.excerpt }}</p>
         <div class="card-footer">
@@ -104,6 +107,13 @@ export default {
   text-transform: uppercase;
   font-weight: 600;
   margin-bottom: 10px;
+  line-height: 1.4;
+  margin-bottom: 5px;
+}
+.card-tags{
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .card-content h2 {

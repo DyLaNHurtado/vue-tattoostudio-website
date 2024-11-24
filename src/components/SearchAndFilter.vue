@@ -1,8 +1,8 @@
 <template>
   <div class="search-and-filter">
-    <SearchBar v-model="searchTerm" />
+    <SearchBar v-model="searchTerm" @update:modelValue="handleSearch" />
     <CategoryChips
-      :categories="categories"
+      :categories="['Todos', ...categories]"
       :selectedCategory="selectedCategory"
       @update:category="handleCategoryChange"
     />
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { ref, watch } from 'vue';
+import { ref, watch, computed } from 'vue';
 import SearchBar from './SearchBar.vue';
 import CategoryChips from './CategoryChips.vue';
 
@@ -19,36 +19,47 @@ export default {
     SearchBar,
     CategoryChips,
   },
+  props: {
+    tags: {
+      type: Array,
+      required: true,
+    },
+  },
   emits: ['update:filters'],
   setup(props, { emit }) {
     const searchTerm = ref('');
     const selectedCategory = ref('Todos');
-    const categories = ref(['Todos']);
+    
+    const categories = computed(() => {
+      return [...new Set(props.tags)].sort();
+    });
+
+    const emitFilters = () => {
+      emit('update:filters', { 
+        searchTerm: searchTerm.value, 
+        selectedCategory: selectedCategory.value 
+      });
+    };
+
+    const handleSearch = (value) => {
+      searchTerm.value = value;
+      emitFilters();
+    };
 
     const handleCategoryChange = (category) => {
       selectedCategory.value = category;
       emitFilters();
     };
 
-    // Watch for changes in props.tags and update categories array
-    watch(props.tags, () => {
-      categories.value = ['Todos'];
-      props.tags.forEach((tag) => {
-        categories.value.push(tag);
-      });
-    });
-
-
-    const emitFilters = () => {
-      emit('update:filters', { searchTerm: searchTerm.value, selectedCategory: selectedCategory.value });
-    };
-
-    watch(searchTerm, emitFilters);
+    watch(() => props.tags, () => {
+      emitFilters();
+    }, { immediate: true });
 
     return {
       searchTerm,
       selectedCategory,
       categories,
+      handleSearch,
       handleCategoryChange,
     };
   },
