@@ -27,10 +27,10 @@
             <font-awesome-icon :icon="['far', 'clock']" />
             {{ estimatedReadingTime }} min de lectura
           </p>
-          <div class="blog-tags">
+          <div class="blog-tags" v-if="attributes.tags!=null && attributes.tags.length > 0">
           <p class="tags"><font-awesome-icon :icon="['fas', 'tag']" />
           <span v-for="tag in attributes.tags" :key="tag" class="tag-tag">
-            {{ tag }}
+            {{ tag }}&nbsp;&nbsp;
           </span></p>
         </div>
         </div>
