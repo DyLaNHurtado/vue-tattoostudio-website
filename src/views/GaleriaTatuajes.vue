@@ -21,9 +21,9 @@ export default {
         { id: 3, url: '/yokai.jpg', alt: 'Yokai tatuaje japones kanji tattoo letras japonesas chinas' },
         { id: 4, url: '/flor-craneo.jpg', alt: 'Flor de craneo diseño tatuaje color hojas new school' },
         { id: 5, url: '/seta.jpg', alt: 'Seta newschool tatuaje tattoo color azul scketch' },
-        { id: 6, url: '/placeholder.svg?height=400&width=400&text=Tattoo+6', alt: 'Tattoo 6' },
-        { id: 7, url: '/placeholder.svg?height=400&width=400&text=Tattoo+7', alt: 'Tattoo 7' },
-        { id: 8, url: '/placeholder.svg?height=400&width=400&text=Tattoo+8', alt: 'Tattoo 8' },
+        { id: 6, url: '/patopunky.webp', alt: 'Pato ignorant punky tattoo color rock style' },
+        { id: 7, url: '/gatopinocho.webp', alt: 'Gato pinicho tatuaje a color dibujos cute disneytattoo' },
+        { id: 8, url: '/pajaroloco.webp', alt: 'Pajaro loco puro tatuaje color rojo' },
       ]
     };
   },
