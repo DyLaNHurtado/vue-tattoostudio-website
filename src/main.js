@@ -1,4 +1,5 @@
 import { createApp } from 'vue';
+import { createHead } from '@vueuse/head'
 import App from './App.vue';
 import router from './router';
 import './styles/global.scss';
@@ -20,12 +21,14 @@ library.add(fas);
 library.add(fab);
 library.add(far);
 
+const head = createHead()
 const app = createApp(App);
 const pinia = createPinia();
 
 
 app
   .use(router)
+  .use(head)
   .use(pinia)
   .component('font-awesome-icon', FontAwesomeIcon)
   .mount('#app');

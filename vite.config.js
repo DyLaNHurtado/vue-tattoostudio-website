@@ -17,12 +17,16 @@ export default defineConfig({
     sitemapPlugin({
       hostname: 'https://delaittotattoo.es',
       dynamicRoutes: getRoutesForSitemap(),
-      changefreq: 'daily',
-      priority: 1.0,
-      lastmod: new Date(),
+      changefreq: 'weekly',
+      priority: 0.8,
+      lastmod: new Date().toISOString(),
       readable: true,
       generateRobotsTxt: true,
-      robots: [{ userAgent: '*', allow: '/' }],
+      robots: [
+        { userAgent: '*', allow: '/' },
+        { userAgent: '*', disallow: '/admin' },
+      ],
+      exclude: ['/404', '/admin'],
     }),
     Markdown(),
     compression({
