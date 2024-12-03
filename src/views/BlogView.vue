@@ -42,6 +42,7 @@
 
 <script>
 import { ref, computed, onMounted, watch } from 'vue';
+import { useHead } from '@vueuse/head';
 import BlogList from '../components/BlogList.vue';
 import SearchAndFilter from '../components/SearchAndFilter.vue';
 import {getAllPosts} from '../blog/posts';
@@ -52,6 +53,24 @@ export default {
     SearchAndFilter,
   },
   setup() {
+
+    useHead({
+      title: 'Blog de Tatuajes Delaitto | Noticias, Curiosidades y Consejos sobre el mundo de los Tatuajes',
+      meta: [
+        { name: 'description', content: 'Explora nuestro blog de tatuajes en Leganés. Encuentra consejos, tendencias y noticias sobre el mundo del tatuaje de la mano de los expertos de Delaitto Tattoo.' },
+        { name: 'keywords', content: 'blog tatuajes Leganés, consejos tatuajes Madrid, tendencias tatuajes, cuidado tatuajes, Delaitto Tattoo blog' },
+        { property: 'og:title', content: 'Blog de Tatuajes Delaitto - Leganés, Madrid' },
+        { property: 'og:description', content: 'Descubre las últimas tendencias y consejos sobre tatuajes en nuestro blog.' },
+        { property: 'og:image', content: 'https://delaittotattoo.es/blog-image.jpg' },
+        { property: 'og:url', content: 'https://delaittotattoo.es/blog' },
+        { property: 'og:type', content: 'website' },
+      ],
+      link: [
+        { rel: 'canonical', href: 'https://delaittotattoo.es/blog' },
+      ],
+    });
+
+
     const posts = ref([]);
     const filteredPosts = ref([]);
     const loading = ref(true);

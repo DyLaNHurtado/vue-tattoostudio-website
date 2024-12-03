@@ -54,6 +54,7 @@
 
 <script>
 import { defineAsyncComponent } from 'vue';
+import { useHead } from '@vueuse/head';
 import { getLatestPosts } from '../blog/posts';
 
 export default {
@@ -65,6 +66,26 @@ export default {
     BlogList: defineAsyncComponent(() => import('../components/BlogList.vue')),
     GalleryList: defineAsyncComponent(() => import('../components/GalleryList.vue')),
     AfterCare: defineAsyncComponent(() => import('../components/AfterCare.vue')),
+  },
+  setup() {
+    useHead({
+      title: 'Delaitto Tattoo - Estudio de Tatuajes en Leganés, Madrid',
+      meta: [
+        { name: 'description', content: 'Descubre Delaitto Tattoo, el mejor estudio de tatuajes en Leganés, Madrid. Diseños personalizados, artistas expertos y el más alto estándar en higiene y seguridad.' },
+        { name: 'keywords', content: 'tatuajes Leganés, estudio de tatuajes Madrid, Delaitto Tattoo, tatuadores profesionales, tatuajes personalizados' },
+        { property: 'og:title', content: 'Delaitto Tattoo - Estudio de Tatuajes en Leganés' },
+        { property: 'og:description', content: 'El mejor estudio de tatuajes en Leganés, Madrid. Diseños únicos y personalizados para ti.' },
+        { property: 'og:image', content: 'https://delaittotattoo.es/og-image.jpg' },
+        { property: 'og:url', content: 'https://delaittotattoo.es' },
+        { property: 'og:type', content: 'website' },
+      ],
+      link: [
+        { rel: 'canonical', href: 'https://delaittotattoo.es' },
+      ],
+    });
+
+    return {
+    };
   },
   data() {
     return {

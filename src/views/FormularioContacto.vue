@@ -87,9 +87,30 @@
 </template>
 
 <script>
-
+import { useHead } from '@vueuse/head';
 export default {
   components: {
+  },
+  setup() {
+    useHead({
+      title: 'Contacta con Delaitto Tattoo en Leganés | Estudio de Tatuajes',
+      meta: [
+        { name: 'description', content: 'Contacta con Delaitto Tattoo en Leganés, Madrid. Reserva tu cita, consulta precios o resuelve tus dudas sobre tatuajes. Estamos aquí para ayudarte.' },
+        { name: 'keywords', content: 'contacto tatuajes Leganés, cita tatuaje Madrid, Delaitto Tattoo contacto, precios tatuajes, consulta tatuajes' },
+        { property: 'og:title', content: 'Contacta con Delaitto Tattoo - Estudio de Tatuajes en Leganés' },
+        { property: 'og:description', content: '¿Listo para tu próximo tatuaje? Contáctanos en Leganés y haz realidad tu idea.' },
+        { property: 'og:image', content: 'https://delaittotattoo.es/contact-image.jpg' },
+        { property: 'og:url', content: 'https://delaittotattoo.es/contact' },
+        { property: 'og:type', content: 'website' },
+      ],
+      link: [
+        { rel: 'canonical', href: 'https://delaittotattoo.es/contact' },
+      ],
+    });
+
+    return {
+      // Existing return statement
+    };
   },
   data() {
     return {

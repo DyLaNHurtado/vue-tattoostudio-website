@@ -70,6 +70,7 @@
 import DOMPurify from 'dompurify';
 import frontMatter from 'front-matter';
 import { ref, defineProps, computed, onMounted, onUnmounted } from 'vue';
+import { useHead } from '@vueuse/head';
 import { marked } from 'marked';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
@@ -163,6 +164,24 @@ const loadMarkdownFile = async () => {
     console.error('Error al cargar el archivo Markdown:', error);
   }
 };
+
+useHead({
+    title: `${attributes.value.title} | Blog de Tatuajes Delaitto`,
+    meta: [
+      { name: 'description', content: attributes.value.excerpt || `Lee sobre ${attributes.value.title}, ${attributes.value.excerpt} ... más el blog de Delaitto Tattoo, tu estudio de tatuajes en Leganés, Madrid.` },
+      { name: 'keywords', content: `${attributes.value.tags.join(', ')}, tatuajes Leganés, Delaitto Tattoo` },
+      { property: 'og:title', content: attributes.value.title },
+      { property: 'og:description', content: attributes.value.excerpt || `Artículo sobre tatuajes de Delaitto Tattoo en Leganés, Madrid.` },
+      { property: 'og:image', content: attributes.value.image || 'https://delaittotattoo.es/default-blog-image.jpg' },
+      { property: 'og:url', content: `https://delaittotattoo.es/blog/${props.slug}` },
+      { property: 'og:type', content: 'article' },
+      { property: 'article:published_time', content: attributes.value.date },
+      { property: 'article:author', content: 'Delaitto Tattoo' },
+    ],
+    link: [
+      { rel: 'canonical', href: `https://delaittotattoo.es/blog/${props.slug}` },
+    ],
+  });
 
 const updateReadingProgress = () => {
   if (articleContent.value) {

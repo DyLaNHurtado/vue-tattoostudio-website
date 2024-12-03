@@ -97,10 +97,31 @@
 
 <script>
 import LocationContact from '../components/LocationContact.vue';
+import { useHead } from '@vueuse/head';
 export default {
   name: 'StudioPage',
   components: {
     LocationContact,
+  },
+  setup() {
+    useHead({
+      title: 'Nuestro Estudio de Tatuajes en Leganés | Delaitto Tattoo',
+      meta: [
+        { name: 'description', content: 'Conoce nuestro estudio de tatuajes en Leganés, Madrid. Ambiente acogedor, artistas especializados y los más altos estándares de higiene y seguridad.' },
+        { name: 'keywords', content: 'estudio de tatuajes Leganés, tatuadores Madrid, Delaitto Tattoo estudio, higiene tatuajes, estilos de tatuaje' },
+        { property: 'og:title', content: 'Estudio de Tatuajes Delaitto en Leganés' },
+        { property: 'og:description', content: 'Visita nuestro estudio en Leganés y descubre un espacio diseñado para crear arte en tu piel.' },
+        { property: 'og:image', content: 'https://delaittotattoo.es/studio-image.jpg' },
+        { property: 'og:url', content: 'https://delaittotattoo.es/studio' },
+        { property: 'og:type', content: 'website' },
+      ],
+      link: [
+        { rel: 'canonical', href: 'https://delaittotattoo.es/studio' },
+      ],
+    });
+
+    return {
+    };
   },
   data() {
     return {
