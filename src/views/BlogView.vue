@@ -61,7 +61,7 @@ export default {
         { name: 'keywords', content: 'blog tatuajes Leganés, consejos tatuajes Madrid, tendencias tatuajes, cuidado tatuajes, Delaitto Tattoo blog' },
         { property: 'og:title', content: 'Blog de Tatuajes Delaitto - Leganés, Madrid' },
         { property: 'og:description', content: 'Descubre las últimas tendencias y consejos sobre tatuajes en nuestro blog.' },
-        { property: 'og:image', content: 'https://delaittotattoo.es/blog-image.jpg' },
+        { property: 'og:image', content: 'https://delaittotattoo.es/blog.webp' },
         { property: 'og:url', content: 'https://delaittotattoo.es/blog' },
         { property: 'og:type', content: 'website' },
       ],

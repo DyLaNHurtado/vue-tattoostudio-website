@@ -75,7 +75,7 @@ export default {
         { name: 'keywords', content: 'tatuajes Leganés, estudio de tatuajes Madrid, Delaitto Tattoo, tatuadores profesionales, tatuajes personalizados' },
         { property: 'og:title', content: 'Delaitto Tattoo - Estudio de Tatuajes en Leganés' },
         { property: 'og:description', content: 'El mejor estudio de tatuajes en Leganés, Madrid. Diseños únicos y personalizados para ti.' },
-        { property: 'og:image', content: 'https://delaittotattoo.es/og-image.jpg' },
+        { property: 'og:image', content: 'https://delaittotattoo.es/delaitto.png' },
         { property: 'og:url', content: 'https://delaittotattoo.es' },
         { property: 'og:type', content: 'website' },
       ],

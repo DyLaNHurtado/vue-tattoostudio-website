@@ -111,7 +111,7 @@ export default {
         { name: 'keywords', content: 'estudio de tatuajes Leganés, tatuadores Madrid, Delaitto Tattoo estudio, higiene tatuajes, estilos de tatuaje' },
         { property: 'og:title', content: 'Estudio de Tatuajes Delaitto en Leganés' },
         { property: 'og:description', content: 'Visita nuestro estudio en Leganés y descubre un espacio diseñado para crear arte en tu piel.' },
-        { property: 'og:image', content: 'https://delaittotattoo.es/studio-image.jpg' },
+        { property: 'og:image', content: 'https://delaittotattoo.es/sala_tattoo_inicio3.webp' },
         { property: 'og:url', content: 'https://delaittotattoo.es/studio' },
         { property: 'og:type', content: 'website' },
       ],

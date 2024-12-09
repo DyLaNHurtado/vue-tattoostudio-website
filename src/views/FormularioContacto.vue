@@ -99,7 +99,7 @@ export default {
         { name: 'keywords', content: 'contacto tatuajes Leganés, cita tatuaje Madrid, Delaitto Tattoo contacto, precios tatuajes, consulta tatuajes' },
         { property: 'og:title', content: 'Contacta con Delaitto Tattoo - Estudio de Tatuajes en Leganés' },
         { property: 'og:description', content: '¿Listo para tu próximo tatuaje? Contáctanos en Leganés y haz realidad tu idea.' },
-        { property: 'og:image', content: 'https://delaittotattoo.es/contact-image.jpg' },
+        { property: 'og:image', content: 'https://delaittotattoo.es/delaitto.png' },
         { property: 'og:url', content: 'https://delaittotattoo.es/contact' },
         { property: 'og:type', content: 'website' },
       ],
