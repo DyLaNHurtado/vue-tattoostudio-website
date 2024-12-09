@@ -172,7 +172,7 @@ export default {
 }
 
 .parallax {
-  background-image: url("/studio.webp");
+  background-image: url("/studio-parallax.webp");
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -186,7 +186,7 @@ export default {
 }
 
 .hero {
-  background-image: url('/blog.jpg');
+  background-image: url('/studio.jpg');
   backdrop-filter: brightness(60%);;
 }
 
