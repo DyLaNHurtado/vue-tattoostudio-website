@@ -7,7 +7,7 @@
         </button>
  
         <div class="logo" @click="goToHome">
-          <img src="/delaitto.png" alt="">
+          <img src="/delaitto.png" alt="Delaitto Mejores Tatuajes en Leganes" loading="lazy">
         </div>
         <button @click="goToHome" class="back-button">
           <font-awesome-icon :icon="['fas', 'home']" /> Volver al Inicio

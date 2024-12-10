@@ -2,7 +2,7 @@
   <div class="gallery-block">
     <div class="gallery">
       <div v-for="(image, index) in images" :key="index" @click="openLightbox(index)" class="gallery-item">
-        <img :src="image.url" alt="Image" class="gallery-image" loading="lazy" />
+        <img :src="image.url" :alt="image.alt" class="gallery-image" loading="lazy" />
       </div>
     </div>
   </div>

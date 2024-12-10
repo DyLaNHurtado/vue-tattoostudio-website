@@ -4,7 +4,7 @@
       <span class="lightbox-close" @click="close">&times;</span>
       <div class="lightbox-content">
         <div class="lightbox-image-container">
-          <img :src="currentImage?.url" :alt="currentImage?.alt" class="lightbox-image" />
+          <img :src="currentImage?.url" :alt="currentImage?.alt" class="lightbox-image" loading="lazy"/>
         </div>
       </div>
       <button class="lightbox-nav lightbox-prev" @click="prevImage"><font-awesome-icon :icon="['fas', 'chevron-left']" /></button>

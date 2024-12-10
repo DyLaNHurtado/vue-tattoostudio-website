@@ -6,7 +6,7 @@
         class="gallery-item"
         @click="selectImage(image)"
       >
-        <img :src="image.url" :alt="image.alt" class="gallery-image" />
+        <img :src="image.url" :alt="image.alt" class="gallery-image" loading="lazy" />
       </div>
     </div>
     <teleport to="body">

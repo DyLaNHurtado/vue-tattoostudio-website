@@ -39,7 +39,7 @@
           <h2>Cómo llegar:</h2>
           <div class="transport-info">
             <div class="transport-item">
-              <img src="/metro.svg" alt="Metro Madrid" class="transport-logo">
+              <img src="/metro.svg" alt="Metro Madrid" class="transport-logo" loading="lazy">
               <div>
                 <h4>Línea 12 (MetroSur):</h4>
                 <span class="tag blue">JULIAN BESTEIRO</span>
@@ -47,7 +47,7 @@
               </div>
             </div>
             <div class="transport-item">
-              <img src="/renfe.svg" alt="Renfe Madrid" class="transport-logo">
+              <img src="/renfe.svg" alt="Renfe Madrid" class="transport-logo" loading="lazy">
               <div>
                 <h4>Línea C-5 (Renfe):</h4>
                 <span class="tag red">ZARZAQUEMADA</span>
@@ -55,7 +55,7 @@
               </div>
             </div>
             <div class="transport-item">
-              <img src="/bus.svg" alt="Bus Madrid" class="transport-logo">
+              <img src="/bus.svg" alt="Bus Madrid" class="transport-logo" loading="lazy">
               <div>
                 <h4>Parada RIOJA-COLEGIO:</h4>
                 <span class="tag green">432</span>

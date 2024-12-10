@@ -41,9 +41,9 @@
         <h2>Nuestro Espacio Creativo</h2>
         <p><span class="highlight">Nuestro santuario del arte del tatuaje para ti</span></p>
         <div class="image-gallery">
-          <img src="/entrada_sofa.webp" alt="Recepción del estudio Delaitto Tattoo" />
-          <img src="/entrada_pasillo.webp" alt="Vista al pasillo y mural de galeria de arte" />
-          <img src="/sala_tattoo_inicio3.webp" alt="Área de trabajo principal" />
+          <img src="/entrada_sofa.webp" alt="Recepción del estudio Delaitto Tattoo" loading="lazy"/>
+          <img src="/entrada_pasillo.webp" alt="Vista al pasillo y mural de galeria de arte" loading="lazy"/>
+          <img src="/sala_tattoo_inicio3.webp" alt="Área de trabajo principal" loading="lazy"/>
         </div>
       </div>
     </section>
@@ -54,7 +54,7 @@
         <p>Nuestros talentos locales de Leganés</p>
         <div class="artist-cards">
           <div class="artist-card" v-for="artist in artists" :key="artist.name">
-            <img :src="artist.image" :alt="artist.name" />
+            <img :src="artist.image" :alt="artist.name" loading="lazy"/>
             <h3>{{ artist.name }}</h3>
             <p>{{ artist.specialty }}</p>
           </div>
@@ -68,7 +68,7 @@
         <p>No nos cerramos a ningún estilo y siempre es buena salir de la zona de confort pero nuestros estilos preferidos son:</p>
         <div class="artist-cards">
           <div class="artist-card" v-for="style in tattooStyles" :key="style.name" @click="openPost(style.post)" @mouseenter="style.showTextHover=true" @mouseleave="style.showTextHover=false">
-            <img :src="style.image" :alt="style.name" />
+            <img :src="style.image" :alt="style.name" loading="lazy"/>
             <h3>{{ style.name }}</h3>
               <span :class="{'hide-text':!style.showTextHover, 'show-text':style.showTextHover}" style="transition: all .3s ease;"> 
               <font-awesome-icon :icon="['fas', 'share']" /> &nbsp;
