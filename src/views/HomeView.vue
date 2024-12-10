@@ -11,7 +11,7 @@
 
     <!-- Gallery Section -->
     <div class="last-tattoos" v-if="images!=null && images.length > 0">
-      <h2>Trabajos Destacados:</h2>
+      <h1>Trabajos Destacados:</h1>
       <GalleryList :images="images" />
       <router-link to="/gallery" class="cta">
         <button class="transparent-button">Ver Más</button>
@@ -20,7 +20,7 @@
 
     <!-- About Us Section -->
     <div class="about-us">
-      <h2>Sobre Nosotros</h2>
+      <h1>Sobre Nosotros</h1>
       <p>Somos un estudio de tatuajes ubicado en <span class="highlight">Leganés</span>, comprometidos con la calidad, la creatividad y la satisfacción de nuestros clientes. Tenemos experiencia en crear <span class="highlight">diseños personalizados</span> que reflejan la individualidad de <span class="highlight">cada persona</span>.</p>
       <!-- Video de persona tatuando sin sonido ni controles-->
       <video muted autoplay loop>
@@ -33,7 +33,7 @@
 
     <!-- Blog Section -->
     <div class="blog" v-if="lastestPost!=null && lastestPost.length > 0">
-      <h2>Artículos Recientes</h2>
+      <h1>Artículos Recientes</h1>
       <div class="blog-posts">
         <transition-group name="list" tag="div" class="blog-list">
           <BlogList :filteredPosts="lastestPost" />
@@ -211,7 +211,7 @@ export default {
   -webkit-filter: drop-shadow(.5px 2px 3px #e64545);
 }
 
-h2 {
+h1 {
   margin-bottom: 20px;
   font-weight: bold;
   color: var(--color-heading);

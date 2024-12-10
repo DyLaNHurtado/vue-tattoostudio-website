@@ -14,7 +14,7 @@
         <div class="card-tags">
           <span class="card-category" v-for="tag in post.tags">{{ tag }},</span>
         </div>
-        <h2>{{ post.title }}</h2>
+        <h1>{{ post.title }}</h1>
         <p>{{ post.excerpt }}</p>
         <div class="card-footer">
           <span class="card-date">{{ formatDate(post.date) }}</span>
@@ -116,7 +116,7 @@ export default {
   gap: 5px;
 }
 
-.card-content h2 {
+.card-content h1 {
   font-size: 1.25rem;
   font-weight: bold;
   color: var(--color-heading);

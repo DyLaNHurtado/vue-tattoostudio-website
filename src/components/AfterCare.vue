@@ -1,6 +1,6 @@
 <template>
   <section class="aftercare">
-    <h2>Guía de Cuidados para tu Nuevo Tatuaje</h2>
+    <h1>Guía de Cuidados para tu Nuevo Tatuaje</h1>
     <div class="aftercare-content">
       <div class="aftercare-timeline">
         <div v-for="(period, index) in aftercarePeriods" :key="index" class="timeline-item">
@@ -108,7 +108,7 @@ export default {
   border-radius: 12px;
 }
 
-.aftercare h2 {
+.aftercare h1 {
   color: var(--color-heading);
   text-align: start;
   margin-bottom: 40px;

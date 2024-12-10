@@ -1,6 +1,6 @@
 <template>
     <div class="info-container">
-      <h2>Ubicación y Contacto</h2>
+      <h1>Ubicación y Contacto</h1>
       <p>Visítanos en Leganés o contáctanos para agendar una cita.</p>
 
       <div class="contact-container">
@@ -96,7 +96,7 @@ a{
   align-items: center;
 }
 
-h2{
+h1{
   color: var(--color-heading);
   font-weight: bold;
 }
@@ -121,7 +121,7 @@ h2{
   align-items: center;
 }
 @media (max-width: 768px) {
-  h2{
+  h1{
     font-size: 1.6em;
   }
  .map-container {

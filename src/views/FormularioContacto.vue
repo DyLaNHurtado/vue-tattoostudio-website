@@ -8,7 +8,7 @@
     <div class="content-wrapper">
       <div class="info-grid">
         <section class="contact-section">
-          <h2><font-awesome-icon :icon="['fas', 'comments']" /> Contacto</h2>
+          <h1><font-awesome-icon :icon="['fas', 'comments']" /> Contacto</h1>
           <p class="margin-font">Elige el método lo que mejor se adapte a ti y contacta con nosotros, te contestaremos lo antes posible.</p>
           <div class="contact-details ">
 
@@ -27,7 +27,7 @@
         </section>
         
         <section class="location-section">
-          <h2><font-awesome-icon :icon="['fas', 'location-dot']" /> Localización</h2>
+          <h1><font-awesome-icon :icon="['fas', 'location-dot']" /> Localización</h1>
           <p >Calle Rioja 71 Local 6 - 28915 - Leganés, Madrid</p>
           <div class="map-container">
             <iframe
@@ -36,7 +36,7 @@
               referrerpolicy="no-referrer-when-downgrade">
             </iframe>
           </div>
-          <h2>Cómo llegar:</h2>
+          <h1>Cómo llegar:</h1>
           <div class="transport-info">
             <div class="transport-item">
               <img src="/metro.svg" alt="Metro Madrid" class="transport-logo" loading="lazy">
@@ -70,7 +70,7 @@
         </section>
         
         <section >
-          <h2><font-awesome-icon :icon="['fas', 'clock']" /> Horario</h2>
+          <h1><font-awesome-icon :icon="['fas', 'clock']" /> Horario</h1>
             <div class="horario-info">
               <p><span class="font-bold">Lunes - Sábado:</span> <span>12:00 a 15:00, 17:30 a 21:00</span></p>
               <p><span class="font-bold">Domingo:</span> <span>12:00 a 15:00</span></p>
@@ -162,7 +162,7 @@ section {
   gap:10px;
 }
 
-h2 {
+h1 {
   font-size: 1.5rem;
   color: var(--color-heading);
   margin-bottom: 1rem;
@@ -171,7 +171,7 @@ h2 {
   align-items: center;
 }
 
-h2 svg {
+h1 svg {
   margin-right: 0.5rem;
 }
 
