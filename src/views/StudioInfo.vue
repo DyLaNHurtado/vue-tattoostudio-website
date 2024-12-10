@@ -142,9 +142,6 @@ export default {
     };
   },methods: {
     openPost(postId) {
-      //hacer que se abra en otra pestaña
-      // this.$router.push({ name: 'blog-post', params: { id: postId } });
-      // o abrirlo en una nueva pestaña
       window.open(`/blog/${postId}`, '_blank');
     },
   },
@@ -309,11 +306,6 @@ section {
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
   margin-top: 2rem;
-}
-
-.map-container {
-  border-radius: 8px;
-  overflow: hidden;
 }
 
 .contact-info {

@@ -9,7 +9,7 @@ const actualYear = new Date().getFullYear();
       <div class="logo">
         <img src="/delaitto.png" alt="Logo Delaitto Tattoo tatuajes Leganés Madrid calidad precio cerca de mi">
       </div>
-      <p>&copy; {{ actualYear }} Delaitto Tattoo. Todos los derechos reservados.</p>
+      <p v-once>&copy; {{ actualYear }} Delaitto Tattoo. Todos los derechos reservados.</p>
 
       <Socials size="2xl"/>
     </div>

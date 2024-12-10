@@ -5,8 +5,8 @@
             <font-awesome-icon :icon="['fas', 'magnifying-glass']" class="lupa" />
         </div>
 
-        <label class="message" >{{ label }}</label>
-        <button class="back-button" @click="$emit('backFromNotFound')">{{ buttonLabel }}</button>
+        <label v-once class="message" >{{ label }}</label>
+        <button v-once class="back-button"  @click="$emit('backFromNotFound')">{{ buttonLabel }}</button>
     </div>
 </template>
   

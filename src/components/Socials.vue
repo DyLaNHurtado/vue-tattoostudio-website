@@ -8,7 +8,7 @@ export default {
 </script>
 
 <template>
-    <div class="socials">
+    <div class="socials" v-once>
         <a href="https://www.instagram.com/delaitto.tattoo" target="_blank"><font-awesome-icon class="icon" id="ig" :icon="['fab', 'instagram']" :size="size"/></a>
         <a href="https://www.tiktok.com/@delaitto.tattoo" target=”_blank”><font-awesome-icon class="icon" id="tiktok" :icon="['fab', 'tiktok']" :size="size"/></a>
     </div>
