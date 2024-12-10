@@ -36,7 +36,7 @@
       ]
     },
     {
-      "source": "/(.*)",
+      "source": "/((?!_next/|static/).*)",
       "has": [
         {
           "type": "host",
@@ -46,7 +46,7 @@
       "headers": [
         {
           "key": "Link",
-          "value": "<https://delaittotattoo.es$1>; rel=\"canonical\""
+          "value": "<https://delaittotattoo.es/$1>; rel=\"canonical\""
         }
       ]
     },
@@ -76,6 +76,17 @@
     {
       "source": "/index.html",
       "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.delaittotattoo.es"
+        }
+      ],
+      "destination": "https://delaittotattoo.es/:path*",
       "permanent": true
     }
   ]
