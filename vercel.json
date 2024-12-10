@@ -69,9 +69,6 @@
       ]
     }
   ],
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/" }
-  ],
   "redirects": [
     {
       "source": "/index.html",
@@ -88,6 +85,23 @@
       ],
       "destination": "https://delaittotattoo.es/:path*",
       "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "protocol",
+          "value": "http"
+        }
+      ],
+      "destination": "https://delaittotattoo.es/:path*",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    { 
+      "source": "/(.*)", 
+      "destination": "/" 
     }
   ]
 }
