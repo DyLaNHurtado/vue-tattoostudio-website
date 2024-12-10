@@ -1,10 +1,3 @@
-<script setup>
-import { SpeedInsights } from "@vercel/speed-insights/vue"
-import { RouterView } from 'vue-router';
-import  NavBar  from './components/NavBar.vue';
-import  Footer  from './components/Footer.vue';
-</script>
-
 <template>
   <div class="app-container">
     <NavBar />
@@ -16,6 +9,16 @@ import  Footer  from './components/Footer.vue';
     <Footer></Footer>
   </div>
 </template>
+
+<script setup>
+import { defineAsyncComponent } from 'vue';
+import { SpeedInsights } from "@vercel/speed-insights/vue"
+import { RouterView } from 'vue-router';
+
+const NavBar = defineAsyncComponent(() => import('./components/NavBar.vue'));
+const Footer = defineAsyncComponent(() => import('./components/Footer.vue'));
+
+</script>
 
 <style scoped>
 .app-container{
