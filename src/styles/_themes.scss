@@ -1,49 +1,49 @@
 :root {
-    --color-background: var(--c-white);
-    --color-background-soft: var(--c-white-soft);
-    --color-background-mute: var(--c-white-mute);
+    --color-background: var(--c-black);
+    --color-background-soft: var(--c-indigo);
+    --color-background-mute: var(--c-black-mute);
   
-    --color-border: var(--c-divider-light-2);
-    --color-border-hover: var(--c-divider-light-1);
+    --color-border: var(--c-divider-dark-2);
+    --color-border-hover: var(--c-divider-dark-1);
   
-    --color-heading: var(--c-text-light-1);
-    --color-text: var(--c-text-light-2);
-    --color-text-mute: var(--c-text-light-2);
+    --color-heading: var(--c-text-dark-1);
+    --color-text: var(--c-text-dark-2);
+    --color-text-mute: var(--c-text-dark-2);
     --color-text-error: var(--c-text-error);
   
-    --color-primary: var(--c-primary);
+    --color-primary: var(--c-primary-dark-theme);
     --color-primary-light: var(--c-primary-light);
     --color-primary-dark: var(--c-primary-dark);
     --color-primary-hover: var(--c-primary-hover);
   
     --color-secondary: var(--c-secondary);
     --color-secondary-hover: var(--c-secondary-hover);
-    --color-indigo: var(--c-indigo);
-    --color-text-invert: var(--c-text-dark-1);
+    --color-indigo: var(--c-indigo-dark);
+    --color-text-invert: var(--c-text-light-1);
     --section-gap: 160px;
   }
   
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --color-background: var(--c-black);
-      --color-background-soft: var(--c-indigo);
-      --color-background-mute: var(--c-black-mute);
+  // @media (prefers-color-scheme: dark) {
+  //   :root {
+  //     --color-background: var(--c-black);
+  //     --color-background-soft: var(--c-indigo);
+  //     --color-background-mute: var(--c-black-mute);
   
-      --color-border: var(--c-divider-dark-2);
-      --color-border-hover: var(--c-divider-dark-1);
+  //     --color-border: var(--c-divider-dark-2);
+  //     --color-border-hover: var(--c-divider-dark-1);
   
-      --color-heading: var(--c-text-dark-1);
-      --color-text: var(--c-text-dark-2);
-      --color-text-mute: var(--c-text-dark-2);
-      --color-text-error: var(--c-text-error);
-      --color-indigo: var(--c-indigo-dark);
-      --color-text-invert: var(--c-text-light-1);
+  //     --color-heading: var(--c-text-dark-1);
+  //     --color-text: var(--c-text-dark-2);
+  //     --color-text-mute: var(--c-text-dark-2);
+  //     --color-text-error: var(--c-text-error);
+  //     --color-indigo: var(--c-indigo-dark);
+  //     --color-text-invert: var(--c-text-light-1);
   
-      --color-primary: var(--c-primary-dark-theme);
-      --color-primary-light: var(--c-primary-light);
-      --color-primary-dark: var(--c-primary-dark);
-      --color-primary-hover: var(--c-primary-hover);
-      --color-secondary: var(--c-secondary);
-      --color-secondary-hover: var(--c-secondary-hover);
-    }
-  }
+  //     --color-primary: var(--c-primary-dark-theme);
+  //     --color-primary-light: var(--c-primary-light);
+  //     --color-primary-dark: var(--c-primary-dark);
+  //     --color-primary-hover: var(--c-primary-hover);
+  //     --color-secondary: var(--c-secondary);
+  //     --color-secondary-hover: var(--c-secondary-hover);
+  //   }
+  // }
