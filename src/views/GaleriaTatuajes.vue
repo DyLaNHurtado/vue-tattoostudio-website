@@ -16,11 +16,11 @@ export default {
   data() {
     return {
       images: [
-        { id: 1, url: '/hada.jpg', alt: 'Tattoo hada colores' },
-        { id: 2, url: '/tiburon.jpg', alt: 'Tatuaje tiburon rojo black and grey' },
-        { id: 3, url: '/yokai.jpg', alt: 'Yokai tatuaje japones kanji tattoo letras japonesas chinas' },
-        { id: 4, url: '/flor-craneo.jpg', alt: 'Flor de craneo diseño tatuaje color hojas new school' },
-        { id: 5, url: '/seta.jpg', alt: 'Seta newschool tatuaje tattoo color azul scketch' },
+        { id: 1, url: '/hada.webp', alt: 'Tattoo hada colores' },
+        { id: 2, url: '/tiburon.webp', alt: 'Tatuaje tiburon rojo black and grey' },
+        { id: 3, url: '/yokai.webp', alt: 'Yokai tatuaje japones kanji tattoo letras japonesas chinas' },
+        { id: 4, url: '/flor-craneo.webp', alt: 'Flor de craneo diseño tatuaje color hojas new school' },
+        { id: 5, url: '/seta.webp', alt: 'Seta newschool tatuaje tattoo color azul scketch' },
         { id: 6, url: '/patopunky.webp', alt: 'Pato ignorant punky tattoo color rock style' },
         { id: 7, url: '/gatopinocho.webp', alt: 'Gato pinicho tatuaje a color dibujos cute disneytattoo' },
         { id: 8, url: '/pajaroloco.webp', alt: 'Pajaro loco puro tatuaje color rojo' },

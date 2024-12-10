@@ -2,7 +2,7 @@
   <div class="home">
     <!-- Hero Section -->
     <div class="hero">
-      <img class="logo" src="/delaitto.png" alt="Logo Delaitto Tattoo | Estudio tatuajes cerca de mi "/>
+      <img class="logo" src="/delaitto.webp" alt="Logo Delaitto Tattoo | Estudio tatuajes cerca de mi "/>
       <p class="lema">El rincón donde el arte se fusiona con tu cuerpo</p>
       <div>
         <router-link to="/contact"><button class="fill-btn">¡ Quiero tatuarme !</button></router-link>
@@ -74,7 +74,7 @@ export default {
         { name: 'keywords', content: 'tatuajes Leganés, estudio de tatuajes Madrid, Delaitto Tattoo, tatuadores profesionales, tatuajes personalizados' },
         { property: 'og:title', content: 'Delaitto Tattoo - Estudio de Tatuajes en Leganés' },
         { property: 'og:description', content: 'El mejor estudio de tatuajes en Leganés, Madrid. Diseños únicos y personalizados para ti.' },
-        { property: 'og:image', content: 'https://delaittotattoo.es/delaitto.png' },
+        { property: 'og:image', content: 'https://delaittotattoo.es/delaitto.webp' },
         { property: 'og:url', content: 'https://delaittotattoo.es' },
         { property: 'og:type', content: 'website' },
       ],
@@ -95,12 +95,12 @@ export default {
   async mounted() {
     this.lastestPost = await getLatestPosts();
     this.images = [
-      { id: 1, url: '/hada.jpg', alt: 'Tattoo hada colores' },
-      { id: 2, url: '/tiburon.jpg', alt: 'Tatuaje tiburon rojo black and grey' },
-      { id: 3, url: '/yokai.jpg', alt: 'Yokai tatuaje japones kanji tattoo letras japonesas chinas' },
+      { id: 1, url: '/hada.webp', alt: 'Tattoo hada colores' },
+      { id: 2, url: '/tiburon.webp', alt: 'Tatuaje tiburon rojo black and grey' },
+      { id: 3, url: '/yokai.webp', alt: 'Yokai tatuaje japones kanji tattoo letras japonesas chinas' },
       { id: 4, url: '/pajaroloco.webp', alt: 'Yokai tatuaje japones kanji tattoo letras japonesas chinas' },
-      { id: 5, url: '/flor-craneo.jpg', alt: 'Flor de craneo diseño tatuaje color hojas new school' },
-      { id: 6, url: '/seta.jpg', alt: 'Seta newschool tatuaje tattoo color azul scketch' },
+      { id: 5, url: '/flor-craneo.webp', alt: 'Flor de craneo diseño tatuaje color hojas new school' },
+      { id: 6, url: '/seta.webp', alt: 'Seta newschool tatuaje tattoo color azul scketch' },
     ];
   },
 };

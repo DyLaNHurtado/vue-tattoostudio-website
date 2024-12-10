@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import matter from 'gray-matter';
+import frontMatter from 'front-matter';
 
 function getAllPosts() {
   const postsDirectory = path.join(process.cwd(), 'public/blog-post');
@@ -9,7 +9,7 @@ function getAllPosts() {
   return fileNames.map((fileName) => {
     const fullPath = path.join(postsDirectory, fileName);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
-    const { data: frontmatter } = matter(fileContents);
+    const { attributes: frontmatter } = frontMatter(fileContents);
 
     return {
       slug: fileName.replace(/\.md$/, ''),

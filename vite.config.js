@@ -7,12 +7,16 @@ import ViteImagemin from 'vite-plugin-imagemin';
 import PurgeCSS from 'vite-plugin-purgecss';
 import sitemapPlugin from 'vite-plugin-sitemap';
 import getRoutesForSitemap from './src/sitemapsRoutes';
+// import { visualizer } from 'rollup-plugin-visualizer';
 
 
 export default defineConfig({
   plugins: [
-    vue({
-      include: [/\.vue$/, /\.md$/],
+    vue({ include: [/\.vue$/, /\.md$/] }),
+    compression({
+      algorithm: 'gzip',
+      ext: '.gz', // Genera archivos comprimidos para el despliegue
+      threshold: 10240, // Comprime solo archivos mayores a 10KB
     }),
     sitemapPlugin({
       hostname: 'https://delaittotattoo.es',
@@ -29,11 +33,7 @@ export default defineConfig({
       exclude: ['/404', '/admin'],
     }),
     Markdown(),
-    compression({
-      algorithm: 'gzip',
-      ext: '.gz', // Genera archivos comprimidos para el despliegue
-      threshold: 10240, // Comprime solo archivos mayores a 10KB
-    }),
+
     ViteImagemin({
       // Compresión para imágenes en varios formatos
       gifsicle: {
@@ -60,6 +60,12 @@ export default defineConfig({
         quality: 75
       }
     }),
+    // visualizer({
+    //   open: true,
+    //   gzipSize: true,
+    //   brotliSize: true,
+    // }),
+
     // PurgeCSS({
     //   // Opciones de configuración de PurgeCSS
     //   content: [
@@ -82,10 +88,9 @@ export default defineConfig({
     minify: 'esbuild',
     rollupOptions: {
       output: {
-        manualChunks(id) {
-          if (id.includes('node_modules')) {
-            return 'vendor'
-          }
+        manualChunks: {
+          'vue-vendor': ['vue', 'vue-router'],
+          'fontawesome': ['@fortawesome/fontawesome-svg-core', '@fortawesome/vue-fontawesome'],
         }
       }
     }

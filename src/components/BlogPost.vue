@@ -7,7 +7,7 @@
         </button>
  
         <div class="logo" @click="goToHome">
-          <img src="/delaitto.png" alt="Delaitto Mejores Tatuajes en Leganes" loading="lazy">
+          <img src="/delaitto.webp" alt="Delaitto Mejores Tatuajes en Leganes" loading="lazy">
         </div>
         <button @click="goToHome" class="back-button">
           <font-awesome-icon :icon="['fas', 'home']" /> Volver al Inicio
@@ -20,11 +20,11 @@
         <h1>{{ attributes.title }}</h1>
         <div class="blog-meta">
           <p class="publish-date">
-            <font-awesome-icon :icon="['far', 'calendar-alt']" />
+            <font-awesome-icon :icon="['fas', 'calendar-alt']" />
             {{ formattedDate }}
           </p>
           <p class="reading-time">
-            <font-awesome-icon :icon="['far', 'clock']" />
+            <font-awesome-icon :icon="['fas', 'clock']" />
             {{ estimatedReadingTime }} min de lectura
           </p>
           <div class="blog-tags" v-if="attributes.tags!=null && attributes.tags.length > 0">
@@ -76,8 +76,6 @@ import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 import Loading from './Loading.vue';
 import { useRouter } from 'vue-router';
-import hljs from 'highlight.js';
-import 'highlight.js/styles/atom-one-dark.css';
 import '../styles/post-styles.scss'
 
 const props = defineProps({
@@ -149,13 +147,6 @@ const loadMarkdownFile = async () => {
       return `<a href="${href}" title="${title || ''}" target="_blank" rel="noopener noreferrer" class="blog-link">${text}</a>`;
     };
 
-    marked.setOptions({
-      renderer,
-      highlight: function(code, lang) {
-        const language = hljs.getLanguage(lang) ? lang : 'plaintext';
-        return hljs.highlight(code, { language }).value;
-      },
-    });
 
     const htmlContent = marked(body);
     sanitizedPostContent.value = DOMPurify.sanitize(htmlContent);
@@ -172,7 +163,7 @@ useHead({
       { name: 'keywords', content: `${attributes.value.tags.join(', ')}, tatuajes Leganés, Delaitto Tattoo` },
       { property: 'og:title', content: attributes.value.title },
       { property: 'og:description', content: attributes.value.excerpt || `Artículo sobre tatuajes de Delaitto Tattoo en Leganés, Madrid.` },
-      { property: 'og:image', content: attributes.value.image || 'https://delaittotattoo.es/default-blog-image.jpg' },
+      { property: 'og:image', content: attributes.value.image || 'https://delaittotattoo.es/blog.webp' },
       { property: 'og:url', content: `https://delaittotattoo.es/blog/${props.slug}` },
       { property: 'og:type', content: 'article' },
       { property: 'article:published_time', content: attributes.value.date },

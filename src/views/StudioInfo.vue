@@ -128,9 +128,9 @@ export default {
     return {
       tattooStyles: [
         { name: 'Blackwork', image: '/blackwork.webp', showTextHover:false, post: 'blackwork-el-poder-del-contraste' },
-        { name: 'New school', image: '/newschool.jpg', showTextHover:false, post: 'newschool-el-color-explosivo-en-la-piel'},
-        { name: 'Black and grey', image: '/blackandgrey.jpg', showTextHover:false, post: 'blackandgrey-la-magia-del-gris-en-la-piel'},
-        { name: 'Japonés', image: '/japones.jpg', showTextHover:false, post:'japones-un-mundo-de-misticismo-y-belleza' },
+        { name: 'New school', image: '/newschool.webp', showTextHover:false, post: 'newschool-el-color-explosivo-en-la-piel'},
+        { name: 'Black and grey', image: '/blackandgrey.webp', showTextHover:false, post: 'blackandgrey-la-magia-del-gris-en-la-piel'},
+        { name: 'Japonés', image: '/japones.webp', showTextHover:false, post:'japones-un-mundo-de-misticismo-y-belleza' },
       ],
       processSteps: [
         { title: 'Consulta', description: 'Discutimos tu idea y diseño deseado.' },
@@ -184,7 +184,7 @@ export default {
 }
 
 .hero {
-  background-image: url('/studio.jpg');
+  background-image: url('/studio.webp');
   backdrop-filter: brightness(60%);;
 }
 

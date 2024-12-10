@@ -13,7 +13,7 @@
           <div class="contact-details ">
 
             <p><font-awesome-icon class="color-heading" :icon="['fab', 'whatsapp']" /> <a href="tel:638795342" target="_blank" >638 79 53 42</a>  &nbsp;/ &nbsp; <a href="tel:681092191" target="_blank" > 681 09 21 91</a></p>
-            <p><font-awesome-icon class="color-heading" :icon="['far', 'envelope']" /> <a href="mailto:dylanhurtado@delaittotattoo.es" target="_blank">dylanhurtado@delaittotattoo.es</a></p>
+            <p><font-awesome-icon class="color-heading" :icon="['fas', 'envelope']" /> <a href="mailto:dylanhurtado@delaittotattoo.es" target="_blank">dylanhurtado@delaittotattoo.es</a></p>
             <p><font-awesome-icon class="color-heading" :icon="['fab', 'instagram']" /><a href="https://www.instagram.com/delaitto.tattoo" target="_blank"> @delaitto.tattoo</a></p>
             <p><font-awesome-icon  class="color-heading" :icon="['fab', 'tiktok']"/><a href="https://www.tiktok.com/@delaitto.tattoo" target="_blank"> @delaitto.tattoo</a></p>
             
@@ -99,7 +99,7 @@ export default {
         { name: 'keywords', content: 'contacto tatuajes Leganés, cita tatuaje Madrid, Delaitto Tattoo contacto, precios tatuajes, consulta tatuajes' },
         { property: 'og:title', content: 'Contacta con Delaitto Tattoo - Estudio de Tatuajes en Leganés' },
         { property: 'og:description', content: '¿Listo para tu próximo tatuaje? Contáctanos en Leganés y haz realidad tu idea.' },
-        { property: 'og:image', content: 'https://delaittotattoo.es/delaitto.png' },
+        { property: 'og:image', content: 'https://delaittotattoo.es/delaitto.webp' },
         { property: 'og:url', content: 'https://delaittotattoo.es/contact' },
         { property: 'og:type', content: 'website' },
       ],
