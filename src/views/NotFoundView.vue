@@ -6,12 +6,13 @@
   </template>
   
   <script>
-  import { defineComponent } from 'vue';
+  import { defineAsyncComponent } from 'vue';
   import { useRouter } from 'vue-router';
   
-  export default defineComponent({
+  export default {
+    name: 'NotFoundView',
     components: {
-      NotFound: () => import('../components/NotFound.vue'),
+      NotFound: defineAsyncComponent(() => import('@/views/NotFound.vue')),
     },
     setup() {
       const router = useRouter();
@@ -24,7 +25,7 @@
         navigateHome,
       };
     },
-  });
+  };
   </script>
   
   <style scoped>

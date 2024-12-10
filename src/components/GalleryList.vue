@@ -15,7 +15,8 @@
   </template>
   
   <script>
-  import LightBox from './LightBox.vue';
+  import { defineAsyncComponent } from 'vue';
+
   export default {
     name: 'GalleryList',
     props: {
@@ -25,7 +26,7 @@
       }
     },
     components: {
-        LightBox
+      LightBox: defineAsyncComponent(() => import('./LightBox.vue'))
     },
     data() {
     return {

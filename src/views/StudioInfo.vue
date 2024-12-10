@@ -96,12 +96,13 @@
 </template>
 
 <script>
+import { defineAsyncComponent } from 'vue';
 import LocationContact from '../components/LocationContact.vue';
 import { useHead } from '@vueuse/head';
 export default {
   name: 'StudioPage',
   components: {
-    LocationContact,
+    LocationContact: defineAsyncComponent(() => import('../components/LocationContact.vue')),
   },
   setup() {
     useHead({

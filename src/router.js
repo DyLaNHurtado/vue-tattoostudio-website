@@ -1,14 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
 
-import HomeView from "./views/HomeView.vue";
-import GaleriaTatuajes from "./views/GaleriaTatuajes.vue";
-import StudioInfo from "./views/StudioInfo.vue";
-/* import ResenasClientes from "./views/ResenasClientes.vue"; */
-import FormularioContacto from "./views/FormularioContacto.vue";
-import BlogView from "./views/BlogView.vue";
-import BlogPost from "./components/BlogPost.vue";
-import NotFound from "./views/NotFoundView.vue";
-
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -16,45 +7,40 @@ const router = createRouter({
     {
       path: "/",
       name: "home",
-      component: HomeView,
+      component: () => import('./views/HomeView.vue'),
     },
     {
       path: "/gallery",
       name: "gallery",
-      component: GaleriaTatuajes,
+      component:  () => import('./views/GaleriaTatuajes.vue'),
     },
     {
       path: "/studio",
       name: "studio",
-      component: StudioInfo,
+      component: () => import('./views/StudioInfo.vue'),
     },
-/*     {
-      path: "/reviews",
-      name: "reviews",
-      component: ResenasClientes,
-    }, */
     {
       path: "/contact",
       name: "contact",
-      component: FormularioContacto,
+      component: () => import('./views/FormularioContacto.vue'),
     },
     // Rutas del blog
     {
       path: "/blog",
       name: "blog",
-      component: BlogView,
+      component: () => import('./views/BlogView.vue'),
     },
     {
       path: "/blog/:slug",
       name: "blog-post",
-      component: BlogPost,
+      component: () => import('./components/BlogPost.vue'),
       props: true,
     },
     // Ruta para Not Found (404)
     {
       path: "/:catchAll(.*)",
       name: "not-found",
-      component: NotFound,
+      component: () => import('./components/NotFound.vue'),
     },
   ],
   scrollBehavior(to, from, savedPosition) {

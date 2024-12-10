@@ -10,14 +10,12 @@
 </template>
 
 <script>
-import { ref, watch, computed } from 'vue';
-import SearchBar from './SearchBar.vue';
-import CategoryChips from './CategoryChips.vue';
+import { ref, watch, computed, defineAsyncComponent } from 'vue';
 
 export default {
   components: {
-    SearchBar,
-    CategoryChips,
+    SearchBar: defineAsyncComponent(() => import('./SearchBar.vue')),
+    CategoryChips: defineAsyncComponent(() => import('./CategoryChips.vue')),
   },
   props: {
     tags: {

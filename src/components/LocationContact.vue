@@ -36,15 +36,8 @@
 <script>
   export default {
   data() {
-    return {
-    };
-  },
-  methods: {
-  },
-  mounted() {
-  },
-  beforeUnmount() {
-  },
+    return {};
+  }
 };
 </script>
 <style scoped>

@@ -41,16 +41,14 @@
 </template>
 
 <script>
-import { ref, computed, onMounted, watch } from 'vue';
+import { ref, computed, onMounted, watch, defineAsyncComponent } from 'vue';
 import { useHead } from '@vueuse/head';
-import BlogList from '../components/BlogList.vue';
-import SearchAndFilter from '../components/SearchAndFilter.vue';
 import {getAllPosts} from '../blog/posts';
 
 export default {
   components: {
-    BlogList,
-    SearchAndFilter,
+    BlogList: defineAsyncComponent(() => import('../components/BlogList.vue')),
+    SearchAndFilter: defineAsyncComponent(() => import('../components/SearchAndFilter.vue')),
   },
   setup() {
 
