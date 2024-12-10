@@ -2,7 +2,7 @@
   <div class="home">
     <!-- Hero Section -->
     <div class="hero">
-      <img class="logo" src="/delaitto.png" loading="lazy" />
+      <img class="logo" src="/delaitto.png" alt="Logo Delaitto Tattoo | Estudio tatuajes cerca de mi "/>
       <p class="lema">El rincón donde el arte se fusiona con tu cuerpo</p>
       <div>
         <router-link to="/contact"><button class="fill-btn">¡ Quiero tatuarme !</button></router-link>
