@@ -19,7 +19,6 @@
     "axios": "^1.7.0",
     "date-fns": "^3.6.0",
     "dompurify": "^3.1.6",
-    "firebase": "^10.1.0",
     "front-matter": "^4.0.2",
     "gray-matter": "^4.0.3",
     "marked": "^13.0.2",
@@ -28,8 +27,7 @@
     "vite-plugin-md": "^0.22.5",
     "vue": "^3.4.32",
     "vue-markdown-loader": "^2.5.0",
-    "vue-router": "^4.4.0",
-    "vuefire": "^3.1.13"
+    "vue-router": "^4.4.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",

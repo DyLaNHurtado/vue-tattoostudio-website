@@ -61,7 +61,6 @@ export default {
   name: 'HomeView',
   components: {
     Socials: defineAsyncComponent(() => import('../components/Socials.vue')),
-    Newsletter: defineAsyncComponent(() => import('../components/Newsletter.vue')),
     LocationContact: defineAsyncComponent(() => import('../components/LocationContact.vue')),
     BlogList: defineAsyncComponent(() => import('../components/BlogList.vue')),
     GalleryList: defineAsyncComponent(() => import('../components/GalleryList.vue')),

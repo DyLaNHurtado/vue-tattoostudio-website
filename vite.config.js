@@ -93,11 +93,6 @@ export default defineConfig({
   //           return 'vue-router';
   //         }
 
-  //         // Dividir Firebase y otras dependencias grandes
-  //         if (id.includes('node_modules/firebase')) {
-  //           return 'firebase';
-  //         }
-
   //         // Dividir FontAwesome en su propio chunk
   //         if (id.includes('node_modules/@fortawesome')) {
   //           return 'fontawesome';
