@@ -33,6 +33,8 @@ import {
   faMapMarkerAlt,
   faCalendarAlt,
   faEnvelope,
+  faCalendarDay,
+  faCalendarWeek,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebookF,
@@ -69,6 +71,8 @@ library.add(
   faMapMarkerAlt,
   faCalendarAlt,
   faEnvelope,
+  faCalendarDay,
+  faCalendarWeek,
   faFacebookF,
   faTwitter,
   faLinkedinIn,
