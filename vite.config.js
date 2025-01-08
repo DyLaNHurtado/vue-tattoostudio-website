@@ -74,6 +74,13 @@ export default defineConfig({
     //   ],
     // })
   ],
+  css: {
+    preprocessorOptions: {
+        scss: {
+            api: 'modern-compiler',
+        }
+    }
+},
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'), // Aliases para rutas cortas
