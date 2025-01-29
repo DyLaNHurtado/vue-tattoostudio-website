@@ -2,7 +2,7 @@
 title: "Black and Grey: La Magia del Gris en la Piel"
 excerpt: "Si eres de los que busca un tatuaje con sombras, detalles finos y un toque de realismo, entonces el estilo Black and Grey es justo lo que necesitas. Este estilo tiene algo especial: la mezcla de negro y gris da como resultado un arte en la piel que parece cobrar vida..."
 date: 2024-11-09
-tags: ["Estilos","Tatuajes"]
+tags: ["Black and Grey", "Realismo", "Historia del Tatuaje", "Sombras", "Estilos"]
 ---
 
 Si eres de los que busca un tatuaje con sombras, detalles finos y un toque de realismo, entonces el estilo **Black and Grey** es justo lo que necesitas. Este estilo tiene algo especial: la mezcla de negro y gris da como resultado un arte en la piel que parece cobrar vida, sin necesidad de añadir ni un solo color extra. Pero, ¿de dónde viene este estilo tan peculiar?

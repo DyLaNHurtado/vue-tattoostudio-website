@@ -1,23 +1,9 @@
 <template>
-  <div class="app-container">
-    <NavBar />
-    <div class="view">
-      <RouterView />
-      <SpeedInsights/>
-    </div>
-
-    <Footer></Footer>
-  </div>
+  <MainLayout />
 </template>
 
 <script setup>
-import { defineAsyncComponent } from 'vue';
-import { SpeedInsights } from "@vercel/speed-insights/vue"
-import { RouterView } from 'vue-router';
-
-const NavBar = defineAsyncComponent(() => import('./components/NavBar.vue'));
-const Footer = defineAsyncComponent(() => import('./components/Footer.vue'));
-
+import MainLayout from './layouts/MainLayout.vue';
 </script>
 
 <style scoped>
