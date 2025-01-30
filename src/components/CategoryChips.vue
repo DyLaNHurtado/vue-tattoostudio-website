@@ -3,8 +3,8 @@
     <button
       v-for="category in categories"
       :key="category"
-      :class="['chip', { 'chip-active': selectedCategory === category }]"
-      @click="selectCategory(category)"
+      :class="['chip', { 'chip-active': selectedCategories.includes(category) }]"
+      @click="toggleCategory(category)"
     >
       {{ category }}
     </button>
@@ -18,19 +18,24 @@ export default {
       type: Array,
       required: true,
     },
-    selectedCategory: {
-      type: String,
-      default: 'Todos',
+    selectedCategories: {
+      type: Array,
+      default: () => [],
     },
   },
-  emits: ['update:category'],
+  emits: ['update:categories'],
   setup(props, { emit }) {
-    const selectCategory = (category) => {
-      emit('update:category', category);
+    const toggleCategory = (category) => {
+      const index = props.selectedCategories.indexOf(category);
+      if (index === -1) {
+        emit('update:categories', [...props.selectedCategories, category]);
+      } else {
+        emit('update:categories', props.selectedCategories.filter(c => c !== category));
+      }
     };
 
     return {
-      selectCategory,
+      toggleCategory,
     };
   },
 };

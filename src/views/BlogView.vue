@@ -4,7 +4,9 @@
       <h1 class="blog-title">Blog de Delaitto Tattoo</h1>
     </div>
     <div class="content-wrapper">
-      <SearchAndFilter :tags="allTags" @update:filters="updateFilters" />
+      <div class="search-and-filter-wrapper">
+        <SearchAndFilter :tags="allTags" @update:filters="updateFilters" />
+      </div>
       <transition name="fade" mode="out-in">
         <div v-if="loading" class="loading-spinner">
           <font-awesome-icon :icon="['fas', 'spinner']" spin size="3x" />
@@ -43,7 +45,7 @@
 <script>
 import { ref, computed, onMounted, watch, defineAsyncComponent } from 'vue';
 import { useHead } from '@vueuse/head';
-import {getAllPosts} from '../blog/posts';
+import { getAllPosts } from '../blog/posts';
 
 export default {
   components: {
@@ -51,7 +53,6 @@ export default {
     SearchAndFilter: defineAsyncComponent(() => import('../components/SearchAndFilter.vue')),
   },
   setup() {
-
     useHead({
       title: 'Blog de Tatuajes Delaitto | Noticias, Curiosidades y Consejos sobre el mundo de los Tatuajes',
       meta: [
@@ -68,14 +69,13 @@ export default {
       ],
     });
 
-
     const posts = ref([]);
     const filteredPosts = ref([]);
     const loading = ref(true);
     const error = ref(null);
     const filters = ref({
       searchTerm: '',
-      selectedCategory: 'Todos',
+      selectedCategories: [],
     });
     const currentPage = ref(1);
     const postsPerPage = 6;
@@ -96,12 +96,12 @@ export default {
     };
 
     const applyFilters = () => {
-      const { searchTerm, selectedCategory } = filters.value;
+      const { searchTerm, selectedCategories } = filters.value;
       filteredPosts.value = posts.value.filter((post) => {
         const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
                               post.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
-        const matchesCategory = selectedCategory === 'Todos' || post.tags.includes(selectedCategory);
-        return matchesSearch && matchesCategory;
+        const matchesCategories = selectedCategories.length === 0 || selectedCategories.every(category => post.tags.includes(category));
+        return matchesSearch && matchesCategories;
       });
       rerenderKey.value += 1;
     };
@@ -185,6 +185,10 @@ export default {
   max-width: 1200px;
   margin: 0 auto;
   padding: 40px 20px;
+}
+
+.search-and-filter-wrapper {
+  margin-bottom: 40px;
 }
 
 .blog-view {

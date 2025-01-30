@@ -12,7 +12,7 @@
       <div class="card-content">
         <!-- Mostrar categorias/tags en la card  de forma estetica en el UI-->
         <div class="card-tags">
-          <span class="card-category" v-for="tag in post.tags">{{ tag }},</span>
+          <span class="card-category" v-for="tag in post.tags">{{ tag }}</span>
         </div>
         <h1>{{ post.title }}</h1>
         <p>{{ post.excerpt }}</p>
@@ -79,7 +79,6 @@ export default {
   height: 200px;
   overflow: hidden;
   background-color: var(--color-background-soft);
-
 }
 
 .card-image img {
@@ -106,14 +105,24 @@ export default {
   color: var(--color-primary);
   text-transform: uppercase;
   font-weight: 600;
-  margin-bottom: 10px;
-  line-height: 1.4;
   margin-bottom: 5px;
+  line-height: 1.4;
 }
-.card-tags{
+
+.card-tags {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
   gap: 5px;
+  margin-bottom: 10px;
+}
+
+.card-tags .card-category {
+  background-color: var(--color-background-soft);
+  padding: 2px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .card-content h1 {

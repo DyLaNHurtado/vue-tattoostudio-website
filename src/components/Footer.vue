@@ -24,6 +24,7 @@ const actualYear = new Date().getFullYear();
   position: relative;
   bottom: 0;
   width: 100%;
+  box-shadow: 0px 0px 5px .2px var( --color-background);
 }
 
 .footer-content {

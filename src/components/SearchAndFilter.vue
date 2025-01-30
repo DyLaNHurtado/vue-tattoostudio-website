@@ -2,9 +2,9 @@
   <div class="search-and-filter">
     <SearchBar v-model="searchTerm" @update:modelValue="handleSearch" />
     <CategoryChips
-      :categories="['Todos', ...categories]"
-      :selectedCategory="selectedCategory"
-      @update:category="handleCategoryChange"
+      :categories="categories"
+      :selectedCategories="selectedCategories"
+      @update:categories="handleCategoryChange"
     />
   </div>
 </template>
@@ -26,7 +26,7 @@ export default {
   emits: ['update:filters'],
   setup(props, { emit }) {
     const searchTerm = ref('');
-    const selectedCategory = ref('Todos');
+    const selectedCategories = ref([]);
     
     const categories = computed(() => {
       return [...new Set(props.tags)].sort();
@@ -35,7 +35,7 @@ export default {
     const emitFilters = () => {
       emit('update:filters', { 
         searchTerm: searchTerm.value, 
-        selectedCategory: selectedCategory.value 
+        selectedCategories: selectedCategories.value 
       });
     };
 
@@ -44,8 +44,8 @@ export default {
       emitFilters();
     };
 
-    const handleCategoryChange = (category) => {
-      selectedCategory.value = category;
+    const handleCategoryChange = (categories) => {
+      selectedCategories.value = categories;
       emitFilters();
     };
 
@@ -55,7 +55,7 @@ export default {
 
     return {
       searchTerm,
-      selectedCategory,
+      selectedCategories,
       categories,
       handleSearch,
       handleCategoryChange,
@@ -73,5 +73,7 @@ export default {
   margin: 0 auto 40px;
   border-radius: 8px;
   padding: 20px;
+  background-color: var(--color-background-mute);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 </style>
