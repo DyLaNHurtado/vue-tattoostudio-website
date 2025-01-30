@@ -3,43 +3,43 @@ import { createRouter, createWebHistory } from "vue-router";
 const routes = [
   {
     path: '/',
-    component: () => import('./layouts/MainLayout.vue'),
+    component: () => import('../layouts/MainLayout.vue'),
     children: [
       {
         path: '',
         name: 'home',
-        component: () => import('./views/HomeView.vue'),
+        component: () => import('../views/HomeView.vue'),
       },
       {
         path: 'gallery',
         name: 'gallery',
-        component: () => import('./views/GaleriaTatuajes.vue'),
+        component: () => import('../views/GaleriaTatuajes.vue'),
       },
       {
         path: 'studio',
         name: 'studio',
-        component: () => import('./views/StudioInfo.vue'),
+        component: () => import('../views/StudioInfo.vue'),
       },
       {
         path: 'contact',
         name: 'contact',
-        component: () => import('./views/FormularioContacto.vue'),
+        component: () => import('../views/FormularioContacto.vue'),
       },
       {
         path: 'blog',
         name: 'blog',
-        component: () => import('./views/BlogView.vue'),
+        component: () => import('../views/BlogView.vue'),
       },
       {
         path: 'blog/:slug',
         name: 'blog-post',
-        component: () => import('./components/BlogPost.vue'),
+        component: () => import('../components/blog/BlogPost.vue'),
         props: true,
       },
       {
         path: ':catchAll(.*)',
         name: 'not-found',
-        component: () => import('./components/NotFound.vue'),
+        component: () => import('../components/common/NotFound.vue'),
       },
     ],
   },

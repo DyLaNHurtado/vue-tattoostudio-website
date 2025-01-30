@@ -12,8 +12,14 @@ html,body,#app{
 }
 
 @font-face {
-  font-family: HelveticaNow;
-  src: url('/src/assets/fonts/HelveticaNowDisplay-Medium.ttf');
+  font-family: 'HelveticaNow';
+  src: local('HelveticaNowDisplay-Medium'),
+       url('/src/assets/fonts/HelveticaNowDisplay-Medium.woff2') format('woff2'),
+       url('/src/assets/fonts/HelveticaNowDisplay-Medium.woff') format('woff'),
+       url('/src/assets/fonts/HelveticaNowDisplay-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
 }
 
 body {

@@ -26,7 +26,7 @@
       }
     },
     components: {
-      LightBox: defineAsyncComponent(() => import('./LightBox.vue'))
+      LightBox: defineAsyncComponent(() => import('../common/LightBox.vue'))
     },
     data() {
     return {

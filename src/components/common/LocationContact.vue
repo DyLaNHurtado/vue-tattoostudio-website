@@ -29,7 +29,7 @@
 
 
       <router-link class="link" to="/contact">
-        <button class="transparent-button"><font-awesome-icon :icon="['fas', 'share']"/>&nbsp;&nbsp;Más información</button>
+        <button class="transparent-button"><font-awesome-icon :icon="['fas', 'share']"/>&nbsp;&nbsp;Ver más métodos de contacto</button>
       </router-link>
     </div>
 </template>

@@ -49,8 +49,8 @@ import { getAllPosts } from '../blog/posts';
 
 export default {
   components: {
-    BlogList: defineAsyncComponent(() => import('../components/BlogList.vue')),
-    SearchAndFilter: defineAsyncComponent(() => import('../components/SearchAndFilter.vue')),
+    BlogList: defineAsyncComponent(() => import('../components/blog/BlogList.vue')),
+    SearchAndFilter: defineAsyncComponent(() => import('../components/blog/SearchAndFilter.vue')),
   },
   setup() {
     useHead({

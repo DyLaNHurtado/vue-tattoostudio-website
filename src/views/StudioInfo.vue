@@ -8,20 +8,36 @@
     </section>
 
     <section class="values">
+      <p>
+        <span class="highlight">Delaitto Tattoo</span> es un estudio de tatuajes en
+        Leganés especializado en <span class="highlight">diseños personalizados</span>
+        que cuentan <span class="highlight">historias únicas</span>. Su equipo de artistas
+        combina <span class="highlight">creatividad</span>, <span class="highlight">técnica</span> y <span class="highlight">pasión</span> para crear
+        tatuajes que reflejan la <span class="highlight">individualidad</span> de cada
+        cliente. Con un enfoque en la <span class="highlight">calidad</span> y el <span class="highlight">detalle</span>,
+        Delaitto Tattoo se ha convertido en un <span class="highlight">referente</span>
+        para quienes buscan <span class="highlight">obras de arte permanentes</span> y
+        significativas. El estudio ofrece un <span class="highlight">ambiente acogedor</span> y
+        profesional, donde el cliente es parte esencial del
+        proceso creativo. Cada diseño es concebido para
+        armonizar con la <span class="highlight">personalidad</span> y el <span class="highlight">estilo de vida</span> del
+        usuario, garantizando una <span class="highlight">experiencia única</span>, <span class="highlight">segura</span>
+        y <span class="highlight">satisfactoria</span>.
+      </p>
       <div class="container">
         <h2>Nuestros Valores y Prioridades</h2>
         <div class="values-grid">
           <div class="value-card">
             <div class="icon-valores ">
-            <font-awesome-icon :icon="['fas', 'pump-medical']" />
-          </div>
+              <font-awesome-icon :icon="['fas', 'pump-medical']" />
+            </div>
             <h3>Higiene y Seguridad</h3>
             <p>Compromiso inquebrantable con los más altos estándares de limpieza y seguridad.</p>
           </div>
           <div class="value-card">
             <div class="icon-valores valores-yellow">
-            <font-awesome-icon :icon="['fas', 'pen-ruler']" />
-          </div>
+              <font-awesome-icon :icon="['fas', 'pen-ruler']" />
+            </div>
             <h3>Especialización</h3>
             <p>Cada artista domina un estilo único, ofreciendo una amplia gama de posibilidades creativas.</p>
           </div>
@@ -41,9 +57,9 @@
         <h2>Nuestro Espacio Creativo</h2>
         <p><span class="highlight">Nuestro santuario del arte del tatuaje para ti</span></p>
         <div class="image-gallery">
-          <img src="/entrada_sofa.webp" alt="Recepción del estudio Delaitto Tattoo" loading="lazy"/>
-          <img src="/entrada_pasillo.webp" alt="Vista al pasillo y mural de galeria de arte" loading="lazy"/>
-          <img src="/sala_tattoo_inicio3.webp" alt="Área de trabajo principal" loading="lazy"/>
+          <img src="/entrada_sofa.webp" alt="Recepción del estudio Delaitto Tattoo" loading="lazy" />
+          <img src="/entrada_pasillo.webp" alt="Vista al pasillo y mural de galeria de arte" loading="lazy" />
+          <img src="/sala_tattoo_inicio3.webp" alt="Área de trabajo principal" loading="lazy" />
         </div>
       </div>
     </section>
@@ -65,12 +81,15 @@
     <section class="artists">
       <div class="container">
         <h2>Nuestros Estilos Favoritos</h2>
-        <p>No nos cerramos a ningún estilo y siempre es buena salir de la zona de confort pero nuestros estilos preferidos son:</p>
+        <p>No nos cerramos a ningún estilo y siempre es buena salir de la zona de confort pero nuestros estilos
+          preferidos son:</p>
         <div class="artist-cards">
-          <div class="artist-card" v-for="style in tattooStyles" :key="style.name" @click="openPost(style.post)" @mouseenter="style.showTextHover=true" @mouseleave="style.showTextHover=false">
-            <img :src="style.image" :alt="style.name" loading="lazy"/>
+          <div class="artist-card" v-for="style in tattooStyles" :key="style.name" @click="openPost(style.post)"
+            @mouseenter="style.showTextHover=true" @mouseleave="style.showTextHover=false">
+            <img :src="style.image" :alt="style.name" loading="lazy" />
             <h3>{{ style.name }}</h3>
-              <span :class="{'hide-text':!style.showTextHover, 'show-text':style.showTextHover}" style="transition: all .3s ease;"> 
+            <span :class="{'hide-text':!style.showTextHover, 'show-text':style.showTextHover}"
+              style="transition: all .3s ease;">
               <font-awesome-icon :icon="['fas', 'share']" /> &nbsp;
               ¡ Quiero saber más ! </span>
           </div>
@@ -91,18 +110,17 @@
         </div>
       </div>
     </section>
-    <LocationContact/>
+    <LocationContact />
   </div>
 </template>
 
 <script>
 import { defineAsyncComponent } from 'vue';
-import LocationContact from '../components/LocationContact.vue';
 import { useHead } from '@vueuse/head';
 export default {
   name: 'StudioPage',
   components: {
-    LocationContact: defineAsyncComponent(() => import('../components/LocationContact.vue')),
+    LocationContact: defineAsyncComponent(() => import('../components/common/LocationContact.vue')),
   },
   setup() {
     useHead({
@@ -163,9 +181,10 @@ export default {
 }
 
 .container {
+  
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
+  margin-top: 20px;
   padding: 0 20px;
 }
 
@@ -197,6 +216,7 @@ export default {
 h1, h2 {
   font-weight: bold;
   margin-bottom: 1rem;
+  color: var(--color-heading);
 }
 
 

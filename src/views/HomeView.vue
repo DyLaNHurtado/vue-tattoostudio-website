@@ -3,7 +3,7 @@
     <!-- Hero Section -->
     <div class="hero">
       <img class="logo" src="/delaitto.webp" alt="Logo Delaitto Tattoo | Estudio tatuajes cerca de mi "/>
-      <p class="lema">El rincón donde el arte se fusiona con tu cuerpo</p>
+      <p class="lema">Tatuajes personalizados que cuentan tu historia</p>
       <div>
         <router-link to="/contact"><button class="fill-btn">¡ Quiero tatuarme !</button></router-link>
       </div>
@@ -60,11 +60,11 @@ import { getLatestPosts } from '../blog/posts';
 export default {
   name: 'HomeView',
   components: {
-    Socials: defineAsyncComponent(() => import('../components/Socials.vue')),
-    LocationContact: defineAsyncComponent(() => import('../components/LocationContact.vue')),
-    BlogList: defineAsyncComponent(() => import('../components/BlogList.vue')),
-    GalleryList: defineAsyncComponent(() => import('../components/GalleryList.vue')),
-    AfterCare: defineAsyncComponent(() => import('../components/AfterCare.vue')),
+    Socials: defineAsyncComponent(() => import('../components/common/Socials.vue')),
+    LocationContact: defineAsyncComponent(() => import('../components/common/LocationContact.vue')),
+    BlogList: defineAsyncComponent(() => import('../components/blog/BlogList.vue')),
+    GalleryList: defineAsyncComponent(() => import('../components/gallery/GalleryList.vue')),
+    AfterCare: defineAsyncComponent(() => import('../components/home/AfterCare.vue')),
   },
   setup() {
     useHead({

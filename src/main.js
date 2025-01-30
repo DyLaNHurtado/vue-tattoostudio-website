@@ -36,7 +36,10 @@ import {
   faCalendarDay,
   faCalendarWeek,
   faHandSparkles,
-  faBan
+  faBan,
+  faBandAid,
+  faSun,
+  faHandHoldingWater
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebookF,
@@ -77,6 +80,9 @@ library.add(
   faCalendarWeek,
   faHandSparkles,
   faBan,
+  faBandAid,
+  faSun,
+  faHandHoldingWater,
   faFacebookF,
   faTwitter,
   faLinkedinIn,

@@ -11,7 +11,7 @@
 import { defineAsyncComponent } from 'vue';
 export default {
   components: {
-    GalleryList: defineAsyncComponent(() => import('../components/GalleryList.vue')),
+    GalleryList: defineAsyncComponent(() => import('../components/gallery/GalleryList.vue')),
   },
   data() {
     return {

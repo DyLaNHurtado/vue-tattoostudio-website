@@ -1,6 +1,6 @@
 <script setup>
 import { defineAsyncComponent } from 'vue';
-const Socials = defineAsyncComponent(() => import('@/components/Socials.vue'));
+const Socials = defineAsyncComponent(() => import('@/components/common/Socials.vue'));
 const actualYear = new Date().getFullYear();
 </script>
 <template>

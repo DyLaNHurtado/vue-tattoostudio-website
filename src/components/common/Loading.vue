@@ -56,7 +56,6 @@ onUnmounted(() => {
   margin: 40px auto;
   padding: 20px;
   text-align: center;
-  font-family: 'Roboto', sans-serif;
   align-content: center;
   justify-content: center;
 }
@@ -72,7 +71,7 @@ onUnmounted(() => {
 }
 
 .loading-text {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: bold;
   color: var(--color-heading);
   margin-bottom: 20px;

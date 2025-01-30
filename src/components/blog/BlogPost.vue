@@ -48,19 +48,22 @@
         <article v-html="sanitizedPostContent" ref="articleContent"></article>
       </div>
       <footer class="blog-footer">
-        <div class="social-share">
-          <h3>Comparte este artículo:</h3>
-          <button @click="shareOnTwitter" class="share-button twitter">
-            <font-awesome-icon :icon="['fab', 'twitter']" />
-          </button>
-          <button @click="shareOnFacebook" class="share-button facebook">
-            <font-awesome-icon :icon="['fab', 'facebook-f']" />
-          </button>
-          <button @click="shareOnLinkedIn" class="share-button linkedin">
-            <font-awesome-icon :icon="['fab', 'linkedin-in']" />
-          </button>
-        </div>
-      </footer>
+      <div class="social-share">
+        <h3>Comparte este artículo:</h3>
+        <button @click="shareOnTwitter" class="share-button twitter">
+          <font-awesome-icon :icon="['fab', 'twitter']" />
+        </button>
+        <button @click="shareOnFacebook" class="share-button facebook">
+          <font-awesome-icon :icon="['fab', 'facebook-f']" />
+        </button>
+        <button @click="shareOnInstagram" class="share-button instagram">
+          <font-awesome-icon :icon="['fab', 'instagram']" />
+        </button>
+        <button @click="shareOnWhatsApp" class="share-button whatsapp">
+          <font-awesome-icon :icon="['fab', 'whatsapp']" />
+        </button>
+      </div>
+    </footer>
     </div>
     <Loading v-else @retry="loadMarkdownFile" @home="goToHome" />
   </div>
@@ -69,15 +72,14 @@
 <script setup>
 import DOMPurify from 'dompurify';
 import frontMatter from 'front-matter';
-import { ref, defineProps, computed, onMounted, onUnmounted } from 'vue';
+import { ref, defineProps, computed, onMounted, onUnmounted, defineAsyncComponent } from 'vue';
 import { useHead } from '@vueuse/head';
 import { marked } from 'marked';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
-import Loading from './Loading.vue';
 import { useRouter } from 'vue-router';
-import '../styles/post-styles.scss'
-
+import '../../styles/post-styles.scss'
+const Loading = defineAsyncComponent(() => import('../common/Loading.vue'));
 const props = defineProps({
   slug: String
 });
@@ -200,20 +202,26 @@ const goToHome = () => {
 };
 
 const shareOnTwitter = () => {
-  const url = encodeURIComponent(window.location.href);
-  const text = encodeURIComponent(`${attributes.value.title} - Delaitto Tattoo Blog`);
-  window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank');
+  const url = window.location.href;
+  const text = `${attributes.value.title} - Delaitto Tattoo Blog`;
+  window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
 };
 
 const shareOnFacebook = () => {
-  const url = encodeURIComponent(window.location.href);
-  window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+  const url = window.location.href;
+  window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
 };
 
-const shareOnLinkedIn = () => {
-  const url = encodeURIComponent(window.location.href);
-  const title = encodeURIComponent(attributes.value.title);
-  window.open(`https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title}`, '_blank');
+const shareOnInstagram = () => {
+  const url = window.location.href;
+  const text = `${attributes.value.title} - Delaitto Tattoo Blog`;
+  window.open(`https://www.instagram.com/?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`, '_blank');
+};
+
+const shareOnWhatsApp = () => {
+  const url = window.location.href;
+  const text = `${attributes.value.title} - Delaitto Tattoo Blog`;
+  window.open(`https://wa.me/?text=${encodeURIComponent(text)}%20${encodeURIComponent(url)}`, '_blank');
 };
 
 onMounted(() => {
