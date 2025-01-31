@@ -36,26 +36,15 @@
       ]
     },
     {
-      "source": "/((?!_next/|static/).*)",
-      "has": [
-        {
-          "type": "host",
-          "value": "delaittotattoo.es"
-        }
-      ],
-      "headers": [
-        {
-          "key": "Link",
-          "value": "<https://delaittotattoo.es/$1>; rel=\"canonical\""
-        }
-      ]
-    },
-    {
       "source": "/_next/static/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
           "value": "public, max-age=31536000, immutable"
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/javascript"
         }
       ]
     },
@@ -65,6 +54,28 @@
         {
           "key": "Cache-Control",
           "value": "public, max-age=31536000, immutable"
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/javascript"
+        }
+      ]
+    },
+    {
+      "source": "/assets/(.*).css",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/css"
+        }
+      ]
+    },
+    {
+      "source": "/assets/(.*).js",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/javascript"
         }
       ]
     }
