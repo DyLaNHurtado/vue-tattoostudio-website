@@ -71,16 +71,10 @@ export default defineConfig({
     rollupOptions: {
       output: {
         assetFileNames: (assetInfo) => {
-          // Mueve las fuentes a /assets/fonts
-          if (/\.(ttf|woff|woff2)$/.test(assetInfo.name)) {
-            return 'assets/fonts/[name].[hash].[ext]';
+          if (assetInfo.name.endsWith('.ttf') || assetInfo.name.endsWith('.woff') || assetInfo.name.endsWith('.woff2')) {
+            return `fonts/[name].[hash].[ext]`;
           }
-          // Mueve las imágenes a /assets/images
-          if (/\.(webp|png|jpg|jpeg|gif|svg)$/.test(assetInfo.name)) {
-            return 'assets/images/[name].[hash].[ext]';
-          }
-          // Otros assets van a /assets
-          return 'assets/[name].[hash].[ext]';
+          return `assets/[name].[hash].[ext]`;
         },
       },
     },
