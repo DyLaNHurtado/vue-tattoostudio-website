@@ -11,11 +11,11 @@ export default defineConfig({
   plugins: [
     vue({ include: [/\.vue$/, /\.md$/] }),
     Markdown(),
-    compression({
+/*     compression({
       algorithm: 'gzip',
       ext: '.gz', // Genera archivos comprimidos para el despliegue
       threshold: 10240, // Comprime solo archivos mayores a 10KB
-    }),
+    }), */
     sitemapPlugin({
       hostname: 'https://delaittotattoo.es',
       dynamicRoutes: getRoutesForSitemap(),
@@ -79,10 +79,6 @@ export default defineConfig({
         entryFileNames: 'assets/[name].[hash].js',
         chunkFileNames: 'assets/[name].[hash].js',
         assetFileNames: 'assets/[name].[hash].[ext]',
-        manualChunks: {
-          'vue-vendor': ['vue', 'vue-router'],
-          'fontawesome': ['@fortawesome/fontawesome-svg-core', '@fortawesome/vue-fontawesome'],
-        },
       },
     },
   },
