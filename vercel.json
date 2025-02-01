@@ -102,24 +102,5 @@
         }
       ]
     }
-  ],
-  "redirects": [
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.delaittotattoo.es"
-        }
-      ],
-      "destination": "https://delaittotattoo.es/:path*",
-      "permanent": true
-    }
-  ],
-  "rewrites": [
-    { 
-      "source": "/(.*)", 
-      "destination": "/" 
-    }
   ]
 }
