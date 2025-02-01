@@ -4,10 +4,8 @@ import Markdown from 'vite-plugin-md';
 import path from 'path';
 import compression from 'vite-plugin-compression';
 import ViteImagemin from 'vite-plugin-imagemin';
-import PurgeCSS from 'vite-plugin-purgecss';
 import sitemapPlugin from 'vite-plugin-sitemap';
 import getRoutesForSitemap from './src/sitemapsRoutes';
-// import { visualizer } from 'rollup-plugin-visualizer';
 
 
 export default defineConfig({
@@ -62,12 +60,6 @@ export default defineConfig({
         quality: 75
       }
     }),
-    // visualizer({
-    //   open: true,
-    //   gzipSize: true,
-    //   brotliSize: true,
-    // }),
-
   ],
   css: {
     modules: {
@@ -83,7 +75,6 @@ export default defineConfig({
   define: {
     __VUE_OPTIONS_API__: true,
     __VUE_PROD_DEVTOOLS__: false,
-    __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: false,
   },
   resolve: {
     alias: {
