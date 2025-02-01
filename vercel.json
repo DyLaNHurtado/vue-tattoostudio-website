@@ -54,6 +54,33 @@
       ]
     },
     {
+      "source": "/assets/(.*).woff2",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "font/woff2"
+        }
+      ]
+    },
+    {
+      "source": "/assets/(.*).woff",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "font/woff"
+        }
+      ]
+    },
+    {
+      "source": "/assets/(.*).ttf",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "font/ttf"
+        }
+      ]
+    },
+    {
       "source": "/index.html",
       "headers": [
         {
@@ -70,21 +97,21 @@
       "permanent": true
     },
     {
-      "source": "/:path",
+      "source": "/:path*",
       "has": [
         {
           "type": "host",
           "value": "www.delaittotattoo.es"
         }
       ],
-      "destination": "https://delaittotattoo.es/:path",
+      "destination": "https://delaittotattoo.es/:path*",
       "permanent": true
     }
   ],
   "rewrites": [
-    {
-      "source": "/(.)",
-      "destination": "/"
+    { 
+      "source": "/(.*)", 
+      "destination": "/" 
     }
   ]
 }

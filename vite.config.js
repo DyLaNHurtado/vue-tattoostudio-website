@@ -7,17 +7,15 @@ import ViteImagemin from 'vite-plugin-imagemin';
 import sitemapPlugin from 'vite-plugin-sitemap';
 import getRoutesForSitemap from './src/sitemapsRoutes';
 
-
 export default defineConfig({
   plugins: [
     vue({ include: [/\.vue$/, /\.md$/] }),
-
+    Markdown(),
     compression({
       algorithm: 'gzip',
       ext: '.gz', // Genera archivos comprimidos para el despliegue
       threshold: 10240, // Comprime solo archivos mayores a 10KB
     }),
-
     sitemapPlugin({
       hostname: 'https://delaittotattoo.es',
       dynamicRoutes: getRoutesForSitemap(),
@@ -32,46 +30,34 @@ export default defineConfig({
       ],
       exclude: ['/404', '/admin'],
     }),
-    Markdown(),
-
     ViteImagemin({
-      // Compresión para imágenes en varios formatos
       gifsicle: {
-        optimizationLevel: 3,
-        interlaced: false
+        optimizationLevel: 7,
+        interlaced: false,
       },
       optipng: {
-        optimizationLevel: 7
+        optimizationLevel: 7,
+      },
+      mozjpeg: {
+        quality: 20,
       },
       pngquant: {
-        quality: [0.6, 0.8]
+        quality: [0.8, 0.9],
+        speed: 4,
       },
       svgo: {
         plugins: [
-          { removeViewBox: false },
-          { removeEmptyAttrs: true }
-        ]
+          {
+            name: 'removeViewBox',
+          },
+          {
+            name: 'removeEmptyAttrs',
+            active: false,
+          },
+        ],
       },
-      jpegoptim: {
-        progressive: true,
-        max: 70
-      },
-      webp: {
-        quality: 75
-      }
     }),
   ],
-  css: {
-    modules: {
-      scopeBehaviour: 'local', // Utiliza 'global' si quieres que los estilos sean globales por defecto
-      generateScopedName: '[name]__[local]___[hash:base64:5]', // Formato de los nombres de clase generados
-    },
-    preprocessorOptions: {
-        scss: {
-          api: 'modern-compiler',
-        }
-    }
-  },
   define: {
     __VUE_OPTIONS_API__: true,
     __VUE_PROD_DEVTOOLS__: false,
@@ -85,7 +71,7 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    sourcemap: false,
+    sourcemap: true,
     cssCodeSplit: true,
     minify: 'esbuild',
     rollupOptions: {
@@ -96,15 +82,11 @@ export default defineConfig({
         manualChunks: {
           'vue-vendor': ['vue', 'vue-router'],
           'fontawesome': ['@fortawesome/fontawesome-svg-core', '@fortawesome/vue-fontawesome'],
-        }
-      }
-    }
+        },
+      },
+    },
   },
-
   server: {
     port: 3000,
-    open: true, // Abre el navegador al iniciar el servidor
-    historyApiFallback: true, // Soporte para rutas de SPA con Vue Router
   },
-  
 });
