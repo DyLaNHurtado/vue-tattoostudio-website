@@ -52,6 +52,15 @@
           "value": "application/javascript"
         }
       ]
+    },
+    {
+      "source": "/index.html",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/html"
+        }
+      ]
     }
   ],
   "redirects": [
