@@ -1,6 +1,6 @@
 ---
 title: "New School: El Color Explosivo en la Piel"
-excerpt: "¿Quieres un tatuaje que tenga tanta personalidad que sea imposible no notarlo? Entonces el estilo New School es para ti. Este estilo se caracteriza por colores vibrantes, proporciones exageradas y una mezcla de elementos de **cómic** y graffiti."
+excerpt: "¿Quieres un tatuaje que tenga tanta personalidad que sea imposible no notarlo? Entonces el estilo New School es para ti. Este estilo se caracteriza por colores vibrantes, proporciones exageradas y una mezcla de elementos de cómic y graffiti."
 date: 2024-11-09
 ---
 

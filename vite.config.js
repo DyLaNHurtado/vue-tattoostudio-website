@@ -68,18 +68,15 @@ export default defineConfig({
     //   brotliSize: true,
     // }),
 
-    PurgeCSS({
-      // Opciones de configuración de PurgeCSS
-      content: [
-        './index.html',
-        './src/**/*.{js,ts,vue,html,scss}',  // Rutas donde buscará el CSS utilizado
-      ],
-    })
   ],
   css: {
+    modules: {
+      scopeBehaviour: 'local', // Utiliza 'global' si quieres que los estilos sean globales por defecto
+      generateScopedName: '[name]__[local]___[hash:base64:5]', // Formato de los nombres de clase generados
+    },
     preprocessorOptions: {
         scss: {
-            api: 'modern-compiler',
+          api: 'modern-compiler',
         }
     }
   },
@@ -97,11 +94,14 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    sourcemap: true,
+    sourcemap: false,
     cssCodeSplit: true,
     minify: 'esbuild',
     rollupOptions: {
       output: {
+        entryFileNames: 'assets/[name].[hash].js',
+        chunkFileNames: 'assets/[name].[hash].js',
+        assetFileNames: 'assets/[name].[hash].[ext]',
         manualChunks: {
           'vue-vendor': ['vue', 'vue-router'],
           'fontawesome': ['@fortawesome/fontawesome-svg-core', '@fortawesome/vue-fontawesome'],
