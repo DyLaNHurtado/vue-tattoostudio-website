@@ -78,7 +78,22 @@ export default defineConfig({
       output: {
         entryFileNames: 'assets/[name].[hash].js',
         chunkFileNames: 'assets/[name].[hash].js',
-        assetFileNames: 'assets/[name].[hash].[ext]',
+        assetFileNames: (assetInfo) => {
+          // Mueve las fuentes a la carpeta fonts/
+          if (assetInfo.name.endsWith('.ttf') || assetInfo.name.endsWith('.woff') || assetInfo.name.endsWith('.woff2')) {
+            return `fonts/[name].[hash].[ext]`;
+          }
+          // Mueve las imágenes a la carpeta images/
+          if (assetInfo.name.endsWith('.webp') || assetInfo.name.endsWith('.png') || assetInfo.name.endsWith('.jpg')) {
+            return `images/[name].[hash].[ext]`;
+          }
+          // Otros assets van a la carpeta assets/
+          return `assets/[name].[hash].[ext]`;
+        },
+      },
+      manualChunks: {
+        'vue-vendor': ['vue', 'vue-router'],
+        'fontawesome': ['@fortawesome/fontawesome-svg-core', '@fortawesome/vue-fontawesome'],
       },
     },
   },
