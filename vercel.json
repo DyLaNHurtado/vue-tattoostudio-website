@@ -103,7 +103,7 @@
       ]
     },
     {
-      "source": "/fonts/(.*)",
+      "source": "/assets/fonts/(.*)",
       "headers": [
         {
           "key": "Cache-Control",

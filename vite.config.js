@@ -69,31 +69,23 @@ export default defineConfig({
       '@assets': path.resolve(__dirname, './src/assets'),
     },
   },
-  build: {
+   build: {
     outDir: 'dist',
-    sourcemap: true,
-    cssCodeSplit: true,
-    minify: 'esbuild',
+    assetsDir: 'assets', // Archivos estáticos en /assets
     rollupOptions: {
       output: {
-        entryFileNames: 'assets/[name].[hash].js',
-        chunkFileNames: 'assets/[name].[hash].js',
         assetFileNames: (assetInfo) => {
-          // Mueve las fuentes a la carpeta fonts/
-          if (assetInfo.name.endsWith('.ttf') || assetInfo.name.endsWith('.woff') || assetInfo.name.endsWith('.woff2')) {
-            return `fonts/[name].[hash].[ext]`;
+          // Mueve las fuentes a /assets/fonts
+          if (/\.(ttf|woff|woff2)$/.test(assetInfo.name)) {
+            return 'assets/fonts/[name].[hash].[ext]';
           }
-          // Mueve las imágenes a la carpeta images/
-          if (assetInfo.name.endsWith('.webp') || assetInfo.name.endsWith('.png') || assetInfo.name.endsWith('.jpg')) {
-            return `images/[name].[hash].[ext]`;
+          // Mueve las imágenes a /assets/images
+          if (/\.(webp|png|jpg|jpeg|gif|svg)$/.test(assetInfo.name)) {
+            return 'assets/images/[name].[hash].[ext]';
           }
-          // Otros assets van a la carpeta assets/
-          return `assets/[name].[hash].[ext]`;
+          // Otros assets van a /assets
+          return 'assets/[name].[hash].[ext]';
         },
-      },
-      manualChunks: {
-        'vue-vendor': ['vue', 'vue-router'],
-        'fontawesome': ['@fortawesome/fontawesome-svg-core', '@fortawesome/vue-fontawesome'],
       },
     },
   },
