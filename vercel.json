@@ -101,29 +101,30 @@
           "value": "text/html"
         }
       ]
-    },
-    {
-      "source": "/assets/fonts/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
     }
-
   ],
   "redirects": [
     {
-      "source": "/:path",
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
       "has": [
         {
           "type": "host",
           "value": "www.delaittotattoo.es"
         }
       ],
-      "destination": "https://delaittotattoo.es/:path",
+      "destination": "https://delaittotattoo.es/:path*",
       "permanent": true
+    }
+  ],
+  "rewrites": [
+    { 
+      "source": "/(.*)", 
+      "destination": "/" 
     }
   ]
 }

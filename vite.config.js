@@ -16,7 +16,7 @@ export default defineConfig({
       ext: '.gz', // Genera archivos comprimidos para el despliegue
       threshold: 10240, // Comprime solo archivos mayores a 10KB
     }), */
-    sitemapPlugin({
+/*     sitemapPlugin({
       hostname: 'https://delaittotattoo.es',
       dynamicRoutes: getRoutesForSitemap(),
       changefreq: 'weekly',
@@ -29,8 +29,8 @@ export default defineConfig({
         { userAgent: '*', disallow: '/admin' },
       ],
       exclude: ['/404', '/admin'],
-    }),
-    ViteImagemin({
+    }), */
+/*     ViteImagemin({
       gifsicle: {
         optimizationLevel: 7,
         interlaced: false,
@@ -56,12 +56,8 @@ export default defineConfig({
           },
         ],
       },
-    }),
+    }), */
   ],
-  define: {
-    __VUE_OPTIONS_API__: true,
-    __VUE_PROD_DEVTOOLS__: false,
-  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'), // Aliases para rutas cortas
@@ -71,7 +67,7 @@ export default defineConfig({
   },
    build: {
     outDir: 'dist',
-    assetsDir: 'assets', // Archivos estáticos en /assets
+    assetsDir: 'assets',
     rollupOptions: {
       output: {
         assetFileNames: (assetInfo) => {

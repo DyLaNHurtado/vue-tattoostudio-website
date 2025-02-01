@@ -31,3 +31,4 @@ dist-ssr
 # Otros archivos a ignorar
 package-lock.json
 stats.html
+.vercel
