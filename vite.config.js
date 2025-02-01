@@ -13,11 +13,13 @@ import getRoutesForSitemap from './src/sitemapsRoutes';
 export default defineConfig({
   plugins: [
     vue({ include: [/\.vue$/, /\.md$/] }),
+
     compression({
       algorithm: 'gzip',
       ext: '.gz', // Genera archivos comprimidos para el despliegue
       threshold: 10240, // Comprime solo archivos mayores a 10KB
     }),
+
     sitemapPlugin({
       hostname: 'https://delaittotattoo.es',
       dynamicRoutes: getRoutesForSitemap(),
@@ -66,13 +68,13 @@ export default defineConfig({
     //   brotliSize: true,
     // }),
 
-    // PurgeCSS({
-    //   // Opciones de configuración de PurgeCSS
-    //   content: [
-    //     './index.html',
-    //     './src/**/*.{js,ts,vue,html,scss}',  // Rutas donde buscará el CSS utilizado
-    //   ],
-    // })
+    PurgeCSS({
+      // Opciones de configuración de PurgeCSS
+      content: [
+        './index.html',
+        './src/**/*.{js,ts,vue,html,scss}',  // Rutas donde buscará el CSS utilizado
+      ],
+    })
   ],
   css: {
     preprocessorOptions: {
@@ -80,7 +82,12 @@ export default defineConfig({
             api: 'modern-compiler',
         }
     }
-},
+  },
+  define: {
+    __VUE_OPTIONS_API__: true,
+    __VUE_PROD_DEVTOOLS__: false,
+    __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: false,
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'), // Aliases para rutas cortas
@@ -90,7 +97,7 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    sourcemap: false,
+    sourcemap: true,
     cssCodeSplit: true,
     minify: 'esbuild',
     rollupOptions: {

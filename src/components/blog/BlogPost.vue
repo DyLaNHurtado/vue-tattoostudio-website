@@ -63,6 +63,15 @@
           <font-awesome-icon :icon="['fab', 'whatsapp']" />
         </button>
       </div>
+      <div class="similar-posts" v-if="similarPosts.length > 0">
+        <h3>Posts Similares</h3>
+        <BlogList :filteredPosts="similarPosts" />
+      </div>
+      <div class="navigation-links">
+        <router-link :to="previousPostLink" class="nav-link" v-if="previousPostLink">← Anterior</router-link>
+        <router-link to="/blog" class="nav-link">Todos los Posts</router-link>
+        <router-link :to="nextPostLink" class="nav-link" v-if="nextPostLink">Siguiente →</router-link>
+      </div>
     </footer>
     </div>
     <Loading v-else @retry="loadMarkdownFile" @home="goToHome" />
@@ -78,8 +87,10 @@ import { marked } from 'marked';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 import { useRouter } from 'vue-router';
+import { getSimilarPosts, getAllPosts } from '../../blog/posts';
 import '../../styles/post-styles.scss'
 const Loading = defineAsyncComponent(() => import('../common/Loading.vue'));
+const BlogList = defineAsyncComponent(() => import('../blog/BlogList.vue'));
 const props = defineProps({
   slug: String
 });
@@ -91,6 +102,10 @@ const router = useRouter();
 const articleContent = ref(null);
 const readingProgress = ref(0);
 const tableOfContents = ref([]);
+const allPosts = ref([]);
+const similarPosts = ref([]);
+const previousPostLink = ref(null);
+const nextPostLink = ref(null);
 
 const formattedDate = computed(() => {
   return attributes.value.date
@@ -227,6 +242,15 @@ const shareOnWhatsApp = () => {
 onMounted(() => {
   loadMarkdownFile();
   window.addEventListener('scroll', updateReadingProgress);
+  similarPosts.value = getSimilarPosts(props.slug, 3);
+  allPosts.value = getAllPosts();
+  const currentIndex = allPosts.value.findIndex(post => post.slug === props.slug);
+  if (currentIndex > 0) {
+    previousPostLink.value = `/blog/${allPosts.value[currentIndex - 1].slug}`;
+  }
+  if (currentIndex < allPosts.value.length - 1) {
+    nextPostLink.value = `/blog/${allPosts.value[currentIndex + 1].slug}`;
+  }
 });
 
 onUnmounted(() => {

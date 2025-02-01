@@ -22,11 +22,13 @@ export default {
     },
     image: {
       type: String,
-      required: true
+      required: true,
+      default: ''
     },
     images: {
       type: Array,
-      required: true
+      required: true,
+      default: () => []
     }
   },
   data() {

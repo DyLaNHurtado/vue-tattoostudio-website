@@ -19,3 +19,26 @@ return Object.keys(files).map((path) => {
 export function getLatestPosts(limit = 3) {
   return getAllPosts().slice(0, limit);
 }
+
+export function getSimilarPosts(currentPostSlug, limit = 3) {
+  const allPosts = getAllPosts();
+  const currentPost = allPosts.find(post => post.slug === currentPostSlug);
+
+  if (!currentPost) {
+    return [];
+  }
+
+  const similarPosts = allPosts
+    .filter(post => post.slug !== currentPostSlug)
+    .map(post => {
+      const commonTags = post.tags.filter(tag => currentPost.tags.includes(tag));
+      return {
+        ...post,
+        commonTagsCount: commonTags.length
+      };
+    })
+    .sort((a, b) => b.commonTagsCount - a.commonTagsCount)
+    .slice(0, limit);
+
+  return similarPosts;
+}
