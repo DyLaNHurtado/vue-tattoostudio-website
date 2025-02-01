@@ -4,8 +4,6 @@ excerpt: "¿Qué motiva a las personas a hacerse tatuajes? Desde la expresión p
 date: 2024-07-17
 ---
 
-# La Psicología del Tatuaje: ¿Por Qué Nos Tatuamos?
-
 El acto de tatuarse va más allá de simplemente adornar el cuerpo. Hay una profunda psicología detrás de la decisión de marcar nuestra piel de forma permanente. En este artículo, exploraremos las razones psicológicas que llevan a las personas a hacerse tatuajes y cómo estos influyen en nuestra identidad.
 
 ![Tatuaje Conmemorativo](https://example.com/memorial-tattoo.jpg)
