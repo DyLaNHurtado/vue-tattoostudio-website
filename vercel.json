@@ -25,5 +25,16 @@
       "source": "/(.*)",
       "destination": "/index.html"
     }
-  ]
+  ],
+  "redirects": [
+    {
+      "source": "/assets/(.*)",
+      "destination": "/assets/$1",
+      "statusCode": 200
+    }
+  ],
+  "static": {
+    "src": "dist",
+    "dest": "/"
+  }
 }
