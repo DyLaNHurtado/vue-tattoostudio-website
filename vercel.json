@@ -11,5 +11,16 @@
       "src": "/(.*)",
       "dest": "/src/main.js"
     }
+  ],
+  "headers": [
+    {
+      "source": "/assets/(.*).js",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/javascript"
+        }
+      ]
+    }
   ]
 }
