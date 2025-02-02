@@ -8,6 +8,7 @@ export default defineConfig({
     vue({ include: [/\.vue$/, /\.md$/] }),
     Markdown(),
   ],
+  base: '/', // Asegúrate de que esta ruta base sea correcta
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'), // Aliases para rutas cortas
