@@ -18,6 +18,15 @@
           "value": "application/javascript"
         }
       ]
+    },
+    {
+      "source": "/index.html",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/html"
+        }
+      ]
     }
   ],
   "rewrites": [
@@ -32,9 +41,5 @@
       "destination": "/assets/$1",
       "statusCode": 200
     }
-  ],
-  "static": {
-    "src": "dist",
-    "dest": "/"
-  }
+  ]
 }
